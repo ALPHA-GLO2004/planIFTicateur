@@ -6,7 +6,7 @@
 //                            Gadoury, Gabriel.
 //                            Yeo, Clotioloman Yann.
 //
-//  Université Laval ( 2015)
+//  Universite Laval ( 2015)
 //
 //  This file is part of planIFTicateur-ALPHA.
 //
