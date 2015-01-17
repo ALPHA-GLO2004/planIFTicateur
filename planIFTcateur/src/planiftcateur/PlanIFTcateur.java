@@ -6,7 +6,7 @@
 package planiftcateur;
 
 /**
- *test de push
+ *test de push 2 ( yann )
  * @author Philippe
  */
 public class PlanIFTcateur {
@@ -17,5 +17,5 @@ public class PlanIFTcateur {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
+
 }
