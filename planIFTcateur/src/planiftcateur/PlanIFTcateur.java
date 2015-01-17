@@ -6,7 +6,7 @@
 package planiftcateur;
 
 /**
- *test de push 2 ( yann )
+ *test de push 2 ( yann ) Fonctionne (philippe)
  * @author Philippe
  */
 public class PlanIFTcateur {
