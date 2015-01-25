@@ -1,14 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+//========================================================================
+//
+//  Author(s)	:	Philippe Chayer
+//			Abdou Khouma
+//			Gabriel Gadoury
+//			Yann Clotioloman Yeo
+//
+//  Copyright (c) GLO2004-TEAM ALPHA, 2015.
+//
+//========================================================================
+
 package planiftcateur;
 
-/**
- *test de push 2 ( yann ) Fonctionne (philippe) Okayyyyy!!!! (Gab)
- * @author Philippe
- */
+
 public class PlanIFTcateur {
 
     /**
