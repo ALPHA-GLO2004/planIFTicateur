@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="GLO 2004" company="" webLink="http://" view-date="2015-01-26" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7" locale="fr">
+<?xml version="1.0" encoding="UTF-8"?><project name="GLO 2004" company="" webLink="http://" view-date="2015-01-28" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7" locale="fr">
     <description/>
-    <view zooming-state="default:4" id="gantt-chart">
+    <view zooming-state="default:3" id="gantt-chart">
         <field id="tpd3" name="Nom" width="55" order="0"/>
         <field id="tpd4" name="Date de début" width="22" order="1"/>
         <field id="tpd5" name="Date de fin" width="22" order="2"/>
@@ -37,19 +37,19 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="85" name="Corriger rapport precedent" color="#8cb6ce" meeting="false" start="2015-02-04" duration="12" complete="0" expand="true">
+        <task id="85" name="Corriger rapport precedent" color="#8cb6ce" meeting="false" start="2015-02-04" duration="9" complete="0" expand="true">
             <depend id="0" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="84" name="Maquettes d'interface" color="#8cb6ce" meeting="false" start="2015-02-04" duration="12" complete="0" expand="true">
+        <task id="84" name="Maquettes d'interface" color="#8cb6ce" meeting="false" start="2015-02-04" duration="9" complete="0" expand="true">
             <depend id="0" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="88" name="Diagramme de package" color="#8cb6ce" meeting="false" start="2015-02-04" duration="12" complete="0" expand="true">
+        <task id="88" name="Diagramme de package" color="#8cb6ce" meeting="false" start="2015-02-04" duration="9" complete="0" expand="true">
             <depend id="0" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="86" name="Diagrammes de sequences" color="#8cb6ce" meeting="false" start="2015-02-04" duration="12" complete="0" expand="true">
+        <task id="86" name="Diagrammes de sequences" color="#8cb6ce" meeting="false" start="2015-02-04" duration="9" complete="0" expand="true">
             <depend id="0" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="0" name="A1" color="#8cb6ce" meeting="false" start="2015-02-20" duration="6" complete="0" expand="true">
+        <task id="0" name="A1" color="#8cb6ce" meeting="false" start="2015-02-17" duration="6" complete="0" expand="true">
             <notes><![CDATA[Réaliser L’architecture complète du système incluant:
 Diagrammes de classes
 Diagrammes de sequences
@@ -58,41 +58,41 @@ Diagramme de package
             <depend id="1" type="2" difference="0" hardness="Strong"/>
             <depend id="3" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="1" name="A2" color="#8cb6ce" meeting="false" start="2015-03-02" duration="10" complete="0" expand="true">
+        <task id="1" name="A2" color="#8cb6ce" meeting="false" start="2015-02-25" duration="10" complete="0" expand="true">
             <notes><![CDATA[Extraire les fichiers .COU contenant la liste des activités à mettre à l’horaire et sauvegarder les données en RAM.]]></notes>
             <depend id="14" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="3" name="A3" color="#8cb6ce" meeting="false" start="2015-03-02" duration="10" complete="0" expand="true">
+        <task id="3" name="A3" color="#8cb6ce" meeting="false" start="2015-02-25" duration="10" complete="0" expand="true">
             <notes><![CDATA[Extraire les fichiers .CHE contenant les grilles de cheminement à respecter et sauvegarder les données en RAM.]]></notes>
             <depend id="14" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="14" name="A4" color="#8cb6ce" meeting="false" start="2015-03-16" duration="3" complete="0" expand="true">
+        <task id="14" name="A4" color="#8cb6ce" meeting="false" start="2015-03-11" duration="3" complete="0" expand="true">
             <notes><![CDATA[Synchroniser le chargement des fichiers .COU et .CHE]]></notes>
             <depend id="15" type="2" difference="0" hardness="Strong"/>
             <depend id="17" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="15" name="B1" color="#8cb6ce" meeting="false" start="2015-03-19" duration="9" complete="0" expand="true">
+        <task id="15" name="B1" color="#8cb6ce" meeting="false" start="2015-03-16" duration="9" complete="0" expand="true">
             <notes><![CDATA[Enregistrer l’horaire (le fichier précédent est supprimé). ]]></notes>
             <depend id="16" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="16" name="B2" color="#8cb6ce" meeting="false" start="2015-04-01" duration="3" complete="0" expand="true">
+        <task id="16" name="B2" color="#8cb6ce" meeting="false" start="2015-03-27" duration="3" complete="0" expand="true">
             <notes><![CDATA[Option « enregistrer sous » pour l’horaire est possible.]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="17" name="B3" color="#8cb6ce" meeting="false" start="2015-03-19" duration="5" complete="0" expand="true">
+        <task id="17" name="B3" color="#8cb6ce" meeting="false" start="2015-03-16" duration="5" complete="0" expand="true">
             <notes><![CDATA[Exporter l’image de l’horaire dans un format image.]]></notes>
             <depend id="29" type="2" difference="0" hardness="Strong"/>
             <depend id="30" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="29" name="C1" color="#8cb6ce" meeting="false" start="2015-03-26" duration="7" complete="0" expand="true">
+        <task id="29" name="C1" color="#8cb6ce" meeting="false" start="2015-03-23" duration="7" complete="0" expand="true">
             <notes><![CDATA[Diviser l’écran en deux zones. L’espace à gauche contient la grille horaire en construction. La zone de droite contient la liste des cours non encore assignés à la grille de même que l’information pertinente associée à ce cours]]></notes>
             <depend id="31" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="30" name="C2" color="#8cb6ce" meeting="false" start="2015-03-26" duration="1" complete="0" expand="true">
+        <task id="30" name="C2" color="#8cb6ce" meeting="false" start="2015-03-23" duration="1" complete="0" expand="true">
             <notes><![CDATA[Attribuer une couleur à chaque activité en fonction de son type. ]]></notes>
             <depend id="31" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="31" name="C3" color="#8cb6ce" meeting="false" start="2015-04-06" duration="5" complete="0" expand="true">
+        <task id="31" name="C3" color="#8cb6ce" meeting="false" start="2015-04-01" duration="5" complete="0" expand="true">
             <notes><![CDATA[À l’aide de la souris, un mouvement de glisser-lâcher (« drag and drop ») permet de : 
 
 (1) déplacer un cours de l’espace de droite vers la grille horaire (et inversement);
@@ -108,54 +108,54 @@ Diagramme de package
             <depend id="65" type="2" difference="0" hardness="Strong"/>
             <depend id="70" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="32" name="C4" color="#8cb6ce" meeting="false" start="2015-04-13" duration="3" complete="0" expand="true">
+        <task id="32" name="C4" color="#8cb6ce" meeting="false" start="2015-04-08" duration="3" complete="0" expand="true">
             <notes><![CDATA[En tout temps, un indicateur à l’écran indique si l’horaire est valide. Si ce n’est pas le cas, la liste des erreurs est affichée. On doit pouvoir modifier l’horaire tout en voyant la liste (qui se met à jour en temps réel). ]]></notes>
             <depend id="33" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="33" name="C5" color="#8cb6ce" meeting="false" start="2015-04-16" duration="3" complete="0" expand="true">
+        <task id="33" name="C5" color="#8cb6ce" meeting="false" start="2015-04-13" duration="3" complete="0" expand="true">
             <notes><![CDATA[Possibilité de faire apparaitre une zone (ou une fenêtre) permettant de prendre des notes concernant l’historique de modification du fichier]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="56" name="D" color="#8cb6ce" meeting="false" start="2015-04-13" duration="9" complete="0" expand="true">
+        <task id="56" name="D" color="#8cb6ce" meeting="false" start="2015-04-08" duration="9" complete="0" expand="true">
             <notes><![CDATA[Possibilité d’activer/désactiver une fonction de vérification automatique de la validité d’horaire. Ainsi, lors du déplacement d’un cours, toutes les cases de la grille horaire qui ne sont pas accessibles (parce que les contraintes l’interdisent) deviennent grisées et il est impossible d’y placer le cours. 
 
 De cette manière, l’horaire affiché est en tout temps valide (sauf si les données chargées étaient elle-même invalides). 
 ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="60" name="E" color="#8cb6ce" meeting="false" start="2015-04-13" duration="9" complete="0" expand="true">
+        <task id="60" name="E" color="#8cb6ce" meeting="false" start="2015-04-08" duration="9" complete="0" expand="true">
             <notes><![CDATA[Placer de manière automatique dans la grille horaire tous les cours qui se trouvent dans l’espace à droite (bouton « planification automatique »). ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="61" name="F1" color="#8cb6ce" meeting="false" start="2015-04-13" duration="12" complete="0" expand="true">
+        <task id="61" name="F1" color="#8cb6ce" meeting="false" start="2015-04-08" duration="12" complete="0" expand="true">
             <notes><![CDATA[Nombre maximal de cours qu’un étudiant pourrait avoir la même journée Cet indicateur est à calculer pour chaque jour de la semaine. ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="62" name="F2" color="#8cb6ce" meeting="false" start="2015-04-13" duration="12" complete="0" expand="true">
+        <task id="62" name="F2" color="#8cb6ce" meeting="false" start="2015-04-08" duration="12" complete="0" expand="true">
             <notes><![CDATA[Nombre moyen de cours qu’un étudiant devrait avoir la même journée (en supposant qu’il y a le même nombre d’étudiant pour chacune des grilles de cheminement fournies). Cet indicateur est à calculer pour chaque jour de la semaine. ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="63" name="F3" color="#8cb6ce" meeting="false" start="2015-04-13" duration="7" complete="0" expand="true">
+        <task id="63" name="F3" color="#8cb6ce" meeting="false" start="2015-04-08" duration="7" complete="0" expand="true">
             <notes><![CDATA[Nombre de cours par jour pour chacun des jours de la semaine. ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="64" name="F4" color="#8cb6ce" meeting="false" start="2015-04-13" duration="11" complete="0" expand="true">
+        <task id="64" name="F4" color="#8cb6ce" meeting="false" start="2015-04-08" duration="11" complete="0" expand="true">
             <notes><![CDATA[Indice de congestion de la circulation : % des cours qui débutent à 8h30. ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="65" name="F5" color="#8cb6ce" meeting="false" start="2015-04-13" duration="11" complete="0" expand="true">
+        <task id="65" name="F5" color="#8cb6ce" meeting="false" start="2015-04-08" duration="11" complete="0" expand="true">
             <notes><![CDATA[Indice de covoiturage (voir spécifications du projet). ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="70" name="G1" color="#8cb6ce" meeting="false" start="2015-04-13" duration="10" complete="0" expand="true">
+        <task id="70" name="G1" color="#8cb6ce" meeting="false" start="2015-04-08" duration="10" complete="0" expand="true">
             <notes><![CDATA[Lorsqu’on déplace la souris dans la grille horaire, le jour et l’heure associés à la case sous la souris s’affichent dans la barre d’état de l’application. ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="71" name="G2" color="#8cb6ce" meeting="false" start="2015-04-29" duration="1" complete="0" expand="true">
+        <task id="71" name="G2" color="#8cb6ce" meeting="false" start="2015-04-24" duration="1" complete="0" expand="true">
             <notes><![CDATA[Pour toute comparaison de chaîne de caractère, l’application ne doit pas être sensible à la casse. ]]></notes>
             <depend id="79" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="79" name="Remise" color="#8cb6ce" meeting="false" start="2015-04-30" duration="1" complete="0" expand="true"/>
+        <task id="79" name="Remise" color="#8cb6ce" meeting="false" start="2015-04-27" duration="1" complete="0" expand="true"/>
     </tasks>
     <resources>
         <resource id="0" name="Yann" function="Default:0" contacts="" phone="">
