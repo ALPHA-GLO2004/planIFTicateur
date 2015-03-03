@@ -1,0 +1,5 @@
+Texte justificatif du diagramme de classe de conception :
+Le controler de Larman est la porte d'entrée vers le domaine ou de sortie vers l'interface graphiques.
+Les responsabilités de chaque classe va avec le fait que la classe détient l'infiormation lui permettant de jouer ce roles.
+Par exemple la grille Horaire est le mieux placé pour savoir si deux activités se deroulent une meme session. L'horaire 
+lui demande cette information et la compléte avec celle correspondant au deroulement le meme jour
