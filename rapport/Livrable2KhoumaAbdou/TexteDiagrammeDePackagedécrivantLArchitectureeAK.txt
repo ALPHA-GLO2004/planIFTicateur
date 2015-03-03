@@ -1,10 +1,10 @@
-Texte justificatif du diagramme de package décrivant l'architecture logique :
-Le comminication entre l'interface graphique et la logique metier (le domaine ) se fait par le billet du 
-controleur de Larman. Ce dernier recoit de l'interface graphique des objects primitifs de type int. Il sert d'articulation ente le l'interface le le domaine et il fait les bons appels dans le domaines.
+﻿Texte justificatif du diagramme de package décrivant l'architecture logique :
+Le communication entre l'interface graphique et la logique metier (le domaine ) se fait par le billet du 
+controleur de Larman. Ce dernier recoit de l'interface graphique des objects primitifs de type int. Il sert d'articulation ente l'interface et le domaine et il fait les bons appels dans le domaines.
 L'utilisateur appelle le paintComponent du drawingCadrePanel . Cette methode est chargée d'initialiser les dimentions de la zone totale utilisée par notre application.
 Cette classe appartient au package de l'interface graphique utilisateur ( gui ).
 Puis le paintComponent instancie un objet de type HortaireDrawing qui posséde un objet de l'HoraireControler.
- Par le billet de ce controler qui a un objet de type Horaire alors le HoraireDrawing dispose de toutes l'information necessaire pour dessiner un Horaire.
+ Par le billet de ce controleur qui a un objet de type Horaire alors le HoraireDrawing dispose de toutes l'information necessaire pour dessiner un Horaire.
  Listes des activitées à placer, listes des activitées déjà placées, listes des conflits à afficher, listes des modifications ayant eu lieu dans l'horaire, les panneaux de chaque jour,...
  Cette classe appartient à la couche logique et est dans le package de drawing. Un objet graphique passe de l'objet drawingCadrePanel vers le HoraireDrawing. 
  Cet object graphique parmet de dessiner les activites qui sont des rectangles. La longueur de de ce rectangle correspond`à la durée de l'activite 
