@@ -10,13 +10,16 @@
 //
 //========================================================================
 
-package planiftcateur;
+package domain;
 
-
-public class PlanIFTcateur {
+public class Conflit {
 
     /**
-     * @param args the command line arguments
+     * @Nom:    Classe Conflit
+     * @Desc:   Constructeur
+     * @Pre:
+     * @Post:   
+     * @Result: 
      */
     public static void main(String[] args) {
         // TODO code application logic here

@@ -1,19 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//========================================================================
+//
+//  Author(s)	:	Philippe Chayer
+//			Abdou Khouma
+//			Gabriel Gadoury
+//			Yann Clotioloman Yeo
+//
+//  Copyright (c) GLO2004-TEAM ALPHA, 2015.
+//
+//========================================================================
 
-/**
- *
- * @author GabG
- */
-public class ui extends javax.swing.JFrame {
+package gui;
+
+public class MainWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form ui
      */
-    public ui() {
+    public MainWindow() {
         initComponents();
     }
 
