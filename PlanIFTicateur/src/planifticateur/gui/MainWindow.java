@@ -23,15 +23,28 @@ public class MainWindow extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         centerPanelContainer = new javax.swing.JPanel();
         horaireDrawingContainer = new javax.swing.JPanel();
+        listeEtBoutonContainer = new javax.swing.JPanel();
         listeActiviteContainer = new javax.swing.JPanel();
-        listeActiviteTextField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        boutonContainer = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         topMenuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menuFile = new javax.swing.JMenu();
+        menuFileNew = new javax.swing.JMenuItem();
+        menuFileOpen = new javax.swing.JMenuItem();
+        menuFileSave = new javax.swing.JMenuItem();
+        menuFileSaveAs = new javax.swing.JMenuItem();
+        menuFileQuit = new javax.swing.JMenuItem();
+        menuExport = new javax.swing.JMenu();
+        menuExportCopy = new javax.swing.JMenuItem();
+        menuExportPic = new javax.swing.JMenuItem();
+        menuHelp = new javax.swing.JMenu();
+        menuHelpWindow = new javax.swing.JMenuItem();
+        menuHelpAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,54 +70,121 @@ public class MainWindow extends javax.swing.JFrame {
 
         mainPanel.add(bottomPanelContainer, java.awt.BorderLayout.PAGE_END);
 
+        centerPanelContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 4, 0));
+
         horaireDrawingContainer.setBackground(new java.awt.Color(102, 102, 102));
-        horaireDrawingContainer.setPreferredSize(new java.awt.Dimension(500, 480));
-
-        javax.swing.GroupLayout horaireDrawingContainerLayout = new javax.swing.GroupLayout(horaireDrawingContainer);
-        horaireDrawingContainer.setLayout(horaireDrawingContainerLayout);
-        horaireDrawingContainerLayout.setHorizontalGroup(
-            horaireDrawingContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        horaireDrawingContainerLayout.setVerticalGroup(
-            horaireDrawingContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
-        );
-
+        horaireDrawingContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 3));
+        horaireDrawingContainer.setPreferredSize(new java.awt.Dimension(500, 472));
+        horaireDrawingContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
         centerPanelContainer.add(horaireDrawingContainer);
 
-        listeActiviteContainer.setPreferredSize(new java.awt.Dimension(300, 480));
-        listeActiviteContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 1));
+        listeEtBoutonContainer.setPreferredSize(new java.awt.Dimension(300, 480));
 
-        listeActiviteTextField.setText("jTextField2");
-        listeActiviteTextField.setPreferredSize(new java.awt.Dimension(280, 375));
-        listeActiviteContainer.add(listeActiviteTextField);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout listeActiviteContainerLayout = new javax.swing.GroupLayout(listeActiviteContainer);
+        listeActiviteContainer.setLayout(listeActiviteContainerLayout);
+        listeActiviteContainerLayout.setHorizontalGroup(
+            listeActiviteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+        );
+        listeActiviteContainerLayout.setVerticalGroup(
+            listeActiviteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+        );
 
         jButton1.setText("jButton1");
-        jButton1.setPreferredSize(new java.awt.Dimension(280, 23));
-        listeActiviteContainer.add(jButton1);
 
         jButton2.setText("jButton2");
-        jButton2.setPreferredSize(new java.awt.Dimension(280, 23));
-        listeActiviteContainer.add(jButton2);
 
         jButton3.setText("jButton3");
-        jButton3.setPreferredSize(new java.awt.Dimension(280, 23));
-        listeActiviteContainer.add(jButton3);
 
         jButton4.setText("jButton4");
-        jButton4.setPreferredSize(new java.awt.Dimension(280, 23));
-        listeActiviteContainer.add(jButton4);
 
-        centerPanelContainer.add(listeActiviteContainer);
+        javax.swing.GroupLayout boutonContainerLayout = new javax.swing.GroupLayout(boutonContainer);
+        boutonContainer.setLayout(boutonContainerLayout);
+        boutonContainerLayout.setHorizontalGroup(
+            boutonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        boutonContainerLayout.setVerticalGroup(
+            boutonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(boutonContainerLayout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4)
+                .addGap(0, 19, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout listeEtBoutonContainerLayout = new javax.swing.GroupLayout(listeEtBoutonContainer);
+        listeEtBoutonContainer.setLayout(listeEtBoutonContainerLayout);
+        listeEtBoutonContainerLayout.setHorizontalGroup(
+            listeEtBoutonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listeEtBoutonContainerLayout.createSequentialGroup()
+                .addGroup(listeEtBoutonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(listeActiviteContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boutonContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        listeEtBoutonContainerLayout.setVerticalGroup(
+            listeEtBoutonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listeEtBoutonContainerLayout.createSequentialGroup()
+                .addComponent(listeActiviteContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boutonContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        centerPanelContainer.add(listeEtBoutonContainer);
 
         mainPanel.add(centerPanelContainer, java.awt.BorderLayout.WEST);
 
-        jMenu1.setText("File");
-        topMenuBar.add(jMenu1);
+        menuFile.setText("Fichier");
 
-        jMenu2.setText("Edit");
-        topMenuBar.add(jMenu2);
+        menuFileNew.setText("Nouvel horaire");
+        menuFile.add(menuFileNew);
+
+        menuFileOpen.setText("Ouvrir horaire");
+        menuFile.add(menuFileOpen);
+
+        menuFileSave.setText("Enregistrer");
+        menuFile.add(menuFileSave);
+
+        menuFileSaveAs.setText("Enregistrer sous ...");
+        menuFile.add(menuFileSaveAs);
+
+        menuFileQuit.setText("Quitter");
+        menuFile.add(menuFileQuit);
+
+        topMenuBar.add(menuFile);
+
+        menuExport.setText("Exporter");
+
+        menuExportCopy.setText("Copier (Presse-papier)");
+        menuExport.add(menuExportCopy);
+
+        menuExportPic.setText("... sous forme d'image");
+        menuExport.add(menuExportPic);
+
+        topMenuBar.add(menuExport);
+
+        menuHelp.setText("Aide");
+
+        menuHelpWindow.setText("fenêtre Aide");
+        menuHelp.add(menuHelpWindow);
+
+        menuHelpAbout.setText("À propos ...");
+        menuHelp.add(menuHelpAbout);
+
+        topMenuBar.add(menuHelp);
 
         setJMenuBar(topMenuBar);
 
@@ -127,18 +207,31 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanelContainer;
+    private javax.swing.JPanel boutonContainer;
     private javax.swing.JPanel centerPanelContainer;
     private javax.swing.JPanel horaireDrawingContainer;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel listeActiviteContainer;
-    private javax.swing.JTextField listeActiviteTextField;
+    private javax.swing.JPanel listeEtBoutonContainer;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JMenu menuExport;
+    private javax.swing.JMenuItem menuExportCopy;
+    private javax.swing.JMenuItem menuExportPic;
+    private javax.swing.JMenu menuFile;
+    private javax.swing.JMenuItem menuFileNew;
+    private javax.swing.JMenuItem menuFileOpen;
+    private javax.swing.JMenuItem menuFileQuit;
+    private javax.swing.JMenuItem menuFileSave;
+    private javax.swing.JMenuItem menuFileSaveAs;
+    private javax.swing.JMenu menuHelp;
+    private javax.swing.JMenuItem menuHelpAbout;
+    private javax.swing.JMenuItem menuHelpWindow;
     private javax.swing.JLabel titreFichierLabel;
     private javax.swing.JMenuBar topMenuBar;
     private javax.swing.JPanel topPanelContainer;

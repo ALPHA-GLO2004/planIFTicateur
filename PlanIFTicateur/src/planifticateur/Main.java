@@ -1,7 +1,7 @@
 
 package planifticateur;
 
-
+//Classe qui start le programme
 public class Main {
 
     public static void main(String[] args) {
