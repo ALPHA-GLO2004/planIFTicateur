@@ -8,7 +8,7 @@ public class Professeur {
     String nom;
     String bureau;
     
-    public Professeur(){
+    public Professeur(String initiales){
         //Constructeur
     }
 }

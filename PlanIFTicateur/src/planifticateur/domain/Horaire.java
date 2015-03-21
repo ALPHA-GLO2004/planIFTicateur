@@ -4,6 +4,7 @@ package planifticateur.domain;
 public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
     String fichierCOU;
+    String fichierCHE;
     //
     boolean valide;
     int nbMaxCoursEtudiantMemeJour;
@@ -24,16 +25,26 @@ public class Horaire {
     ListeActiviteAPlacer listeActiviteAPlacer;
     ListeActiviteDejaPlacee listeActiviteDejaPlacee;
 
-    public Horaire(){
-        //Constructeur
-        
+    public Horaire(String nomFichier){
+        fichierCOU = nomFichier + ".COU";   
+        fichierCHE = nomFichier + ".CHE";
+        listeConflit = new ListeConflit();
+        listeModificationActivite = new ListeModificationActivite();
+        listeActiviteAPlacer = new ListeActiviteAPlacer();
+        listeActiviteDejaPlacee = new ListeActiviteDejaPlacee();
+        horairePlein = false;
     }
     
     private void validerHoraire(){
-        
+        if (listeConflit.isEmpty()){
+            valide = true;
+        }
+        else{
+            valide = false;
+        }
     }
     
     private void genererAutomatiquement(){
-        
+        //En attente d'un bon algorithme
     }
 }

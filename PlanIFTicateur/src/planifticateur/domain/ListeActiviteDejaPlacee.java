@@ -21,10 +21,7 @@ public class ListeActiviteDejaPlacee {
     }
     
     private Activite[] getActiviteDejaPlaceeList(){
-        //quek lignes juste pour enlever les erreurs dans le code
-        Activite a = new Activite();
-        Activite[] b = {a};
-        return b;
+        
     }
     
     private int getNumberOfActiviteDejaPlacee(){
@@ -32,9 +29,7 @@ public class ListeActiviteDejaPlacee {
     }
     
     private Activite getActivite(Point point){
-        //quek lignes juste pour enlever les erreurs dans le code
-        Activite a = new Activite();
-        return a;
+       
     }
     
     private boolean remove(Activite activite){ //Changement type: Activite -> boolean (Activite est retiré...juste un retour de true quand ça fonctionne est ok)
@@ -42,8 +37,6 @@ public class ListeActiviteDejaPlacee {
     }
     
     private Activite getActivite(int x){
-        //quek lignes juste pour enlever les erreurs dans le code
-        Activite a = new Activite();
-        return a;
+
     }
 }

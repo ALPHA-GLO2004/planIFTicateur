@@ -13,17 +13,12 @@ public class ListeConflit {
         
     }
     
-    private boolean isEmpty(){
+    public boolean isEmpty(){
         return true;
     }
     
     private Conflit[] getConflitListe(){
-        //Quek lignes pour éviter les erreurs dans le code
-        Activite c = new Activite();
-        Activite d = new Activite();
-        Conflit a = new Conflit(c, d);
-        Conflit[] b = {a};
-        return b;
+
     }
     
     private int getNumberOfConflit(){

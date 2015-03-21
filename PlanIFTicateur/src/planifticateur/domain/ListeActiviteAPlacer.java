@@ -18,10 +18,7 @@ public class ListeActiviteAPlacer {
     }
     
     private Activite[] getActiviteAPlacerListe(){
-        //Quek lignes pour retirer les erreurs dans le code
-        Activite a = new Activite();
-        Activite[] b = {a};
-        return b;
+
     }
     
     private int getNumberOfActivite(){

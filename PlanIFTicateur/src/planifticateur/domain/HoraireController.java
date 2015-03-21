@@ -6,7 +6,7 @@ public class HoraireController {
     Horaire horaire;
     
     public HoraireController(){
-        //Constructeur
+        horaire = new Horaire(""); //Ça chie je pense ben, à modifier éventuellement
     }
     
     public void nouvelHoraire(){
