@@ -2,6 +2,9 @@
 package planifticateur.domain;
 
 public class Horaire {
+    //Ajout de ma part, ça me semblait essentiel
+    String fichierCOU;
+    //
     boolean valide;
     int nbMaxCoursEtudiantMemeJour;
     int nbMoyenCoursEtudiantMemeJour;
@@ -16,12 +19,15 @@ public class Horaire {
     int nbCoursDimanche;
     int nbMaxCoursHoraire;
     boolean horairePlein;
-/*
     ListeConflit listeConflit;
     ListeModificationActivite listeModificationActivite;
     ListeActiviteAPlacer listeActiviteAPlacer;
     ListeActiviteDejaPlacee listeActiviteDejaPlacee;
-*/
+
+    public void horaire(){
+        //Constructeur
+        
+    }
     
     private void validerHoraire(){
         
