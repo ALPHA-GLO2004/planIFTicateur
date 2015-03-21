@@ -7,7 +7,7 @@ import java.awt.*;
 public class ListeActiviteDejaPlacee {
     Vector<Activite> activiteDejaPlaceeListe; //Changement de type: List -> Vector
     
-    public void listeActiviteDejaPlacee(){
+    public ListeActiviteDejaPlacee(){
         //Constructeur
         
     }

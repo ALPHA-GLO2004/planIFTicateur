@@ -1,26 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package planifticateur.gui;
 
-/**
- *
- * @author GabG
- */
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
- 
+package planifticateur.gui;
+import java.awt.*;
+
 public class DrawingPanel extends javax.swing.JPanel
   {
- 
-    public DrawingPanel()
-    {
+    MainWindow mainWindow;
+    Dimension initialDimension;
+    
+    public DrawingPanel(){
+        //Constructeur
     }
- 
+    
+    private void operation(){
+        
+    }
+    
     @Override
     protected void paintComponent( Graphics g )
     {
@@ -39,5 +33,23 @@ public class DrawingPanel extends javax.swing.JPanel
         g2.drawOval(32, 30, 50, 50);
         g2.setColor(Color.GREEN);
         g2.drawOval(89, 30, 50, 50);
+    }
+    
+    private MainWindow getMainWindow(){
+        MainWindow a = new MainWindow();
+        return a;
+    }
+    
+    private void setMainWindow(MainWindow mainWindow){
+        
+    }
+    
+    private Dimension getInitialDimension(){
+        Dimension a = new Dimension();
+        return a;
+    }
+    
+    private void setInitialDimension(Dimension initialDimension){
+        
     }
   }

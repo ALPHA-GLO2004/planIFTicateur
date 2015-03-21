@@ -7,8 +7,8 @@ public class Conflit {
     String nom;
     String description;
     
-    public void conflit(Activite act1, Activite act2){
-        
+    public Conflit(Activite act1, Activite act2){
+        //Constructeur
     }
     
     private boolean afficherConflit(){ //Est-ce vraiment utile de retourner un bool pour un affichage ?

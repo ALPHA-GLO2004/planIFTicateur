@@ -24,7 +24,7 @@ public class Horaire {
     ListeActiviteAPlacer listeActiviteAPlacer;
     ListeActiviteDejaPlacee listeActiviteDejaPlacee;
 
-    public void horaire(){
+    public Horaire(){
         //Constructeur
         
     }

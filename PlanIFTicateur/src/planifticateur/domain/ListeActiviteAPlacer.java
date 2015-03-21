@@ -5,7 +5,7 @@ import java.util.*;
 public class ListeActiviteAPlacer {
     Vector<Activite> activiteAPlacerListe;
     
-    public void listeActiviteAPlacer(){
+    public ListeActiviteAPlacer(){
         //Constructeur
     }
     

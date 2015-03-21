@@ -5,8 +5,8 @@ import java.util.*;
 public class ListeConflit {
     Vector<Conflit> conflitListe;
     
-    public void listeConflit(){
-        
+    public ListeConflit(){
+        //Constructeur
     }
     
     private void add(Conflit conflit){
@@ -19,7 +19,9 @@ public class ListeConflit {
     
     private Conflit[] getConflitListe(){
         //Quek lignes pour éviter les erreurs dans le code
-        Conflit a = new Conflit();
+        Activite c = new Activite();
+        Activite d = new Activite();
+        Conflit a = new Conflit(c, d);
         Conflit[] b = {a};
         return b;
     }

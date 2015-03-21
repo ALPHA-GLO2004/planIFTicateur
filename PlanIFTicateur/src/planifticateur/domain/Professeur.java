@@ -7,4 +7,8 @@ public class Professeur {
     String prenom;
     String nom;
     String bureau;
+    
+    public Professeur(){
+        //Constructeur
+    }
 }

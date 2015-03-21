@@ -1,14 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package planifticateur.domain;
 
-/**
- *
- * @author GabG
- */
+
 public class GrilleCheminement {
+    char[] programme;
+    String version;
+    char[] session;
+    ListeActiviteGrilleCh listeActiviteGrilleCh;
     
+    public GrilleCheminement(){
+        //Constructeur
+    }
+    
+    private boolean enConflit(Activite activite1, Activite activite2){
+        return true;
+    }
 }

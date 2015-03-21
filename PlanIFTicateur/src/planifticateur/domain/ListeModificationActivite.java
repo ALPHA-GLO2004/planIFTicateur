@@ -5,8 +5,8 @@ import java.util.*;
 public class ListeModificationActivite {
     Vector<ModificationActivite> modificationActiviteListe;
     
-    public void listeModificationActivite(){
-        
+    public ListeModificationActivite(){
+        //Constructeur
     }
     
     private void add(ModificationActivite modificationActivite){

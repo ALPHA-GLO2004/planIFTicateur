@@ -16,7 +16,7 @@ public class Activite {
     Point point;
 //    Rectangle rectangle; //Utilité du rectangle ?
     
-    public void activite(){
+    public Activite(){
         //Constructeur
     }
     

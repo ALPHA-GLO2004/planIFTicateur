@@ -5,7 +5,7 @@ package planifticateur.domain;
 public class HoraireController {
     Horaire horaire;
     
-    public void horaireController(){
+    public HoraireController(){
         //Constructeur
     }
     
