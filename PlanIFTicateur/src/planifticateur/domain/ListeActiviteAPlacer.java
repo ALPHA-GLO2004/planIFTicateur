@@ -17,9 +17,9 @@ public class ListeActiviteAPlacer {
         return true;
     }
     
-    private Activite[] getActiviteAPlacerListe(){
+//    private Activite[] getActiviteAPlacerListe(){
 
-    }
+//    }
     
     private int getNumberOfActivite(){
         return 0;

@@ -17,9 +17,9 @@ public class ListeConflit {
         return true;
     }
     
-    private Conflit[] getConflitListe(){
+ //   private Conflit[] getConflitListe(){
 
-    }
+ //   }
     
     private int getNumberOfConflit(){
         return 0;

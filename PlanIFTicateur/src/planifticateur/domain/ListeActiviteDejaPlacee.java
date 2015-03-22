@@ -20,23 +20,23 @@ public class ListeActiviteDejaPlacee {
         return true;
     }
     
-    private Activite[] getActiviteDejaPlaceeList(){
+//    private Activite[] getActiviteDejaPlaceeList(){
         
-    }
+//    }
     
     private int getNumberOfActiviteDejaPlacee(){
         return 0;
     }
     
-    private Activite getActivite(Point point){
+//    private Activite getActivite(Point point){
        
-    }
+//    }
     
     private boolean remove(Activite activite){ //Changement type: Activite -> boolean (Activite est retiré...juste un retour de true quand ça fonctionne est ok)
         return true;
     }
     
-    private Activite getActivite(int x){
+//    private Activite getActivite(int x){
 
-    }
+//    }
 }

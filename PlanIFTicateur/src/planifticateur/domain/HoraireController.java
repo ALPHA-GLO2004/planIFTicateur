@@ -3,14 +3,14 @@ package planifticateur.domain;
 
 
 public class HoraireController {
-    Horaire horaire;
+    private Horaire horaire;
+    
+    public HoraireController(Horaire horaire){
+        this.horaire = horaire;
+    }
     
     public HoraireController(){
         horaire = new Horaire(""); //Ça chie je pense ben, à modifier éventuellement
-    }
-    
-    public void nouvelHoraire(){
-        
     }
     
     public void chargerHoraire(){

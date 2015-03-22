@@ -5,22 +5,22 @@ import java.lang.*;
 
 public class Activite {
     //J'ai tout mis en string étant donné que ce n'est pas tant pertinent d'avoir un paquet de type différent pour le moment.
-    String code;
-    String section; // Ajout de ma part
-    String type; //Changement type: Type -> char (aucune utilité à faire une classe Type...)
-    String description; //Ajout de ma part...
-    String couleur; //Changement type: Couleur -> String (utilité?)
-    Professeur professeur;
-    float heureDebutMin;
-    float heureDebutMax;
-    float heureFinMax; //Changement type: String -> float (erreur de frappe?)
-    float heureDebutChoisi;
-    int jourChoisi;
-    float duree;
-    Point point;
+    private String code;
+    private String section; // Ajout de ma part
+    private String type; //Changement type: Type -> char (aucune utilité à faire une classe Type...)
+    private String description; //Ajout de ma part...
+    private Color couleur;
+    private Professeur professeur;
+    private float heureDebutMin;
+    private float heureDebutMax;
+    private float heureFinMax; //Changement type: String -> float (erreur de frappe?)
+    private float heureDebutChoisi;
+    private int jourChoisi;
+    private float duree;
+    private Point point;
 //    Rectangle rectangle; //Utilité du rectangle ?
     
-    public Activite(String[] infoActivite){
+    public Activite(String[] infoActivite){ //to be modified :/
         /*
         Constructeur --- Une activité est créée avec, comme paramètre une liste 
         de string correspondant à chaque colonne d'une ligne dans un fichier COU.
@@ -42,7 +42,20 @@ public class Activite {
             }
             if (infoActivite[10] != ""){
                 heureDebutChoisi = Float.valueOf(infoActivite[10]); //transformation de string à float
-            }    
+            }
+            //attribution de la couleur selon le type
+            if (type == "classe"){
+                couleur = Color.ORANGE;
+            }
+            if (type == "distance"){
+                couleur = Color.GREEN;
+            }
+            if (type == "labo"){
+                couleur = Color.YELLOW;
+            }
+            if (type == "horsDepartement"){
+                couleur = Color.BLUE;
+            }            
         }
         catch (Throwable ex){
             System.out.println(ex.getMessage());
@@ -54,6 +67,14 @@ public class Activite {
     }
     
     private void afficherValidite(){
-        
+        //fonction affichage dans domain ?
+    }
+    
+    public Color getCouleur(){
+        return couleur;
+    }
+    
+    public Point getPoint(){
+        return point;
     }
 }

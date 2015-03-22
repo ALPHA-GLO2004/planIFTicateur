@@ -1,11 +1,13 @@
 
 package planifticateur.gui;
-import java.awt.FlowLayout;
+import planifticateur.domain.HoraireController;
+import java.awt.*;
 
 public class MainWindow extends javax.swing.JFrame {
-
-
+    public HoraireController horaireController;
+    
     public MainWindow() {
+        horaireController = new HoraireController();
         initComponents();
     }
 
@@ -20,7 +22,7 @@ public class MainWindow extends javax.swing.JFrame {
         bottomPanelContainer = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         centerPanelContainer = new javax.swing.JPanel();
-        horaireDrawingContainer = new javax.swing.JPanel();
+        drawingPanel = new javax.swing.JPanel();
         listeEtBoutonContainer = new javax.swing.JPanel();
         listeActiviteContainer = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -70,11 +72,16 @@ public class MainWindow extends javax.swing.JFrame {
 
         centerPanelContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 4, 0));
 
-        horaireDrawingContainer.setBackground(new java.awt.Color(102, 102, 102));
-        horaireDrawingContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 3));
-        horaireDrawingContainer.setPreferredSize(new java.awt.Dimension(500, 472));
-        horaireDrawingContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-        centerPanelContainer.add(horaireDrawingContainer);
+        drawingPanel.setBackground(new java.awt.Color(102, 102, 102));
+        drawingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 3));
+        drawingPanel.setPreferredSize(new java.awt.Dimension(500, 472));
+        drawingPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                drawingPanelMousePressed(evt);
+            }
+        });
+        drawingPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+        centerPanelContainer.add(drawingPanel);
 
         listeEtBoutonContainer.setPreferredSize(new java.awt.Dimension(300, 480));
 
@@ -202,12 +209,17 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
+        Point mousePoint = evt.getPoint();
+        drawingPanel.repaint();
+    }//GEN-LAST:event_drawingPanelMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanelContainer;
     private javax.swing.JPanel boutonContainer;
     private javax.swing.JPanel centerPanelContainer;
-    private javax.swing.JPanel horaireDrawingContainer;
+    private javax.swing.JPanel drawingPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
