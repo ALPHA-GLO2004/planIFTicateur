@@ -3,9 +3,13 @@ package planifticateur.domain;
 import java.util.*;
 
 public class ListeActiviteGrilleCh {
-    Vector<Activite> activiteGrilleChListe;
+    private List<Activite> activiteGrilleChListe;
     
     public ListeActiviteGrilleCh(){
         //Constructeur
+    }
+    
+    public List<Activite> getListeActiviteGrilleCh(){
+        return activiteGrilleChListe;
     }
 }

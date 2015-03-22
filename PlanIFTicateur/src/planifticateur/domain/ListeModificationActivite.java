@@ -3,7 +3,7 @@ package planifticateur.domain;
 import java.util.*;
 
 public class ListeModificationActivite {
-    Vector<ModificationActivite> modificationActiviteListe;
+    private List<ModificationActivite> modificationActiviteListe;
     
     public ListeModificationActivite(){
         //Constructeur
@@ -17,11 +17,8 @@ public class ListeModificationActivite {
         return true;
     }
     
-    private ModificationActivite[] getModificationActiviteListe(){
-        //Quek lisgnes pour éviter les erreurs dans le code
-        ModificationActivite a = new ModificationActivite();
-        ModificationActivite[] b = {a};
-        return b;
+    public List<ModificationActivite> getListeModificationActivite(){
+        return modificationActiviteListe;
     }
     
     private int getNumberOfModificationActivite(){

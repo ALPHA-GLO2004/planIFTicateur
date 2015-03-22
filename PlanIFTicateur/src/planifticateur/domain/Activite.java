@@ -20,13 +20,13 @@ public class Activite {
     private Point point;
 //    Rectangle rectangle; //Utilité du rectangle ?
     
-    public Activite(String[] infoActivite){ //to be modified :/
+    public Activite(Point point){ //to be modified :/
         /*
         Constructeur --- Une activité est créée avec, comme paramètre une liste 
         de string correspondant à chaque colonne d'une ligne dans un fichier COU.
         Cette liste est créée hors de cette classe. // Possiblement à modifier (doit être validée)
         */
-        try
+ /*       try
         {
             code = infoActivite[0];
             section = infoActivite[1];
@@ -59,7 +59,7 @@ public class Activite {
         }
         catch (Throwable ex){
             System.out.println(ex.getMessage());
-        }
+        }*/
     }
     
     private boolean appartientAActivite(Point point){

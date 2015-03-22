@@ -32,7 +32,6 @@ public class MainWindow extends javax.swing.JFrame {
         drawingPanel = new planifticateur.gui.DrawingPanel(this);
         listeEtBoutonContainer = new javax.swing.JPanel();
         listeActiviteContainer = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         boutonContainer = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -81,45 +80,48 @@ public class MainWindow extends javax.swing.JFrame {
 
         mainPanel.add(topPanelContainer, java.awt.BorderLayout.NORTH);
 
-        bottomPanelContainer.setPreferredSize(new java.awt.Dimension(800, 50));
+        bottomPanelContainer.setPreferredSize(new java.awt.Dimension(this.getWidth(), 50));
         bottomPanelContainer.setLayout(new java.awt.BorderLayout());
 
         jTextField1.setText("jTextField1");
         jTextField1.setPreferredSize(bottomPanelContainer.getMaximumSize());
         bottomPanelContainer.add(jTextField1, java.awt.BorderLayout.CENTER);
 
-        mainPanel.add(bottomPanelContainer, java.awt.BorderLayout.SOUTH);
+        mainPanel.add(bottomPanelContainer, java.awt.BorderLayout.PAGE_END);
 
         centerPanelContainer.setBackground(new java.awt.Color(240, 240, 240));
-        centerPanelContainer.setMinimumSize(new java.awt.Dimension(500, 466));
+        centerPanelContainer.setPreferredSize(new java.awt.Dimension(this.getWidth(), this.getHeight() - 50));
         centerPanelContainer.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(1095, 1000));
+        jScrollPane2.setMaximumSize(new java.awt.Dimension(1095, 800));
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(500, 500));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(1095, 1050));
 
         javax.swing.GroupLayout drawingPanelLayout = new javax.swing.GroupLayout(drawingPanel);
         drawingPanel.setLayout(drawingPanelLayout);
         drawingPanelLayout.setHorizontalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
+            .addGap(0, 510, Short.MAX_VALUE)
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 502, Short.MAX_VALUE)
+            .addGap(0, 559, Short.MAX_VALUE)
         );
 
         jScrollPane2.setViewportView(drawingPanel);
 
         centerPanelContainer.add(jScrollPane2, java.awt.BorderLayout.WEST);
 
+        listeEtBoutonContainer.setMaximumSize(new java.awt.Dimension(300, 800));
+        listeEtBoutonContainer.setMinimumSize(new java.awt.Dimension(300, 800));
         listeEtBoutonContainer.setPreferredSize(new java.awt.Dimension(300, 480));
 
         listeActiviteContainer.setLayout(new java.awt.BorderLayout());
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        listeActiviteContainer.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jTextArea1.setPreferredSize(new java.awt.Dimension(300, 500));
+        listeActiviteContainer.add(jTextArea1, java.awt.BorderLayout.PAGE_START);
 
         jButton1.setText("jButton1");
 
@@ -148,7 +150,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
-                .addGap(0, 293, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout listeEtBoutonContainerLayout = new javax.swing.GroupLayout(listeEtBoutonContainer);
@@ -164,7 +166,7 @@ public class MainWindow extends javax.swing.JFrame {
         listeEtBoutonContainerLayout.setVerticalGroup(
             listeEtBoutonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listeEtBoutonContainerLayout.createSequentialGroup()
-                .addComponent(listeActiviteContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(listeActiviteContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(boutonContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -241,7 +243,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;

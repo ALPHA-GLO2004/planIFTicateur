@@ -1,11 +1,11 @@
 
 package planifticateur.domain;
-import java.util.*;
+import java.util.List;
 import java.awt.*;
 
 
 public class ListeActiviteDejaPlacee {
-    Vector<Activite> activiteDejaPlaceeListe; //Changement de type: List -> Vector
+    private List<Activite> activiteDejaPlaceeListe; //Changement de type: List -> Vector
     
     public ListeActiviteDejaPlacee(){
         //Constructeur
@@ -31,6 +31,10 @@ public class ListeActiviteDejaPlacee {
 //    private Activite getActivite(Point point){
        
 //    }
+    
+    public List<Activite> getListeActiviteDejaPlacee(){
+        return activiteDejaPlaceeListe;
+    }
     
     private boolean remove(Activite activite){ //Changement type: Activite -> boolean (Activite est retiré...juste un retour de true quand ça fonctionne est ok)
         return true;

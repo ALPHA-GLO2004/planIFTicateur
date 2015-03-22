@@ -3,7 +3,7 @@ package planifticateur.domain;
 import java.util.*;
 
 public class ListeConflit {
-    Vector<Conflit> conflitListe;
+    private List<Conflit> conflitListe;
     
     public ListeConflit(){
         //Constructeur
@@ -23,6 +23,10 @@ public class ListeConflit {
     
     private int getNumberOfConflit(){
         return 0;
+    }
+    
+    public List<Conflit> getListeConflit(){
+        return conflitListe;
     }
     
     private void remove(Conflit conflit){ //le retour bool est vraiment utile ?

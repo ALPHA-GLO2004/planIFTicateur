@@ -1,5 +1,6 @@
 
 package planifticateur.domain;
+import java.util.List;
 
 public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
@@ -24,6 +25,7 @@ public class Horaire {
     ListeModificationActivite listeModificationActivite;
     ListeActiviteAPlacer listeActiviteAPlacer;
     ListeActiviteDejaPlacee listeActiviteDejaPlacee;
+    ListeActiviteGrilleCh listeActiviteGrilleCh;
 
     public Horaire(String nomFichier){
         fichierCOU = nomFichier + ".COU";   
@@ -42,6 +44,30 @@ public class Horaire {
         else{
             valide = false;
         }
+    }
+    
+    public void addActivite(){
+        
+    }
+    
+    public List<Activite> getListeActiviteAPlacer(){
+        return listeActiviteAPlacer.getListeActiviteAPlacer();
+    }
+    
+    public List<Activite> getListeActiviteGrilleCh(){
+        return listeActiviteGrilleCh.getListeActiviteGrilleCh();
+    }
+    
+    public List<Conflit> getListeConflit(){
+        return listeConflit.getListeConflit();
+    }
+    
+    public List<Activite> getListeActiviteDejaPlacee(){
+        return listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
+    }
+    
+    public List<ModificationActivite> getListeModificationActivite(){
+        return listeModificationActivite.getListeModificationActivite();
     }
     
     private void genererAutomatiquement(){

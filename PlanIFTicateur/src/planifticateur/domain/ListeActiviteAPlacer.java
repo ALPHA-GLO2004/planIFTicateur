@@ -1,9 +1,9 @@
 
 package planifticateur.domain;
-import java.util.*;
+import java.util.List;
 
 public class ListeActiviteAPlacer {
-    Vector<Activite> activiteAPlacerListe;
+    private List<Activite> activiteAPlacerListe;
     
     public ListeActiviteAPlacer(){
         //Constructeur
@@ -21,7 +21,11 @@ public class ListeActiviteAPlacer {
 
 //    }
     
-    private int getNumberOfActivite(){
+    public List<Activite> getListeActiviteAPlacer(){
+        return activiteAPlacerListe;
+    }
+    
+    public int getNumberOfActivite(){
         return 0;
     }
 }

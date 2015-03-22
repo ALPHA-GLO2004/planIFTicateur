@@ -1,12 +1,14 @@
 
 package planifticateur.drawing;
 import planifticateur.domain.HoraireController;
+import planifticateur.domain.Activite;
 import java.awt.*;
+import java.util.List;
 
 public class HoraireDrawing {
     private final HoraireController horaireController;
     Dimension initialDimension;
-    int radius;
+    int radius = 50;
     
     public HoraireDrawing(HoraireController horaireController, Dimension initialDimension){
         this.horaireController = horaireController;
@@ -18,8 +20,15 @@ public class HoraireDrawing {
     //    drawActivite(g);
     }
     
+    //pas sûr de ça --- juste un test
     private void drawActivite(Graphics g){
-        
+        List<Activite> activites = horaireController.getListeActiviteAPlacer();
+        for (Activite activite: activites){
+            Point activitePoint = activite.getPoint();
+            Color couleur = activite.getCouleur();
+            g.setColor(couleur);
+            g.fillRect((int)activitePoint.getX(), (int)activitePoint.getY(), radius, radius);
+        }
     }
     
     private void drawHoraire(Graphics g){
@@ -65,6 +74,10 @@ public class HoraireDrawing {
         //loop pour indiquer les heures dans l'entête de chaque journée
         for (int i = 8; i <= 22; i++){
             g2.drawString(i + "h", x, 18);
+            g2.drawString(i + "h", x, 172);
+            g2.drawString(i + "h", x, 326);
+            g2.drawString(i + "h", x, 480);
+            g2.drawString(i + "h", x, 634);
             x += 70;
         }
     }

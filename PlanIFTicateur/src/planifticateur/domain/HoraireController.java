@@ -1,6 +1,7 @@
 
 package planifticateur.domain;
 import java.awt.*;
+import java.util.List;
 
 public class HoraireController {
     private Horaire horaire;
@@ -32,6 +33,26 @@ public class HoraireController {
     
     public void validerHoraire(){
         
+    }
+    
+    public List<Activite> getListeActiviteAPlacer(){
+        return horaire.getListeActiviteAPlacer();
+    }
+    
+    public List<Activite> getListeActiviteGrilleCh(){
+        return horaire.getListeActiviteAPlacer();
+    }
+    
+    public List<Activite> getListeConflit(){
+        return horaire.getListeActiviteAPlacer();
+    }
+    
+    public List<Activite> getListeActiviteDejaPlacee(){
+        return horaire.getListeActiviteAPlacer();
+    }
+    
+    public List<Activite> getListeModificationActivite(){
+        return horaire.getListeActiviteAPlacer();
     }
     
     public Dimension getDimension(){
