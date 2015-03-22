@@ -13,9 +13,9 @@ public class HoraireDrawing {
         this.initialDimension = initialDimension;
     }
     
-    private void draw(Graphics g){
+    public void draw(Graphics g){
         drawHoraire(g);
-        drawActivite(g);
+    //    drawActivite(g);
     }
     
     private void drawActivite(Graphics g){
@@ -26,7 +26,32 @@ public class HoraireDrawing {
         //Code test --- en attendant
         int width = (int) initialDimension.getWidth();
         int height = (int) initialDimension.getHeight();
-        g.setColor(new Color(111,111,111));
-        g.fillRect(width, (int)(height), width, height);
+        int x = 72;
+        
+        Graphics2D g2 = (Graphics2D) g;
+        //lignes horizontales
+        g2.drawLine(2, 2, width, 2);
+        g2.setStroke(new BasicStroke(1));
+        g2.drawLine(2, 25, width, 25);
+        g2.drawLine(2, 156, width, 156);
+        g2.drawLine(2, 179, width, 179);
+        g2.drawLine(2, 310, width, 310);
+        g2.drawLine(2, 333, width, 333);
+        g2.drawLine(2, 464, width, 464);
+        g2.drawLine(2, 487, width, 487);
+        g2.drawLine(2, 618, width, 618);
+        g2.drawLine(2, 641, width, 641);
+        g2.drawLine(2, 772, width, 772);
+        //lignes verticales
+        g2.drawLine(2, 2, 2, 772);
+        g2.drawLine(72, 2, 72, 772);
+        while (x < width){
+            g2.drawLine(x, 2, x, 25);
+            g2.drawLine(x, 156, x, 179);
+            g2.drawLine(x, 310, x, 333);
+            g2.drawLine(x, 464, x, 487);
+            g2.drawLine(x, 618, x, 641);
+            x += 35;
+        }
     }
 }

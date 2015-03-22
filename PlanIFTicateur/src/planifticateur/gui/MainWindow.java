@@ -15,6 +15,7 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        drawingPanel1 = new planifticateur.gui.DrawingPanel();
         mainPanel = new javax.swing.JPanel();
         topPanelContainer = new javax.swing.JPanel();
         validationAutoCheckBox = new javax.swing.JCheckBox();
@@ -22,7 +23,8 @@ public class MainWindow extends javax.swing.JFrame {
         bottomPanelContainer = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         centerPanelContainer = new javax.swing.JPanel();
-        drawingPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        drawingPanel = new planifticateur.gui.DrawingPanel(this);
         listeEtBoutonContainer = new javax.swing.JPanel();
         listeActiviteContainer = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -45,6 +47,17 @@ public class MainWindow extends javax.swing.JFrame {
         menuHelp = new javax.swing.JMenu();
         menuHelpWindow = new javax.swing.JMenuItem();
         menuHelpAbout = new javax.swing.JMenuItem();
+
+        javax.swing.GroupLayout drawingPanel1Layout = new javax.swing.GroupLayout(drawingPanel1);
+        drawingPanel1.setLayout(drawingPanel1Layout);
+        drawingPanel1Layout.setHorizontalGroup(
+            drawingPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        drawingPanel1Layout.setVerticalGroup(
+            drawingPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,16 +85,22 @@ public class MainWindow extends javax.swing.JFrame {
 
         centerPanelContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 4, 0));
 
-        drawingPanel.setBackground(new java.awt.Color(102, 102, 102));
-        drawingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 3));
-        drawingPanel.setPreferredSize(new java.awt.Dimension(500, 472));
-        drawingPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                drawingPanelMousePressed(evt);
-            }
-        });
-        drawingPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-        centerPanelContainer.add(drawingPanel);
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(500, 466));
+
+        javax.swing.GroupLayout drawingPanelLayout = new javax.swing.GroupLayout(drawingPanel);
+        drawingPanel.setLayout(drawingPanelLayout);
+        drawingPanelLayout.setHorizontalGroup(
+            drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 498, Short.MAX_VALUE)
+        );
+        drawingPanelLayout.setVerticalGroup(
+            drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+
+        jScrollPane2.setViewportView(drawingPanel);
+
+        centerPanelContainer.add(jScrollPane2);
 
         listeEtBoutonContainer.setPreferredSize(new java.awt.Dimension(300, 480));
 
@@ -197,34 +216,31 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
-        Point mousePoint = evt.getPoint();
-        drawingPanel.repaint();
-    }//GEN-LAST:event_drawingPanelMousePressed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanelContainer;
     private javax.swing.JPanel boutonContainer;
     private javax.swing.JPanel centerPanelContainer;
-    private javax.swing.JPanel drawingPanel;
+    private planifticateur.gui.DrawingPanel drawingPanel;
+    private planifticateur.gui.DrawingPanel drawingPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel listeActiviteContainer;
