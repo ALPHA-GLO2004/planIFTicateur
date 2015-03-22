@@ -5,42 +5,39 @@ import java.awt.*;
 
 
 public class ListeActiviteDejaPlacee {
-    private List<Activite> activiteDejaPlaceeListe; //Changement de type: List -> Vector
+    private List<Activite> activiteDejaPlaceeListe;
     
     public ListeActiviteDejaPlacee(){
         //Constructeur
         
     }
     
-    private void add(Activite activite){
-        
+    //Ajoute une activité à la liste déjà placées
+    public void add(Activite activite){
+        activiteDejaPlaceeListe.add(activite);
     }
     
-    private boolean isEmpty(){
-        return true;
+    //Retire une activté de la liste déjà placées
+    public void remove(Activite activite){
+        activiteDejaPlaceeListe.remove(activite);
+    }
+    //Retourne vrai si la liste d'activités déjà placées est vide, faux sinon
+    public boolean isEmpty(){
+        if (activiteDejaPlaceeListe == null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
-//    private Activite[] getActiviteDejaPlaceeList(){
-        
-//    }
-    
-    private int getNumberOfActiviteDejaPlacee(){
-        return 0;
-    }
-    
-//    private Activite getActivite(Point point){
-       
-//    }
-    
+    //Retourne la liste des activités à placer
     public List<Activite> getListeActiviteDejaPlacee(){
         return activiteDejaPlaceeListe;
     }
     
-    private boolean remove(Activite activite){ //Changement type: Activite -> boolean (Activite est retiré...juste un retour de true quand ça fonctionne est ok)
-        return true;
+    //Retourne le nombre d'activités dans la liste d'activités déjà placées
+    public int getNumberOfActivite(){
+        return activiteDejaPlaceeListe.size();
     }
-    
-//    private Activite getActivite(int x){
-
-//    }
 }
