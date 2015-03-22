@@ -19,9 +19,9 @@ public class DrawingPanel extends JPanel implements Serializable
     public DrawingPanel(MainWindow mainWindow){
         this.mainWindow = mainWindow;
     //    setBorder(new javax.swing.border.StrokeBorder());
-        int width = (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
-        int height = (int)(width*0.932);
-        setPreferredSize(new Dimension(width, 774));
+        int width = (int) (mainWindow.getWidth());
+        int height = (int)(mainWindow.getHeight());
+        setPreferredSize(new Dimension(width - 300, height - 50));
         setVisible(true);
         initialDimension = new Dimension(width, height);
     }

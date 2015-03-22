@@ -5,8 +5,13 @@ import java.awt.*;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
+    Dimension initialDimension;
     
     public MainWindow() {
+        int width = (int) ((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width));
+        int height = (int)((java.awt.Toolkit.getDefaultToolkit().getScreenSize().height));
+        initialDimension = new Dimension(width, height);
+        setPreferredSize(initialDimension);
         horaireController = new HoraireController();
         initComponents();
     }
@@ -61,9 +66,10 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        mainPanel.setPreferredSize(this.getSize());
         mainPanel.setLayout(new java.awt.BorderLayout());
 
-        topPanelContainer.setPreferredSize(new java.awt.Dimension(780, 50));
+        topPanelContainer.setPreferredSize(new java.awt.Dimension(this.getWidth(), 50));
         topPanelContainer.setLayout(new java.awt.BorderLayout());
 
         validationAutoCheckBox.setText("Validation automatique");
@@ -76,16 +82,19 @@ public class MainWindow extends javax.swing.JFrame {
         mainPanel.add(topPanelContainer, java.awt.BorderLayout.NORTH);
 
         bottomPanelContainer.setPreferredSize(new java.awt.Dimension(800, 50));
+        bottomPanelContainer.setLayout(new java.awt.BorderLayout());
 
         jTextField1.setText("jTextField1");
         jTextField1.setPreferredSize(bottomPanelContainer.getMaximumSize());
-        bottomPanelContainer.add(jTextField1);
+        bottomPanelContainer.add(jTextField1, java.awt.BorderLayout.CENTER);
 
-        mainPanel.add(bottomPanelContainer, java.awt.BorderLayout.PAGE_END);
+        mainPanel.add(bottomPanelContainer, java.awt.BorderLayout.SOUTH);
 
-        centerPanelContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 4, 0));
+        centerPanelContainer.setBackground(new java.awt.Color(240, 240, 240));
+        centerPanelContainer.setMinimumSize(new java.awt.Dimension(500, 466));
+        centerPanelContainer.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(500, 466));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(1095, 1000));
 
         javax.swing.GroupLayout drawingPanelLayout = new javax.swing.GroupLayout(drawingPanel);
         drawingPanel.setLayout(drawingPanelLayout);
@@ -95,29 +104,22 @@ public class MainWindow extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGap(0, 502, Short.MAX_VALUE)
         );
 
         jScrollPane2.setViewportView(drawingPanel);
 
-        centerPanelContainer.add(jScrollPane2);
+        centerPanelContainer.add(jScrollPane2, java.awt.BorderLayout.WEST);
 
         listeEtBoutonContainer.setPreferredSize(new java.awt.Dimension(300, 480));
+
+        listeActiviteContainer.setLayout(new java.awt.BorderLayout());
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        javax.swing.GroupLayout listeActiviteContainerLayout = new javax.swing.GroupLayout(listeActiviteContainer);
-        listeActiviteContainer.setLayout(listeActiviteContainerLayout);
-        listeActiviteContainerLayout.setHorizontalGroup(
-            listeActiviteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-        );
-        listeActiviteContainerLayout.setVerticalGroup(
-            listeActiviteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-        );
+        listeActiviteContainer.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jButton1.setText("jButton1");
 
@@ -146,7 +148,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addGap(0, 293, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout listeEtBoutonContainerLayout = new javax.swing.GroupLayout(listeEtBoutonContainer);
@@ -167,9 +169,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(boutonContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        centerPanelContainer.add(listeEtBoutonContainer);
+        centerPanelContainer.add(listeEtBoutonContainer, java.awt.BorderLayout.EAST);
 
-        mainPanel.add(centerPanelContainer, java.awt.BorderLayout.WEST);
+        mainPanel.add(centerPanelContainer, java.awt.BorderLayout.CENTER);
 
         menuFile.setText("Fichier");
 

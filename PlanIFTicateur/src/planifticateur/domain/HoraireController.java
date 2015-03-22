@@ -1,9 +1,10 @@
 
 package planifticateur.domain;
-
+import java.awt.*;
 
 public class HoraireController {
     private Horaire horaire;
+    private Dimension resolution;
     
     public HoraireController(Horaire horaire){
         this.horaire = horaire;
@@ -31,6 +32,10 @@ public class HoraireController {
     
     public void validerHoraire(){
         
+    }
+    
+    public Dimension getDimension(){
+        return resolution;
     }
     //et ainsi de suite...
 }

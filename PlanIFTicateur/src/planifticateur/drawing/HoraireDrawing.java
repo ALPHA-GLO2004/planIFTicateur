@@ -24,9 +24,9 @@ public class HoraireDrawing {
     
     private void drawHoraire(Graphics g){
         //Code test --- en attendant
-        int width = (int) initialDimension.getWidth();
-        int height = (int) initialDimension.getHeight();
+        int width = 1086;
         int x = 72;
+        Font font = new Font("Arial", Font.BOLD, 12);
         
         Graphics2D g2 = (Graphics2D) g;
         //lignes horizontales
@@ -45,13 +45,27 @@ public class HoraireDrawing {
         //lignes verticales
         g2.drawLine(2, 2, 2, 772);
         g2.drawLine(72, 2, 72, 772);
-        while (x < width){
+        g2.drawLine(1086, 2, 1086, 772);
+        //loop pour les petites lignes de l'entête de chaque journée
+        while (x <= 1086){
             g2.drawLine(x, 2, x, 25);
             g2.drawLine(x, 156, x, 179);
             g2.drawLine(x, 310, x, 333);
             g2.drawLine(x, 464, x, 487);
             g2.drawLine(x, 618, x, 641);
             x += 35;
+        }
+        x = 79; //On prépare le x pour les heures
+        g2.setFont(font); //police de caractère
+        g2.drawString("Lundi", 20, 85);
+        g2.drawString("Mardi", 20, 239);
+        g2.drawString("Mercredi", 13, 393);
+        g2.drawString("Jeudi", 20, 547);
+        g2.drawString("Vendredi", 13, 701);
+        //loop pour indiquer les heures dans l'entête de chaque journée
+        for (int i = 8; i <= 22; i++){
+            g2.drawString(i + "h", x, 18);
+            x += 70;
         }
     }
 }
