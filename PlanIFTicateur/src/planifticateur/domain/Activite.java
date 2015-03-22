@@ -74,6 +74,10 @@ public class Activite {
         return couleur;
     }
     
+    public String getNomActivite(){
+        return description;
+    }
+    
     public Point getPoint(){
         return point;
     }

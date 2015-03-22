@@ -20,19 +20,18 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        drawingPanel1 = new planifticateur.gui.DrawingPanel();
         mainPanel = new javax.swing.JPanel();
         topPanelContainer = new javax.swing.JPanel();
         validationAutoCheckBox = new javax.swing.JCheckBox();
         titreFichierLabel = new javax.swing.JLabel();
         bottomPanelContainer = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        logTextField = new javax.swing.JTextField();
         centerPanelContainer = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         drawingPanel = new planifticateur.gui.DrawingPanel(this);
         listeEtBoutonContainer = new javax.swing.JPanel();
         listeActiviteContainer = new javax.swing.JPanel();
-        jTextArea1 = new javax.swing.JTextArea();
+        listeActivite = new javax.swing.JTextArea();
         boutonContainer = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -52,18 +51,8 @@ public class MainWindow extends javax.swing.JFrame {
         menuHelpWindow = new javax.swing.JMenuItem();
         menuHelpAbout = new javax.swing.JMenuItem();
 
-        javax.swing.GroupLayout drawingPanel1Layout = new javax.swing.GroupLayout(drawingPanel1);
-        drawingPanel1.setLayout(drawingPanel1Layout);
-        drawingPanel1Layout.setHorizontalGroup(
-            drawingPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        drawingPanel1Layout.setVerticalGroup(
-            drawingPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PlanIFTicateur");
 
         mainPanel.setPreferredSize(this.getSize());
         mainPanel.setLayout(new java.awt.BorderLayout());
@@ -83,19 +72,19 @@ public class MainWindow extends javax.swing.JFrame {
         bottomPanelContainer.setPreferredSize(new java.awt.Dimension(this.getWidth(), 50));
         bottomPanelContainer.setLayout(new java.awt.BorderLayout());
 
-        jTextField1.setText("jTextField1");
-        jTextField1.setPreferredSize(bottomPanelContainer.getMaximumSize());
-        bottomPanelContainer.add(jTextField1, java.awt.BorderLayout.CENTER);
+        logTextField.setText("Journal des événements");
+        logTextField.setPreferredSize(bottomPanelContainer.getMaximumSize());
+        bottomPanelContainer.add(logTextField, java.awt.BorderLayout.CENTER);
 
         mainPanel.add(bottomPanelContainer, java.awt.BorderLayout.PAGE_END);
 
         centerPanelContainer.setBackground(new java.awt.Color(240, 240, 240));
-        centerPanelContainer.setPreferredSize(new java.awt.Dimension(this.getWidth(), this.getHeight() - 50));
+        centerPanelContainer.setPreferredSize(new java.awt.Dimension(this.getWidth(), this.getHeight() - 150));
         centerPanelContainer.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane2.setMaximumSize(new java.awt.Dimension(1095, 800));
+        jScrollPane2.setMaximumSize(new java.awt.Dimension(1095, 750));
         jScrollPane2.setMinimumSize(new java.awt.Dimension(500, 500));
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(1095, 1050));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(1095, 750));
 
         javax.swing.GroupLayout drawingPanelLayout = new javax.swing.GroupLayout(drawingPanel);
         drawingPanel.setLayout(drawingPanelLayout);
@@ -118,10 +107,10 @@ public class MainWindow extends javax.swing.JFrame {
 
         listeActiviteContainer.setLayout(new java.awt.BorderLayout());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setPreferredSize(new java.awt.Dimension(300, 500));
-        listeActiviteContainer.add(jTextArea1, java.awt.BorderLayout.PAGE_START);
+        listeActivite.setColumns(20);
+        listeActivite.setRows(5);
+        listeActivite.setPreferredSize(new java.awt.Dimension(300, 500));
+        listeActiviteContainer.add(listeActivite, java.awt.BorderLayout.PAGE_START);
 
         jButton1.setText("jButton1");
 
@@ -238,16 +227,15 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel boutonContainer;
     private javax.swing.JPanel centerPanelContainer;
     private planifticateur.gui.DrawingPanel drawingPanel;
-    private planifticateur.gui.DrawingPanel drawingPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea listeActivite;
     private javax.swing.JPanel listeActiviteContainer;
     private javax.swing.JPanel listeEtBoutonContainer;
+    private javax.swing.JTextField logTextField;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu menuExport;
     private javax.swing.JMenuItem menuExportCopy;

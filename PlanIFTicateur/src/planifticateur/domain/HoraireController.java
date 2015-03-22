@@ -27,6 +27,10 @@ public class HoraireController {
         
     }
     
+    public void addActivite(){
+        
+    }
+    
     public void dessinerGrille(){
         
     }

@@ -2,21 +2,6 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Container class="planifticateur.gui.DrawingPanel" name="drawingPanel1">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-    </Container>
     <Menu class="javax.swing.JMenuBar" name="topMenuBar">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuFile">
@@ -90,6 +75,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="PlanIFTicateur"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="topMenuBar"/>
@@ -189,9 +175,9 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="logTextField">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
+                <Property name="text" type="java.lang.String" value="Journal des &#xe9;v&#xe9;nements"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection component="bottomPanelContainer" name="maximumSize" type="property"/>
                 </Property>
@@ -210,7 +196,7 @@
               <Connection code="new java.awt.Color(240, 240, 240)" type="code"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Dimension(this.getWidth(), this.getHeight() - 50)" type="code"/>
+              <Connection code="new java.awt.Dimension(this.getWidth(), this.getHeight() - 150)" type="code"/>
             </Property>
           </Properties>
           <Constraints>
@@ -223,14 +209,14 @@
           <SubComponents>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <Properties>
-                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[1095, 800]"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new java.awt.Dimension(1095, 750)" type="code"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[500, 500]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new java.awt.Dimension(1095, 1050)" type="code"/>
+                  <Connection code="new java.awt.Dimension(1095, 750)" type="code"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -306,7 +292,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea1">
+                    <Component class="javax.swing.JTextArea" name="listeActivite">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
