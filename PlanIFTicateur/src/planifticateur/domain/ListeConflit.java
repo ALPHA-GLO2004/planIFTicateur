@@ -14,7 +14,12 @@ public class ListeConflit {
     }
     
     public boolean isEmpty(){
-        return true;
+        if (conflitListe.size() == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
  //   private Conflit[] getConflitListe(){

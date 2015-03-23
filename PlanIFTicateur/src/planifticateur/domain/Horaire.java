@@ -30,10 +30,6 @@ public class Horaire {
     public Horaire(String nomFichier){
         fichierCOU = nomFichier + ".COU";   
         fichierCHE = nomFichier + ".CHE";
-        listeConflit = new ListeConflit();
-        listeModificationActivite = new ListeModificationActivite();
-        listeActiviteAPlacer = new ListeActiviteAPlacer();
-        listeActiviteDejaPlacee = new ListeActiviteDejaPlacee();
         horairePlein = false;
     }
     
@@ -54,7 +50,7 @@ public class Horaire {
         return listeActiviteAPlacer.getListeActiviteAPlacer();
     }
     
-    public List<Activite> getListeActiviteGrilleCh(){
+    public List<GrilleCheminement> getListeActiviteGrilleCh(){
         return listeActiviteGrilleCh.getListeActiviteGrilleCh();
     }
     

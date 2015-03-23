@@ -63,11 +63,11 @@ public class Activite {
         }
     }
     
-    private boolean appartientAActivite(Point point){
+    public boolean appartientAActivite(Point point){
         return true;
     }
     
-    private void afficherValidite(){
+    public void afficherValidite(){
         //fonction affichage dans domain ?
     }
     
@@ -81,5 +81,17 @@ public class Activite {
     
     public Point getPoint(){
         return point;
+    }
+    
+    public int getJourChoisi(){
+        return jourChoisi;
+    }
+    
+    public float getHeureDebutChoisi(){
+        return heureDebutChoisi;
+    }
+    
+    public String getCode(){
+        return code;
     }
 }

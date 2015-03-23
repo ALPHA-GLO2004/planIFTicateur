@@ -20,7 +20,7 @@ public class ListeActiviteAPlacer {
     }
     //Retourne vrai si la liste d'activités à placer est vide, faux sinon
     public boolean isEmpty(){
-        if (activiteAPlacerListe == null){
+        if (activiteAPlacerListe.size() == 0){
             return true;
         }
         else{

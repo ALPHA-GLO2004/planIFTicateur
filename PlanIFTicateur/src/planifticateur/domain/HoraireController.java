@@ -39,6 +39,15 @@ public class HoraireController {
         
     }
     
+    public String getHoraireNom(){
+        int i = horaire.fichierCOU.length() - 4;    //longueur du nom du fichierCOU sans le .cou
+        return horaire.fichierCOU.substring(0, i);
+    }
+    
+    public String getActiviteNom(Activite a){
+        return a.getNomActivite();
+    }
+    
     public List<Activite> getListeActiviteAPlacer(){
         return horaire.getListeActiviteAPlacer();
     }

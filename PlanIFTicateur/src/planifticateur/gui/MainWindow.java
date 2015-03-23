@@ -33,10 +33,10 @@ public class MainWindow extends javax.swing.JFrame {
         listeActiviteContainer = new javax.swing.JPanel();
         listeActivite = new javax.swing.JTextArea();
         boutonContainer = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        planificationAutomatiqueButton = new javax.swing.JButton();
+        statistiquesButton = new javax.swing.JButton();
+        noteButton = new javax.swing.JButton();
+        quitterButton = new javax.swing.JButton();
         topMenuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuFileNew = new javax.swing.JMenuItem();
@@ -112,33 +112,38 @@ public class MainWindow extends javax.swing.JFrame {
         listeActivite.setPreferredSize(new java.awt.Dimension(300, 500));
         listeActiviteContainer.add(listeActivite, java.awt.BorderLayout.PAGE_START);
 
-        jButton1.setText("jButton1");
+        planificationAutomatiqueButton.setText("Planification automatique");
 
-        jButton2.setText("jButton2");
+        statistiquesButton.setText("Statistiques");
 
-        jButton3.setText("jButton3");
+        noteButton.setText("Notes");
 
-        jButton4.setText("jButton4");
+        quitterButton.setText("Quitter");
+        quitterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitterButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout boutonContainerLayout = new javax.swing.GroupLayout(boutonContainer);
         boutonContainer.setLayout(boutonContainerLayout);
         boutonContainerLayout.setHorizontalGroup(
             boutonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(planificationAutomatiqueButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(statistiquesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(noteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(quitterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         boutonContainerLayout.setVerticalGroup(
             boutonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(boutonContainerLayout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(planificationAutomatiqueButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(statistiquesButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(noteButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(quitterButton)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -214,12 +219,16 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 581, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void quitterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitterButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_quitterButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -227,10 +236,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel boutonContainer;
     private javax.swing.JPanel centerPanelContainer;
     private planifticateur.gui.DrawingPanel drawingPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea listeActivite;
     private javax.swing.JPanel listeActiviteContainer;
@@ -249,6 +254,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenuItem menuHelpAbout;
     private javax.swing.JMenuItem menuHelpWindow;
+    private javax.swing.JButton noteButton;
+    private javax.swing.JButton planificationAutomatiqueButton;
+    private javax.swing.JButton quitterButton;
+    private javax.swing.JButton statistiquesButton;
     private javax.swing.JLabel titreFichierLabel;
     private javax.swing.JMenuBar topMenuBar;
     private javax.swing.JPanel topPanelContainer;

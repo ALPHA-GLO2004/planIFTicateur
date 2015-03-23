@@ -14,7 +14,12 @@ public class ListeModificationActivite {
     }
     
     private boolean isEmpty(){
-        return true;
+        if (modificationActiviteListe.size() == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
     public List<ModificationActivite> getListeModificationActivite(){

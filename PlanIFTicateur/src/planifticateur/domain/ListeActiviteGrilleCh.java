@@ -3,24 +3,24 @@ package planifticateur.domain;
 import java.util.*;
 
 public class ListeActiviteGrilleCh {
-    private List<Activite> activiteGrilleChListe;
+    private List<GrilleCheminement> activiteGrilleChListe;
     
-    public ListeActiviteGrilleCh(){
+    public ListeActiviteGrilleCh(List<GrilleCheminement> a){
         //Constructeur
     }
     
      //Ajoute une activité à la liste
-    public void add(Activite activite){
-        activiteGrilleChListe.add(activite);
+    public void add(GrilleCheminement grille){
+        activiteGrilleChListe.add(grille);
     }
     
     //Retire une activté de la liste
-    public void remove(Activite activite){
-        activiteGrilleChListe.remove(activite);
+    public void remove(GrilleCheminement grille){
+        activiteGrilleChListe.remove(grille);
     }
     //Retourne vrai si la liste d'activités de la grille de cheminement est vide, faux sinon
     public boolean isEmpty(){
-        if (activiteGrilleChListe == null){
+        if (activiteGrilleChListe.size() == 0){
             return true;
         }
         else{
@@ -29,7 +29,7 @@ public class ListeActiviteGrilleCh {
     }
     
     //Retourne la liste d'activités par grille de cheminement
-    public List<Activite> getListeActiviteGrilleCh(){
+    public List<GrilleCheminement> getListeActiviteGrilleCh(){
         return activiteGrilleChListe;
     }
     
