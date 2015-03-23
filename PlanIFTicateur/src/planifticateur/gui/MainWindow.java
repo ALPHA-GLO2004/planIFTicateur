@@ -2,6 +2,7 @@
 package planifticateur.gui;
 import planifticateur.domain.HoraireController;
 import java.awt.*;
+import javax.swing.JOptionPane;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
@@ -61,6 +62,11 @@ public class MainWindow extends javax.swing.JFrame {
         topPanelContainer.setLayout(new java.awt.BorderLayout());
 
         validationAutoCheckBox.setText("Validation automatique");
+        validationAutoCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validationAutoCheckBoxActionPerformed(evt);
+            }
+        });
         topPanelContainer.add(validationAutoCheckBox, java.awt.BorderLayout.EAST);
 
         titreFichierLabel.setText("    nomFichier");
@@ -113,10 +119,25 @@ public class MainWindow extends javax.swing.JFrame {
         listeActiviteContainer.add(listeActivite, java.awt.BorderLayout.PAGE_START);
 
         planificationAutomatiqueButton.setText("Planification automatique");
+        planificationAutomatiqueButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                planificationAutomatiqueButtonActionPerformed(evt);
+            }
+        });
 
         statistiquesButton.setText("Statistiques");
+        statistiquesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statistiquesButtonActionPerformed(evt);
+            }
+        });
 
         noteButton.setText("Notes");
+        noteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noteButtonActionPerformed(evt);
+            }
+        });
 
         quitterButton.setText("Quitter");
         quitterButton.addActionListener(new java.awt.event.ActionListener() {
@@ -229,6 +250,24 @@ public class MainWindow extends javax.swing.JFrame {
     private void quitterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitterButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_quitterButtonActionPerformed
+
+    private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
+        horaireController.planificationAuto();
+    }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
+
+    private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
+        //Pour le moment en messageInput --- va devenir probablement une nouvelle fenetre avec possibilité de faire des changements dedans.
+        JOptionPane.showMessageDialog(this, "Statistiques de votre horaire: \n\n" + horaireController.getStats());
+    }//GEN-LAST:event_statistiquesButtonActionPerformed
+
+    private void validationAutoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationAutoCheckBoxActionPerformed
+        
+    }//GEN-LAST:event_validationAutoCheckBoxActionPerformed
+
+    private void noteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteButtonActionPerformed
+        Note fenetreNote = new Note();
+        fenetreNote.setVisible(true);
+    }//GEN-LAST:event_noteButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

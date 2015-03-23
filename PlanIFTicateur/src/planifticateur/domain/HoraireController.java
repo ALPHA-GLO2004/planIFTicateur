@@ -39,6 +39,18 @@ public class HoraireController {
         
     }
     
+    public void planificationAuto(){
+        
+    }
+    
+    public void note(){
+        
+    }
+    
+    public String getStats(){
+        return "stats";
+    }
+    
     public String getHoraireNom(){
         int i = horaire.fichierCOU.length() - 4;    //longueur du nom du fichierCOU sans le .cou
         return horaire.fichierCOU.substring(0, i);
