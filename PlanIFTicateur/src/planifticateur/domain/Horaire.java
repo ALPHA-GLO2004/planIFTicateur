@@ -34,6 +34,7 @@ public class Horaire {
     }
     
     private void validerHoraire(){
+        //manque du stock ici
         if (listeConflit.isEmpty()){
             valide = true;
         }
