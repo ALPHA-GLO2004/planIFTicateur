@@ -25,7 +25,7 @@ public class GrilleCheminement {
     
     private boolean enConflit(Activite activite){
         for (String grille: grilleCh){
-            if (activite.getCode() == grille){
+            if (activite.getCode() == grille){ 
                 return false;
             }
         }

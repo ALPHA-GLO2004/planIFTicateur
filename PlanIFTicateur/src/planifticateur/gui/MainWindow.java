@@ -2,7 +2,11 @@
 package planifticateur.gui;
 import planifticateur.domain.HoraireController;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
@@ -193,6 +197,11 @@ public class MainWindow extends javax.swing.JFrame {
         menuFile.setText("Fichier");
 
         menuFileNew.setText("Nouvel horaire");
+        menuFileNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileNewActionPerformed(evt);
+            }
+        });
         menuFile.add(menuFileNew);
 
         menuFileOpen.setText("Ouvrir horaire");
@@ -269,6 +278,15 @@ public class MainWindow extends javax.swing.JFrame {
         fenetreNote.setVisible(true);
     }//GEN-LAST:event_noteButtonActionPerformed
 
+    private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
+
+        JFileChooser selecteurFichier = new JFileChooser();
+        int returnVal = selecteurFichier.showOpenDialog(MainWindow.this);
+        selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        File fichier = selecteurFichier.getSelectedFile();
+
+ 
+    }//GEN-LAST:event_menuFileNewActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanelContainer;
