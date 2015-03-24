@@ -27,14 +27,14 @@ public class HoraireDrawing {
             Point activitePoint = activite.getPoint();
             Color couleur = activite.getCouleur();
             g.setColor(couleur);
-            g.fillRect((int)activitePoint.getX(), (int)activitePoint.getY(), radius, radius);
+            g.fillRect((int)activitePoint.getX(), (int)activitePoint.getY(), (int)activite.getDuree(), 20);
         }
     }
     
     private void drawHoraire(Graphics g){
         //Code test --- en attendant
         int width = 1086;
-        int height = 772;
+        int height = 927;
         int s = 2;
         int x = 72;
         int y1 = 2; //utile pour barres verticales pour séparation heures et jour
@@ -52,10 +52,12 @@ public class HoraireDrawing {
             g2.drawLine(72, s+25, width, s+25);
             s += 185;
         }
+        g2.drawLine(2, s, width, s);
+        
         //lignes verticales --- noires
-        g2.drawLine(2, 2, 2, 772);
-        g2.drawLine(72, 2, 72, 772);
-        g2.drawLine(1086, 2, 1086, 772);
+        g2.drawLine(2, 2, 2, 927);
+        g2.drawLine(72, 2, 72, 927);
+        g2.drawLine(1086, 2, 1086, 927);
         
         //loop pour les petites lignes de l'entête de chaque journée
         
@@ -88,8 +90,8 @@ public class HoraireDrawing {
             x += 70;
         }
         
-        //lignes horizontales --- grises
-        Stroke dashed = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+        //lignes horizontales pointillées --- grises
+        Stroke dashed = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{3}, 0);
         g2.setStroke(dashed);
         g2.setColor(Color.GRAY);
         s = 47;
@@ -99,6 +101,23 @@ public class HoraireDrawing {
                 s += 20;
             }
             s += 45;
+        }
+        
+        x = 107; //reset x pour lignes vert.
+        y1 = 27; //reset y1 pour lignes vert.
+        //loop pour les lignes pointillées verticales
+        while (x < width){
+            g2.drawLine(x, y1, x, y1+160);
+            y1 += 185;
+            g2.drawLine(x, y1, x, y1+160);
+            y1 += 185;
+            g2.drawLine(x, y1, x, y1+160);
+            y1 += 185;
+            g2.drawLine(x, y1, x, y1+160);
+            y1 += 185;
+            g2.drawLine(x, y1, x, y1+160);
+            y1 = 27;
+            x += 35;
         }
     }
 }

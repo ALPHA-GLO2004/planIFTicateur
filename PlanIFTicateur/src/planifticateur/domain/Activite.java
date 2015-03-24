@@ -91,6 +91,10 @@ public class Activite {
         return heureDebutChoisi;
     }
     
+    public float getDuree(){
+        return duree;
+    }
+    
     public String getCode(){
         return code;
     }
