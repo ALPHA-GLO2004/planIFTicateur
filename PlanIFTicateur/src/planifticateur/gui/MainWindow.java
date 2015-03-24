@@ -279,11 +279,24 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_noteButtonActionPerformed
 
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
-
+        
+        //je ne savais pas ou la mettre, il faut en faire une fonction ailleur qui sera appeler ici PC
+        String fichierCHE;
         JFileChooser selecteurFichier = new JFileChooser();
         int returnVal = selecteurFichier.showOpenDialog(MainWindow.this);
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        File fichier = selecteurFichier.getSelectedFile();
+        File fichier1 = selecteurFichier.getSelectedFile();
+        // Apres la selection du premier fichier, on doit ouvrir le CHE sans demander a l'utilisateur
+        
+        // ici on creer une chaine de caractere pour ouvrir le 2ieme fichier.
+        fichierCHE = fichier1.getName() +".CHE";
+        
+        // pour la lecture du fichier, on peut utiliser java.util.Scanner
+        //cela utilise un delimiteur pour convertir chaque ligne en "token"
+        // voir http://howtodoinjava.com/2013/05/27/parse-csv-files-in-java/
+        
+        
+        
 
  
     }//GEN-LAST:event_menuFileNewActionPerformed
