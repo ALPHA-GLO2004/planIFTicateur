@@ -69,6 +69,8 @@ public class Activite {
     
     public void afficherValidite(){
         //fonction affichage dans domain ?
+        // Dans ce cas-ci, je crois que l'on pourrait changer la couleur de
+        // l'activite si elle est en conflit... couleur = Color.RED par exemple.
     }
     
     public Color getCouleur(){

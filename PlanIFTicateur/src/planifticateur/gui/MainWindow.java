@@ -2,7 +2,11 @@
 package planifticateur.gui;
 import planifticateur.domain.HoraireController;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
@@ -211,6 +215,11 @@ public class MainWindow extends javax.swing.JFrame {
         menuFile.setText("Fichier");
 
         menuFileNew.setText("Nouvel horaire");
+        menuFileNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileNewActionPerformed(evt);
+            }
+        });
         menuFile.add(menuFileNew);
 
         menuFileOpen.setText("Ouvrir horaire");
@@ -287,6 +296,28 @@ public class MainWindow extends javax.swing.JFrame {
 
     }//GEN-LAST:event_validationAutoCheckBoxActionPerformed
 
+    private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
+        
+        //je ne savais pas ou la mettre, il faut en faire une fonction ailleur qui sera appeler ici PC
+        String fichierCHE;
+        JFileChooser selecteurFichier = new JFileChooser();
+        int returnVal = selecteurFichier.showOpenDialog(MainWindow.this);
+        selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        File fichier1 = selecteurFichier.getSelectedFile();
+        // Apres la selection du premier fichier, on doit ouvrir le CHE sans demander a l'utilisateur
+        
+        // ici on creer une chaine de caractere pour ouvrir le 2ieme fichier.
+        fichierCHE = fichier1.getName() +".CHE";
+        
+        // pour la lecture du fichier, on peut utiliser java.util.Scanner
+        //cela utilise un delimiteur pour convertir chaque ligne en "token"
+        // voir http://howtodoinjava.com/2013/05/27/parse-csv-files-in-java/
+        
+        
+        
+
+ 
+    }//GEN-LAST:event_menuFileNewActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane activiteAPlacerContainer;
