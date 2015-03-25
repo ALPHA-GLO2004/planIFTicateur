@@ -297,24 +297,19 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_validationAutoCheckBoxActionPerformed
 
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
-        //horaireController.chargerFichier(file);
-        
-        //je ne savais pas ou la mettre, il faut en faire une fonction ailleur qui sera appeler ici PC
+        //Fonction permettant à l'utilisateur de saisir un fichier via menu "choose from"
+        //et faire un appel au contrôleur afin de procéder à la reconstitution de l'horaire.
         String fichierCHE;
         JFileChooser selecteurFichier = new JFileChooser();
         int returnVal = selecteurFichier.showOpenDialog(MainWindow.this);
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         File fichier1 = selecteurFichier.getSelectedFile();
         // Apres la selection du premier fichier, on doit ouvrir le CHE sans demander a l'utilisateur
-        horaireController.chargerFichier(fichier1);
-        // ici on creer une chaine de caractere pour ouvrir le 2ieme fichier.
-        fichierCHE = fichier1.getName() +".CHE";
+        horaireController.chargerHoraire(fichier1);
         
         // pour la lecture du fichier, on peut utiliser java.util.Scanner
         //cela utilise un delimiteur pour convertir chaque ligne en "token"
         // voir http://howtodoinjava.com/2013/05/27/parse-csv-files-in-java/
-
- 
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

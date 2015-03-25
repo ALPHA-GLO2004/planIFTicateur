@@ -1,11 +1,16 @@
 
 package planifticateur.domain;
-import java.util.List;
+import java.util.Vector;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
     String fichierCOU;
     String fichierCHE;
+    Vector<String> listeActivite;
     //
     boolean valide;
     int nbMaxCoursEtudiantMemeJour;
@@ -27,10 +32,36 @@ public class Horaire {
     ListeActiviteDejaPlacee listeActiviteDejaPlacee;
     ListeActiviteGrilleCh listeActiviteGrilleCh;
 
-    public Horaire(String nomFichier){
+    public Horaire(File f){
+        //Constructeur -- Ne fais que prendre le fichier et attribuer chaque élément contenu
+        //dans ce fichier au bon endroit. Ensuite fait appel au controller pour créer les activités
+        String nomFichier = f.getName().substring(0, (f.getName().length() - 4));
         fichierCOU = nomFichier + ".COU";   
         fichierCHE = nomFichier + ".CHE";
         horairePlein = false;
+        listeConflit = new ListeConflit();
+        listeModificationActivite = new ListeModificationActivite();
+        listeActiviteDejaPlacee = new ListeActiviteDejaPlacee();
+        listeActiviteGrilleCh = new ListeActiviteGrilleCh();
+        this.conversionFichier(f);
+        //Pour chaque ligne lue, on l'ajoute dans une liste pour éventuellement créer les activités
+        for (String elementActivite: listeActivite){
+            Activite a = new Activite(elementActivite);
+            listeActiviteAPlacer.add(a);
+        }
+    }
+    
+    private void conversionFichier(File f){
+        //Fonction pour transformer un fichier CSV en liste de string de son contenu
+        //avec l'aide du séparateur ";"
+        try{
+            BufferedReader flux = new BufferedReader(new FileReader(f));
+            while (flux.readLine() != null){
+                listeActivite.add(flux.readLine());
+            }
+        }catch (Throwable ex){
+            ex.printStackTrace();
+        }
     }
     
     private void validerHoraire(){
@@ -46,24 +77,24 @@ public class Horaire {
     public void addActivite(){
         
     }
-    
-    public List<Activite> getListeActiviteAPlacer(){
+   
+    public Vector<Activite> getListeActiviteAPlacer(){
         return listeActiviteAPlacer.getListeActiviteAPlacer();
     }
-    
-    public List<GrilleCheminement> getListeActiviteGrilleCh(){
+   
+    public Vector<GrilleCheminement> getListeActiviteGrilleCh(){
         return listeActiviteGrilleCh.getListeActiviteGrilleCh();
     }
     
-    public List<Conflit> getListeConflit(){
+    public Vector<Conflit> getListeConflit(){
         return listeConflit.getListeConflit();
     }
     
-    public List<Activite> getListeActiviteDejaPlacee(){
+    public Vector<Activite> getListeActiviteDejaPlacee(){
         return listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
     }
     
-    public List<ModificationActivite> getListeModificationActivite(){
+    public Vector<ModificationActivite> getListeModificationActivite(){
         return listeModificationActivite.getListeModificationActivite();
     }
     

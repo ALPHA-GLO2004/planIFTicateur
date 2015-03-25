@@ -1,9 +1,9 @@
 
 package planifticateur.domain;
-import java.util.*;
+import java.util.Vector;
 
 public class ListeConflit {
-    private List<Conflit> conflitListe;
+    private Vector<Conflit> conflitListe;
     
     public ListeConflit(){
         //Constructeur
@@ -30,7 +30,7 @@ public class ListeConflit {
         return 0;
     }
     
-    public List<Conflit> getListeConflit(){
+    public Vector<Conflit> getListeConflit(){
         return conflitListe;
     }
     

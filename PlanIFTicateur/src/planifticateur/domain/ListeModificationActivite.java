@@ -1,9 +1,9 @@
 
 package planifticateur.domain;
-import java.util.*;
+import java.util.Vector;
 
 public class ListeModificationActivite {
-    private List<ModificationActivite> modificationActiviteListe;
+    private Vector<ModificationActivite> modificationActiviteListe;
     
     public ListeModificationActivite(){
         //Constructeur
@@ -22,7 +22,7 @@ public class ListeModificationActivite {
         }
     }
     
-    public List<ModificationActivite> getListeModificationActivite(){
+    public Vector<ModificationActivite> getListeModificationActivite(){
         return modificationActiviteListe;
     }
     

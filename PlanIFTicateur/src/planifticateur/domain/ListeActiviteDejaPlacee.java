@@ -1,13 +1,14 @@
 
 package planifticateur.domain;
-import java.util.List;
+import java.util.Vector;
 
 
 public class ListeActiviteDejaPlacee {
-    private List<Activite> activiteDejaPlaceeListe;
+    private Vector<Activite> activiteDejaPlaceeListe;
     
-    public ListeActiviteDejaPlacee(List<Activite> listeActivite){
-        //Constructeur --- Le constructeur parcourt la liste d'activité en paramètre
+    public ListeActiviteDejaPlacee(){
+        //Doit modifier le contructeur
+ /*       //Constructeur --- Le constructeur parcourt la liste d'activité en paramètre
         //et vérifie si l'activité est placée selon son jour et heureDeDébut choisi.
         //ensuite, il crée sa liste avec les activités correspondantes.
         
@@ -15,7 +16,7 @@ public class ListeActiviteDejaPlacee {
             if (activite.getJourChoisi() != 0 && activite.getHeureDebutChoisi() != 0.0){
                 activiteDejaPlaceeListe.add(activite);
             }
-        }
+        }*/
     }
     
     //Ajoute une activité à la liste déjà placées
@@ -38,7 +39,7 @@ public class ListeActiviteDejaPlacee {
     }
     
     //Retourne la liste des activités à placer
-    public List<Activite> getListeActiviteDejaPlacee(){
+    public Vector<Activite> getListeActiviteDejaPlacee(){
         return activiteDejaPlaceeListe;
     }
     

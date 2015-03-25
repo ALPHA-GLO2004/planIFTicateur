@@ -1,22 +1,23 @@
 
 package planifticateur.domain;
 import java.awt.*;
-import java.util.List;
+import java.util.Vector;
+import java.io.File;
 
 public class HoraireController {
     private Horaire horaire;
-    private Dimension resolution;
+    private Dimension initialDimension;
     
     public HoraireController(Horaire horaire){
         this.horaire = horaire;
     }
     
     public HoraireController(){
-        horaire = new Horaire(""); //Ça chie je pense ben, à modifier éventuellement
     }
     
-    public void chargerHoraire(){
-        
+    public void chargerHoraire(File f){
+        //peut-être serait plus logique en tant que constructeur
+        this.horaire = new Horaire(f);
     }
     
     public void saveHoraire(){
@@ -46,9 +47,9 @@ public class HoraireController {
     public void note(){
         
     }
-    
+ 
     public String getStats(){
-        return "stats";
+        return horaire.listeActiviteAPlacer.getListeActiviteAPlacer().elementAt(0).getNomActivite();
     }
     
     public String getHoraireNom(){
@@ -60,28 +61,28 @@ public class HoraireController {
         return a.getNomActivite();
     }
     
-    public List<Activite> getListeActiviteAPlacer(){
+    public Vector<Activite> getListeActiviteAPlacer(){
+        return horaire.getListeActiviteAPlacer();
+    }
+
+    public Vector<Activite> getListeActiviteGrilleCh(){
         return horaire.getListeActiviteAPlacer();
     }
     
-    public List<Activite> getListeActiviteGrilleCh(){
+    public Vector<Activite> getListeConflit(){
         return horaire.getListeActiviteAPlacer();
     }
     
-    public List<Activite> getListeConflit(){
+    public Vector<Activite> getListeActiviteDejaPlacee(){
         return horaire.getListeActiviteAPlacer();
     }
     
-    public List<Activite> getListeActiviteDejaPlacee(){
-        return horaire.getListeActiviteAPlacer();
-    }
-    
-    public List<Activite> getListeModificationActivite(){
+    public Vector<Activite> getListeModificationActivite(){
         return horaire.getListeActiviteAPlacer();
     }
     
     public Dimension getDimension(){
-        return resolution;
+        return initialDimension;
     }
     //et ainsi de suite...
 }

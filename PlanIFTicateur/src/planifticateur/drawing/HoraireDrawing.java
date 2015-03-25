@@ -3,7 +3,7 @@ package planifticateur.drawing;
 import planifticateur.domain.HoraireController;
 import planifticateur.domain.Activite;
 import java.awt.*;
-import java.util.List;
+import java.util.Vector;
 
 public class HoraireDrawing {
     private final HoraireController horaireController;
@@ -22,7 +22,7 @@ public class HoraireDrawing {
     
     //pas sûr de ça --- juste un test
     private void drawActivite(Graphics g){
-        List<Activite> activites = horaireController.getListeActiviteAPlacer();
+        Vector<Activite> activites = horaireController.getListeActiviteAPlacer();
         for (Activite activite: activites){
             Point activitePoint = activite.getPoint();
             Color couleur = activite.getCouleur();
