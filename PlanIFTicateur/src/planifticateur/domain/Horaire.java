@@ -15,12 +15,15 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
     String fichierCOU;
     String fichierCHE;
     List<String> listeActivite = new ArrayList<String>();
+    List<String> listeGrille = new ArrayList<String>();
     //
     boolean valide;
     int nbMaxCoursEtudiantMemeJour;
@@ -40,26 +43,41 @@ public class Horaire {
     ListeModificationActivite listeModificationActivite;
     ListeActiviteAPlacer listeActiviteAPlacer;
     ListeActiviteDejaPlacee listeActiviteDejaPlacee;
-    ListeActiviteGrilleCh listeActiviteGrilleCh;
+    ListeGrilleCh listeGrilleCh;
 
     public Horaire(File f){
         //Constructeur -- Ne fais que prendre le fichier et attribuer chaque élément contenu
         //dans ce fichier au bon endroit. Ensuite fait appel au controller pour créer les activités
         String nomFichier = f.getName().substring(0, (f.getName().length() - 4));
         fichierCOU = nomFichier + ".COU";   
-        fichierCHE = nomFichier + ".CHE";
         horairePlein = false;
         listeConflit = new ListeConflit();
         listeModificationActivite = new ListeModificationActivite();
         listeActiviteDejaPlacee = new ListeActiviteDejaPlacee();
-        listeActiviteGrilleCh = new ListeActiviteGrilleCh();
+        listeGrilleCh = new ListeGrilleCh();
         listeActiviteAPlacer = new ListeActiviteAPlacer();
+        //pour fichier COU
         this.lireFichier(f);
         listeActivite.remove(0); //On retire la ligne inutile
         //Pour chaque ligne lue, on l'ajoute dans une liste pour éventuellement créer les activités
         for (String elementActivite: listeActivite){
             Activite a = new Activite(elementActivite);
             listeActiviteAPlacer.add(a);
+        }
+        //pour fichier CHE
+        String path = f.getPath();
+        try{
+            BufferedReader fluxCHE = new BufferedReader(new FileReader(path.substring(0, path.length() - 3) + "CHE"));
+            for (String line = fluxCHE.readLine(); line != null; line = fluxCHE.readLine()){
+                listeGrille.add(line);
+            }
+            listeGrille.remove(0);
+            for (String elementGrille: listeGrille){
+                GrilleCheminement g = new GrilleCheminement(elementGrille);
+                listeGrilleCh.add(g);
+            }
+        }catch (Exception ex){
+            System.out.println(ex);
         }
     }
     
@@ -72,7 +90,7 @@ public class Horaire {
                 listeActivite.add(line);
             }
             flux.close();
-        }catch (Throwable ex){
+        }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
     }
@@ -92,7 +110,7 @@ public class Horaire {
     }
    
     public Vector<GrilleCheminement> getListeActiviteGrilleCh(){
-        return listeActiviteGrilleCh.getListeActiviteGrilleCh();
+        return listeGrilleCh.getListeGrilleCh();
     }
     
     public Vector<Conflit> getListeConflit(){

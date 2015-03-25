@@ -12,7 +12,7 @@ public class GrilleCheminement {
     String programme;
     String version;
     String session;
-    List<String> grilleActivites;
+    Vector<String> grilleActivites = new Vector<String>();
     
     public GrilleCheminement(String grille){
         //Constructeur
