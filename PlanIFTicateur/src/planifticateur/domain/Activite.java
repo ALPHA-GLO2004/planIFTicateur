@@ -100,4 +100,5 @@ public class Activite {
     public String getCode(){
         return code;
     }
+    
 }
