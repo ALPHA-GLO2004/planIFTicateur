@@ -13,8 +13,8 @@ public class MainWindow extends javax.swing.JFrame {
     Dimension initialDimension;
     
     public MainWindow() {
-        int width = 800;//(int) ((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width));
-        int height = 600;//(int)((java.awt.Toolkit.getDefaultToolkit().getScreenSize().height));
+        int width = (int) ((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width));
+        int height = (int)((java.awt.Toolkit.getDefaultToolkit().getScreenSize().height));
         initialDimension = new Dimension(width, height);
         setPreferredSize(initialDimension);
         horaireController = new HoraireController();
@@ -144,7 +144,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 150.0;
+        gridBagConstraints.weightx = 200.0;
         gridBagConstraints.weighty = 400.0;
         mainPanel.add(activiteAPlacerContainer, gridBagConstraints);
 
@@ -313,10 +313,6 @@ public class MainWindow extends javax.swing.JFrame {
         // pour la lecture du fichier, on peut utiliser java.util.Scanner
         //cela utilise un delimiteur pour convertir chaque ligne en "token"
         // voir http://howtodoinjava.com/2013/05/27/parse-csv-files-in-java/
-        
-        
-        
-        
 
  
     }//GEN-LAST:event_menuFileNewActionPerformed
