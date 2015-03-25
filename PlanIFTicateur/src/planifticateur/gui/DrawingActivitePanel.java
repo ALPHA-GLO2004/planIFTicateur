@@ -10,16 +10,16 @@ import java.io.Serializable;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
-public class DrawingPanel extends JPanel implements Serializable
+public class DrawingActivitePanel extends JPanel implements Serializable
   {
     private MainWindow mainWindow;      //fenêtre principal du programme (parent 1er)
     private Dimension initialDimension; //Dimension du panel
     
-    public DrawingPanel(){
+    public DrawingActivitePanel(){
         //Constructeur
     }
     
-    public DrawingPanel(MainWindow mainWindow){
+    public DrawingActivitePanel(MainWindow mainWindow){
         //Constructeur avec frame principal en paramètre
         this.mainWindow = mainWindow;
     //    setBorder(new javax.swing.border.StrokeBorder());
@@ -41,7 +41,7 @@ public class DrawingPanel extends JPanel implements Serializable
         if (mainWindow != null){
             super.paintComponent(g);
             HoraireDrawing mainHoraire = new HoraireDrawing(mainWindow.horaireController, initialDimension);
-            mainHoraire.drawHoraire(g);
+            mainHoraire.drawActivite(g);
         }
     }
     

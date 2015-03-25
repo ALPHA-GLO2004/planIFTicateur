@@ -1,4 +1,15 @@
-
+/*
+*   nom:    Classe Activité
+*   but:    Crée un objet Activite contenant les attributs relatifs à une activité
+*   info:   -couleur:           se choisit automatiquement à la création d'une activité;
+*           -professeur:        n'est pas obligatoire, feature bonus;
+*           -heureDebutChoisi:  se choisit automatiquement lors du drop sur l'horaire;
+*           -jourChoisi:        idem.
+*           +attributs privés mais accessible via les méthodes get à la fin
+*   pre:    Doit avoir obligatoirement: code, section, type, description, heureDebutMin,
+*           heureDebutMax, heureFinMax, duree.
+*   post:   Création d'une activité avec attributs nécessaires à l'intégration dasn un horaire.
+************************************************************************************************/
 package planifticateur.domain;
 import java.awt.*;
 import java.lang.*;
@@ -17,15 +28,16 @@ public class Activite {
     private float heureDebutChoisi;
     private int jourChoisi;
     private float duree;
-    private Point point;
+    private Point point; //remplace rectangle
 //    Rectangle rectangle; //Utilité du rectangle ?
     
     public Activite(String activite){ //to be modified :/
-        /*
-        Constructeur --- Une activité est créée avec, comme paramètre une liste 
-        de string correspondant à chaque colonne d'une ligne dans un fichier COU.
-        Cette liste est créée hors de cette classe. // Possiblement à modifier (doit être validée)
-        */
+        //Constructeur
+        //À partir d'une string, chaque attribut essentiel de l'activité est capté par
+        //chaque donnée entre un séparateur précis dans cette string.
+        //Bloc try car possibles erreurs de lectures mais catch ne fait qu'afficher les erreurs
+        //pour le moment.
+        
         String[] infoActivite = activite.split(";"); //On coupe la chaîne pour obtenir les infos séparés
         try
         {
@@ -64,6 +76,7 @@ public class Activite {
     }
     
     public boolean appartientAActivite(Point point){
+        //C'était dans le diagramme...
         return true;
     }
     

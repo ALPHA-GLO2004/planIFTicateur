@@ -1,3 +1,12 @@
+/*
+*   nom:    Classe Horaire
+*   but:    Crée un objet Horaire contenant les attributs relatifs à un horaire
+*   info:   -stats (lignes 24 à 35) --- voué à l'affichage des stats, changeront dynamiquement
+*           aux cours du placement des cours.
+*           +attributs privées mais accessible via les get à la fin.
+*   pre:    Doit avoir obligatoirement: fichierCOU, fichierCHE, listeActivite (qui se séparera dans les différentes listes).
+*   post:   Création d'un horaire avec attributs nécessaires à l'affichage de ce dernier.
+************************************************************************************************/
 
 package planifticateur.domain;
 import java.util.Vector;
@@ -60,7 +69,7 @@ public class Horaire {
                 listeActivite.add(flux.readLine());
             }
         }catch (Throwable ex){
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
     }
     
@@ -72,10 +81,6 @@ public class Horaire {
         else{
             valide = false;
         }
-    }
-    
-    public void addActivite(){
-        
     }
    
     public Vector<Activite> getListeActiviteAPlacer(){
@@ -98,7 +103,7 @@ public class Horaire {
         return listeModificationActivite.getListeModificationActivite();
     }
     
-    private void genererAutomatiquement(){
+    public void genererAutomatiquement(){
         //En attente d'un bon algorithme
     }
 }

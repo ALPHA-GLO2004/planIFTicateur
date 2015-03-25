@@ -33,7 +33,7 @@ public class MainWindow extends javax.swing.JFrame {
         drawingPanelContainer = new javax.swing.JScrollPane();
         drawingPanel = new planifticateur.gui.DrawingPanel(this);
         activiteAPlacerContainer = new javax.swing.JScrollPane();
-        activiteAPlacerPanel = new javax.swing.JPanel();
+        drawingActivitePanel = new planifticateur.gui.DrawingActivitePanel(this);
         planificationAutomatiqueButton = new javax.swing.JButton();
         statistiquesButton = new javax.swing.JButton();
         noteButton = new javax.swing.JButton();
@@ -124,21 +124,20 @@ public class MainWindow extends javax.swing.JFrame {
 
         activiteAPlacerContainer.setPreferredSize(new java.awt.Dimension(300, 400));
 
-        activiteAPlacerPanel.setBackground(new java.awt.Color(255, 255, 255));
-        activiteAPlacerPanel.setPreferredSize(new java.awt.Dimension(300, 400));
+        drawingActivitePanel.setPreferredSize(new java.awt.Dimension(1095, 950));
 
-        javax.swing.GroupLayout activiteAPlacerPanelLayout = new javax.swing.GroupLayout(activiteAPlacerPanel);
-        activiteAPlacerPanel.setLayout(activiteAPlacerPanelLayout);
-        activiteAPlacerPanelLayout.setHorizontalGroup(
-            activiteAPlacerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout drawingActivitePanelLayout = new javax.swing.GroupLayout(drawingActivitePanel);
+        drawingActivitePanel.setLayout(drawingActivitePanelLayout);
+        drawingActivitePanelLayout.setHorizontalGroup(
+            drawingActivitePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1095, Short.MAX_VALUE)
         );
-        activiteAPlacerPanelLayout.setVerticalGroup(
-            activiteAPlacerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        drawingActivitePanelLayout.setVerticalGroup(
+            drawingActivitePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 950, Short.MAX_VALUE)
         );
 
-        activiteAPlacerContainer.setViewportView(activiteAPlacerPanel);
+        activiteAPlacerContainer.setViewportView(drawingActivitePanel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -314,7 +313,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane activiteAPlacerContainer;
-    private javax.swing.JPanel activiteAPlacerPanel;
+    private planifticateur.gui.DrawingActivitePanel drawingActivitePanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
     private javax.swing.JScrollPane drawingPanelContainer;
     private javax.swing.JTextField logTextField;

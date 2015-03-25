@@ -4,11 +4,12 @@ import planifticateur.domain.HoraireController;
 import planifticateur.domain.Activite;
 import java.awt.*;
 import java.util.Vector;
+import sun.swing.SwingUtilities2;
 
 public class HoraireDrawing {
     private final HoraireController horaireController;
     Dimension initialDimension;
-    int radius = 50;
+    int hauteur = 20;
     
     public HoraireDrawing(HoraireController horaireController, Dimension initialDimension){
         this.horaireController = horaireController;
@@ -17,21 +18,28 @@ public class HoraireDrawing {
     
     public void draw(Graphics g){
         drawHoraire(g);
-    //    drawActivite(g);
+        drawActivite(g);
     }
     
     //pas sûr de ça --- juste un test
-    private void drawActivite(Graphics g){
-        Vector<Activite> activites = horaireController.getListeActiviteAPlacer();
+    public void drawActivite(Graphics g){
+        //triangle test
+        Font font = new Font("Arial", Font.BOLD, 12);
+        g.setColor(Color.ORANGE);
+        g.fillRect(5, 5, 70, hauteur);
+        g.setColor(Color.BLACK);
+        g.drawString("cours test", 13, hauteur);
+        
+    /*    Vector<Activite> activites = horaireController.getListeActiviteAPlacer();
         for (Activite activite: activites){
             Point activitePoint = activite.getPoint();
             Color couleur = activite.getCouleur();
             g.setColor(couleur);
-            g.fillRect((int)activitePoint.getX(), (int)activitePoint.getY(), (int)activite.getDuree(), 20);
-        }
+            g.fillRect((int)activitePoint.getX(), (int)activitePoint.getY(), (int)activite.getDuree() * 35, hauteur);
+        }*/
     }
     
-    private void drawHoraire(Graphics g){
+    public void drawHoraire(Graphics g){
         //Code test --- en attendant
         int width = 1086;
         int height = 927;
