@@ -29,7 +29,6 @@ public class MainWindow extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         titreFichierLabel = new javax.swing.JLabel();
         validationAutoCheckBox = new javax.swing.JCheckBox();
-        logTextField = new javax.swing.JTextField();
         drawingPanelContainer = new javax.swing.JScrollPane();
         drawingPanel = new planifticateur.gui.DrawingPanel(this);
         activiteAPlacerContainer = new javax.swing.JScrollPane();
@@ -38,6 +37,7 @@ public class MainWindow extends javax.swing.JFrame {
         statistiquesButton = new javax.swing.JButton();
         noteButton = new javax.swing.JButton();
         quitterButton = new javax.swing.JButton();
+        logMsgTextArea = new javax.swing.JTextArea();
         topMenuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuFileNew = new javax.swing.JMenuItem();
@@ -82,18 +82,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         mainPanel.add(validationAutoCheckBox, gridBagConstraints);
 
-        logTextField.setText("Journal des événements");
-        logTextField.setPreferredSize(new java.awt.Dimension(800, 50));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 50.0;
-        mainPanel.add(logTextField, gridBagConstraints);
-
+        drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
         drawingPanelContainer.setPreferredSize(new java.awt.Dimension(500, 500));
 
         drawingPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -211,6 +200,21 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 30, 5, 30);
         mainPanel.add(quitterButton, gridBagConstraints);
 
+        logMsgTextArea.setEditable(false);
+        logMsgTextArea.setColumns(20);
+        logMsgTextArea.setRows(5);
+        logMsgTextArea.setText("log\n--------------------------------\nmsg d'erreur");
+        logMsgTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 50.0;
+        mainPanel.add(logMsgTextArea, gridBagConstraints);
+
         menuFile.setText("Fichier");
 
         menuFileNew.setText("Nouvel horaire");
@@ -316,7 +320,7 @@ public class MainWindow extends javax.swing.JFrame {
     private planifticateur.gui.DrawingActivitePanel drawingActivitePanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
     private javax.swing.JScrollPane drawingPanelContainer;
-    private javax.swing.JTextField logTextField;
+    private javax.swing.JTextArea logMsgTextArea;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu menuExport;
     private javax.swing.JMenuItem menuExportCopy;

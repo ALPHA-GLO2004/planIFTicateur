@@ -49,7 +49,8 @@ public class HoraireController {
     }
  
     public String getStats(){
-        return horaire.listeActiviteAPlacer.getListeActiviteAPlacer().elementAt(0).getNomActivite();
+        return "stats... En attente du fonctionnement des listes";
+        //return horaire.listeActiviteAPlacer.getListeActiviteAPlacer().elementAt(0).getNomActivite();
     }
     
     public String getHoraireNom(){

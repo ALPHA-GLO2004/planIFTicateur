@@ -1,6 +1,7 @@
 
 package planifticateur.gui;
 import planifticateur.domain.HoraireController;
+import javax.swing.JTextField;
 
 public class Note extends javax.swing.JFrame {
     public HoraireController horaireController;
@@ -14,13 +15,11 @@ public class Note extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        noteTextField = new javax.swing.JTextField();
         quitterNoteButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        noteTextArea = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        noteTextField.setText("Écrire notes");
-        noteTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         quitterNoteButton.setText("Fermer");
         quitterNoteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -29,24 +28,29 @@ public class Note extends javax.swing.JFrame {
             }
         });
 
+        noteTextArea.setColumns(20);
+        noteTextArea.setRows(5);
+        noteTextArea.setText("Notes...");
+        jScrollPane1.setViewportView(noteTextArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(noteTextField)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(158, 158, 158)
                 .addComponent(quitterNoteButton)
                 .addContainerGap(175, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(noteTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(quitterNoteButton)
                 .addGap(6, 6, 6))
@@ -96,7 +100,8 @@ public class Note extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField noteTextField;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea noteTextArea;
     private javax.swing.JButton quitterNoteButton;
     // End of variables declaration//GEN-END:variables
 }
