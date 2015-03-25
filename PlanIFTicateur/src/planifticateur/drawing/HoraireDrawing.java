@@ -4,7 +4,6 @@ import planifticateur.domain.HoraireController;
 import planifticateur.domain.Activite;
 import java.awt.*;
 import java.util.Vector;
-import sun.swing.SwingUtilities2;
 
 public class HoraireDrawing {
     private final HoraireController horaireController;

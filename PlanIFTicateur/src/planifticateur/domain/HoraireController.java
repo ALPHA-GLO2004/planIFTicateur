@@ -2,6 +2,7 @@
 package planifticateur.domain;
 import java.awt.*;
 import java.util.Vector;
+import java.util.List;
 import java.io.File;
 
 public class HoraireController {
@@ -62,24 +63,24 @@ public class HoraireController {
         return a.getNomActivite();
     }
     
-    public Vector<Activite> getListeActiviteAPlacer(){
+    public List<Activite> getListeActiviteAPlacer(){
         return horaire.getListeActiviteAPlacer();
     }
 
-    public Vector<Activite> getListeActiviteGrilleCh(){
-        return horaire.getListeActiviteAPlacer();
+    public Vector<GrilleCheminement> getListeActiviteGrilleCh(){
+        return horaire.getListeActiviteGrilleCh();
     }
     
-    public Vector<Activite> getListeConflit(){
-        return horaire.getListeActiviteAPlacer();
+    public Vector<Conflit> getListeConflit(){
+        return horaire.getListeConflit();
     }
     
     public Vector<Activite> getListeActiviteDejaPlacee(){
-        return horaire.getListeActiviteAPlacer();
+        return horaire.getListeActiviteDejaPlacee();
     }
     
-    public Vector<Activite> getListeModificationActivite(){
-        return horaire.getListeActiviteAPlacer();
+    public Vector<ModificationActivite> getListeModificationActivite(){
+        return horaire.getListeModificationActivite();
     }
     
     public Dimension getDimension(){

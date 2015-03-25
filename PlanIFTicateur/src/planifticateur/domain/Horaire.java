@@ -10,6 +10,7 @@
 
 package planifticateur.domain;
 import java.util.Vector;
+import java.util.List;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.BufferedReader;
@@ -19,7 +20,7 @@ public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
     String fichierCOU;
     String fichierCHE;
-    Vector<String> listeActivite;
+    List<String> listeActivite = new ArrayList<String>();
     //
     boolean valide;
     int nbMaxCoursEtudiantMemeJour;
@@ -52,7 +53,9 @@ public class Horaire {
         listeModificationActivite = new ListeModificationActivite();
         listeActiviteDejaPlacee = new ListeActiviteDejaPlacee();
         listeActiviteGrilleCh = new ListeActiviteGrilleCh();
-        this.conversionFichier(f);
+        listeActiviteAPlacer = new ListeActiviteAPlacer();
+        this.lireFichier(f);
+        listeActivite.remove(0); //On retire la ligne inutile
         //Pour chaque ligne lue, on l'ajoute dans une liste pour éventuellement créer les activités
         for (String elementActivite: listeActivite){
             Activite a = new Activite(elementActivite);
@@ -60,14 +63,15 @@ public class Horaire {
         }
     }
     
-    private void conversionFichier(File f){
+    private void lireFichier(File f){
         //Fonction pour transformer un fichier CSV en liste de string de son contenu
         //avec l'aide du séparateur ";"
         try{
             BufferedReader flux = new BufferedReader(new FileReader(f));
-            while (flux.readLine() != null){
-                listeActivite.add(flux.readLine());
+            for (String line = flux.readLine(); line != null; line = flux.readLine()){
+                listeActivite.add(line);
             }
+            flux.close();
         }catch (Throwable ex){
             System.out.println(ex.getMessage());
         }

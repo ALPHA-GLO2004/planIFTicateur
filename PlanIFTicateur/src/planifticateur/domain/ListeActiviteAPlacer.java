@@ -7,11 +7,12 @@ public class ListeActiviteAPlacer {
     
     public ListeActiviteAPlacer(){
         //Constructeur
+        activiteAPlacerListe = new Vector<Activite>();
     }
     
     //Ajoute une activité à la liste
     public void add(Activite activite){
-        activiteAPlacerListe.add(activite);
+        activiteAPlacerListe.addElement(activite);
     }
     
     //Retire une activté de la liste

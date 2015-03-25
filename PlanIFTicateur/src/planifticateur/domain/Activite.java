@@ -46,15 +46,15 @@ public class Activite {
             description = infoActivite[2];
             professeur = new Professeur(infoActivite[3]);
             type = infoActivite[4];
-            duree = Float.valueOf(infoActivite[5]); //transformation de string à float
-            heureDebutMin = Float.valueOf(infoActivite[6]); //transformation de string à float
-            heureDebutMax = Float.valueOf(infoActivite[7]); //transformation de string à float
-            heureFinMax = Float.valueOf(infoActivite[8]); //transformation de string à float
+            duree = Float.parseFloat(infoActivite[5]); //transformation de string à float
+            heureDebutMin = Float.parseFloat(infoActivite[6]); //transformation de string à float
+            heureDebutMax = Float.parseFloat(infoActivite[7]); //transformation de string à float
+            heureFinMax = Float.parseFloat(infoActivite[8]); //transformation de string à float
             if (infoActivite[9] != ""){
-                jourChoisi = Integer.valueOf(infoActivite[9]); //Transformation de string à Int
+                jourChoisi = Integer.parseInt(infoActivite[9]); //Transformation de string à Int
             }
             if (infoActivite[10] != ""){
-                heureDebutChoisi = Float.valueOf(infoActivite[10]); //transformation de string à float
+                heureDebutChoisi = Float.parseFloat(infoActivite[10]); //transformation de string à float
             }
             //attribution de la couleur selon le type
             if (type == "classe"){
