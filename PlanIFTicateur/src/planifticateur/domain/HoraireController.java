@@ -33,7 +33,7 @@ public class HoraireController {
         
     }
     
-    public void dessinerGrille(){
+    public void dessiner(){
         
     }
     
@@ -45,8 +45,8 @@ public class HoraireController {
         
     }
     
-    public void note(){
-        
+    public void note(String n){
+        horaire.ajouterNote(n);
     }
  
     public String getStats(){
@@ -63,26 +63,37 @@ public class HoraireController {
         return a.getNomActivite();
     }
     
+    public boolean getHoraire(){
+        if (horaire != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     public List<Activite> getListeActiviteAPlacer(){
         return horaire.getListeActiviteAPlacer();
     }
 
-    public Vector<GrilleCheminement> getListeActiviteGrilleCh(){
+    public List<GrilleCheminement> getListeActiviteGrilleCh(){
         return horaire.getListeActiviteGrilleCh();
     }
     
-    public Vector<Conflit> getListeConflit(){
+    public List<Conflit> getListeConflit(){
         return horaire.getListeConflit();
     }
     
-    public Vector<Activite> getListeActiviteDejaPlacee(){
+    public List<Activite> getListeActiviteDejaPlacee(){
         return horaire.getListeActiviteDejaPlacee();
     }
     
-    public Vector<ModificationActivite> getListeModificationActivite(){
+    public List<ModificationActivite> getListeModificationActivite(){
         return horaire.getListeModificationActivite();
     }
     
+    public void msgErreur(){
+        
+    }
     public Dimension getDimension(){
         return initialDimension;
     }

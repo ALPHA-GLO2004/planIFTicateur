@@ -40,8 +40,6 @@ public class DrawingActivitePanel extends JPanel implements Serializable
         //méthode pour l'affichage des éléments visuels
         if (mainWindow != null){
             super.paintComponent(g);
-            HoraireDrawing mainHoraire = new HoraireDrawing(mainWindow.horaireController, initialDimension);
-            mainHoraire.drawActivite(g);
         }
     }
     

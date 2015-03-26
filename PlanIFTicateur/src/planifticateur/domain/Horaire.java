@@ -22,8 +22,9 @@ public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
     String fichierCOU;
     String fichierCHE;
-    List<String> listeActivite = new ArrayList<String>();
-    List<String> listeGrille = new ArrayList<String>();
+    private List<String> listeActivite = new ArrayList<String>();
+    private List<String> listeGrille = new ArrayList<String>();
+    private String note = "";
     //
     boolean valide;
     int nbMaxCoursEtudiantMemeJour;
@@ -58,7 +59,12 @@ public class Horaire {
         listeActiviteAPlacer = new ListeActiviteAPlacer();
         //pour fichier COU
         this.lireFichier(f);
-        listeActivite.remove(0); //On retire la ligne inutile
+        //Analyse auto du délimiteur ?
+        String analyseur = listeActivite.get(0);
+        String separateur = analyseur.substring(11, 12);
+        //
+        listeActivite.remove(0); //On retire la premiere ligne
+        
         //Pour chaque ligne lue, on l'ajoute dans une liste pour éventuellement créer les activités
         for (String elementActivite: listeActivite){
             Activite a = new Activite(elementActivite);
@@ -105,24 +111,28 @@ public class Horaire {
         }
     }
    
-    public Vector<Activite> getListeActiviteAPlacer(){
+    public List<Activite> getListeActiviteAPlacer(){
         return listeActiviteAPlacer.getListeActiviteAPlacer();
     }
    
-    public Vector<GrilleCheminement> getListeActiviteGrilleCh(){
+    public List<GrilleCheminement> getListeActiviteGrilleCh(){
         return listeGrilleCh.getListeGrilleCh();
     }
     
-    public Vector<Conflit> getListeConflit(){
+    public List<Conflit> getListeConflit(){
         return listeConflit.getListeConflit();
     }
     
-    public Vector<Activite> getListeActiviteDejaPlacee(){
+    public List<Activite> getListeActiviteDejaPlacee(){
         return listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
     }
     
-    public Vector<ModificationActivite> getListeModificationActivite(){
+    public List<ModificationActivite> getListeModificationActivite(){
         return listeModificationActivite.getListeModificationActivite();
+    }
+    
+    public void ajouterNote(String n){
+        note += n;
     }
     
     public void genererAutomatiquement(){

@@ -30,11 +30,7 @@ public class GrilleCheminement {
     }
     
     private boolean enConflit(Activite activite){
-        for (String grille: grilleActivites){
-            if (activite.getCode() == grille){ 
-                return false;
-            }
-        }
-        return true;
+        //À implémenter
+        return false;
     }
 }

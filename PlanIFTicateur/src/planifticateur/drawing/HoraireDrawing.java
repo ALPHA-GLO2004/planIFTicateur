@@ -4,6 +4,7 @@ import planifticateur.domain.HoraireController;
 import planifticateur.domain.Activite;
 import java.awt.*;
 import java.util.Vector;
+import java.util.List;
 
 public class HoraireDrawing {
     private final HoraireController horaireController;
@@ -28,13 +29,18 @@ public class HoraireDrawing {
         g.fillRect(5, 5, 70, hauteur);
         g.setColor(Color.BLACK);
         g.drawString("cours test", 13, hauteur);
-        
-    /*    Vector<Activite> activites = horaireController.getListeActiviteAPlacer();
-        for (Activite activite: activites){
-            Point activitePoint = activite.getPoint();
-            Color couleur = activite.getCouleur();
-            g.setColor(couleur);
-            g.fillRect((int)activitePoint.getX(), (int)activitePoint.getY(), (int)activite.getDuree() * 35, hauteur);
+        /*
+        if (horaireController.getHoraire() == true){
+            List<Activite> activites = horaireController.getListeActiviteAPlacer();
+            int x = 5;
+            int y = 5;
+            for (Activite activite: activites){
+                //Point activitePoint = activite.getPoint();
+                Color couleur = activite.getCouleur();
+                g.setColor(couleur);
+                g.fillRect(x, y, (int)activite.getDuree() * 35, hauteur);
+                x += 25;
+            }
         }*/
     }
     
@@ -126,5 +132,9 @@ public class HoraireDrawing {
             y1 = 27;
             x += 35;
         }
+    }
+    
+    public HoraireDrawing getHD(){
+        return this;
     }
 }

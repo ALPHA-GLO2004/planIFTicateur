@@ -14,6 +14,7 @@ public class DrawingPanel extends JPanel implements Serializable
   {
     private MainWindow mainWindow;      //fenêtre principal du programme (parent 1er)
     private Dimension initialDimension; //Dimension du panel
+    private HoraireDrawing mainHoraire;
     
     public DrawingPanel(){
         //Constructeur
@@ -43,6 +44,10 @@ public class DrawingPanel extends JPanel implements Serializable
             HoraireDrawing mainHoraire = new HoraireDrawing(mainWindow.horaireController, initialDimension);
             mainHoraire.drawHoraire(g);
         }
+    }
+    
+    public HoraireDrawing getMainHoraire(){
+        return mainHoraire;
     }
     
     public MainWindow getMainWindow(){

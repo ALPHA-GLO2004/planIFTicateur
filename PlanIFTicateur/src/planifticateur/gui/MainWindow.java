@@ -87,16 +87,21 @@ public class MainWindow extends javax.swing.JFrame {
 
         drawingPanel.setBackground(new java.awt.Color(255, 255, 255));
         drawingPanel.setPreferredSize(new java.awt.Dimension(1095, 940));
+        drawingPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                drawingPanelMouseMoved(evt);
+            }
+        });
 
         javax.swing.GroupLayout drawingPanelLayout = new javax.swing.GroupLayout(drawingPanel);
         drawingPanel.setLayout(drawingPanelLayout);
         drawingPanelLayout.setHorizontalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1095, Short.MAX_VALUE)
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 959, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -314,6 +319,43 @@ public class MainWindow extends javax.swing.JFrame {
         //cela utilise un delimiteur pour convertir chaque ligne en "token"
         // voir http://howtodoinjava.com/2013/05/27/parse-csv-files-in-java/
     }//GEN-LAST:event_menuFileNewActionPerformed
+
+    private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
+        //Loop dans le drawing panel - refresh 24x/sec
+        Point point = evt.getPoint();
+        String jour = "";
+        int X = 72;
+        int Y = 27;
+        for (int i = 8; i <= 22; i++){
+            if (point.y >= Y && point.y < Y + 160){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "lundi " + i + "h";
+                }
+            }
+            if (point.y >= Y + 160 + 25 && point.y < Y + 25 + (2*160)){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "mardi " + i + "h";
+                }
+            }
+            if (point.y >= Y + (2*160) + (2*25) && point.y < Y + (2*25) + (3*160)){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "mercredi " + i + "h";
+                }
+            }
+            if (point.y >= Y + (3*160) + (3*25) && point.y < Y + (3*25) + (4*160)){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "jeudi " + i + "h";
+                }
+            }
+            if (point.y >= Y + (4*160) + (4*25) && point.y < Y + (4*25) + (5*160)){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "vendredi " + i + "h";
+                }
+            }            
+            X += 70;
+        }
+        System.out.println(jour);
+    }//GEN-LAST:event_drawingPanelMouseMoved
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane activiteAPlacerContainer;
