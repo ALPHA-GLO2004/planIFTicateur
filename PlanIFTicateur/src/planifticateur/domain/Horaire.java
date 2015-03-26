@@ -77,8 +77,6 @@ public class Horaire {
             if (a.getJourChoisi() == 0 && a.getHeureDebutChoisi() == 0.0f) {
                 listeActiviteAPlacer.add(a);
             }
-            
-
         }
         //pour fichier CHE
         String path = f.getPath();

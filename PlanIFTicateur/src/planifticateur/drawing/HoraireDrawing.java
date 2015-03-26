@@ -23,7 +23,7 @@ public class HoraireDrawing {
     
     //pas sûr de ça --- juste un test
     public void drawActivite(Graphics g){
-        //triangle test
+        //rectangle test
         Font font = new Font("Arial", Font.BOLD, 12);
         g.setColor(Color.ORANGE);
         g.fillRect(5, 5, 70, hauteur);

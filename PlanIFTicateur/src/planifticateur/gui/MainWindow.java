@@ -101,7 +101,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 959, Short.MAX_VALUE)
+            .addGap(0, 940, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
