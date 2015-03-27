@@ -47,6 +47,14 @@ public class HoraireController {
         
     }
     
+    public void moveActivite(Point p){
+        for (Activite a: horaire.getListeActiviteDejaPlacee()){
+            if (a.selectActivite(p) == true){
+                //En construction...
+            }
+        }
+    }
+    
     public String afficherJourHeure(Point point){
         String jour = "";
         int X = 72;
@@ -87,7 +95,7 @@ public class HoraireController {
     }
  
     public String getStats(){
-        return "stats... En attente du fonctionnement des listes";
+        return "stats... En attente du fonctionnement de l'horaire";
         //return horaire.listeActiviteAPlacer.getListeActiviteAPlacer().elementAt(0).getNomActivite();
     }
     

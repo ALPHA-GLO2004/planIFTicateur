@@ -88,6 +88,9 @@ public class MainWindow extends javax.swing.JFrame {
         drawingPanel.setBackground(new java.awt.Color(255, 255, 255));
         drawingPanel.setPreferredSize(new java.awt.Dimension(1095, 940));
         drawingPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                drawingPanelMouseDragged(evt);
+            }
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 drawingPanelMouseMoved(evt);
             }
@@ -330,6 +333,10 @@ public class MainWindow extends javax.swing.JFrame {
         if(horaireController.getValiditeDeLHoraire()==true)  drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
         else drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
     }//GEN-LAST:event_drawingPanelMouseMoved
+
+    private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
+        horaireController.moveActivite(evt.getPoint());
+    }//GEN-LAST:event_drawingPanelMouseDragged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane activiteAPlacerContainer;

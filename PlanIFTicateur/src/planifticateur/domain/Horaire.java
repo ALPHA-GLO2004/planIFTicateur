@@ -17,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.awt.Point;
 
 public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
