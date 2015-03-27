@@ -4,10 +4,12 @@ import java.awt.*;
 import java.util.Vector;
 import java.util.List;
 import java.io.File;
+import planifticateur.gui.MainWindow;
 
 public class HoraireController {
     private Horaire horaire;
     private Dimension initialDimension;
+    private MainWindow mainWindow;
     
     public HoraireController(Horaire horaire){
         this.horaire = horaire;
@@ -43,6 +45,41 @@ public class HoraireController {
     
     public void planificationAuto(){
         
+    }
+    
+    public String afficherJourHeure(Point point){
+        String jour = "";
+        int X = 72;
+        int Y = 27;
+        for (int i = 8; i <= 22; i++){
+            if (point.y >= Y && point.y < Y + 160){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "lundi " + i + "h";
+                }
+            }
+            if (point.y >= Y + 160 + 25 && point.y < Y + 25 + (2*160)){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "mardi " + i + "h";
+                }
+            }
+            if (point.y >= Y + (2*160) + (2*25) && point.y < Y + (2*25) + (3*160)){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "mercredi " + i + "h";
+                }
+            }
+            if (point.y >= Y + (3*160) + (3*25) && point.y < Y + (3*25) + (4*160)){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "jeudi " + i + "h";
+                }
+            }
+            if (point.y >= Y + (4*160) + (4*25) && point.y < Y + (4*25) + (5*160)){
+                if (point.x >= X && point.x < X + 70){
+                    jour = "vendredi " + i + "h";
+                }
+            }            
+            X += 70;
+        }
+        return "Position de la souris: " + jour;
     }
     
     public void note(String n){

@@ -101,7 +101,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGap(0, 997, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -207,17 +207,19 @@ public class MainWindow extends javax.swing.JFrame {
 
         logMsgTextArea.setEditable(false);
         logMsgTextArea.setColumns(20);
+        logMsgTextArea.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         logMsgTextArea.setRows(5);
         logMsgTextArea.setText("log\n--------------------------------\nmsg d'erreur");
         logMsgTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        logMsgTextArea.setMinimumSize(new java.awt.Dimension(258, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 50.0;
+        gridBagConstraints.weighty = 0.5;
         mainPanel.add(logMsgTextArea, gridBagConstraints);
 
         menuFile.setText("Fichier");
@@ -322,43 +324,11 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
         //Loop dans le drawing panel - refresh 24x/sec
-        Point point = evt.getPoint();
-        String jour = "";
-        int X = 72;
-        int Y = 27;
-        for (int i = 8; i <= 22; i++){
-            if (point.y >= Y && point.y < Y + 160){
-                if (point.x >= X && point.x < X + 70){
-                    jour = "lundi " + i + "h";
-                }
-            }
-            if (point.y >= Y + 160 + 25 && point.y < Y + 25 + (2*160)){
-                if (point.x >= X && point.x < X + 70){
-                    jour = "mardi " + i + "h";
-                }
-            }
-            if (point.y >= Y + (2*160) + (2*25) && point.y < Y + (2*25) + (3*160)){
-                if (point.x >= X && point.x < X + 70){
-                    jour = "mercredi " + i + "h";
-                }
-            }
-            if (point.y >= Y + (3*160) + (3*25) && point.y < Y + (3*25) + (4*160)){
-                if (point.x >= X && point.x < X + 70){
-                    jour = "jeudi " + i + "h";
-                }
-            }
-            if (point.y >= Y + (4*160) + (4*25) && point.y < Y + (4*25) + (5*160)){
-                if (point.x >= X && point.x < X + 70){
-                    jour = "vendredi " + i + "h";
-                }
-            }            
-            X += 70;
-        }
+        logMsgTextArea.setText(horaireController.afficherJourHeure(evt.getPoint())); 
+
         //ajustement de la couleur de la bordure. ne marche pas encore
         if(horaireController.getValiditeDeLHoraire()==true)  drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
         else drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-        
-        System.out.println(jour);
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
