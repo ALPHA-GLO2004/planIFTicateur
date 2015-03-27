@@ -97,5 +97,9 @@ public class HoraireController {
     public Dimension getDimension(){
         return initialDimension;
     }
+    
+    public boolean getValiditeDeLHoraire(){
+        return horaire.horaireEstValide();
+    }
     //et ainsi de suite...
 }

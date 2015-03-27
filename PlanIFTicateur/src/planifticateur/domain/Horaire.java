@@ -143,7 +143,38 @@ public class Horaire {
         note += n;
     }
     
+    
+     public boolean horaireEstValide(){
+      
+
+        Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
+        float heure;
+         for(int i = 0; i < activiteDejaPlacee.size(); i++)
+        {
+             heure = activiteDejaPlacee.elementAt(i).getHeureDebutChoisi();
+             
+            //heure de debut non valide
+               if( heure< activiteDejaPlacee.elementAt(i).getHeureDebutMin())
+                   return false;
+            
+               if(heure > activiteDejaPlacee.elementAt(i).getHeureDebutMax())
+                   return false; 
+               
+               if( heure + activiteDejaPlacee.elementAt(i).getDuree()  > activiteDejaPlacee.elementAt(i).getHeureFinMax() )
+                   return false;    
+
+           //respecte la grille de cheminement ?? strategie a discuter :)
+               
+               
+               
+        }
+         return true;
+    }
+        
+        
     public void genererAutomatiquement(){
         //En attente d'un bon algorithme
     }
+    
+
 }

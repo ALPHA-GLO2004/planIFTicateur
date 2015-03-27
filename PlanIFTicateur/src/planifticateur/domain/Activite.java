@@ -110,6 +110,16 @@ public class Activite {
         return duree;
     }
     
+    public float getHeureDebutMin(){
+        return heureDebutMin;
+    }
+    public float getHeureDebutMax(){
+        return heureDebutMax;
+    }
+    public float getHeureFinMax(){
+        return heureFinMax;
+    }
+    
     public String getCode(){
         return code;
     }

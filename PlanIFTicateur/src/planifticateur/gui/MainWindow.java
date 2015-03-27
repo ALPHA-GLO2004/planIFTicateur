@@ -354,6 +354,10 @@ public class MainWindow extends javax.swing.JFrame {
             }            
             X += 70;
         }
+        //ajustement de la couleur de la bordure. ne marche pas encore
+        if(horaireController.getValiditeDeLHoraire()==true)  drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+        else drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+        
         System.out.println(jour);
     }//GEN-LAST:event_drawingPanelMouseMoved
 
