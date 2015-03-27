@@ -66,9 +66,19 @@ public class Horaire {
         listeActivite.remove(0); //On retire la premiere ligne
         
         //Pour chaque ligne lue, on l'ajoute dans une liste pour éventuellement créer les activités
+        //a valider!!!!!!
+        //on verifie si l'activite possede un attribut jour et heure et on l'ajoute a la liste approprie.
         for (String elementActivite: listeActivite){
             Activite a = new Activite(elementActivite);
-            listeActiviteAPlacer.add(a);
+           // listeActiviteAPlacer.add(a);
+            if (a.getJourChoisi() != 0 && a.getHeureDebutChoisi() != 0.0f) {
+                listeActiviteDejaPlacee.add(a);
+            }
+            if (a.getJourChoisi() == 0 && a.getHeureDebutChoisi() == 0.0f) {
+                listeActiviteAPlacer.add(a);
+            }
+            
+
         }
         //pour fichier CHE
         String path = f.getPath();

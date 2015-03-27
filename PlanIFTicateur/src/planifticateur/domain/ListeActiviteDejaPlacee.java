@@ -17,6 +17,14 @@ public class ListeActiviteDejaPlacee {
                 activiteDejaPlaceeListe.add(activite);
             }
         }*/
+                //test Phil
+        //for (Activite activite: activiteDejaPlaceeListe) {
+          //  if (activite.getJourChoisi() != 0 && activite.getHeureDebutChoisi() != 0.0f) {
+          //      activiteDejaPlaceeListe.add(activite);
+          //  }
+        //On peux simplement creer une nouvelle liste, et lors de la generation des activites, on verifie si l'activite est placer, 
+        //et en fonction de cela, elle est envoyer dans une des deux liste.
+        activiteDejaPlaceeListe = new Vector<Activite>();
     }
     
     //Ajoute une activité à la liste déjà placées
