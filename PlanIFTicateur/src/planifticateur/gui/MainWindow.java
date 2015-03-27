@@ -312,17 +312,11 @@ public class MainWindow extends javax.swing.JFrame {
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
         //Fonction permettant à l'utilisateur de saisir un fichier via menu "choose from"
         //et faire un appel au contrôleur afin de procéder à la reconstitution de l'horaire.
-        String fichierCHE;
         JFileChooser selecteurFichier = new JFileChooser();
-        int returnVal = selecteurFichier.showOpenDialog(MainWindow.this);
+        selecteurFichier.showOpenDialog(MainWindow.this);
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        File fichier1 = selecteurFichier.getSelectedFile();
-        // Apres la selection du premier fichier, on doit ouvrir le CHE sans demander a l'utilisateur
-        horaireController.chargerHoraire(fichier1);
-        
-        // pour la lecture du fichier, on peut utiliser java.util.Scanner
-        //cela utilise un delimiteur pour convertir chaque ligne en "token"
-        // voir http://howtodoinjava.com/2013/05/27/parse-csv-files-in-java/
+        // On shoot le fileSelection à la fonction approprié du controller
+        horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
