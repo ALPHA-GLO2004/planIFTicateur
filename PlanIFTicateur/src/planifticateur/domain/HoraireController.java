@@ -55,6 +55,11 @@ public class HoraireController {
         }
     }
     
+    public void modifierPointActivite(Point p){
+        //code pour modifier le point d'une activité ssi le déplacement est valide
+        //(vers fonction qui va faire ça)
+    }
+    
     public String afficherJourHeure(Point point){
         String jour = "";
         int X = 72;

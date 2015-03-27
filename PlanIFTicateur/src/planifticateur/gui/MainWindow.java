@@ -95,6 +95,11 @@ public class MainWindow extends javax.swing.JFrame {
                 drawingPanelMouseMoved(evt);
             }
         });
+        drawingPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                drawingPanelMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout drawingPanelLayout = new javax.swing.GroupLayout(drawingPanel);
         drawingPanel.setLayout(drawingPanelLayout);
@@ -320,7 +325,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
-        //Loop dans le drawing panel - refresh 24x/sec
+        //affichage du jour et heure dans barre d'état
         logMsgTextArea.setText(horaireController.afficherJourHeure(evt.getPoint())); 
 
         //ajustement de la couleur de la bordure. ne marche pas encore
@@ -330,7 +335,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
         horaireController.moveActivite(evt.getPoint());
+        repaint();
     }//GEN-LAST:event_drawingPanelMouseDragged
+
+    private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
+        horaireController.modifierPointActivite(evt.getPoint());
+    }//GEN-LAST:event_drawingPanelMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane activiteAPlacerContainer;

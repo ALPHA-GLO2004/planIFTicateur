@@ -81,10 +81,8 @@ public class Activite {
     }
     
     public boolean selectActivite(Point mousePoint){
-        if ((mousePoint.x >= ((this.getPoint().x) - (this.getDuree()/2*35))) &&
-            (mousePoint.x <= ((this.getPoint().x) + (this.getDuree()/2*35))) &&
-            (mousePoint.y <= (this.getPoint().y + 10)) &&
-            (mousePoint.y <= (this.getPoint().y + 10))){
+        if ((mousePoint.x >= ((this.getPoint().x) - (this.getDuree()/2*35))) && (mousePoint.x <= ((this.getPoint().x) + (this.getDuree()/2*35))) &&
+            (mousePoint.y >= (this.getPoint().y - 10)) && (mousePoint.y <= (this.getPoint().y + 10))){
                 return true;
             }
         else{
