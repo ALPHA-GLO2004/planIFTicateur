@@ -119,7 +119,22 @@ public class Horaire {
             valide = false;
         }
     }
-   
+    
+    //retourne les grilles de cheminement ou il ya l'activité
+    private Vector<GrilleCheminement> getListeGrillesDeLactivite(String nomAvtivite){
+
+        Vector<GrilleCheminement> listeARetourner ;
+        listeARetourner = new Vector<GrilleCheminement>();
+        
+        Vector<GrilleCheminement> listeComplete = listeGrilleCh.getListeGrilleCh();
+        for(int i=0;i<listeComplete.size();i++)
+            {
+               if( listeComplete.elementAt(i).activiteEstDansGrille(nomAvtivite) )
+                       listeARetourner.add(listeComplete.elementAt(i));
+            }
+        return listeARetourner ;
+    }
+        
     public List<Activite> getListeActiviteAPlacer(){
         return listeActiviteAPlacer.getListeActiviteAPlacer();
     }
@@ -145,16 +160,19 @@ public class Horaire {
     }
     
     
+    //algorithme force brute pour l'instant.
      public boolean horaireEstValide(){
       
-
+        Vector<GrilleCheminement> grillesChDUneActivite ;
+        Vector<String> stringDUneGrille ;
         Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
         float heure;
+        
          for(int i = 0; i < activiteDejaPlacee.size(); i++)
         {
              heure = activiteDejaPlacee.elementAt(i).getHeureDebutChoisi();
              
-            //heure de debut non valide
+            //plage horaire valide ?
                if( heure< activiteDejaPlacee.elementAt(i).getHeureDebutMin())
                    return false;
             
@@ -164,11 +182,30 @@ public class Horaire {
                if( heure + activiteDejaPlacee.elementAt(i).getDuree()  > activiteDejaPlacee.elementAt(i).getHeureFinMax() )
                    return false;    
 
-           //respecte la grille de cheminement ?? strategie a discuter :)
+               //respecte les grilles de cheminement ?
+               //On verifie si un cours lié se donne en meme tps
+               grillesChDUneActivite =   getListeGrillesDeLactivite(activiteDejaPlacee.elementAt(i).getNomActivite());
                
+               for(int j=0;j<grillesChDUneActivite.size();j++)
+               {
+                   stringDUneGrille = grillesChDUneActivite.elementAt(i).getListeDesNoms() ;
+                   
+                   for(int k=0 ; k< stringDUneGrille.size(); k++)
+                   {
+                       if(! stringDUneGrille.elementAt(i).equals(activiteDejaPlacee.elementAt(i).getNomActivite()))
+                       {
+                           if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i)) ) 
+                               return false;
+                       }
+                   }
+    
+               }
                
                
         }
+         
+         
+         //tout est correct
          return true;
     }
         

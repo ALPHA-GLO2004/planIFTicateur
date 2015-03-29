@@ -55,4 +55,15 @@ public class ListeActiviteDejaPlacee {
     public int getNumberOfActivite(){
         return activiteDejaPlaceeListe.size();
     }
+    
+    public boolean activiteEstEllePlacee(String nomActivite){
+        
+        for(int i=0;i<activiteDejaPlaceeListe.size();i++)
+        {
+            if( activiteDejaPlaceeListe.elementAt(i).getNomActivite().equals(nomActivite))
+                return true;
+        }
+        
+        return false;
+    }
 }

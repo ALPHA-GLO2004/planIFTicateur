@@ -33,4 +33,14 @@ public class GrilleCheminement {
         //À implémenter
         return false;
     }
+    
+     public boolean activiteEstDansGrille(String nomActivite){
+       
+         return grilleActivites.contains(nomActivite);
+    }
+     
+    public Vector<String> getListeDesNoms(){
+       
+         return grilleActivites;
+    }
 }
