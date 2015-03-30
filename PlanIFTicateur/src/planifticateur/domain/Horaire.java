@@ -25,6 +25,7 @@ public class Horaire {
     String fichierCHE;
     private List<String> listeActivite = new ArrayList<String>();
     private List<String> listeGrille = new ArrayList<String>();
+    private Vector<Activite> listeActiviteComplete = new Vector<Activite>();
     private String note = "";
     //
     boolean valide;
@@ -71,7 +72,7 @@ public class Horaire {
         //on verifie si l'activite possede un attribut jour et heure et on l'ajoute a la liste approprie.
         for (String elementActivite: listeActivite){
             Activite a = new Activite(elementActivite);
-           // listeActiviteAPlacer.add(a);
+            listeActiviteComplete.addElement(a);
             if (a.getJourChoisi() != 0 && a.getHeureDebutChoisi() != 0.0f) {
                 listeActiviteDejaPlacee.add(a);
             }
@@ -156,6 +157,10 @@ public class Horaire {
         return listeModificationActivite.getListeModificationActivite();
     }
     
+    public List<Activite> getListeActiviteComplete(){
+        return listeActiviteComplete;
+    }
+    
     public void ajouterNote(String n){
         note += n;
     }
@@ -170,48 +175,63 @@ public class Horaire {
         float heure;
 
         
-         for(Activite activite : activiteDejaPlacee)
+        for(Activite activite : activiteDejaPlacee)
         {
-             heure = activite.getHeureDebutChoisi();
+            heure = activite.getHeureDebutChoisi();
              
             //plage horaire valide ?
-               if( heure< activite.getHeureDebutMin())
-                   return false;
+                if( heure< activite.getHeureDebutMin())
+                    return false;
             
-               if(heure > activite.getHeureDebutMax())
-                   return false; 
+                if(heure > activite.getHeureDebutMax())
+                    return false; 
                
-               if( heure + activite.getDuree()  > activite.getHeureFinMax() )
-                   return false;    
+                if( heure + activite.getDuree()  > activite.getHeureFinMax() )
+                    return false;    
 
-               //respecte les grilles de cheminement ?
-               //On verifie si un cours lié se donne en meme tps
-               grillesChDUneActivite =   getListeGrillesDeLactivite(activite.getNomActivite());
+                //respecte les grilles de cheminement ?
+                //On verifie si un cours lié se donne en meme tps
+                grillesChDUneActivite =   getListeGrillesDeLactivite(activite.getNomActivite());
                
-               for(GrilleCheminement grille : grillesChDUneActivite )
-               {
-                   stringDUneGrille = grille.getListeDesNoms() ;
+                for(GrilleCheminement grille : grillesChDUneActivite )
+                {
+                    stringDUneGrille = grille.getListeDesNoms() ;
                    
-                   for(int i=0 ; i< stringDUneGrille.size();i++)
-                   {
-                       if(! stringDUneGrille.elementAt(i).equals(activite.getNomActivite()))
-                       {
+                    for(int i=0 ; i< stringDUneGrille.size();i++)
+                    {
+                        if(! stringDUneGrille.elementAt(i).equals(activite.getNomActivite()))
+                        {
                            if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i)) ) 
                                return false;
-                       }
-                   }
+                        }
+                    }
     
-               }
+                }
                
                
         }
          
          
-         //tout est correct
-         return true;
+        //tout est correct
+        return true;
     }
         
-        
+    public void switchSelection(Point p){
+        for (Activite a: this.listeActiviteComplete){
+            if (a.getPoint().equals(p)){
+                a.switchSelection();
+            }
+        }
+    }
+    
+    public void updateSelectedItemsPositions(Point delta){
+        for (Activite a: this.getListeActiviteComplete()){
+            if (a.isSelected()){
+                a.translate(delta);
+            }
+        }
+    }
+    
     public void genererAutomatiquement(){
         //En attente d'un bon algorithme
     }

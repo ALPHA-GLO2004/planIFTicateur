@@ -55,9 +55,17 @@ public class HoraireController {
         }
     }
     
+    public void updateSelectedItemsPositions(Point delta){
+        horaire.updateSelectedItemsPositions(delta);
+    }
+    
     public void modifierPointActivite(Point p){
         //code pour modifier le point d'une activité ssi le déplacement est valide
         //(vers fonction qui va faire ça)
+    }
+    
+    public void switchSelection(Point p){
+        horaire.switchSelection(p);
     }
     
     public String afficherJourHeure(Point point){
@@ -139,6 +147,10 @@ public class HoraireController {
     
     public List<ModificationActivite> getListeModificationActivite(){
         return horaire.getListeModificationActivite();
+    }
+    
+    public List<Activite> getListeActiviteComplete(){
+        return horaire.getListeActiviteComplete();
     }
     
     public void msgErreur(){

@@ -10,7 +10,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
-    Dimension initialDimension;
+    public Dimension initialDimension;
+    public Point actualMousePoint;
+    public Point delta;
     
     public MainWindow() {
         int width = (int) ((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width));
@@ -31,13 +33,12 @@ public class MainWindow extends javax.swing.JFrame {
         validationAutoCheckBox = new javax.swing.JCheckBox();
         drawingPanelContainer = new javax.swing.JScrollPane();
         drawingPanel = new planifticateur.gui.DrawingPanel(this);
-        activiteAPlacerContainer = new javax.swing.JScrollPane();
-        drawingActivitePanel = new planifticateur.gui.DrawingActivitePanel(this);
+        logMsgTextArea = new javax.swing.JTextArea();
+        buttonPanel = new javax.swing.JPanel();
         planificationAutomatiqueButton = new javax.swing.JButton();
         statistiquesButton = new javax.swing.JButton();
         noteButton = new javax.swing.JButton();
         quitterButton = new javax.swing.JButton();
-        logMsgTextArea = new javax.swing.JTextArea();
         topMenuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuFileNew = new javax.swing.JMenuItem();
@@ -65,7 +66,6 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weighty = 1.0;
         mainPanel.add(titreFichierLabel, gridBagConstraints);
         titreFichierLabel.getAccessibleContext().setAccessibleName("nomFichier");
 
@@ -78,15 +78,13 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         mainPanel.add(validationAutoCheckBox, gridBagConstraints);
 
         drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-        drawingPanelContainer.setPreferredSize(new java.awt.Dimension(500, 500));
+        drawingPanelContainer.setPreferredSize(new java.awt.Dimension(800, 550));
 
         drawingPanel.setBackground(new java.awt.Color(255, 255, 255));
-        drawingPanel.setPreferredSize(new java.awt.Dimension(1095, 940));
         drawingPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 drawingPanelMouseDragged(evt);
@@ -96,6 +94,9 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         drawingPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                drawingPanelMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 drawingPanelMouseReleased(evt);
             }
@@ -105,11 +106,11 @@ public class MainWindow extends javax.swing.JFrame {
         drawingPanel.setLayout(drawingPanelLayout);
         drawingPanelLayout.setHorizontalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1095, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 997, Short.MAX_VALUE)
+            .addGap(0, 1221, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -117,101 +118,12 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 800;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 500.0;
-        gridBagConstraints.weighty = 400.0;
         mainPanel.add(drawingPanelContainer, gridBagConstraints);
-
-        activiteAPlacerContainer.setPreferredSize(new java.awt.Dimension(300, 400));
-
-        drawingActivitePanel.setPreferredSize(new java.awt.Dimension(1095, 950));
-
-        javax.swing.GroupLayout drawingActivitePanelLayout = new javax.swing.GroupLayout(drawingActivitePanel);
-        drawingActivitePanel.setLayout(drawingActivitePanelLayout);
-        drawingActivitePanelLayout.setHorizontalGroup(
-            drawingActivitePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1095, Short.MAX_VALUE)
-        );
-        drawingActivitePanelLayout.setVerticalGroup(
-            drawingActivitePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
-        );
-
-        activiteAPlacerContainer.setViewportView(drawingActivitePanel);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 200.0;
-        gridBagConstraints.weighty = 400.0;
-        mainPanel.add(activiteAPlacerContainer, gridBagConstraints);
-
-        planificationAutomatiqueButton.setText("Planification automatique");
-        planificationAutomatiqueButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                planificationAutomatiqueButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 30);
-        mainPanel.add(planificationAutomatiqueButton, gridBagConstraints);
-
-        statistiquesButton.setText("Statistiques");
-        statistiquesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statistiquesButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 30, 5, 30);
-        mainPanel.add(statistiquesButton, gridBagConstraints);
-
-        noteButton.setText("Notes");
-        noteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noteButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 30, 5, 30);
-        mainPanel.add(noteButton, gridBagConstraints);
-
-        quitterButton.setText("Quitter");
-        quitterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quitterButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 30, 5, 30);
-        mainPanel.add(quitterButton, gridBagConstraints);
 
         logMsgTextArea.setEditable(false);
         logMsgTextArea.setColumns(20);
@@ -225,10 +137,82 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.5;
+        gridBagConstraints.weighty = 1.0;
         mainPanel.add(logMsgTextArea, gridBagConstraints);
+
+        buttonPanel.setLayout(new java.awt.GridBagLayout());
+
+        planificationAutomatiqueButton.setText("Planification automatique");
+        planificationAutomatiqueButton.setPreferredSize(new java.awt.Dimension(200, 23));
+        planificationAutomatiqueButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                planificationAutomatiqueButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 3);
+        buttonPanel.add(planificationAutomatiqueButton, gridBagConstraints);
+
+        statistiquesButton.setText("Statistiques");
+        statistiquesButton.setPreferredSize(new java.awt.Dimension(200, 23));
+        statistiquesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statistiquesButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
+        buttonPanel.add(statistiquesButton, gridBagConstraints);
+
+        noteButton.setText("Notes");
+        noteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noteButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
+        buttonPanel.add(noteButton, gridBagConstraints);
+
+        quitterButton.setText("Quitter");
+        quitterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitterButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 5);
+        buttonPanel.add(quitterButton, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 5;
+        mainPanel.add(buttonPanel, gridBagConstraints);
 
         menuFile.setText("Fichier");
 
@@ -285,7 +269,7 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1162, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1307, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -335,16 +319,25 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
         horaireController.moveActivite(evt.getPoint());
-        repaint();
+            delta.setLocation((evt.getX() - this.actualMousePoint.x),(evt.getY() - this.actualMousePoint.y));
+            this.horaireController.updateSelectedItemsPositions(delta);
+            this.actualMousePoint = evt.getPoint();
+            drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseDragged
 
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         horaireController.modifierPointActivite(evt.getPoint());
     }//GEN-LAST:event_drawingPanelMouseReleased
 
+    private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
+        Point mousePoint = evt.getPoint();
+        this.actualMousePoint = mousePoint;
+        horaireController.switchSelection(mousePoint);
+        drawingPanel.repaint();
+    }//GEN-LAST:event_drawingPanelMousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane activiteAPlacerContainer;
-    private planifticateur.gui.DrawingActivitePanel drawingActivitePanel;
+    private javax.swing.JPanel buttonPanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
     private javax.swing.JScrollPane drawingPanelContainer;
     private javax.swing.JTextArea logMsgTextArea;

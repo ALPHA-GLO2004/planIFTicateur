@@ -29,7 +29,7 @@ public class Activite {
     private int jourChoisi;
     private float duree;
     private Point point; //remplace rectangle
-//    Rectangle rectangle; //Utilité du rectangle ?
+    private boolean selectStatus = false;
     
     public Activite(String activite){ //to be modified :/
         //Constructeur
@@ -134,4 +134,16 @@ public class Activite {
         return code;
     }
     
+    public void translate(Point delta){
+        this.point.x = (int)(this.point.x + delta.x);
+        this.point.y = (int)(this.point.y + delta.y);
+    }
+    
+    public void switchSelection(){
+        this.selectStatus = !this.selectStatus;
+    }
+    
+    public boolean isSelected(){
+        return selectStatus;
+    }
 }

@@ -23,35 +23,31 @@ public class HoraireDrawing {
     
     //pas sûr de ça --- juste un test
     public void drawActivite(Graphics g){
-        //rectangle test
+        /*//rectangle test
         Font font = new Font("Arial", Font.BOLD, 12);
         g.setColor(Color.ORANGE);
         g.fillRect(5, 5, 70, hauteur);
         g.setColor(Color.BLACK);
-        g.drawString("cours test", 13, hauteur);
-        /*
+        g.drawString("cours test", 13, hauteur);*/
+        
         if (horaireController.getHoraire() == true){
-            List<Activite> activites = horaireController.getListeActiviteAPlacer();
-            int x = 5;
-            int y = 5;
-            for (Activite activite: activites){
-                //Point activitePoint = activite.getPoint();
-                Color couleur = activite.getCouleur();
-                g.setColor(couleur);
-                g.fillRect(x, y, (int)activite.getDuree() * 35, hauteur);
-                x += 25;
+            List<Activite> activites = horaireController.getListeActiviteComplete();
+            for (Activite a: activites){
+                if (a.isSelected()){
+                g.setColor(a.getCouleur());
+                g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * 35, hauteur);
+                }
             }
-        }*/
+        }
     }
     
     public void drawHoraire(Graphics g){
         //Code test --- en attendant
-        int width = 1086;
-        int height = 927;
+        int width = initialDimension.width*3/4;
+        int height = initialDimension.height*3/4;
         int s = 2;
         int x = 72;
         int y1 = 2; //utile pour barres verticales pour séparation heures et jour
-        
         Font font = new Font("Arial", Font.BOLD, 12);
         
         Graphics2D g2 = (Graphics2D) g;
@@ -132,9 +128,5 @@ public class HoraireDrawing {
             y1 = 27;
             x += 35;
         }
-    }
-    
-    public HoraireDrawing getHD(){
-        return this;
     }
 }
