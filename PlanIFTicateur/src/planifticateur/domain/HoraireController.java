@@ -9,7 +9,7 @@ import planifticateur.gui.MainWindow;
 public class HoraireController {
     private Horaire horaire;
     private Dimension initialDimension;
-    private MainWindow mainWindow;
+    private MainWindow mainWindow;  
     
     public HoraireController(Horaire horaire){
         this.horaire = horaire;
@@ -70,37 +70,41 @@ public class HoraireController {
     
     public String afficherJourHeure(Point point){
         String jour = "";
-        int X = 72;
+        int width = mainWindow.initialDimension.width;
+        int caseJourWidth = width/16;
+        int saut = (width -caseJourWidth)/30;
+        int height = mainWindow.initialDimension.height;
+        
         int Y = 27;
         for (int i = 8; i <= 22; i++){
             if (point.y >= Y && point.y < Y + 160){
-                if (point.x >= X && point.x < X + 70){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
                     jour = "lundi " + i + "h";
                 }
             }
             if (point.y >= Y + 160 + 25 && point.y < Y + 25 + (2*160)){
-                if (point.x >= X && point.x < X + 70){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
                     jour = "mardi " + i + "h";
                 }
             }
             if (point.y >= Y + (2*160) + (2*25) && point.y < Y + (2*25) + (3*160)){
-                if (point.x >= X && point.x < X + 70){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
                     jour = "mercredi " + i + "h";
                 }
             }
             if (point.y >= Y + (3*160) + (3*25) && point.y < Y + (3*25) + (4*160)){
-                if (point.x >= X && point.x < X + 70){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
                     jour = "jeudi " + i + "h";
                 }
             }
             if (point.y >= Y + (4*160) + (4*25) && point.y < Y + (4*25) + (5*160)){
-                if (point.x >= X && point.x < X + 70){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
                     jour = "vendredi " + i + "h";
                 }
             }            
-            X += 70;
+            caseJourWidth += 2*saut;
         }
-        return "Position de la souris: " + jour;
+        return "Position de la souris: " + width;
     }
     
     public void note(String n){

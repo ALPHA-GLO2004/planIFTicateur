@@ -43,11 +43,11 @@ public class HoraireDrawing {
     
     public void drawHoraire(Graphics g){
         //Code test --- en attendant
-        int width = initialDimension.width*3/4;
-        int height = initialDimension.height*3/4;
-        int s = 2;
-        int x = 72;
-        int y1 = 2; //utile pour barres verticales pour séparation heures et jour
+        int width = initialDimension.width *3/4;
+        int height = initialDimension.height;
+        int caseJourHeight = height / 5;
+        int caseJourWidth = width / 16;
+        int caseHeureHeight = caseJourHeight / 9;
         Font font = new Font("Arial", Font.BOLD, 12);
         
         Graphics2D g2 = (Graphics2D) g;
@@ -56,77 +56,76 @@ public class HoraireDrawing {
         g2.setColor(Color.BLACK);
         g2.setStroke(new BasicStroke(1));
         
+        g2.drawLine(caseJourWidth, caseHeureHeight, width, caseHeureHeight);
         for (int i = 1; i <= 5; i++){
-            g2.drawLine(2, s, width, s);
-            g2.drawLine(72, s+25, width, s+25);
-            s += 185;
+            g2.drawLine(0, caseJourHeight*i, width, caseJourHeight*i);
+            g2.drawLine(caseJourWidth, caseJourHeight*i+caseHeureHeight, width, caseJourHeight*i+caseHeureHeight);
         }
-        g2.drawLine(2, s, width, s);
         
-        //lignes verticales --- noires
-        g2.drawLine(2, 2, 2, 927);
-        g2.drawLine(72, 2, 72, 927);
-        g2.drawLine(1086, 2, 1086, 927);
+        //ligne verticale --- noire
+        g2.drawLine(caseJourWidth, 0, caseJourWidth, height);
         
         //loop pour les petites lignes de l'entête de chaque journée
+        int x = caseJourWidth;
+        int saut = (width - caseJourWidth)/ 30;
         
         while (x <= width){
-            g2.drawLine(x, y1, x, y1+25);
-            g2.drawLine(x, y1+185, x, y1+210);
-            g2.drawLine(x, y1+370, x, y1+395);
-            g2.drawLine(x, y1+555, x, y1+580);
-            g2.drawLine(x, y1+740, x, y1+765);
-            x += 35;
+            g2.drawLine(x, 0, x, caseHeureHeight);
+            g2.drawLine(x, caseJourHeight, x, caseJourHeight+caseHeureHeight);
+            g2.drawLine(x, caseJourHeight*2, x, 2*caseJourHeight+caseHeureHeight);
+            g2.drawLine(x, caseJourHeight*3, x, 3*caseJourHeight+caseHeureHeight);
+            g2.drawLine(x, caseJourHeight*4, x, 4*caseJourHeight+caseHeureHeight);
+            x += saut;
         }
-        y1 = 100; //On reset le y1 pour les journées
+        
         g2.setFont(font); //police de caractère
         //loop pour afficher les string de jour
-        g2.drawString("Lundi", 20, y1);
-        g2.drawString("Mardi", 20, y1+185);
-        g2.drawString("Mercredi", 13, y1+370);
-        g2.drawString("Jeudi", 20, y1+555);
-        g2.drawString("Vendredi", 13, y1+740);
+        g2.drawString("Lundi", caseJourWidth /4, caseJourHeight /2);
+        g2.drawString("Mardi", caseJourWidth /4, (2*caseJourHeight)-caseJourHeight /2);
+        g2.drawString("Mercredi", caseJourWidth /4, 3*caseJourHeight -caseJourHeight /2);
+        g2.drawString("Jeudi", caseJourWidth /4, 4*caseJourHeight -caseJourHeight /2);
+        g2.drawString("Vendredi", caseJourWidth /4, 5*caseJourHeight -caseJourHeight /2);
         
-        x = 79; //On prépare le x pour les heures
-        y1 = 18; //On reset le y1 pour les heures
+        x = caseJourWidth;
         //loop pour indiquer les heures dans l'entête de chaque journée
         for (int i = 8; i <= 22; i++){
-            g2.drawString(i + "h", x, y1);
-            g2.drawString(i + "h", x, y1+185);
-            g2.drawString(i + "h", x, y1+370);
-            g2.drawString(i + "h", x, y1+555);
-            g2.drawString(i + "h", x, y1+740);
-            x += 70;
+            g2.drawString(i + "h", x + (saut / 3), caseHeureHeight*2/3);
+            g2.drawString(i + "h", x + (saut / 3), caseJourHeight + caseHeureHeight*2/3);
+            g2.drawString(i + "h", x + (saut / 3), 2*caseJourHeight + caseHeureHeight*2/3);
+            g2.drawString(i + "h", x + (saut / 3), 3*caseJourHeight + caseHeureHeight*2/3);
+            g2.drawString(i + "h", x + (saut / 3), 4*caseJourHeight + caseHeureHeight*2/3);
+            x += saut * 2;
         }
         
         //lignes horizontales pointillées --- grises
         Stroke dashed = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{3}, 0);
         g2.setStroke(dashed);
         g2.setColor(Color.GRAY);
-        s = 47;
+        int y = 2*caseHeureHeight;
+        
         for (int i = 1; i <= 5; i++){
             for (int j = 1; j <= 7; j++){
-                g2.drawLine(72, s, width, s);
-                s += 20;
+                g2.drawLine(caseJourWidth, y, width, y);
+                y += caseHeureHeight;
             }
-            s += 45;
+            y += 2*caseHeureHeight;
         }
         
-        x = 107; //reset x pour lignes vert.
-        y1 = 27; //reset y1 pour lignes vert.
+        x = caseJourWidth + saut;
+        y = caseJourHeight;
         //loop pour les lignes pointillées verticales
         while (x < width){
-            g2.drawLine(x, y1, x, y1+160);
-            y1 += 185;
-            g2.drawLine(x, y1, x, y1+160);
-            y1 += 185;
-            g2.drawLine(x, y1, x, y1+160);
-            y1 += 185;
-            g2.drawLine(x, y1, x, y1+160);
-            y1 += 185;
-            g2.drawLine(x, y1, x, y1+160);
-            y1 = 27;
-            x += 35;
+            g2.drawLine(x, caseHeureHeight, x, y);
+            y += caseJourHeight;
+            g2.drawLine(x, y - caseJourHeight + caseHeureHeight, x, y);
+            y += caseJourHeight;
+            g2.drawLine(x, y - caseJourHeight + caseHeureHeight, x, y);
+            y += caseJourHeight;
+            g2.drawLine(x, y - caseJourHeight + caseHeureHeight, x, y);
+            y += caseJourHeight;
+            g2.drawLine(x, y - caseJourHeight + caseHeureHeight, x, y);
+            y = caseJourHeight;
+            x += saut;
         }
     }
 }

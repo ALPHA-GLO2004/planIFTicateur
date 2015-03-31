@@ -23,8 +23,10 @@ public class DrawingPanel extends JPanel implements Serializable
     public DrawingPanel(MainWindow mainWindow){
         //Constructeur avec frame principal en paramètre
         this.mainWindow = mainWindow;
-        this.initialDimension = mainWindow.initialDimension;
-        setPreferredSize(mainWindow.initialDimension);
+        int width = mainWindow.initialDimension.width;
+        int height = mainWindow.initialDimension.height *3 /4;
+        this.initialDimension = new Dimension(width, height);
+        setPreferredSize(this.initialDimension);
         setVisible(true);
     }
     
