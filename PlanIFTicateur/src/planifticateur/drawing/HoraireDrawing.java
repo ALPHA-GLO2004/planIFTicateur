@@ -2,8 +2,8 @@
 package planifticateur.drawing;
 import planifticateur.domain.HoraireController;
 import planifticateur.domain.Activite;
+import planifticateur.gui.DrawingPanel;
 import java.awt.*;
-import java.util.Vector;
 import java.util.List;
 
 public class HoraireDrawing {
@@ -127,5 +127,45 @@ public class HoraireDrawing {
             y = caseJourHeight;
             x += saut;
         }
+    }
+    
+    public String afficherJourHeure(Point point){
+        String jour = "";
+        int width = this.initialDimension.width *3/4;
+        int caseJourWidth = width / 16;
+        int saut = (width - caseJourWidth)/30;
+        int height = this.initialDimension.height;
+        int caseJourHeight = height / 5;
+        int caseHeureHeight = caseJourHeight / 9;
+        
+        for (int i = 8; i <= 22; i++){
+            if (point.y >= caseHeureHeight && point.y < caseJourHeight){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
+                    jour = "lundi " + i + "h";
+                }
+            }
+            if (point.y >= caseJourHeight + caseHeureHeight && point.y < 2*caseJourHeight){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
+                    jour = "mardi " + i + "h";
+                }
+            }
+            if (point.y >= 2*caseJourHeight + caseHeureHeight && point.y < 3*caseJourHeight){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
+                    jour = "mercredi " + i + "h";
+                }
+            }
+            if (point.y >= 3*caseJourHeight + caseHeureHeight && point.y < 4*caseJourHeight){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
+                    jour = "jeudi " + i + "h";
+                }
+            }
+            if (point.y >= 4*caseJourHeight + caseHeureHeight && point.y < 5*caseJourHeight){
+                if (point.x >= caseJourWidth && point.x < caseJourWidth + 2*saut){
+                    jour = "vendredi " + i + "h";
+                }
+            }            
+            caseJourWidth += 2*saut;
+        }
+        return "Position de la souris: " + jour;
     }
 }

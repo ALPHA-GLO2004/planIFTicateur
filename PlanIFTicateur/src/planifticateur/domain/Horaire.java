@@ -17,7 +17,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.awt.Point;
+import java.awt.*;
 
 public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
@@ -231,7 +231,7 @@ public class Horaire {
             }
         }
     }
-    
+
     public void genererAutomatiquement(){
         //En attente d'un bon algorithme
     }

@@ -24,8 +24,8 @@ public class DrawingPanel extends JPanel implements Serializable
         //Constructeur avec frame principal en paramètre
         this.mainWindow = mainWindow;
         int width = mainWindow.initialDimension.width;
-        int height = mainWindow.initialDimension.height *3 /4;
-        this.initialDimension = new Dimension(width, height);
+        int height = mainWindow.initialDimension.height;
+        initialDimension = new Dimension(width, height);
         setPreferredSize(this.initialDimension);
         setVisible(true);
     }
@@ -40,7 +40,7 @@ public class DrawingPanel extends JPanel implements Serializable
         //méthode pour l'affichage des éléments visuels
         if (mainWindow != null){
             super.paintComponent(g);
-            HoraireDrawing mainHoraire = new HoraireDrawing(mainWindow.horaireController, this.initialDimension);
+            mainHoraire = new HoraireDrawing(mainWindow.horaireController, this.initialDimension);
             mainHoraire.drawHoraire(g);
         }
     }

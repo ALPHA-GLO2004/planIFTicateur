@@ -82,9 +82,10 @@ public class MainWindow extends javax.swing.JFrame {
         mainPanel.add(validationAutoCheckBox, gridBagConstraints);
 
         drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-        drawingPanelContainer.setPreferredSize(new java.awt.Dimension(800, 550));
+        drawingPanelContainer.setPreferredSize(new java.awt.Dimension(initialDimension.width, initialDimension.height *7/8));
 
         drawingPanel.setBackground(new java.awt.Color(255, 255, 255));
+        drawingPanel.setPreferredSize(this.initialDimension);
         drawingPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 drawingPanelMouseDragged(evt);
@@ -121,7 +122,8 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipady = 800;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.ipady = 850;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         mainPanel.add(drawingPanelContainer, gridBagConstraints);
 
@@ -310,7 +312,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
         //affichage du jour et heure dans barre d'état
-        logMsgTextArea.setText(horaireController.afficherJourHeure(evt.getPoint())); 
+        logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())); 
 
         //ajustement de la couleur de la bordure. ne marche pas encore
         if(horaireController.getValiditeDeLHoraire()==true)  drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
