@@ -29,18 +29,18 @@ public class Horaire {
     private String note = "";
     //
     boolean valide;
-    int nbMaxCoursEtudiantMemeJour;
-    int nbMoyenCoursEtudiantMemeJour;
-    float pctCoursDebutant8h30;
-    int indiceCovoiturage;
-    int nbCoursLundi;
-    int nbCoursMardi;
-    int nbCoursMercredi;
-    int nbCoursJeudi;
-    int nbCoursVendredi;
-    int nbCoursSamedi;
-    int nbCoursDimanche;
-    int nbMaxCoursHoraire;
+    //int nbMaxCoursEtudiantMemeJour;
+    //int nbMoyenCoursEtudiantMemeJour;
+    //float pctCoursDebutant8h30;
+    //int indiceCovoiturage;
+    //int nbCoursLundi;
+    // int nbCoursMardi;
+    //int nbCoursMercredi;
+    //int nbCoursJeudi;
+    //int nbCoursVendredi;
+    //int nbCoursSamedi;
+    //int nbCoursDimanche;
+    //int nbMaxCoursHoraire;
     boolean horairePlein;
     ListeConflit listeConflit;
     ListeModificationActivite listeModificationActivite;
@@ -246,28 +246,45 @@ public class Horaire {
 //  Statistiques
 //========================================================================== 
    
+    public Vector<Activite> getListeDesActivitesDUnJour(int jour){
+        
+     Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
+     Vector<Activite> listeARetourner ;
+     
+     listeARetourner = new Vector<Activite>();
+        
+      for(Activite activite : activiteDejaPlacee)
+       {
+            if(activite.getJourChoisi() == jour )listeARetourner.add(activite);
+       }
+     
+     return listeARetourner;
     
-    public float calculerNombreDeCoursDUnJour(int jour){
+    }
+        
+    public float calculerNombreDeCours(Vector<Activite> listeDesActivites){
+        
+        //le nombre de cours en classe ou le nombre d'activités ?
+        return listeDesActivites.size();
+        
+    }
+    
+    public float calculerNombreMaxDeCours(Vector<Activite> listeDesActivites){
 
         return 0.0f;
     }
     
-    public float calculerNombreMaxDeCoursDUnJour(int jour){
+    public float calculerNombreMoyenDeCours(Vector<Activite> listeDesActivites){
 
         return 0.0f;
     }
     
-    public float calculerNombreMoyenDeCoursDUnJour(int jour){
+    public float calculerIndiceCovoiturage(Vector<Activite> listeDesActivites){
 
         return 0.0f;
     }
     
-    public float calculerIndiceCovoiturageDUnJour(int jour){
-
-        return 0.0f;
-    }
-    
-     public float calculerIndiceCongestionDUnJour(int jour){
+     public float calculerIndiceCongestion(Vector<Activite> listeDesActivites){
 
         return 0.0f;
     }
@@ -276,12 +293,13 @@ public class Horaire {
     public Vector<Float> getStatistiques(int jour){
           
        Vector<Float> stats = new Vector<Float>();
-        
-       stats.add(calculerNombreDeCoursDUnJour(jour));
-       stats.add(calculerNombreMaxDeCoursDUnJour(jour));
-       stats.add(calculerNombreMoyenDeCoursDUnJour(jour));
-       stats.add(calculerIndiceCovoiturageDUnJour(jour));
-       stats.add(calculerIndiceCongestionDUnJour(jour));
+       Vector<Activite> listeDesActivites = getListeDesActivitesDUnJour(jour);
+       
+       stats.add(calculerNombreDeCours(listeDesActivites));
+       stats.add(calculerNombreMaxDeCours(listeDesActivites));
+       stats.add(calculerNombreMoyenDeCours(listeDesActivites));
+       stats.add(calculerIndiceCovoiturage(listeDesActivites));
+       stats.add(calculerIndiceCongestion(listeDesActivites));
         
         return stats;
     }
