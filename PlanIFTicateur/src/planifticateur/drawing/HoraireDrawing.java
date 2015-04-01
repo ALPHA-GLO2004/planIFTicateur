@@ -28,21 +28,25 @@ public class HoraireDrawing {
         g.fillRect(5, 5, 70, hauteur);
         g.setColor(Color.BLACK);
         g.drawString("cours test", 13, hauteur);*/
-        
+        Graphics2D g2 = (Graphics2D) g;
         if (horaireController.getHoraire() == true){
             for (Activite a: horaireController.getListeActiviteAPlacer()){
                 if (a.isSelected() == true){
-                    g.setColor(Color.YELLOW);
-                    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
+                    g2.setColor(Color.YELLOW);
+                    g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
+                    g2.setColor(Color.BLACK);
+                    g2.setStroke(new BasicStroke(1));
+                    g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
                     Font font = new Font("Arial", Font.BOLD, 12);
-                    g.setColor(Color.BLACK);
-                    g.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
+                    g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                 }else{
-                    g.setColor(a.getCouleur());
-                    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
+                    g2.setColor(a.getCouleur());
+                    g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
+                    g2.setColor(Color.BLACK);
+                    g2.setStroke(new BasicStroke(1));
+                    g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
                     Font font = new Font("Arial", Font.BOLD, 12);
-                    g.setColor(Color.BLACK);
-                    g.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
+                    g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                 }
             }
         }        
