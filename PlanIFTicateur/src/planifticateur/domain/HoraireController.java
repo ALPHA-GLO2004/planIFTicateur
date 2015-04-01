@@ -10,7 +10,7 @@ public class HoraireController {
     private Horaire horaire;
     
     public HoraireController(){
-        
+
     }
     
     public void chargerHoraire(File f){
@@ -41,7 +41,16 @@ public class HoraireController {
     public void planificationAuto(){
         
     }
-
+    
+    public void initPointActivite(Dimension initialDimension){
+        int y = 15;
+        for (Activite a: horaire.getListeActiviteAPlacer()){
+            Point p = new Point(initialDimension.width - (initialDimension.width /4) + 20, y);
+            a.setPoint(p);
+            y += 30;
+        }
+    }
+    
     public void moveActivite(Point p){
         for (Activite a: horaire.getListeActiviteComplete()){
             if (a.isSelected() == true){

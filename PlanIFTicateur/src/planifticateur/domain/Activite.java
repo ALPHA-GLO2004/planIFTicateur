@@ -41,6 +41,7 @@ public class Activite {
         String[] infoActivite = activite.split(";"); //On coupe la chaîne pour obtenir les infos séparés
         try
         {
+            point = new Point(0,0);
             code = infoActivite[0];
             section = infoActivite[1];
             description = infoActivite[2];

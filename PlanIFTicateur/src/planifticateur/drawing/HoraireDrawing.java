@@ -31,14 +31,17 @@ public class HoraireDrawing {
         g.drawString("cours test", 13, hauteur);*/
         
         if (horaireController.getHoraire() == true){
-            List<Activite> activites = horaireController.getListeActiviteComplete();
-            for (Activite a: activites){
-                if (a.isSelected()){
-                g.setColor(a.getCouleur());
-                g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * 35, hauteur);
-                }
+            for (Activite a: horaireController.getListeActiviteAPlacer()){
+                //if (a.isSelected()){
+                //    g.setColor(Color.YELLOW);
+                //    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * 35, hauteur);
+                //}else{
+                    g.setColor(Color.YELLOW);
+                    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), hauteur);
+                //}
+                    System.out.println(a.getPoint().y);
             }
-        }
+        }        
     }
     
     public void drawHoraire(Graphics g){

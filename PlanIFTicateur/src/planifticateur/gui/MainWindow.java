@@ -299,7 +299,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_statistiquesButtonActionPerformed
 
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
-        horaireController.planificationAuto();
+        this.drawingPanel.repaint();
+        //horaireController.planificationAuto();
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
 
     private void validationAutoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationAutoCheckBoxActionPerformed
@@ -315,8 +316,8 @@ public class MainWindow extends javax.swing.JFrame {
         // On shoot le fileSelection à la fonction approprié du controller
         horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
         horaireEstCharge=true;
+        horaireController.initPointActivite(this.initialDimension);
         //statFenetre.initialize(horaireController);
-        
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved

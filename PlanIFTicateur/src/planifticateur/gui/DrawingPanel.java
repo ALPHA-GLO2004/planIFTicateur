@@ -41,7 +41,7 @@ public class DrawingPanel extends JPanel implements Serializable
         if (mainWindow != null){
             super.paintComponent(g);
             mainHoraire = new HoraireDrawing(mainWindow.horaireController, this.initialDimension);
-            mainHoraire.drawHoraire(g);
+            mainHoraire.draw(g);
         }
     }
     
