@@ -72,8 +72,16 @@ public class HoraireController {
         }
     }
     
-    public void switchSelection(Point p){
-        horaire.switchSelection(p);
+    public void VerificationSelection(Point p, Dimension d){
+        horaire.VerificationSelection(p, d);
+    }
+    
+    public void switchSelection(){
+        for (Activite a: this.getListeActiviteAPlacer()){
+            if (a.isSelected()){
+                a.switchSelection();
+            }
+        }
     }
     
     public void note(String n){

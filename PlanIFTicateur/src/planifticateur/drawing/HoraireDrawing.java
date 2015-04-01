@@ -32,14 +32,19 @@ public class HoraireDrawing {
         
         if (horaireController.getHoraire() == true){
             for (Activite a: horaireController.getListeActiviteAPlacer()){
-                //if (a.isSelected()){
-                //    g.setColor(Color.YELLOW);
-                //    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * 35, hauteur);
-                //}else{
+                if (a.isSelected() == true){
                     g.setColor(Color.YELLOW);
                     g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), hauteur);
-                //}
-                    System.out.println(a.getPoint().y);
+                    Font font = new Font("Arial", Font.BOLD, 12);
+                    g.setColor(Color.BLACK);
+                    g.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
+                }else{
+                    g.setColor(a.getCouleur());
+                    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), hauteur);
+                    Font font = new Font("Arial", Font.BOLD, 12);
+                    g.setColor(Color.BLACK);
+                    g.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
+                }
             }
         }        
     }

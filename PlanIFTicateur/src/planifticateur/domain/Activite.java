@@ -51,24 +51,34 @@ public class Activite {
             heureDebutMin = Float.parseFloat(infoActivite[6]); //transformation de string à float
             heureDebutMax = Float.parseFloat(infoActivite[7]); //transformation de string à float
             heureFinMax = Float.parseFloat(infoActivite[8]); //transformation de string à float
-            if (infoActivite[9] != ""){
-                jourChoisi = Integer.parseInt(infoActivite[9]); //Transformation de string à Int
+            if (infoActivite.length == 10){
+                if (!infoActivite[9].equals("0")){
+                    jourChoisi = Integer.parseInt(infoActivite[9]); //Transformation de string à Int
+                }
+                else{
+                    jourChoisi = 0;
+                }
             }
-            if (infoActivite[10] != ""){
-                heureDebutChoisi = Float.parseFloat(infoActivite[10]); //transformation de string à float
+            if (infoActivite.length == 11){
+                if (!infoActivite[10].equals("0")){
+                    heureDebutChoisi = Float.parseFloat(infoActivite[10]); //transformation de string à float
+                }
+                else{
+                    heureDebutChoisi = 0;
+                }
             }
             //attribution de la couleur selon le type
-            if (type == "classe"){
-                couleur = Color.ORANGE;
+            if (type.contains("classe")){
+                couleur = new Color(255,0,0);
             }
-            if (type == "distance"){
-                couleur = Color.GREEN;
+            if (type.contains("distance")){
+                couleur = new Color(0, 255, 0);
             }
-            if (type == "labo"){
-                couleur = Color.YELLOW;
+            if (type.contains("labo")){
+                couleur = new Color(150, 100, 0);
             }
-            if (type == "horsDepartement"){
-                couleur = Color.BLUE;
+            if (type.contains("horsD")){
+                couleur = new Color(0, 0, 255);
             }            
         }
         catch (Throwable ex){
@@ -123,6 +133,10 @@ public class Activite {
     
     public float getDuree(){
         return duree;
+    }
+    
+    public String getType(){
+        return type;
     }
     
     public float getHeureDebutMin(){

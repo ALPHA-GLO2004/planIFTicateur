@@ -217,10 +217,13 @@ public class Horaire {
         return true;
     }
         
-    public void switchSelection(Point p){
-        for (Activite a: getListeActiviteComplete()){
-            if (p.x > (a.getPoint().x - (a.getDuree()/2)) && p.x < (a.getPoint().x + (a.getDuree()/2))
-                    && p.y > (a.getPoint().y - 10) && p.y < (a.getPoint().y + 10)){
+    public void VerificationSelection(Point p, Dimension d){      
+        int activiteWidth = (d.width - d.width /16) /15;
+        int activiteHeight = d.height /45;
+        
+        for (Activite a: getListeActiviteAPlacer()){
+            if (p.x > a.getPoint().x && p.x < (a.getPoint().x + (a.getDuree()*activiteWidth))
+                    && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
                 a.switchSelection();
             }
         }
