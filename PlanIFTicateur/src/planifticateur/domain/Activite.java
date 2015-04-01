@@ -31,14 +31,14 @@ public class Activite {
     private Point point; //remplace rectangle
     private boolean selectStatus = false;
     
-    public Activite(String activite){ //to be modified :/
+    public Activite(String activite, String separateur){ //to be modified :/
         //Constructeur
-        //À partir d'une string, chaque attribut essentiel de l'activité est capté par
+        //À partir d'une string et du bon separateur CSD, chaque attribut essentiel de l'activité est capté par
         //chaque donnée entre un séparateur précis dans cette string.
         //Bloc try car possibles erreurs de lectures mais catch ne fait qu'afficher les erreurs
         //pour le moment.
         
-        String[] infoActivite = activite.split(";"); //On coupe la chaîne pour obtenir les infos séparés
+        String[] infoActivite = activite.split(separateur); //On coupe la chaîne pour obtenir les infos séparés
         try
         {
             point = new Point(0,0);

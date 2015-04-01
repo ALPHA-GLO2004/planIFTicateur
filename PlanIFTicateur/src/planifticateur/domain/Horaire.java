@@ -63,7 +63,7 @@ public class Horaire {
         this.lireFichier(f);
         //Analyse auto du délimiteur ?
         String analyseur = listeActivite.get(0);
-        String separateur = analyseur.substring(11, 12);
+        String separateur = analyseur.substring(12, 13);
         //
         listeActivite.remove(0); //On retire la premiere ligne
         
@@ -71,7 +71,7 @@ public class Horaire {
         //a valider!!!!!!
         //on verifie si l'activite possede un attribut jour et heure et on l'ajoute a la liste approprie.
         for (String elementActivite: listeActivite){
-            Activite a = new Activite(elementActivite);
+            Activite a = new Activite(elementActivite, separateur);
             listeActiviteComplete.addElement(a);
             if (a.getJourChoisi() != 0 && a.getHeureDebutChoisi() != 0.0f) {
                 listeActiviteDejaPlacee.add(a);
