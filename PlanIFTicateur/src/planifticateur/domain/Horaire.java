@@ -165,8 +165,17 @@ public class Horaire {
         note += n;
     }
     
+      public Vector<Float> getStatistiques(int jour){
+          
+       //A faire !
+       Vector<Float> stats = new Vector<Float>();
+        
+        
+        return stats;
+    }
     
-    //algorithme force brute pour l'instant.
+       
+    //algorithme de recherche force brute pour l'instant.
      public boolean horaireEstValide(){
       
         Vector<GrilleCheminement> grillesChDUneActivite ;

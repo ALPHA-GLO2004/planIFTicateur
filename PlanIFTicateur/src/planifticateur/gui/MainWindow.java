@@ -10,6 +10,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
+    Statistiques statFenetre;
     public Dimension initialDimension;
     public Point actualMousePoint;
     public Point delta;
@@ -22,6 +23,7 @@ public class MainWindow extends javax.swing.JFrame {
         setPreferredSize(initialDimension);
         horaireEstCharge=false;
         horaireController = new HoraireController();
+        statFenetre = new Statistiques();
         initComponents();
     }
 
@@ -290,8 +292,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_noteButtonActionPerformed
 
     private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
-        //Pour le moment en messageInput --- va devenir probablement une nouvelle fenetre avec possibilité de faire des changements dedans.
-        JOptionPane.showMessageDialog(this, "Statistiques de votre horaire: \n\n" + horaireController.getStats());
+
+        statFenetre.setVisible(true);
     }//GEN-LAST:event_statistiquesButtonActionPerformed
 
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
@@ -311,6 +313,8 @@ public class MainWindow extends javax.swing.JFrame {
         // On shoot le fileSelection à la fonction approprié du controller
         horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
         horaireEstCharge=true;
+        statFenetre.initialize(horaireController);
+        
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved

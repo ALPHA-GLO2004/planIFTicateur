@@ -67,9 +67,10 @@ public class HoraireController {
         horaire.ajouterNote(n);
     }
  
-    public String getStats(){
-        return "stats... En attente du fonctionnement de l'horaire";
-        //return horaire.listeActiviteAPlacer.getListeActiviteAPlacer().elementAt(0).getNomActivite();
+    public  Vector<Float> getStats(int jour){
+        
+        return horaire.getStatistiques(jour);
+
     }
     
     public String getHoraireNom(){
