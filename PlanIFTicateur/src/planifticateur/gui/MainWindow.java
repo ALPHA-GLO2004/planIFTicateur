@@ -13,12 +13,14 @@ public class MainWindow extends javax.swing.JFrame {
     public Dimension initialDimension;
     public Point actualMousePoint;
     public Point delta;
+    private boolean horaireEstCharge;
     
     public MainWindow() {
         int width = (int) ((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width));
         int height = (int)((java.awt.Toolkit.getDefaultToolkit().getScreenSize().height));
         initialDimension = new Dimension(width, height);
         setPreferredSize(initialDimension);
+        horaireEstCharge=false;
         horaireController = new HoraireController();
         initComponents();
     }
@@ -308,15 +310,19 @@ public class MainWindow extends javax.swing.JFrame {
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         // On shoot le fileSelection à la fonction approprié du controller
         horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
+        horaireEstCharge=true;
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
         //affichage du jour et heure dans barre d'état
         logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())); 
 
-        //ajustement de la couleur de la bordure.
-        if(horaireController.getValiditeDeLHoraire()==true)  drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-        else drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+        if(horaireEstCharge)
+        {
+            //ajustement de la couleur de la bordure.
+            if(horaireController.getValiditeDeLHoraire()==true)  drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            else drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+        }
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
