@@ -10,7 +10,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
-    //public Statistiques statFenetre;
+    public Statistiques statFenetre;
     public Note fenetreNote;
     public Dimension initialDimension;
     public Point initialActivitePoint;
@@ -24,7 +24,7 @@ public class MainWindow extends javax.swing.JFrame {
         setPreferredSize(initialDimension);
         horaireEstCharge=false;
         horaireController = new HoraireController();
-        //statFenetre = new Statistiques();
+        statFenetre = new Statistiques();
         fenetreNote = new Note();
         initComponents();
     }
@@ -295,7 +295,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
 
-        //statFenetre.setVisible(true);
+        statFenetre.setVisible(true);
     }//GEN-LAST:event_statistiquesButtonActionPerformed
 
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
@@ -317,7 +317,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
         horaireEstCharge=true;
         horaireController.initPointActivite(this.initialDimension);
-        //statFenetre.initialize(horaireController);
+        statFenetre.initialize(horaireController);
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
