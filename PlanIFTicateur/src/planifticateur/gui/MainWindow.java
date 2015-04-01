@@ -10,7 +10,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
-    Statistiques statFenetre;
+    public Statistiques statFenetre;
+    public Note fenetreNote;
     public Dimension initialDimension;
     public Point actualMousePoint;
     public Point delta;
@@ -24,6 +25,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireEstCharge=false;
         horaireController = new HoraireController();
         statFenetre = new Statistiques();
+        fenetreNote = new Note();
         initComponents();
     }
 
@@ -287,7 +289,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_quitterButtonActionPerformed
 
     private void noteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteButtonActionPerformed
-        Note fenetreNote = new Note();
+
         fenetreNote.setVisible(true);
     }//GEN-LAST:event_noteButtonActionPerformed
 

@@ -31,6 +31,7 @@ public class Note extends javax.swing.JFrame {
         noteTextArea.setColumns(20);
         noteTextArea.setRows(5);
         noteTextArea.setText("Notes...");
+        noteTextArea.setPreferredSize(new java.awt.Dimension(600, 480));
         jScrollPane1.setViewportView(noteTextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

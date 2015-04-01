@@ -165,16 +165,8 @@ public class Horaire {
         note += n;
     }
     
-      public Vector<Float> getStatistiques(int jour){
-          
-       //A faire !
-       Vector<Float> stats = new Vector<Float>();
+
         
-        
-        return stats;
-    }
-    
-       
     //algorithme de recherche force brute pour l'instant.
      public boolean horaireEstValide(){
       
@@ -245,5 +237,49 @@ public class Horaire {
         //En attente d'un bon algorithme
     }
     
+    
+//========================================================================== 
+//  Statistiques
+//========================================================================== 
+   
+    
+    public float calculerNombreDeCoursDUnJour(int jour){
 
+        return 0.0f;
+    }
+    
+    public float calculerNombreMaxDeCoursDUnJour(int jour){
+
+        return 0.0f;
+    }
+    
+    public float calculerNombreMoyenDeCoursDUnJour(int jour){
+
+        return 0.0f;
+    }
+    
+    public float calculerIndiceCovoiturageDUnJour(int jour){
+
+        return 0.0f;
+    }
+    
+     public float calculerIndiceCongestionDUnJour(int jour){
+
+        return 0.0f;
+    }
+    
+
+    public Vector<Float> getStatistiques(int jour){
+          
+       Vector<Float> stats = new Vector<Float>();
+        
+       stats.add(calculerNombreDeCoursDUnJour(jour));
+       stats.add(calculerNombreMaxDeCoursDUnJour(jour));
+       stats.add(calculerNombreMoyenDeCoursDUnJour(jour));
+       stats.add(calculerIndiceCovoiturageDUnJour(jour));
+       stats.add(calculerIndiceCongestionDUnJour(jour));
+        
+        return stats;
+    }
+      
 }
