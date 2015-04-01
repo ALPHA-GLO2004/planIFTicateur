@@ -63,7 +63,7 @@ public class MainWindow extends javax.swing.JFrame {
         setTitle("PlanIFTicateur");
         setName("mainWindow"); // NOI18N
 
-        mainPanel.setPreferredSize(new Dimension(800,600));
+        mainPanel.setPreferredSize(new Dimension(this.getWidth(), this.getHeight()));
         mainPanel.setLayout(new java.awt.GridBagLayout());
 
         titreFichierLabel.setText("    nomFichier");
@@ -88,10 +88,10 @@ public class MainWindow extends javax.swing.JFrame {
         mainPanel.add(validationAutoCheckBox, gridBagConstraints);
 
         drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-        drawingPanelContainer.setPreferredSize(new java.awt.Dimension(initialDimension.width, initialDimension.height/2 ));
+        drawingPanelContainer.setPreferredSize(new Dimension(this.mainPanel.getWidth(), this.mainPanel.getHeight()*4/6));
 
         drawingPanel.setBackground(new java.awt.Color(255, 255, 255));
-        drawingPanel.setPreferredSize(this.initialDimension);
+        drawingPanel.setPreferredSize(new Dimension(this.drawingPanelContainer.getWidth(), drawingPanel.getInitialDimension().height));
         drawingPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 drawingPanelMouseDragged(evt);
@@ -117,7 +117,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1221, Short.MAX_VALUE)
+            .addGap(0, 1111, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -129,8 +129,8 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 1;
-        gridBagConstraints.ipady = 500;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weighty = 50.0;
         mainPanel.add(drawingPanelContainer, gridBagConstraints);
 
         logMsgTextArea.setEditable(false);

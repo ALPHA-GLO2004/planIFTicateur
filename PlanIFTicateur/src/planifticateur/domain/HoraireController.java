@@ -73,7 +73,7 @@ public class HoraireController {
     }
     
     public void VerificationSelection(Point p, Dimension d){
-        horaire.VerificationSelection(p, d);
+        horaire.verificationSelection(p, d);
     }
     
     public void switchSelection(){

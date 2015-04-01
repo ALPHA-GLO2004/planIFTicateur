@@ -217,7 +217,7 @@ public class Horaire {
         return true;
     }
         
-    public void VerificationSelection(Point p, Dimension d){      
+    public void verificationSelection(Point p, Dimension d){      
         int activiteWidth = (d.width - d.width /16) /15;
         int activiteHeight = d.height /45;
         
@@ -227,6 +227,10 @@ public class Horaire {
                 a.switchSelection();
             }
         }
+    }
+    
+    public boolean verificationDrop(Point p, Dimension d){
+        return true;
     }
     
     public void updateSelectedItemsPositions(Point delta){
