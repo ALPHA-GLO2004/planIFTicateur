@@ -9,7 +9,6 @@ import java.util.List;
 public class HoraireDrawing {
     private final HoraireController horaireController;
     Dimension initialDimension;
-    int hauteur = 20;
     
     public HoraireDrawing(HoraireController horaireController, Dimension initialDimension){
         this.horaireController = horaireController;
@@ -34,13 +33,13 @@ public class HoraireDrawing {
             for (Activite a: horaireController.getListeActiviteAPlacer()){
                 if (a.isSelected() == true){
                     g.setColor(Color.YELLOW);
-                    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), hauteur);
+                    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
                     Font font = new Font("Arial", Font.BOLD, 12);
                     g.setColor(Color.BLACK);
                     g.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                 }else{
                     g.setColor(a.getCouleur());
-                    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), hauteur);
+                    g.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
                     Font font = new Font("Arial", Font.BOLD, 12);
                     g.setColor(Color.BLACK);
                     g.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
