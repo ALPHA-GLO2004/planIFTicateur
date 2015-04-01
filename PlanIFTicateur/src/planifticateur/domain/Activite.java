@@ -108,6 +108,10 @@ public class Activite {
         return point;
     }
     
+    public void setPoint(Point p){
+        this.point = p;
+    }
+    
     public int getJourChoisi(){
         return jourChoisi;
     }

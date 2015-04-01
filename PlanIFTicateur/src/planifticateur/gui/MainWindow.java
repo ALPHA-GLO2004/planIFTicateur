@@ -10,10 +10,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
-    public Statistiques statFenetre;
+    //public Statistiques statFenetre;
     public Note fenetreNote;
     public Dimension initialDimension;
-    public Point actualMousePoint;
+    public Point initialActivitePoint;
     public Point delta;
     private boolean horaireEstCharge;
     
@@ -24,7 +24,7 @@ public class MainWindow extends javax.swing.JFrame {
         setPreferredSize(initialDimension);
         horaireEstCharge=false;
         horaireController = new HoraireController();
-        statFenetre = new Statistiques();
+        //statFenetre = new Statistiques();
         fenetreNote = new Note();
         initComponents();
     }
@@ -295,7 +295,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
 
-        statFenetre.setVisible(true);
+        //statFenetre.setVisible(true);
     }//GEN-LAST:event_statistiquesButtonActionPerformed
 
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
@@ -315,7 +315,7 @@ public class MainWindow extends javax.swing.JFrame {
         // On shoot le fileSelection à la fonction approprié du controller
         horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
         horaireEstCharge=true;
-        statFenetre.initialize(horaireController);
+        //statFenetre.initialize(horaireController);
         
     }//GEN-LAST:event_menuFileNewActionPerformed
 
@@ -333,9 +333,8 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
         horaireController.moveActivite(evt.getPoint());
-            delta.setLocation((evt.getX() - this.actualMousePoint.x),(evt.getY() - this.actualMousePoint.y));
-            this.horaireController.updateSelectedItemsPositions(delta);
-            this.actualMousePoint = evt.getPoint();
+            //delta.setLocation((evt.getX() - this.actualMousePoint.x),(evt.getY() - this.actualMousePoint.y));
+            //this.horaireController.updateSelectedItemsPositions(delta);
             drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseDragged
 
@@ -345,7 +344,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
         Point mousePoint = evt.getPoint();
-        this.actualMousePoint = mousePoint;
+        this.initialActivitePoint = mousePoint;
         horaireController.switchSelection(mousePoint);
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed

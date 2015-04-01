@@ -219,7 +219,10 @@ public class Horaire {
         
     public void switchSelection(Point p){
         for (Activite a: this.listeActiviteComplete){
-            if (a.getPoint().equals(p)){
+            if (a.getPoint().x >= a.getPoint().x - a.getDuree()/2
+                    && a.getPoint().x <= a.getPoint().x + a.getDuree()/2
+                    && a.getPoint().y >= a.getPoint().y - 10
+                    && a.getPoint().y <= a.getPoint().y + 10){
                 a.switchSelection();
             }
         }

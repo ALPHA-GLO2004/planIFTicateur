@@ -43,9 +43,9 @@ public class HoraireController {
     }
 
     public void moveActivite(Point p){
-        for (Activite a: horaire.getListeActiviteDejaPlacee()){
-            if (a.selectActivite(p) == true){
-                //En construction...
+        for (Activite a: horaire.getListeActiviteComplete()){
+            if (a.isSelected() == true){
+                a.setPoint(p);
             }
         }
     }
@@ -55,8 +55,12 @@ public class HoraireController {
     }
     
     public void modifierPointActivite(Point p){
-        //code pour modifier le point d'une activité ssi le déplacement est valide
-        //(vers fonction qui va faire ça)
+        for (Activite a: horaire.getListeActiviteComplete()){
+            if (a.isSelected() == true){
+                //Il va y avoir une vÃ©rif Ã  faire ici Ã©ventuellement
+                a.setPoint(p);
+            }
+        }
     }
     
     public void switchSelection(Point p){
