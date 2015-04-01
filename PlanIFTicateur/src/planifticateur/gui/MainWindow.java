@@ -82,7 +82,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainPanel.add(validationAutoCheckBox, gridBagConstraints);
 
         drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-        drawingPanelContainer.setPreferredSize(new java.awt.Dimension(initialDimension.width, initialDimension.height *7/8));
+        drawingPanelContainer.setPreferredSize(new java.awt.Dimension(initialDimension.width, initialDimension.height/2 ));
 
         drawingPanel.setBackground(new java.awt.Color(255, 255, 255));
         drawingPanel.setPreferredSize(this.initialDimension);
@@ -123,7 +123,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 1;
-        gridBagConstraints.ipady = 850;
+        gridBagConstraints.ipady = 500;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         mainPanel.add(drawingPanelContainer, gridBagConstraints);
 
