@@ -87,7 +87,9 @@ public class MouseAdapter {
         
         for (int i = 0; i <= 4; i++){
             int hauteur = caseHeureHeight+(i*caseJourHeight);
-            if (a.getPoint().y >= hauteur && a.getPoint().y < caseJourHeight*(i+1))
+            if (a.getPoint().y >= hauteur 
+                    && a.getPoint().y < caseJourHeight*(i+1)
+                    && a.getPoint().x < dimension.width*3/4)
             {
                 a.setJourChoisi(i+1);
             }

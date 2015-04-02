@@ -342,9 +342,11 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
+            horaireController.switchAPlacerToDejaPlacee();
+            horaireController.initPointActivite(this.initialDimension);
             //horaireController.setListeActiviteDejaPlacee();
         }else{
-            horaireController.modifierPointActivite(this.initialActivitePoint);
+            horaireController.moveActivite(this.initialActivitePoint);
         }
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseReleased

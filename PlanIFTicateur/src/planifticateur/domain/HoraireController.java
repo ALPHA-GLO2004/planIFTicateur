@@ -57,15 +57,6 @@ public class HoraireController {
             }
         }
     }
-     
-    public void modifierPointActivite(Point p){
-        for (Activite a: horaire.getListeActiviteComplete()){
-            if (a.isSelected() == true){
-                //Il va y avoir une vÃ©rif Ã  faire ici Ã©ventuellement
-                a.setPoint(p);
-            }
-        }
-    }
 
     //Méthode pour mouseAdapter
     public Point verificationDrop(Point p){
@@ -117,6 +108,10 @@ public class HoraireController {
         else{
             return false;
         }
+    }
+    
+    public void switchAPlacerToDejaPlacee(){
+        this.horaire.setListeActiviteDejaPlacee();
     }
     
     public void setListeActiviteDejaPlacee(){
