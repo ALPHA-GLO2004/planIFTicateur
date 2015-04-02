@@ -30,23 +30,30 @@ public class HoraireDrawing {
         g.fillRect(5, 5, 70, hauteur);
         g.setColor(Color.BLACK);
         g.drawString("cours test", 13, hauteur);*/
+        int width = initialDimension.width *3/4;
+        int height = initialDimension.height;
+        int caseJourHeight = height / 5;
+        int caseJourWidth = width / 16;
+        int caseHeureHeight = caseJourHeight / 9;
+        int saut = (width - caseJourWidth)/ 30;
+        
         Graphics2D g2 = (Graphics2D) g;
         if (horaireController.getHoraire() == true){
             for (Activite a: horaireController.getListeActiviteAPlacer()){
                 if (a.isSelected() == true){
                     g2.setColor(Color.YELLOW);
-                    g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
+                    g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
                     g2.setColor(Color.BLACK);
                     g2.setStroke(new BasicStroke(1));
-                    g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
+                    g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
                     Font font = new Font("Arial", Font.BOLD, 12);
                     g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                 }else{
                     g2.setColor(a.getCouleur());
-                    g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
+                    g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
                     g2.setColor(Color.BLACK);
                     g2.setStroke(new BasicStroke(1));
-                    g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((initialDimension.width *3/4 - (initialDimension.width *3/4/16))/15), initialDimension.height /45);
+                    g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
                     Font font = new Font("Arial", Font.BOLD, 12);
                     g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                 }
@@ -140,6 +147,19 @@ public class HoraireDrawing {
             y = caseJourHeight;
             x += saut;
         }
+        
+        //Dessin du cadre pour la liste des activités à placer
+        int spaceHeightRight = caseHeureHeight /3;
+        g2.setColor(Color.BLACK);
+        g2.setStroke(new BasicStroke(3));
+        //horizontales
+        g2.drawLine(width+saut, spaceHeightRight, width+3*saut, spaceHeightRight);
+        g2.drawString("Activités à placer", width+13*saut/4, spaceHeightRight*3/2);
+        g2.drawLine(width+11*saut/2, spaceHeightRight, initialDimension.width-3*saut/2, spaceHeightRight);
+        g2.drawLine(width+saut, height-spaceHeightRight, initialDimension.width-3*saut/2, height-spaceHeightRight);
+        //verticales
+        g2.drawLine(width+saut, spaceHeightRight, width+saut, height-spaceHeightRight);
+        g2.drawLine(initialDimension.width-3*saut/2, spaceHeightRight, initialDimension.width-3*saut/2, height-spaceHeightRight);
     }
     
     public String afficherJourHeure(Point point){

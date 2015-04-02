@@ -47,9 +47,16 @@ public class HoraireController {
     }
     
     public void initPointActivite(Dimension initialDimension){
-        int y = 15;
+        int width = initialDimension.width *1/4;
+        int height = initialDimension.height;
+        int caseJourHeight = height / 5;
+        int caseJourWidth = width / 16;
+        int caseHeureHeight = caseJourHeight / 9;
+        int saut = (width - caseJourWidth)/ 30;
+        int y = caseHeureHeight;
+        
         for (Activite a: horaire.getListeActiviteAPlacer()){
-            Point p = new Point(initialDimension.width - (initialDimension.width /4) + 20, y);
+            Point p = new Point(initialDimension.width - width + 4*saut, y);
             a.setPoint(p);
             y += 30;
         }
