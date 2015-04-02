@@ -5,6 +5,7 @@ import java.util.List;
 
 public class MouseAdapter {
     private Dimension dimension;
+    private String position;
     
     public MouseAdapter(Dimension d){
         this.dimension = d;
@@ -23,47 +24,49 @@ public class MouseAdapter {
         int pointActiviteX = 0;
         int pointActiviteY = 0;
         
-        for (int i = 0; i <= 4; i++){
-            for (int j = 0; j <= 7; j++){
-                for (int k = 0; k <= 29; k++){
-                    jumpX = caseJourWidth + k*saut;
-                    if (p.x >= jumpX && p.x < (jumpX + saut)){
-                        if (p.y >= 0 && p.y < caseHeureHeight){
-                            jumpX = 0;
+        if (this.position == "horaire"){
+            for (int i = 0; i <= 4; i++){
+                for (int j = 0; j <= 7; j++){
+                    for (int k = 0; k <= 29; k++){
+                        jumpX = caseJourWidth + k*saut;
+                        if (p.x >= jumpX && p.x < (jumpX + saut)){
+                            if (p.y >= 0 && p.y < caseHeureHeight){
+                                jumpX = 0;
+                            }
+                            if (p.y >= caseJourHeight && p.y < caseJourHeight+caseHeureHeight){
+                                jumpX = 0;
+                            }
+                            if (p.y >= 2*caseJourHeight && p.y < 2*caseJourHeight+caseHeureHeight){
+                                jumpX = 0;
+                            }
+                            if (p.y >= 3*caseJourHeight && p.y < 3*caseJourHeight+caseHeureHeight){
+                                jumpX = 0;
+                            }
+                            if (p.y >= 4*caseJourHeight && p.y < 4*caseJourHeight+caseHeureHeight){
+                                jumpX = 0;
+                            }
+                            pointActiviteX = jumpX;
                         }
-                        if (p.y >= caseJourHeight && p.y < caseJourHeight+caseHeureHeight){
-                            jumpX = 0;
-                        }
-                        if (p.y >= 2*caseJourHeight && p.y < 2*caseJourHeight+caseHeureHeight){
-                            jumpX = 0;
-                        }
-                        if (p.y >= 3*caseJourHeight && p.y < 3*caseJourHeight+caseHeureHeight){
-                            jumpX = 0;
-                        }
-                        if (p.y >= 4*caseJourHeight && p.y < 4*caseJourHeight+caseHeureHeight){
-                            jumpX = 0;
-                        }
-                        pointActiviteX = jumpX;
+                        //else{
+                        //    pointActiviteX = 0;
+                        //}
+                    }
+                    jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight;
+                    if (p.y >= jumpY && p.y < jumpY + caseHeureHeight){
+                        pointActiviteY = jumpY;
                     }
                     //else{
-                    //    pointActiviteX = 0;
+                    //    pointActiviteY = 0;
                     //}
                 }
-                jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight;
-                if (p.y >= jumpY && p.y < jumpY + caseHeureHeight){
-                    pointActiviteY = jumpY;
-                }
-                //else{
-                //    pointActiviteY = 0;
-                //}
+            }            
+            if ((p.x >= 0 && p.x < caseJourWidth)){
+                pointActiviteX = 0;
+                pointActiviteY = 0;
             }
-        }
-        if ((p.x >= 0 && p.x < caseJourWidth)){
-            pointActiviteX = 0;
-            pointActiviteY = 0;
-        }
-        if (p.x > width*3/4){
-            
+            if (p.x > width*3/4){
+
+            }
         }
         return new Point(pointActiviteX, pointActiviteY);
     }
@@ -80,11 +83,29 @@ public class MouseAdapter {
         }
     }
     
+    public boolean verificationPositionHoraire(Point p){
+        if (p.x <= dimension.width*3/4){
+            this.position = "horaire";
+            return true;
+        }
+        else{
+            this.position = "liste";
+            return false;
+        }
+    }
+    
     public void jourHeureToActivite(Activite a){
+        int width = dimension.width *3/4;
         int height = dimension.height;
         int caseJourHeight = height / 5;
+        int caseJourWidth = width / 16;
         int caseHeureHeight = caseJourHeight / 9;
+        int saut = (width - caseJourWidth)/ 30;
+        int jumpX;
+        int jumpY;
+        Point p = a.getPoint();
         
+        //set du jourChoisi et heureChoisi selon point activité
         for (int i = 0; i <= 4; i++){
             int hauteur = caseHeureHeight+(i*caseJourHeight);
             if (a.getPoint().y >= hauteur 
@@ -93,6 +114,16 @@ public class MouseAdapter {
             {
                 a.setJourChoisi(i+1);
             }
+            for (int k = 0; k <= 29; k++){
+                jumpX = caseJourWidth + k*saut;
+                if (p.x >= jumpX && p.x < (jumpX + saut)){
+                    a.setHeureDebutChoisi(8.5f + k*0.5f);
+                }
+            }
         }
+    }
+    
+    public String getPositionCursor(){
+        return this.position;
     }
 }

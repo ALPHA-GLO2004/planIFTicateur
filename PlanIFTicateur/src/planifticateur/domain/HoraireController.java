@@ -67,6 +67,10 @@ public class HoraireController {
         mouseAdapter.verificationSelection(p, this.getListeActiviteComplete());
     }
     
+    public boolean verificationPositionHoraire(Point p){
+        return mouseAdapter.verificationPositionHoraire(p);
+    }
+    
     public void jourHeureToActivite(){
         for (int i = 0; i < this.getListeActiviteAPlacer().size(); i++){
             mouseAdapter.jourHeureToActivite(this.getListeActiviteAPlacer().get(i));

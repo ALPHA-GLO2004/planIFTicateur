@@ -352,8 +352,12 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseReleased
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
-        Point mousePoint = evt.getPoint();
-        horaireController.verificationSelection(mousePoint, drawingPanel.getInitialDimension());
+        horaireController.verificationSelection(evt.getPoint(), drawingPanel.getInitialDimension());
+        if (horaireController.verificationPositionHoraire(evt.getPoint())){
+            
+        }else{
+            
+        }
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed
 
