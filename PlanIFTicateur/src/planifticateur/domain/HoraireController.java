@@ -4,14 +4,17 @@ import java.awt.*;
 import java.util.Vector;
 import java.util.List;
 import java.io.File;
-import planifticateur.drawing.HoraireDrawing;
-import planifticateur.gui.*;
 
 public class HoraireController {
     private Horaire horaire;
+    private MouseAdapter mouseAdapter;
     
     public HoraireController(){
 
+    }
+    
+    public void createMouseAdapter(Dimension d){
+        this.mouseAdapter = new MouseAdapter(d);
     }
     
     public void chargerHoraire(File f){
@@ -68,10 +71,16 @@ public class HoraireController {
             }
         }
     }
-    
-    public void VerificationSelection(Point p, Dimension d){
-        horaire.verificationSelection(p, d);
+
+    //Méthode pour mouseAdapter
+    public Point verificationDrop(Point p){
+        return mouseAdapter.verificationDrop(p);
     }
+    
+    public void verificationSelection(Point p, Dimension d){
+        mouseAdapter.verificationSelection(p, this.getListeActiviteAPlacer());
+    }
+    //
     
     public void switchSelection(){
         for (Activite a: this.getListeActiviteAPlacer()){

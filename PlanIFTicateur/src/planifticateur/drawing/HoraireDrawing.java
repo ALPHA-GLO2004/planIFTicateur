@@ -2,6 +2,7 @@
 package planifticateur.drawing;
 import planifticateur.domain.HoraireController;
 import planifticateur.domain.Activite;
+import planifticateur.domain.MouseAdapter;
 import planifticateur.gui.DrawingPanel;
 import java.awt.*;
 import java.util.List;
@@ -13,6 +14,7 @@ public class HoraireDrawing {
     public HoraireDrawing(HoraireController horaireController, Dimension initialDimension){
         this.horaireController = horaireController;
         this.initialDimension = initialDimension;
+        horaireController.createMouseAdapter(this.initialDimension);
     }
     
     public void draw(Graphics g){
@@ -178,62 +180,5 @@ public class HoraireDrawing {
             caseJourWidth += 2*saut;
         }
         return "Position de la souris: " + jour;
-    }
-    //Méthode pour snaper les activités à la grille horaire
-    public Point verificationDrop(Point p){
-        int width = initialDimension.width *3/4;
-        int height = initialDimension.height;
-        int caseJourHeight = height / 5;
-        int caseJourWidth = width / 16;
-        int caseHeureHeight = caseJourHeight / 9;
-        int saut = (width - caseJourWidth)/ 30;
-        int jumpX;
-        int jumpY;
-        int pointActiviteX = 0;
-        int pointActiviteY = 0;
-        
-        for (int i = 0; i <= 4; i++){
-            for (int j = 0; j <= 7; j++){
-                for (int k = 0; k <= 29; k++){
-                    jumpX = caseJourWidth + k*saut;
-                    if (p.x >= jumpX && p.x < (jumpX + saut)){
-                        if (p.y >= 0 && p.y < caseHeureHeight){
-                            jumpX = 0;
-                        }
-                        if (p.y >= caseJourHeight && p.y < caseJourHeight+caseHeureHeight){
-                            jumpX = 0;
-                        }
-                        if (p.y >= 2*caseJourHeight && p.y < 2*caseJourHeight+caseHeureHeight){
-                            jumpX = 0;
-                        }
-                        if (p.y >= 3*caseJourHeight && p.y < 3*caseJourHeight+caseHeureHeight){
-                            jumpX = 0;
-                        }
-                        if (p.y >= 4*caseJourHeight && p.y < 4*caseJourHeight+caseHeureHeight){
-                            jumpX = 0;
-                        }
-                        pointActiviteX = jumpX;
-                    }
-                    //else{
-                    //    pointActiviteX = 0;
-                    //}
-                }
-                jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight;
-                if (p.y >= jumpY && p.y < jumpY + caseHeureHeight){
-                    pointActiviteY = jumpY;
-                }
-                //else{
-                //    pointActiviteY = 0;
-                //}
-            }
-        }
-        if ((p.x >= 0 && p.x < caseJourWidth)){
-            pointActiviteX = 0;
-            pointActiviteY = 0;
-        }
-        if (p.x > width*3/4){
-            
-        }
-        return new Point(pointActiviteX, pointActiviteY);
     }
 }

@@ -216,25 +216,6 @@ public class Horaire {
         //tout est correct
         return true;
     }
-        
-    public void verificationSelection(Point p, Dimension d){      
-        int activiteWidth = (d.width - d.width /16) /15;
-        int activiteHeight = d.height /45;
-        
-        for (Activite a: getListeActiviteAPlacer()){
-            if (p.x > a.getPoint().x && p.x < (a.getPoint().x + (a.getDuree()*activiteWidth))
-                    && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
-                a.switchSelection();
-            }
-        }
-    }
-    
-    public boolean verificationDrop(Point p, Dimension d){
-        int activiteWidth = (d.width - d.width /16) /15;
-        int activiteHeight = d.height /45;
-        
-        return false;
-    }
 
     public void genererAutomatiquement(){
         //En attente d'un bon algorithme
