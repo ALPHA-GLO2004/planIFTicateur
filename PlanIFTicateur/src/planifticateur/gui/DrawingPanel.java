@@ -27,7 +27,7 @@ public class DrawingPanel extends JPanel implements Serializable
         int height = mainWindow.initialDimension.height;
         initialDimension = new Dimension(width, height);
         setPreferredSize(initialDimension);
-        setVisible(true);
+        setVisible(false);
     }
     
     public void operation(){
@@ -36,7 +36,7 @@ public class DrawingPanel extends JPanel implements Serializable
     
     @Override
     protected void paintComponent( Graphics g )
-    {
+    {   
         //méthode pour l'affichage des éléments visuels
         if (mainWindow != null){
             super.paintComponent(g);

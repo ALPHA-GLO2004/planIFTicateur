@@ -315,6 +315,7 @@ public class MainWindow extends javax.swing.JFrame {
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         // On shoot le fileSelection à la fonction approprié du controller
         horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
+        drawingPanel.setVisible(true);
         horaireEstCharge=true;
         horaireController.initPointActivite(this.initialDimension);
         statFenetre.initialize(horaireController);
