@@ -31,7 +31,7 @@ public class Activite {
     private Point point; //remplace rectangle
     private boolean selectStatus = false;
     
-    public Activite(String activite, String separateur){ //to be modified :/
+    public Activite(String activite, String separateur){
         //Constructeur
         //À partir d'une string et du bon separateur CSD, chaque attribut essentiel de l'activité est capté par
         //chaque donnée entre un séparateur précis dans cette string.
@@ -41,6 +41,7 @@ public class Activite {
         String[] infoActivite = activite.split(separateur); //On coupe la chaîne pour obtenir les infos séparés
         try
         {
+            System.out.println(infoActivite.length);
             point = new Point(0,0);
             code = infoActivite[0];
             section = infoActivite[1];
@@ -49,24 +50,25 @@ public class Activite {
             type = infoActivite[4];
             duree = Float.parseFloat(infoActivite[5]); //transformation de string à float
             heureDebutMin = Float.parseFloat(infoActivite[6]); //transformation de string à float
-            heureDebutMax = Float.parseFloat(infoActivite[7]); //transformation de string à float
-            heureFinMax = Float.parseFloat(infoActivite[8]); //transformation de string à float
-            if (infoActivite.length == 10){
-                if (!infoActivite[9].equals("0")){
-                    jourChoisi = Integer.parseInt(infoActivite[9]); //Transformation de string à Int
+            //heureDebutMax = Float.parseFloat(infoActivite[7]); //transformation de string à float
+            heureFinMax = Float.parseFloat(infoActivite[7]); //transformation de string à float
+            if (infoActivite.length == 9){
+                if (!infoActivite[8].equals("0") || !infoActivite[8].equals(null)){
+                    jourChoisi = Integer.parseInt(infoActivite[8]); //Transformation de string à Int
                 }
                 else{
                     jourChoisi = 0;
                 }
             }
-            if (infoActivite.length == 11){
-                if (!infoActivite[10].equals("0")){
-                    heureDebutChoisi = Float.parseFloat(infoActivite[10]); //transformation de string à float
+            if (infoActivite.length == 10){
+                if (!infoActivite[9].equals("0") || !infoActivite[9].equals(null)){
+                    heureDebutChoisi = Float.parseFloat(infoActivite[9]); //transformation de string à float
                 }
                 else{
                     heureDebutChoisi = 0;
                 }
             }
+            System.out.println("test1");
             //attribution de la couleur selon le type
             if ( type.contains("classe")|| type.contains("Classe") ){
                 couleur = new Color(255,0,0);
@@ -79,10 +81,11 @@ public class Activite {
             }
             if ( type.contains("horsD") || type.contains("HorsD")  ){
                 couleur = new Color(0, 0, 255);
-            }      
+            }
+            System.out.println("test2");
         }
         catch (Throwable ex){
-            System.out.println(ex.getMessage());
+           // System.out.println(ex.getMessage());
         }
     }
     
