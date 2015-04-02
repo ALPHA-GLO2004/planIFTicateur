@@ -340,8 +340,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseDragged
 
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
-        horaireController.modifierPointActivite(evt.getPoint());
-        horaireController.switchSelection();
+        if (horaireController.verificationDrop(evt.getPoint(), drawingPanel.getInitialDimension())){
+            horaireController.modifierPointActivite(evt.getPoint());
+            horaireController.switchSelection();
+        }else{
+            horaireController.modifierPointActivite(this.initialActivitePoint);
+        }
+        drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseReleased
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed

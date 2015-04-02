@@ -41,7 +41,6 @@ public class Activite {
         String[] infoActivite = activite.split(separateur); //On coupe la chaîne pour obtenir les infos séparés
         try
         {
-            System.out.println(infoActivite.length);
             point = new Point(0,0);
             code = infoActivite[0];
             section = infoActivite[1];
@@ -68,7 +67,6 @@ public class Activite {
                     heureDebutChoisi = 0;
                 }
             }
-            System.out.println("test1");
             //attribution de la couleur selon le type
             if ( type.contains("classe")|| type.contains("Classe") ){
                 couleur = new Color(255,0,0);
@@ -82,10 +80,9 @@ public class Activite {
             if ( type.contains("horsD") || type.contains("HorsD")  ){
                 couleur = new Color(0, 0, 255);
             }
-            System.out.println("test2");
         }
         catch (Throwable ex){
-           // System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
     }
     
@@ -154,11 +151,6 @@ public class Activite {
     
     public String getCode(){
         return code;
-    }
-    
-    public void translate(Point delta){
-        this.point.x = (int)(this.point.x + delta.x);
-        this.point.y = (int)(this.point.y + delta.y);
     }
     
     public void switchSelection(){

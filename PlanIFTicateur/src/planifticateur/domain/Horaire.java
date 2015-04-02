@@ -230,15 +230,9 @@ public class Horaire {
     }
     
     public boolean verificationDrop(Point p, Dimension d){
-        return true;
-    }
-    
-    public void updateSelectedItemsPositions(Point delta){
-        for (Activite a: this.getListeActiviteComplete()){
-            if (a.isSelected()){
-                a.translate(delta);
-            }
-        }
+        int activiteWidth = (d.width - d.width /16) /15;
+        int activiteHeight = d.height /45;
+        return false;
     }
 
     public void genererAutomatiquement(){

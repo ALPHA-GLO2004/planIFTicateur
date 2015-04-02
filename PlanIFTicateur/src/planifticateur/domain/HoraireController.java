@@ -58,11 +58,7 @@ public class HoraireController {
             }
         }
     }
-    
-    public void updateSelectedItemsPositions(Point delta){
-        horaire.updateSelectedItemsPositions(delta);
-    }
-    
+     
     public void modifierPointActivite(Point p){
         for (Activite a: horaire.getListeActiviteComplete()){
             if (a.isSelected() == true){
@@ -74,6 +70,10 @@ public class HoraireController {
     
     public void VerificationSelection(Point p, Dimension d){
         horaire.verificationSelection(p, d);
+    }
+    
+    public boolean verificationDrop(Point p, Dimension d){
+        return horaire.verificationDrop(p, d);
     }
     
     public void switchSelection(){
