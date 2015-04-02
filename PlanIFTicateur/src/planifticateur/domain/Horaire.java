@@ -74,9 +74,11 @@ public class Horaire {
             Activite a = new Activite(elementActivite, separateur);
             listeActiviteComplete.addElement(a);
             if (a.getJourChoisi() != 0 && a.getHeureDebutChoisi() != 0.0f) {
+                listeActiviteComplete.add(a);
                 listeActiviteDejaPlacee.add(a);
             }
             if (a.getJourChoisi() == 0 && a.getHeureDebutChoisi() == 0.0f) {
+                listeActiviteComplete.add(a);
                 listeActiviteAPlacer.add(a);
             }
         }
@@ -204,7 +206,7 @@ public class Horaire {
             heure = activite.getHeureDebutChoisi();
              
             //plage horaire valide ?
-                if( heure< activite.getHeureDebutMin()){
+                /*if( heure< activite.getHeureDebutMin()){
                     return false;
                 }
                 if(heure > activite.getHeureDebutMax()){
@@ -230,7 +232,7 @@ public class Horaire {
                         }
                     }
     
-                }
+                }*/
                
                
         }

@@ -322,11 +322,10 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
-        //affichage du jour et heure dans barre d'état
-        logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())); 
-
         if(horaireEstCharge)
         {
+            //affichage du jour et heure dans barre d'état
+            logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())); 
             //ajustement de la couleur de la bordure.
             if(horaireController.getValiditeDeLHoraire()==true)  drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
             else drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
@@ -341,10 +340,9 @@ public class MainWindow extends javax.swing.JFrame {
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         if (horaireController.getValiditeDeLHoraire()){
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
-            //horaireController.modifierPointActivite(evt.getPoint());
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
-            horaireController.setListeActiviteDejaPlacee();
+            //horaireController.setListeActiviteDejaPlacee();
         }else{
             horaireController.modifierPointActivite(this.initialActivitePoint);
         }

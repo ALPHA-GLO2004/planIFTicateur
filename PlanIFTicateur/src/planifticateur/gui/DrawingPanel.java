@@ -27,7 +27,7 @@ public class DrawingPanel extends JPanel implements Serializable
         int height = mainWindow.initialDimension.height;
         initialDimension = new Dimension(width, height);
         setPreferredSize(initialDimension);
-        setVisible(false);
+        setVisible(true);
     }
     
     public void operation(){
