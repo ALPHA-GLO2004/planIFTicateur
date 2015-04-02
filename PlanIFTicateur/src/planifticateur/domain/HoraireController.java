@@ -64,7 +64,7 @@ public class HoraireController {
     }
     
     public void verificationSelection(Point p, Dimension d){
-        mouseAdapter.verificationSelection(p, this.getListeActiviteAPlacer());
+        mouseAdapter.verificationSelection(p, this.getListeActiviteComplete());
     }
     
     public void jourHeureToActivite(){
@@ -75,7 +75,7 @@ public class HoraireController {
     //
     
     public void switchSelection(){
-        for (Activite a: this.getListeActiviteAPlacer()){
+        for (Activite a: this.getListeActiviteComplete()){
             if (a.isSelected()){
                 a.switchSelection();
             }

@@ -74,11 +74,9 @@ public class Horaire {
             Activite a = new Activite(elementActivite, separateur);
             listeActiviteComplete.addElement(a);
             if (a.getJourChoisi() != 0 && a.getHeureDebutChoisi() != 0.0f) {
-                listeActiviteComplete.add(a);
                 listeActiviteDejaPlacee.add(a);
             }
             if (a.getJourChoisi() == 0 && a.getHeureDebutChoisi() == 0.0f) {
-                listeActiviteComplete.add(a);
                 listeActiviteAPlacer.add(a);
             }
         }
