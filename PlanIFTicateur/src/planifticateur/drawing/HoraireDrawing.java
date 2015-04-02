@@ -179,4 +179,33 @@ public class HoraireDrawing {
         }
         return "Position de la souris: " + jour;
     }
+    //Méthode pour snaper les activités à la grille horaire
+    public Point verificationDrop(Point p){
+        int width = initialDimension.width *3/4;
+        int height = initialDimension.height;
+        int caseJourHeight = height / 5;
+        int caseJourWidth = width / 16;
+        int caseHeureHeight = caseJourHeight / 9;
+        int saut = (width - caseJourWidth)/ 30;
+        int jumpX;
+        int jumpY;
+        int pointActiviteX = 0;
+        int pointActiviteY = 0;
+        
+        for (int i = 0; i <= 4; i++){
+            for (int j = 0; j <= 6; j++){
+                for (int k = 0; k <= 14; k++){
+                    jumpX = caseJourWidth + k*saut;
+                    if (p.x >= jumpX && p.x <= (jumpX + saut)){
+                        pointActiviteX = jumpX;
+                    }
+                }
+                jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight;
+                if (p.y >= jumpY && p.y <= jumpY + caseHeureHeight){
+                    pointActiviteY = jumpY;
+                }
+            }
+        }
+        return new Point(pointActiviteX, pointActiviteY);
+    }
 }

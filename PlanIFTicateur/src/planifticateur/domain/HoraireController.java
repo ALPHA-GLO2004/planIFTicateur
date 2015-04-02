@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.Vector;
 import java.util.List;
 import java.io.File;
+import planifticateur.drawing.HoraireDrawing;
 import planifticateur.gui.*;
 
 public class HoraireController {
@@ -70,10 +71,6 @@ public class HoraireController {
     
     public void VerificationSelection(Point p, Dimension d){
         horaire.verificationSelection(p, d);
-    }
-    
-    public boolean verificationDrop(Point p, Dimension d){
-        return horaire.verificationDrop(p, d);
     }
     
     public void switchSelection(){

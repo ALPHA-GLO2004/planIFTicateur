@@ -232,6 +232,7 @@ public class Horaire {
     public boolean verificationDrop(Point p, Dimension d){
         int activiteWidth = (d.width - d.width /16) /15;
         int activiteHeight = d.height /45;
+        
         return false;
     }
 
