@@ -194,7 +194,7 @@ public class HoraireDrawing {
         
         for (int i = 0; i <= 4; i++){
             for (int j = 0; j <= 6; j++){
-                for (int k = 0; k <= 14; k++){
+                for (int k = 0; k <= 29; k++){
                     jumpX = caseJourWidth + k*saut;
                     if (p.x >= jumpX && p.x <= (jumpX + saut)){
                         pointActiviteX = jumpX;
