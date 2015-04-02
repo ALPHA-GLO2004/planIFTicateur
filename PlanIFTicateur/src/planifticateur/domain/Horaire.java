@@ -89,7 +89,7 @@ public class Horaire {
             }
             listeGrille.remove(0);
             for (String elementGrille: listeGrille){
-                GrilleCheminement g = new GrilleCheminement(elementGrille);
+                GrilleCheminement g = new GrilleCheminement(elementGrille,separateur);
                 listeGrilleCh.add(g);
             }
         }catch (Exception ex){

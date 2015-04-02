@@ -13,10 +13,10 @@ public class GrilleCheminement {
     String version;
     String session;
     Vector<String> grilleActivites = new Vector<String>();
-    
-    public GrilleCheminement(String grille){
+
+    public GrilleCheminement(String grille,String separateur){
         //Constructeur
-        String[] infoGrille = grille.split(";");
+        String[] infoGrille = grille.split(separateur);
         try{
             programme = infoGrille[0];
             version = infoGrille[1];

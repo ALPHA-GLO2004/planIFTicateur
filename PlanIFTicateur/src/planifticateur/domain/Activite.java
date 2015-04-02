@@ -68,18 +68,18 @@ public class Activite {
                 }
             }
             //attribution de la couleur selon le type
-            if (type.contains("classe")){
+            if ( type.contains("classe")|| type.contains("Classe") ){
                 couleur = new Color(255,0,0);
             }
-            if (type.contains("distance")){
+            if ( type.contains("distance") || type.contains("Distance")  ){
                 couleur = new Color(0, 255, 0);
             }
-            if (type.contains("labo")){
+            if ( type.contains("labo") || type.contains("Labo")  ){
                 couleur = new Color(150, 100, 0);
             }
-            if (type.contains("horsD")){
+            if ( type.contains("horsD") || type.contains("HorsD")  ){
                 couleur = new Color(0, 0, 255);
-            }            
+            }      
         }
         catch (Throwable ex){
             System.out.println(ex.getMessage());
