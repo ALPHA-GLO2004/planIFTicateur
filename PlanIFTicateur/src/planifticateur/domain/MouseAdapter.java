@@ -79,4 +79,18 @@ public class MouseAdapter {
             }
         }
     }
+    
+    public void jourHeureToActivite(Activite a){
+        int height = dimension.height;
+        int caseJourHeight = height / 5;
+        int caseHeureHeight = caseJourHeight / 9;
+        
+        for (int i = 0; i <= 4; i++){
+            int hauteur = caseHeureHeight+(i*caseJourHeight);
+            if (a.getPoint().y >= hauteur && a.getPoint().y < caseJourHeight*(i+1))
+            {
+                a.setJourChoisi(i+1);
+            }
+        }
+    }
 }

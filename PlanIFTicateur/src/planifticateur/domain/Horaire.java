@@ -161,12 +161,19 @@ public class Horaire {
         return listeActiviteComplete;
     }
     
+    public void setListeActiviteDejaPlacee(){
+        for (int i = 0; i < this.getListeActiviteAPlacer().size(); i++){
+            if (this.getListeActiviteAPlacer().get(i).getJourChoisi() > 0){
+                this.listeActiviteDejaPlacee.add(this.getListeActiviteAPlacer().get(i));
+                this.listeActiviteAPlacer.remove(this.getListeActiviteAPlacer().get(i));
+            }
+        }
+    }
+    
     public void ajouterNote(String n){
         note += n;
     }
-    
 
-        
     //algorithme de recherche force brute pour l'instant.
      public boolean horaireEstValide(){
       
@@ -181,18 +188,18 @@ public class Horaire {
             heure = activite.getHeureDebutChoisi();
              
             //plage horaire valide ?
-                if( heure< activite.getHeureDebutMin())
+                if( heure< activite.getHeureDebutMin()){
                     return false;
-            
-                if(heure > activite.getHeureDebutMax())
+                }
+                if(heure > activite.getHeureDebutMax()){
                     return false; 
-               
-                if( heure + activite.getDuree()  > activite.getHeureFinMax() )
+                }
+                if( heure + activite.getDuree()  > activite.getHeureFinMax() ){
                     return false;    
-
+                }
                 //respecte les grilles de cheminement ?
                 //On verifie si un cours lié se donne en meme tps
-                grillesChDUneActivite =   getListeGrillesDeLactivite(activite.getNomActivite());
+                grillesChDUneActivite = getListeGrillesDeLactivite(activite.getNomActivite());
                
                 for(GrilleCheminement grille : grillesChDUneActivite )
                 {

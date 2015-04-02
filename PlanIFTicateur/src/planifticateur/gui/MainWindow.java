@@ -299,7 +299,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_statistiquesButtonActionPerformed
 
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
-        this.drawingPanel.repaint();
+        horaireController.getListeActiviteDejaPlacee().get(0).getJourChoisi();
         //horaireController.planificationAuto();
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
 
@@ -342,6 +342,8 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
             //horaireController.modifierPointActivite(evt.getPoint());
             horaireController.switchSelection();
+            horaireController.jourHeureToActivite();
+            horaireController.setListeActiviteDejaPlacee();
         }else{
             horaireController.modifierPointActivite(this.initialActivitePoint);
         }
@@ -350,7 +352,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
         Point mousePoint = evt.getPoint();
-        this.initialActivitePoint = mousePoint;
         horaireController.verificationSelection(mousePoint, drawingPanel.getInitialDimension());
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed

@@ -154,6 +154,14 @@ public class Activite {
         return code;
     }
     
+    public void setJourChoisi(int jour){
+        this.jourChoisi = jour;
+    }
+    
+    public void setHeureDebutChoisi(float heure){
+        this.heureDebutChoisi = heure;
+    }
+    
     public void switchSelection(){
         this.selectStatus = !this.selectStatus;
     }

@@ -80,6 +80,12 @@ public class HoraireController {
     public void verificationSelection(Point p, Dimension d){
         mouseAdapter.verificationSelection(p, this.getListeActiviteAPlacer());
     }
+    
+    public void jourHeureToActivite(){
+        for (int i = 0; i < this.getListeActiviteAPlacer().size(); i++){
+            mouseAdapter.jourHeureToActivite(this.getListeActiviteAPlacer().get(i));
+        }
+    }
     //
     
     public void switchSelection(){
@@ -117,6 +123,12 @@ public class HoraireController {
             return false;
         }
     }
+    
+    public void setListeActiviteDejaPlacee(){
+        this.horaire.setListeActiviteDejaPlacee();
+    }
+            
+            
     public List<Activite> getListeActiviteAPlacer(){
         return horaire.getListeActiviteAPlacer();
     }

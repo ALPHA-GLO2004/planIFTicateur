@@ -29,7 +29,7 @@ public class ListeActiviteDejaPlacee {
     
     //Ajoute une activité à la liste déjà placées
     public void add(Activite activite){
-        activiteDejaPlaceeListe.add(activite);
+        activiteDejaPlaceeListe.addElement(activite);
     }
     
     //Retire une activté de la liste déjà placées
