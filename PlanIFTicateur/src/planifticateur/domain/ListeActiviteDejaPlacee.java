@@ -34,7 +34,7 @@ public class ListeActiviteDejaPlacee {
     
     //Retire une activté de la liste déjà placées
     public void remove(Activite activite){
-        activiteDejaPlaceeListe.remove(activite);
+        activiteDejaPlaceeListe.removeElement(activite);
     }
     //Retourne vrai si la liste d'activités déjà placées est vide, faux sinon
     public boolean isEmpty(){

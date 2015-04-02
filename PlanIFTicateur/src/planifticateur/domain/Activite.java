@@ -170,4 +170,10 @@ public class Activite {
     public boolean isSelected(){
         return selectStatus;
     }
+    
+    public void dropInListe(String position){
+        if (position == "liste"){
+            this.setJourChoisi(0);
+        }
+    }
 }

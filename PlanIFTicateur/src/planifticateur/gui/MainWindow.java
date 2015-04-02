@@ -339,7 +339,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         if (horaireController.getValiditeDeLHoraire()){
+            horaireController.verificationPositionHoraire(evt.getPoint());
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
+            //horaireController.dropInListe(evt.getPoint());
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
             horaireController.switchAPlacerToDejaPlacee();
@@ -354,12 +356,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseReleased
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
-        horaireController.verificationSelection(evt.getPoint(), drawingPanel.getInitialDimension());
-        if (horaireController.verificationPositionHoraire(evt.getPoint())){
-            
-        }else{
-            
-        }
+        //horaireController.verificationPositionHoraire(evt.getPoint());
+        horaireController.verificationSelection(evt.getPoint(), drawingPanel.getInitialDimension());        
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed
 

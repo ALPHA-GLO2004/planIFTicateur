@@ -24,7 +24,7 @@ public class MouseAdapter {
         int pointActiviteX = 0;
         int pointActiviteY = 0;
         
-        //if (this.position == "horaire"){
+        if (this.position == "horaire"){
             for (int i = 0; i <= 4; i++){
                 for (int j = 0; j <= 7; j++){
                     for (int k = 0; k <= 29; k++){
@@ -67,7 +67,7 @@ public class MouseAdapter {
             if (p.x > width*3/4){
 
             }
-        //}
+        }
         return new Point(pointActiviteX, pointActiviteY);
     }
     
@@ -83,14 +83,12 @@ public class MouseAdapter {
         }
     }
     
-    public boolean verificationPositionHoraire(Point p){
+    public void verificationPositionHoraire(Point p){
         if (p.x <= dimension.width*3/4){
             this.position = "horaire";
-            return true;
         }
         else{
             this.position = "liste";
-            return false;
         }
     }
     

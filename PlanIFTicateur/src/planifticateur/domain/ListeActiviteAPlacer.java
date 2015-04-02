@@ -17,7 +17,7 @@ public class ListeActiviteAPlacer {
     
     //Retire une activté de la liste
     public void remove(Activite activite){
-        activiteAPlacerListe.remove(activite);
+        activiteAPlacerListe.removeElement(activite);
     }
     //Retourne vrai si la liste d'activités à placer est vide, faux sinon
     public boolean isEmpty(){

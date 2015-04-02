@@ -160,7 +160,7 @@ public class Horaire {
     public List<GrilleCheminement> getListeActiviteGrilleCh(){
         return listeGrilleCh.getListeGrilleCh();
     }
-    
+        
     public List<Conflit> getListeConflit(){
         return listeConflit.getListeConflit();
     }
@@ -184,6 +184,12 @@ public class Horaire {
                 this.listeActiviteAPlacer.remove(this.getListeActiviteAPlacer().get(i));
             }
         }
+        /*for (int i = 0; i < this.getListeActiviteDejaPlacee().size(); i++){
+            if (this.getListeActiviteDejaPlacee().get(i).getJourChoisi() > 0){
+                this.listeActiviteAPlacer.add(this.getListeActiviteAPlacer().get(i));
+                this.listeActiviteDejaPlacee.remove(this.getListeActiviteAPlacer().get(i));
+            }
+        }*/
     }
     
     public void ajouterNote(String n){
