@@ -13,6 +13,7 @@
 package planifticateur.domain;
 import java.awt.*;
 import java.lang.*;
+import java.util.List;
 
 public class Activite {
     //J'ai tout mis en string étant donné que ce n'est pas tant pertinent d'avoir un paquet de type différent pour le moment.
@@ -69,23 +70,23 @@ public class Activite {
             }
             //attribution de la couleur selon le type
             if ( type.contains("classe")|| type.contains("Classe") ){
-                couleur = new Color(255,0,0);
+                couleur = new Color(49, 140, 231);
             }
             if ( type.contains("distance") || type.contains("Distance")  ){
-                couleur = new Color(0, 255, 0);
+                couleur = new Color(165, 209, 82);
             }
             if ( type.contains("labo") || type.contains("Labo")  ){
-                couleur = new Color(150, 100, 0);
+                couleur = new Color(223, 109, 20);
             }
             if ( type.contains("horsD") || type.contains("HorsD")  ){
-                couleur = new Color(0, 0, 255);
+                couleur = new Color(253, 108, 158);
             }
         }
         catch (Throwable ex){
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public boolean appartientAActivite(Point point){
         //C'était dans le diagramme...
         return true;

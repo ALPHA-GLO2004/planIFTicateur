@@ -111,6 +111,22 @@ public class Horaire {
         }
     }
     
+    public void initPointActivite(Dimension initialDimension){
+        int width = initialDimension.width *1/4;
+        int height = initialDimension.height;
+        int caseJourHeight = height / 5;
+        int caseJourWidth = width / 16;
+        int caseHeureHeight = caseJourHeight / 9;
+        int saut = (width - caseJourWidth)/ 30;
+        int y = caseHeureHeight;
+        
+        for (Activite a: this.getListeActiviteAPlacer()){
+            Point p = new Point(initialDimension.width - width + 4*saut, y);
+            a.setPoint(p);
+            y += 3*caseHeureHeight/2;
+        }
+    }
+        
     private void validerHoraire(){
         //manque du stock ici
         if (listeConflit.isEmpty()){
