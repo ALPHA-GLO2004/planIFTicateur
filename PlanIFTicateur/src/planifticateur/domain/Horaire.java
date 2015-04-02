@@ -204,12 +204,12 @@ public class Horaire {
             heure = activite.getHeureDebutChoisi();
              
             //plage horaire valide ?
-                /*if( heure< activite.getHeureDebutMin()){
+                if( heure< activite.getHeureDebutMin()){
                     return false;
                 }
-                if(heure > activite.getHeureDebutMax()){
+               /* if(heure > activite.getHeureDebutMax()){
                     return false; 
-                }
+                }*/
                 if( heure + activite.getDuree()  > activite.getHeureFinMax() ){
                     return false;    
                 }
@@ -230,7 +230,7 @@ public class Horaire {
                         }
                     }
     
-                }*/
+                }
                
                
         }

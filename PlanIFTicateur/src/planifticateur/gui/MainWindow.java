@@ -344,6 +344,8 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.jourHeureToActivite();
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.initPointActivite(this.initialDimension);
+            statFenetre.setStatsToCurrentDay() ;
+            
             //horaireController.setListeActiviteDejaPlacee();
         }else{
             horaireController.moveActivite(this.initialActivitePoint);

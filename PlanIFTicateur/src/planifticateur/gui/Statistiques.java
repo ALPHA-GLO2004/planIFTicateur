@@ -157,11 +157,19 @@ public class Statistiques extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jComboBoxJourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJourActionPerformed
        
+        setStatsToCurrentDay();
+        
+    }//GEN-LAST:event_jComboBoxJourActionPerformed
+
+
+          public void setStatsToCurrentDay()
+    {
         if(horaireController != null)
         {
-            int jour = jComboBoxJour.getSelectedIndex();
+            int jour = jComboBoxJour.getSelectedIndex()+1;
             Vector<Float> stats = horaireController.getStats(jour);
             
             jTextFieldNbCours .setText(Float.toString(stats.elementAt(0)));
@@ -171,12 +179,9 @@ public class Statistiques extends javax.swing.JFrame {
             jTextFieldIndConges.setText(Float.toString(stats.elementAt(4)));
 
         }
-        
 
-  
-    }//GEN-LAST:event_jComboBoxJourActionPerformed
-
-    
+    }
+          
     /**
      * @param args the command line arguments
      */
@@ -217,7 +222,7 @@ public class Statistiques extends javax.swing.JFrame {
     {
          horaireController= hc ;
          //on affiche lundi par default
-        Vector<Float> stats = horaireController.getStats(0);
+        Vector<Float> stats = horaireController.getStats(1);
         
         jTextFieldNbCours .setText(Float.toString(stats.elementAt(0)));
         jTextFieldNbMaxCours .setText(Float.toString(stats.elementAt(1)));
@@ -226,7 +231,8 @@ public class Statistiques extends javax.swing.JFrame {
         jTextFieldIndConges.setText(Float.toString(stats.elementAt(4)));
 
     }
-        
+     
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     private javax.swing.JComboBox jComboBoxJour;
