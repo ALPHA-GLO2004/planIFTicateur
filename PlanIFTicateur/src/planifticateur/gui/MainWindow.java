@@ -31,6 +31,7 @@ public class MainWindow extends javax.swing.JFrame {
         fenetreNote = new Note();
         messagesDerreurs = new Vector<String>() ;
         initComponents();
+        drawingPanelContainer.getVerticalScrollBar().setUnitIncrement(8);
     }
 
     
