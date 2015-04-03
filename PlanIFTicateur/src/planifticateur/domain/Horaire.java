@@ -233,9 +233,8 @@ public class Horaire {
                 if(heure < activite.getHeureDebutMin()){
                     reponse = false;
                     iPart= (long)activite.getHeureDebutMin();
-                    fPart = activite.getHeureDebutMin() - iPart;
-                    if(fPart>0.0)fPart=30.0;
-                    
+                    fPart = 60.0*(activite.getHeureDebutMin() - iPart);
+
                     messagesDerreurs.add("L'heure de debut de "  + "\" "+ activite.getNomActivite()+" \""+
                                          " doit être >= "+ iPart +" h "+(long)fPart+ "\n");
                 }
@@ -247,8 +246,8 @@ public class Horaire {
                 if( heure + activite.getDuree()  > activite.getHeureFinMax() ){
                     reponse = false;
                     iPart= (long)activite.getHeureFinMax();
-                    fPart = activite.getHeureFinMax() - iPart;
-                    if(fPart>0.0)fPart=30.0;
+                    fPart = 60.0*(activite.getHeureFinMax() - iPart);
+
                     messagesDerreurs.add("L'heure de fin de " + "\" "+activite.getNomActivite()+" \""+
                                          " doit être <= "+ iPart +" h "+(long)fPart+ "\n"
                                          );
