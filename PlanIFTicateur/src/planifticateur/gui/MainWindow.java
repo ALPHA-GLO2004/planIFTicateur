@@ -302,6 +302,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void validationAutoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationAutoCheckBoxActionPerformed
         horaireController.switchValidationAuto();
+        drawingPanel.repaint();
     }//GEN-LAST:event_validationAutoCheckBoxActionPerformed
 
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed

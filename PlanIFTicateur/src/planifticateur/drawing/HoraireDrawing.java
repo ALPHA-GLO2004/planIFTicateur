@@ -20,13 +20,8 @@ public class HoraireDrawing {
     public void draw(Graphics g){
         //Dépend du mode validation auto
         if (horaireController.getHoraire() == true){
-            if (!horaireController.getModeValidationAuto()){
-                drawHoraire(g);
-                drawActivite(g);
-            }
-            else{
-
-            }
+            drawHoraire(g);
+            drawActivite(g);
         }
         else{
             drawHoraire(g);
@@ -82,10 +77,6 @@ public class HoraireDrawing {
                     }
                 }
         }        
-    }
-    
-    public void drawHoraireValidationAuto(Graphics g){
-        
     }
     
     public void drawHoraire(Graphics g){
@@ -188,6 +179,12 @@ public class HoraireDrawing {
             //verticales
             g2.drawLine(width+saut, spaceHeightRight, width+saut, height-spaceHeightRight);
             g2.drawLine(initialDimension.width-3*saut/2, spaceHeightRight, initialDimension.width-3*saut/2, height-spaceHeightRight);
+            if (horaireController.getModeValidationAuto()){
+                //On set la couleur avec un alpha pour ombrager les zones invalides
+                g2.setColor(new Color(0, 0, 0, 80));
+                //On remplit chaque case selon sa validité --- En construction :)
+                g2.fillRect(0, 0, width, height);
+            }
         }
         else{
             g2.setColor(Color.GRAY);
