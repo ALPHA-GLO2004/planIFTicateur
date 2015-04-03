@@ -220,8 +220,10 @@ public class Horaire {
         Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
         float heure;
         boolean reponse ;
-
+        long iPart;
+        double fPart;
         reponse =true;
+        
         for(Activite activite : activiteDejaPlacee)
         {
             heure = activite.getHeureDebutChoisi();
@@ -230,8 +232,12 @@ public class Horaire {
 
                 if(heure < activite.getHeureDebutMin()){
                     reponse = false;
+                    iPart= (long)activite.getHeureDebutMin();
+                    fPart = activite.getHeureDebutMin() - iPart;
+                    if(fPart>0.0)fPart=30.0;
+                    
                     messagesDerreurs.add("L'heure de debut de "  + "\" "+ activite.getNomActivite()+" \""+
-                                         " doit être >= "+ activite.getHeureDebutMin()+ "\n");
+                                         " doit être >= "+ iPart +" h "+(long)fPart+ "\n");
                 }
                /* if(heure > activite.getHeureDebutMax()){
                     reponse = false; 
@@ -240,8 +246,11 @@ public class Horaire {
 
                 if( heure + activite.getDuree()  > activite.getHeureFinMax() ){
                     reponse = false;
+                    iPart= (long)activite.getHeureFinMax();
+                    fPart = activite.getHeureFinMax() - iPart;
+                    if(fPart>0.0)fPart=30.0;
                     messagesDerreurs.add("L'heure de fin de " + "\" "+activite.getNomActivite()+" \""+
-                                         " doit être <= "+ activite.getHeureFinMax()+ "\n"
+                                         " doit être <= "+ iPart +" h "+(long)fPart+ "\n"
                                          );
 
                 }
