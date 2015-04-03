@@ -351,7 +351,24 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.initPointActivite(this.initialDimension);
         horaireController.initPointActiviteDejaPlacee(this.initialDimension);
         statFenetre.initialize(horaireController);
-        drawingPanel.repaint();
+
+            horaireController.switchSelection();
+            horaireController.jourHeureToActivite();
+            horaireController.switchAPlacerToDejaPlacee();
+            horaireController.switchDejaPlaceeToAPlacer();
+            horaireController.initPointActivite(this.initialDimension);
+            statFenetre.setStatsToCurrentDay();
+
+            
+            messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }
+                
+            drawingPanel.repaint();
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
