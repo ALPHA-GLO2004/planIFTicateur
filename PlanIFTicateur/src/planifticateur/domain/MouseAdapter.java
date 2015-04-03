@@ -7,13 +7,15 @@ public class MouseAdapter {
     private Dimension dimension;
     private String position;
     private float dureeActiviteSelected;
+    private float heureFinMax;
+    private float heureDebutMin;
     
     public MouseAdapter(Dimension d){
         this.dimension = d;
     }
     
     //Méthode pour snaper les activités à la grille horaire
-    public Point verificationDrop(Point p, List<Activite> la){
+    public Point verificationDrop(Point p, List<Activite> la, boolean modeValidationAuto){
         int width = dimension.width *3/4;
         int height = dimension.height;
         int caseJourHeight = height / 5;
@@ -25,7 +27,6 @@ public class MouseAdapter {
         int pointActiviteX = 0;
         int pointActiviteY = 0;
         
-        //if (this.position == "horaire"){
             for (int i = 0; i <= 4; i++){
                 for (int j = 0; j <= 7; j++){
                     for (int k = 0; k <= 29; k++){
@@ -48,17 +49,11 @@ public class MouseAdapter {
                             }
                             pointActiviteX = jumpX;
                         }
-                        //else{
-                        //    pointActiviteX = 0;
-                        //}
                     }
                     jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight;
                     if (p.y >= jumpY && p.y < jumpY + caseHeureHeight){
                         pointActiviteY = jumpY;
                     }
-                    //else{
-                    //    pointActiviteY = 0;
-                    //}
                 }
             }            
             if ((p.x >= 0 && p.x < caseJourWidth)){
@@ -66,12 +61,13 @@ public class MouseAdapter {
                 pointActiviteY = 0;
             }
 
-            int activiteWidth = (dimension.width - dimension.width /16) /15;
             int activiteHeight = dimension.height /45;
             
             for (Activite a: la){
                 if (a.isSelected()){
                     dureeActiviteSelected = a.getDuree();
+                    heureFinMax = a.getHeureFinMax();
+                    heureDebutMin = a.getHeureDebutMin();
                 }
             }
             
@@ -87,7 +83,14 @@ public class MouseAdapter {
                     pointActiviteY = 0;
                 }
             }
-        //}
+            
+            if (modeValidationAuto){
+                if ((pointActiviteX + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15))) > (int)(caseJourWidth + (heureFinMax - 8)*2*saut)
+                        || pointActiviteX < (int)(caseJourWidth + (heureDebutMin - 8)*2*saut)){
+                    pointActiviteX = 0;
+                    pointActiviteY = 0;
+            }
+            }
         return new Point(pointActiviteX, pointActiviteY);
     }
     

@@ -60,7 +60,7 @@ public class HoraireController {
     
     //Méthode pour mouseAdapter
     public Point verificationDrop(Point p){
-        return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete());
+        return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.getModeValidationAuto());
     }
     
     public void verificationSelection(Point p, Dimension d){

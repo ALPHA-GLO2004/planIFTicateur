@@ -76,6 +76,16 @@ public class HoraireDrawing {
                         g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                     }
                 }
+                if (horaireController.getModeValidationAuto()){
+                    //On set la couleur avec un alpha pour ombrager les activités déjà placées
+                    g2.setColor(new Color(0, 0, 0, 80));
+                    //On dessine les rectangles d'ombre
+                    for (Activite a: horaireController.getListeActiviteDejaPlacee()){
+                        if (!a.isSelected()){
+                            g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree()*saut*2), caseHeureHeight);
+                        }
+                    }
+                }
         }        
     }
     
@@ -148,6 +158,8 @@ public class HoraireDrawing {
             //verticales
             g2.drawLine(width+saut, spaceHeightRight, width+saut, height-spaceHeightRight);
             g2.drawLine(initialDimension.width-3*saut/2, spaceHeightRight, initialDimension.width-3*saut/2, height-spaceHeightRight);
+            
+            //mode validationAuto on
             if (horaireController.getModeValidationAuto()){
                 //On set la couleur avec un alpha pour ombrager les zones invalides
                 g2.setColor(new Color(0, 0, 0, 80));

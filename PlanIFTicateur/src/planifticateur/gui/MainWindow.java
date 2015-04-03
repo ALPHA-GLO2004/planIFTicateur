@@ -359,7 +359,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         //if (horaireController.getValiditeDeLHoraire()){
-            horaireController.verificationPositionHoraire(evt.getPoint());
+            //horaireController.verificationPositionHoraire(evt.getPoint());
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
