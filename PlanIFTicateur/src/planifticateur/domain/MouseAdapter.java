@@ -26,7 +26,6 @@ public class MouseAdapter {
         int jumpY;
         int pointActiviteX = 0;
         int pointActiviteY = 0;
-        
             for (int i = 0; i <= 4; i++){
                 for (int j = 0; j <= 7; j++){
                     for (int k = 0; k <= 29; k++){
@@ -72,13 +71,19 @@ public class MouseAdapter {
             }
             
             for (Activite a: la){
-                if (pointActiviteX + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15)) > a.getPoint().x 
-                        && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
-                    pointActiviteX = 0;
-                    pointActiviteY = 0;
+                if (p.x < width){
+                    if (pointActiviteX + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15)) > a.getPoint().x 
+                            && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
+                        pointActiviteX = 0;
+                        pointActiviteY = 0;
+                    }
+                    if (p.x > a.getPoint().x && p.x < (a.getPoint().x + (int)(a.getDuree() * ((width - (caseJourWidth))/15)))
+                            && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
+                        pointActiviteX = 0;
+                        pointActiviteY = 0;
+                    }
                 }
-                if (p.x > a.getPoint().x && p.x < (a.getPoint().x + (int)(a.getDuree() * ((width - (caseJourWidth))/15)))
-                        && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
+                else{
                     pointActiviteX = 0;
                     pointActiviteY = 0;
                 }
