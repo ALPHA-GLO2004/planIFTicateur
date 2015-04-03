@@ -136,6 +136,39 @@ public class HoraireDrawing {
                 x += saut * 2;
             }
 
+            //Dessin du cadre pour la liste des activités à placer
+            int spaceHeightRight = caseHeureHeight /3;
+            g2.setColor(Color.BLACK);
+            g2.setStroke(new BasicStroke(3));
+            //horizontales
+            g2.drawLine(width+saut, spaceHeightRight, width+3*saut, spaceHeightRight);
+            g2.drawString("Activités à placer", width+13*saut/4, spaceHeightRight*3/2);
+            g2.drawLine(width+11*saut/2, spaceHeightRight, initialDimension.width-3*saut/2, spaceHeightRight);
+            g2.drawLine(width+saut, height-spaceHeightRight, initialDimension.width-3*saut/2, height-spaceHeightRight);
+            //verticales
+            g2.drawLine(width+saut, spaceHeightRight, width+saut, height-spaceHeightRight);
+            g2.drawLine(initialDimension.width-3*saut/2, spaceHeightRight, initialDimension.width-3*saut/2, height-spaceHeightRight);
+            if (horaireController.getModeValidationAuto()){
+                //On set la couleur avec un alpha pour ombrager les zones invalides
+                g2.setColor(new Color(0, 0, 0, 80));
+                //On remplit chaque case selon sa validité --- En construction :)
+                g2.fillRect(0, 0, width, height);
+                //On dessine les plages valides
+                for (Activite a: horaireController.getListeActiviteComplete()){
+                    if (horaireController.activiteIsSelected(a)){
+                        float pointDebutMin = a.getHeureDebutMin() - 8; //Point minimum dans grille vs nb de case
+                        float pointDebutMax = (a.getHeureFinMax() - 8) - pointDebutMin; //Point maximum dans grille vs nb de case
+                        int heureSautDebut = (int)(pointDebutMin*(saut*2)); //Transformation d'une heure en point (saut)
+                        int heureSautFin = (int)(pointDebutMax*(saut*2)); //Transformation d'une heure en point (saut)
+                        g2.setColor(new Color(255, 255, 255));
+                        
+                        for (int i = 0; i <= 4; i++){
+                            g2.fillRect(caseJourWidth+heureSautDebut , caseHeureHeight+(i*caseJourHeight), heureSautFin, caseJourHeight-caseHeureHeight);
+                        }
+                    }
+                }
+            }
+            
             //lignes horizontales pointillées --- grises
             Stroke dashed = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{3}, 0);
             g2.setStroke(dashed);
@@ -165,39 +198,6 @@ public class HoraireDrawing {
                 g2.drawLine(x, y - caseJourHeight + caseHeureHeight, x, y);
                 y = caseJourHeight;
                 x += saut;
-            }
-
-            //Dessin du cadre pour la liste des activités à placer
-            int spaceHeightRight = caseHeureHeight /3;
-            g2.setColor(Color.BLACK);
-            g2.setStroke(new BasicStroke(3));
-            //horizontales
-            g2.drawLine(width+saut, spaceHeightRight, width+3*saut, spaceHeightRight);
-            g2.drawString("Activités à placer", width+13*saut/4, spaceHeightRight*3/2);
-            g2.drawLine(width+11*saut/2, spaceHeightRight, initialDimension.width-3*saut/2, spaceHeightRight);
-            g2.drawLine(width+saut, height-spaceHeightRight, initialDimension.width-3*saut/2, height-spaceHeightRight);
-            //verticales
-            g2.drawLine(width+saut, spaceHeightRight, width+saut, height-spaceHeightRight);
-            g2.drawLine(initialDimension.width-3*saut/2, spaceHeightRight, initialDimension.width-3*saut/2, height-spaceHeightRight);
-            if (horaireController.getModeValidationAuto()){
-                //On set la couleur avec un alpha pour ombrager les zones invalides
-                g2.setColor(new Color(0, 0, 0, 80));
-                //On remplit chaque case selon sa validité --- En construction :)
-                g2.fillRect(0, 0, width, height);
-                //On dessine les plages valides
-                for (Activite a: horaireController.getListeActiviteComplete()){
-                    if (horaireController.activiteIsSelected(a)){
-                        float pointDebutMin = a.getHeureDebutMin() - 8; //Point minimum dans grille vs nb de case
-                        float pointDebutMax = (a.getHeureFinMax() - 8) - pointDebutMin; //Point maximum dans grille vs nb de case
-                        int heureSautDebut = (int)(pointDebutMin*(saut*2)); //Transformation d'une heure en point (saut)
-                        int heureSautFin = (int)(pointDebutMax*(saut*2)); //Transformation d'une heure en point (saut)
-                        g2.setColor(new Color(255, 255, 255, 90));
-                        
-                        for (int i = 0; i <= 4; i++){
-                            g2.fillRect(caseJourWidth+heureSautDebut , caseHeureHeight+(i*caseJourHeight), heureSautFin, caseJourHeight-caseHeureHeight);
-                        }
-                    }
-                }
             }
         }
         else{
