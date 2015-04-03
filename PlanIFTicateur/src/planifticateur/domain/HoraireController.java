@@ -50,6 +50,10 @@ public class HoraireController {
         this.horaire.initPointActivite(initialDimension);
     }
     
+    public void initPointActiviteDejaPlacee(Dimension initialDimension){
+        this.horaire.initPointActiviteDejaPlacee(initialDimension);
+    }
+    
     public void moveActivite(Point p){
         for (Activite a: horaire.getListeActiviteComplete()){
             if (a.isSelected() == true){
@@ -106,6 +110,10 @@ public class HoraireController {
     
     public void switchValidationAuto(){
         this.horaire.switchModeValidation();
+    }
+    
+    public void setModeValidationAutoOff(){
+        this.horaire.setModeValidationOff();
     }
     
     public boolean getModeValidationAuto(){

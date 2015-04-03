@@ -323,6 +323,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_statistiquesButtonActionPerformed
 
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
+        System.out.println(horaireController.getListeActiviteDejaPlacee());
         horaireController.planificationAuto();
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
 
@@ -339,21 +340,22 @@ public class MainWindow extends javax.swing.JFrame {
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         // On shoot le fileSelection à la fonction approprié du controller
         horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
+        horaireController.setModeValidationAutoOff();
         titreFichierLabel.setText(" Nom fichier d'importaion:  " + horaireController.getHoraireNom());
         drawingPanel.setVisible(true);
         horaireEstCharge=true;
         horaireController.initPointActivite(this.initialDimension);
+        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
         statFenetre.initialize(horaireController);
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
-
-        updateLogMessage(evt);
-        
+        updateLogMessage(evt);        
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
         horaireController.moveActivite(evt.getPoint());
+        updateLogMessage(evt);
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseDragged
 
@@ -366,7 +368,7 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
-            statFenetre.setStatsToCurrentDay() ;
+            statFenetre.setStatsToCurrentDay();
             //ajustement de la couleur de la bordure.
             
              if(horaireEstCharge)

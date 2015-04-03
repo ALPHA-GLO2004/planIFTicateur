@@ -112,8 +112,31 @@ public class Horaire {
         }
     }
     
+    public void initPointActiviteDejaPlacee(Dimension initialDimension){
+        int width = initialDimension.width *3/4;
+        int height = initialDimension.height;
+        int caseJourHeight = height / 5;
+        int caseJourWidth = width / 16;
+        int caseHeureHeight = caseJourHeight / 9;
+        int saut = (width - caseJourWidth)/ 30;
+        int y = caseHeureHeight;
+        
+        for (Activite a: this.getListeActiviteDejaPlacee()){
+            int jourChoisiActivitePrecedente = a.getJourChoisi();
+            y = caseHeureHeight + (a.getJourChoisi()-1)*caseJourHeight;
+            int x = caseJourWidth + (int)((a.getHeureDebutChoisi()-8)*2*saut);
+            Point p = new Point(x, y);
+            a.setPoint(p);
+            //Si une activité deja placée
+            if (a.getJourChoisi() == jourChoisiActivitePrecedente){
+                y += caseHeureHeight;
+            }
+        }
+    }
+    
     public void initPointActivite(Dimension initialDimension){
-        int width = initialDimension.width *1/4;
+        int widthListe = initialDimension.width - initialDimension.width*1/4;
+        int width = initialDimension.width *3/4;
         int height = initialDimension.height;
         int caseJourHeight = height / 5;
         int caseJourWidth = width / 16;
@@ -122,7 +145,7 @@ public class Horaire {
         int y = caseHeureHeight;
         
         for (Activite a: this.getListeActiviteAPlacer()){
-            Point p = new Point(initialDimension.width - width + 4*saut, y);
+            Point p = new Point(widthListe + 3*saut/2, y);
             a.setPoint(p);
             y += 3*caseHeureHeight/2;
         }
@@ -206,6 +229,10 @@ public class Horaire {
     
     public void switchModeValidation(){
         this.modeValidationAuto = !this.modeValidationAuto;
+    }
+    
+    public void setModeValidationOff(){
+        this.modeValidationAuto = false;
     }
     
     public boolean getModeValidation(){

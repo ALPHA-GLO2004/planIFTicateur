@@ -51,7 +51,7 @@ public class Activite {
             duree = Float.parseFloat(infoActivite[5]); //transformation de string à float
             heureDebutMin = Float.parseFloat(infoActivite[6]); //transformation de string à float
             heureFinMax = Float.parseFloat(infoActivite[7]); //transformation de string à float
-            if (infoActivite.length == 9){
+            if (infoActivite.length >= 9){
                 if (!infoActivite[8].equals("0") || !infoActivite[8].equals(null)){
                     jourChoisi = Integer.parseInt(infoActivite[8]); //Transformation de string à Int
                 }
