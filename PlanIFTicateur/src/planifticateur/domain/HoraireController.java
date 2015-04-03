@@ -93,7 +93,11 @@ public class HoraireController {
     public void note(String n){
         horaire.ajouterNote(n);
     }
- 
+    
+    public boolean activiteIsSelected(Activite a){
+        return a.isSelected();
+    }
+    
     public  Vector<Float> getStats(int jour){
         
         return horaire.getStatistiques(jour);

@@ -50,7 +50,6 @@ public class Activite {
             type = infoActivite[4];
             duree = Float.parseFloat(infoActivite[5]); //transformation de string à float
             heureDebutMin = Float.parseFloat(infoActivite[6]); //transformation de string à float
-            //heureDebutMax = Float.parseFloat(infoActivite[7]); //transformation de string à float
             heureFinMax = Float.parseFloat(infoActivite[7]); //transformation de string à float
             if (infoActivite.length == 9){
                 if (!infoActivite[8].equals("0") || !infoActivite[8].equals(null)){
@@ -81,6 +80,7 @@ public class Activite {
             if ( type.contains("horsD") || type.contains("HorsD")  ){
                 couleur = new Color(253, 108, 158);
             }
+            heureDebutMax = heureFinMax - duree;
         }
         catch (Throwable ex){
             System.out.println(ex.getMessage());

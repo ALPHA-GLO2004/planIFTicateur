@@ -184,6 +184,20 @@ public class HoraireDrawing {
                 g2.setColor(new Color(0, 0, 0, 80));
                 //On remplit chaque case selon sa validité --- En construction :)
                 g2.fillRect(0, 0, width, height);
+                //On dessine les plages valides
+                for (Activite a: horaireController.getListeActiviteComplete()){
+                    if (horaireController.activiteIsSelected(a)){
+                        float pointDebutMin = a.getHeureDebutMin() - 8; //Point minimum dans grille vs nb de case
+                        float pointDebutMax = (a.getHeureFinMax() - 8) - pointDebutMin; //Point maximum dans grille vs nb de case
+                        int heureSautDebut = (int)(pointDebutMin*(saut*2)); //Transformation d'une heure en point (saut)
+                        int heureSautFin = (int)(pointDebutMax*(saut*2)); //Transformation d'une heure en point (saut)
+                        g2.setColor(new Color(255, 255, 255, 90));
+                        
+                        for (int i = 0; i <= 4; i++){
+                            g2.fillRect(caseJourWidth+heureSautDebut , caseHeureHeight+(i*caseJourHeight), heureSautFin, caseJourHeight-caseHeureHeight);
+                        }
+                    }
+                }
             }
         }
         else{

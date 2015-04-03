@@ -227,20 +227,30 @@ public class Horaire {
             heure = activite.getHeureDebutChoisi();
              
             //plage horaire valide ?
-                if( heure< activite.getHeureDebutMin()){
+
+                if(heure < activite.getHeureDebutMin()){
+                    return false;
+                }
+
+                if(heure < activite.getHeureDebutMin()){
                     reponse = false;
                     messagesDerreurs.add("L'heure de debut de "  + "\" "+ activite.getNomActivite()+" \""+
-                                         " doit être >= "+ activite.getHeureDebutMin()+ "\n"
-                                        );
+                                         " doit être >= "+ activite.getHeureDebutMin()+ "\n");
                 }
                /* if(heure > activite.getHeureDebutMax()){
                     reponse = false; 
                 }*/
+
+                if(heure + activite.getDuree() > activite.getHeureFinMax() ){
+                    return false;
+                }
+
                 if( heure + activite.getDuree()  > activite.getHeureFinMax() ){
                     reponse = false;
                     messagesDerreurs.add("L'heure de fin de " + "\" "+activite.getNomActivite()+" \""+
                                          " doit être <= "+ activite.getHeureFinMax()+ "\n"
                                          );
+
                 }
                 //respecte les grilles de cheminement ?
                 //On verifie si un cours lié se donne en meme tps
@@ -266,8 +276,6 @@ public class Horaire {
                
                
         }
-         
-         
         return reponse;
     }
 

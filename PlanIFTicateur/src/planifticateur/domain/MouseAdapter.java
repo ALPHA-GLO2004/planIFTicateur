@@ -115,7 +115,7 @@ public class MouseAdapter {
             for (int k = 0; k <= 29; k++){
                 jumpX = caseJourWidth + k*saut;
                 if (p.x >= jumpX && p.x < (jumpX + saut)){
-                    a.setHeureDebutChoisi(8.5f + k*0.5f);
+                    a.setHeureDebutChoisi(8f + k*0.5f);
                 }
             }
         }
