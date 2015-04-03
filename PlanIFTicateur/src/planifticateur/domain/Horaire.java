@@ -229,10 +229,6 @@ public class Horaire {
             //plage horaire valide ?
 
                 if(heure < activite.getHeureDebutMin()){
-                    return false;
-                }
-
-                if(heure < activite.getHeureDebutMin()){
                     reponse = false;
                     messagesDerreurs.add("L'heure de debut de "  + "\" "+ activite.getNomActivite()+" \""+
                                          " doit être >= "+ activite.getHeureDebutMin()+ "\n");
@@ -241,9 +237,6 @@ public class Horaire {
                     reponse = false; 
                 }*/
 
-                if(heure + activite.getDuree() > activite.getHeureFinMax() ){
-                    return false;
-                }
 
                 if( heure + activite.getDuree()  > activite.getHeureFinMax() ){
                     reponse = false;
