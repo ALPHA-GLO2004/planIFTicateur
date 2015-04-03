@@ -213,27 +213,30 @@ public class Horaire {
     }
     
     //algorithme de recherche force brute pour l'instant.
-     public boolean horaireEstValide(){
+     public boolean horaireEstValide(Vector<String> messagesDerreurs){
       
         Vector<GrilleCheminement> grillesChDUneActivite ;
         Vector<String> stringDUneGrille ;
         Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
         float heure;
+        boolean reponse ;
 
-        
+        reponse =true;
         for(Activite activite : activiteDejaPlacee)
         {
             heure = activite.getHeureDebutChoisi();
              
             //plage horaire valide ?
                 if( heure< activite.getHeureDebutMin()){
-                    return false;
+                    reponse = false;
+                    messagesDerreurs.add("L'heure de debut de " + activite.getNomActivite()+" est trop petite \n");
                 }
                /* if(heure > activite.getHeureDebutMax()){
-                    return false; 
+                    reponse = false; 
                 }*/
                 if( heure + activite.getDuree()  > activite.getHeureFinMax() ){
-                    return false;    
+                    reponse = false;
+                    messagesDerreurs.add("L'heure de fin de " + activite.getNomActivite()+" est trop grande \n");
                 }
                 //respecte les grilles de cheminement ?
                 //On verifie si un cours lié se donne en meme tps
@@ -248,7 +251,10 @@ public class Horaire {
                         if(! stringDUneGrille.elementAt(i).equals(activite.getNomActivite()))
                         {
                            if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i)) ) 
-                               return false;
+                               reponse = false;
+                            messagesDerreurs.add(activite.getNomActivite()+" et "
+                                                 +stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n" 
+                                                );
                         }
                     }
     
@@ -258,8 +264,7 @@ public class Horaire {
         }
          
          
-        //tout est correct
-        return true;
+        return reponse;
     }
 
     public void genererAutomatiquement(){

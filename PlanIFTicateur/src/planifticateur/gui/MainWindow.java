@@ -4,6 +4,7 @@ import planifticateur.domain.HoraireController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.util.Vector;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -16,6 +17,8 @@ public class MainWindow extends javax.swing.JFrame {
     public Point initialActivitePoint;
     public Point delta;
     private boolean horaireEstCharge;
+    Vector<String> messagesDerreurs;
+
     
     public MainWindow() {
         int width = (int) ((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width));
@@ -26,8 +29,11 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController = new HoraireController();
         statFenetre = new Statistiques();
         fenetreNote = new Note();
+        messagesDerreurs = new Vector<String>() ;
         initComponents();
     }
+
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -283,7 +289,27 @@ public class MainWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void updateLogMessage(java.awt.event.MouseEvent evt)
+    {
+        if(horaireEstCharge)
+        {
+            if(messagesDerreurs.size()>0)
+            {
+                String txt = new String();
+                for(String mess : messagesDerreurs)
+                {
+                    txt+= mess;
+                }
+               logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())
+                                       + "\n"+txt
+                                      ); 
+            }
+            //affichage uniquement du jour et heure dans barre d'état
+            else  logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())); 
+            
+        } 
+    }
+    
     private void quitterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitterButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_quitterButtonActionPerformed
@@ -321,11 +347,9 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
-        if(horaireEstCharge)
-        {
-            //affichage du jour et heure dans barre d'état
-            logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())); 
-        }
+
+        updateLogMessage(evt);
+        
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
@@ -344,16 +368,20 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.initPointActivite(this.initialDimension);
             statFenetre.setStatsToCurrentDay() ;
             //ajustement de la couleur de la bordure.
-            if(horaireController.getValiditeDeLHoraire()==true){
+            
+             if(horaireEstCharge)
+        {
+            messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
                 drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
             }
             else{
                 drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-                logMsgTextArea.setText("Horaire invalide"); 
             }
-        //}else{
-        //    horaireController.moveActivite(this.initialActivitePoint);
-        //}
+            
+            updateLogMessage(evt);
+        }
+                    
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseReleased
 

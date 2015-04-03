@@ -166,8 +166,8 @@ public class HoraireController {
         
     }
     
-    public boolean getValiditeDeLHoraire(){
-        return horaire.horaireEstValide();
+    public boolean getValiditeDeLHoraire(Vector<String> messagesDerreurs){
+        return horaire.horaireEstValide(messagesDerreurs);
     }
     //et ainsi de suite...
 }
