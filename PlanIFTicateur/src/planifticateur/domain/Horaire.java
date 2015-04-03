@@ -229,14 +229,18 @@ public class Horaire {
             //plage horaire valide ?
                 if( heure< activite.getHeureDebutMin()){
                     reponse = false;
-                    messagesDerreurs.add("L'heure de debut de " + activite.getNomActivite()+" est trop petite \n");
+                    messagesDerreurs.add("L'heure de debut de "  + "\" "+ activite.getNomActivite()+" \""+
+                                         " doit être >= "+ activite.getHeureDebutMin()+ "\n"
+                                        );
                 }
                /* if(heure > activite.getHeureDebutMax()){
                     reponse = false; 
                 }*/
                 if( heure + activite.getDuree()  > activite.getHeureFinMax() ){
                     reponse = false;
-                    messagesDerreurs.add("L'heure de fin de " + activite.getNomActivite()+" est trop grande \n");
+                    messagesDerreurs.add("L'heure de fin de " + "\" "+activite.getNomActivite()+" \""+
+                                         " doit être <= "+ activite.getHeureFinMax()+ "\n"
+                                         );
                 }
                 //respecte les grilles de cheminement ?
                 //On verifie si un cours lié se donne en meme tps
