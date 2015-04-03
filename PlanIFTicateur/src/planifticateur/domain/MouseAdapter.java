@@ -46,7 +46,9 @@ public class MouseAdapter {
                             if (p.y >= 4*caseJourHeight && p.y < 4*caseJourHeight+caseHeureHeight){
                                 jumpX = 0;
                             }
-                            pointActiviteX = jumpX;
+                            else{
+                                pointActiviteX = jumpX;
+                            }
                         }
                     }
                     jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight;
@@ -98,7 +100,7 @@ public class MouseAdapter {
             }
         return new Point(pointActiviteX, pointActiviteY);
     }
-    
+        
     public void verificationSelection(Point p, List<Activite> activiteList){ 
         int width = dimension.width *3/4;
         int caseJourWidth = width / 16;

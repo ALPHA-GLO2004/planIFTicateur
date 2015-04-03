@@ -85,7 +85,7 @@ public class HoraireController {
         return mouseAdapter.getPositionCursor();
     }
     //
-    
+    //à déplacer dans horaire
     public void switchSelection(){
         for (Activite a: this.getListeActiviteComplete()){
             if (a.isSelected()){
@@ -100,6 +100,10 @@ public class HoraireController {
     
     public boolean activiteIsSelected(Activite a){
         return a.isSelected();
+    }
+    
+    public Activite getActiviteSelected(){
+        return this.horaire.getActiviteSelected();
     }
     
     public  Vector<Float> getStats(int jour){

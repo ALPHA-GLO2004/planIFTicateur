@@ -29,6 +29,7 @@ public class Horaire {
     private String note = "";
     private boolean modeValidationAuto = false;
     boolean valide;
+    private Activite activiteSelected;
 
     //float pctCoursDebutant8h30;
     boolean horairePlein;
@@ -226,6 +227,15 @@ public class Horaire {
     
     public boolean getModeValidation(){
         return this.modeValidationAuto;
+    }
+    
+    public Activite getActiviteSelected(){
+        for (Activite a: this.getListeActiviteComplete()){
+            if (a.isSelected()){
+                this.activiteSelected = a;
+            }
+        }
+        return this.activiteSelected;
     }
     
     //algorithme de recherche force brute pour l'instant.

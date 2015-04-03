@@ -376,25 +376,44 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
-        horaireController.moveActivite(evt.getPoint());
+        horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
         updateLogMessage(evt);
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseDragged
 
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
-        //if (horaireController.getValiditeDeLHoraire()){
-            //horaireController.verificationPositionHoraire(evt.getPoint());
+        //Si la position est dans la grille horaire
+        if (!horaireController.verificationDrop(evt.getPoint()).equals(new Point(0,0))){
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
+        }
+        //Si la position n'est pas dans la grille ou à un endroit non valide
+        else{
+            //Si la position est dans la liste
+            if (evt.getPoint().x > this.initialDimension.width*3/4){
+                horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
+                horaireController.switchSelection();
+                horaireController.jourHeureToActivite();
+                horaireController.switchAPlacerToDejaPlacee();
+                horaireController.switchDejaPlaceeToAPlacer();
+                horaireController.initPointActivite(this.initialDimension);
+            }
+            //Si la position n'est pas valide
+            else{
+                horaireController.moveActivite(this.initialActivitePoint);
+                horaireController.switchSelection();
+                horaireController.initPointActivite(this.initialDimension);
+            }
+        }
             statFenetre.setStatsToCurrentDay();
             //ajustement de la couleur de la bordure.
             
              if(horaireEstCharge)
-        {
+            {
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
                 drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
@@ -404,13 +423,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
             
             updateLogMessage(evt);
-        }
+            }
                     
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseReleased
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
-        horaireController.verificationSelection(evt.getPoint(), drawingPanel.getInitialDimension());        
+        horaireController.verificationSelection(evt.getPoint(), drawingPanel.getInitialDimension()); 
+        this.initialActivitePoint = horaireController.getActiviteSelected().getPoint();
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed
 
