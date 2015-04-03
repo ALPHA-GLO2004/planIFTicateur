@@ -87,7 +87,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         mainPanel.add(validationAutoCheckBox, gridBagConstraints);
 
-        drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+        drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         drawingPanelContainer.setPreferredSize(new Dimension(this.mainPanel.getWidth(), this.mainPanel.getHeight()*4/6));
 
         drawingPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -289,22 +289,19 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_quitterButtonActionPerformed
 
     private void noteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteButtonActionPerformed
-
         fenetreNote.setVisible(true);
     }//GEN-LAST:event_noteButtonActionPerformed
 
     private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
-
         statFenetre.setVisible(true);
     }//GEN-LAST:event_statistiquesButtonActionPerformed
 
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
-        horaireController.getListeActiviteDejaPlacee().get(0).getJourChoisi();
-        //horaireController.planificationAuto();
+        horaireController.planificationAuto();
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
 
     private void validationAutoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationAutoCheckBoxActionPerformed
-
+        horaireController.switchValidationAuto();
     }//GEN-LAST:event_validationAutoCheckBoxActionPerformed
 
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
@@ -315,6 +312,7 @@ public class MainWindow extends javax.swing.JFrame {
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         // On shoot le fileSelection à la fonction approprié du controller
         horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
+        titreFichierLabel.setText(" Nom fichier d'importaion:  " + horaireController.getHoraireNom());
         drawingPanel.setVisible(true);
         horaireEstCharge=true;
         horaireController.initPointActivite(this.initialDimension);
@@ -326,14 +324,6 @@ public class MainWindow extends javax.swing.JFrame {
         {
             //affichage du jour et heure dans barre d'état
             logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())); 
-            //ajustement de la couleur de la bordure.
-            if(horaireController.getValiditeDeLHoraire()==true){
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-            }
-            else{
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-                logMsgTextArea.setText("Horaire invalide"); 
-            }
         }
     }//GEN-LAST:event_drawingPanelMouseMoved
 
@@ -346,15 +336,20 @@ public class MainWindow extends javax.swing.JFrame {
         //if (horaireController.getValiditeDeLHoraire()){
             horaireController.verificationPositionHoraire(evt.getPoint());
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
-            //horaireController.dropInListe(evt.getPoint());
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
             statFenetre.setStatsToCurrentDay() ;
-            
-            //horaireController.setListeActiviteDejaPlacee();
+            //ajustement de la couleur de la bordure.
+            if(horaireController.getValiditeDeLHoraire()==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+                logMsgTextArea.setText("Horaire invalide"); 
+            }
         //}else{
         //    horaireController.moveActivite(this.initialActivitePoint);
         //}
@@ -362,7 +357,6 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseReleased
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
-        //horaireController.verificationPositionHoraire(evt.getPoint());
         horaireController.verificationSelection(evt.getPoint(), drawingPanel.getInitialDimension());        
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed

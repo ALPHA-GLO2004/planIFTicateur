@@ -86,11 +86,6 @@ public class Activite {
             System.out.println(ex.getMessage());
         }
     }
-
-    public boolean appartientAActivite(Point point){
-        //C'était dans le diagramme...
-        return true;
-    }
     
     //À déplacer dans mouseAdapter
     public boolean selectActivite(Point mousePoint){
@@ -169,11 +164,5 @@ public class Activite {
     
     public boolean isSelected(){
         return selectStatus;
-    }
-    
-    public void dropInListe(String position){
-        if (position == "liste"){
-            this.setJourChoisi(0);
-        }
     }
 }

@@ -36,7 +36,6 @@ public class ListeGrilleCh {
     
     //Retourne le nombre d'activités dans la liste d'activités de la grille de cheminement
     public int getNumberOfActivite(){
-        //pas sûr que c le bon nom...
         return grilleChListe.size();
     }
 }

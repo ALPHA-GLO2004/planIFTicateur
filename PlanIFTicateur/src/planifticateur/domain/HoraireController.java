@@ -58,14 +58,6 @@ public class HoraireController {
         }
     }
     
-    public void dropInListe(Point p){
-        for (Activite a: this.getListeActiviteComplete()){
-            if (p == a.getPoint()){
-                a.dropInListe(mouseAdapter.getPositionCursor());
-            }
-        }
-    }
-    
     //Méthode pour mouseAdapter
     public Point verificationDrop(Point p){
         return mouseAdapter.verificationDrop(p);
@@ -108,9 +100,16 @@ public class HoraireController {
 
     }
     
+    public void switchValidationAuto(){
+        this.horaire.switchModeValidation();
+    }
+    
+    public boolean getModeValidationAuto(){
+        return this.horaire.getModeValidation();
+    }
+    
     public String getHoraireNom(){
-        int i = horaire.fichierCOU.length() - 4;    //longueur du nom du fichierCOU sans le .cou
-        return horaire.fichierCOU.substring(0, i);
+        return horaire.getNomFichier();
     }
     
     public String getActiviteNom(Activite a){
@@ -163,7 +162,7 @@ public class HoraireController {
         return horaire.getListeActiviteComplete();
     }
     
-    public void msgErreur(){
+    public void msgErreur(String msgErr){
         
     }
     

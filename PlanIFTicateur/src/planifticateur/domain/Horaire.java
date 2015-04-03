@@ -27,6 +27,7 @@ public class Horaire {
     private List<String> listeGrille = new ArrayList<String>();
     private Vector<Activite> listeActiviteComplete = new Vector<Activite>();
     private String note = "";
+    private boolean modeValidationAuto = false;
     //
     boolean valide;
     //int nbMaxCoursEtudiantMemeJour;
@@ -128,13 +129,17 @@ public class Horaire {
     }
         
     private void validerHoraire(){
-        //manque du stock ici
         if (listeConflit.isEmpty()){
             valide = true;
         }
         else{
             valide = false;
         }
+    }
+    
+    public String getNomFichier(){
+        int i = fichierCOU.length() - 4;
+        return fichierCOU.substring(0, i);
     }
     
     //retourne les grilles de cheminement ou il ya l'activité
@@ -193,18 +198,20 @@ public class Horaire {
                 this.listeActiviteDejaPlacee.remove(this.getListeActiviteDejaPlacee().get(i));
             }
         }
-        /*for (int i = 0; i < this.getListeActiviteDejaPlacee().size(); i++){
-            if (this.getListeActiviteDejaPlacee().get(i).getJourChoisi() > 0){
-                this.listeActiviteAPlacer.add(this.getListeActiviteAPlacer().get(i));
-                this.listeActiviteDejaPlacee.remove(this.getListeActiviteAPlacer().get(i));
-            }
-        }*/
     }
     
     public void ajouterNote(String n){
         note += n;
     }
-
+    
+    public void switchModeValidation(){
+        this.modeValidationAuto = !this.modeValidationAuto;
+    }
+    
+    public boolean getModeValidation(){
+        return this.modeValidationAuto;
+    }
+    
     //algorithme de recherche force brute pour l'instant.
      public boolean horaireEstValide(){
       
