@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="GLO 2004" company="" webLink="http://" view-date="2015-02-09" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7" locale="fr">
+<?xml version="1.0" encoding="UTF-8"?><project name="GLO 2004" company="" webLink="http://" view-date="2015-03-02" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7" locale="fr">
     <description/>
     <view zooming-state="default:5" id="gantt-chart">
         <field id="tpd3" name="Nom" width="55" order="0"/>
@@ -116,7 +116,7 @@ Diagramme de package
             <notes><![CDATA[Possibilité de faire apparaitre une zone (ou une fenêtre) permettant de prendre des notes concernant l’historique de modification du fichier]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="56" name="D" color="#8cb6ce" meeting="false" start="2015-04-01" duration="9" complete="0" expand="true">
+        <task id="56" name="D" color="#8cb6ce" meeting="false" start="2015-04-01" duration="9" complete="100" expand="true">
             <notes><![CDATA[Possibilité d’activer/désactiver une fonction de vérification automatique de la validité d’horaire. Ainsi, lors du déplacement d’un cours, toutes les cases de la grille horaire qui ne sont pas accessibles (parce que les contraintes l’interdisent) deviennent grisées et il est impossible d’y placer le cours. 
 
 De cette manière, l’horaire affiché est en tout temps valide (sauf si les données chargées étaient elle-même invalides). 
