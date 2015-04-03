@@ -130,6 +130,10 @@ public class HoraireController {
         this.horaire.setListeActiviteDejaPlacee();
     }
     
+    public void switchDejaPlaceeToAPlacer(){
+        this.horaire.setListeActiviteAPlacer();
+    }
+    
     public void setListeActiviteDejaPlacee(){
         this.horaire.setListeActiviteDejaPlacee();
     }

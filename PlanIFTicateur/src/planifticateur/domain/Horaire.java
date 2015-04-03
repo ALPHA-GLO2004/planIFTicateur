@@ -184,6 +184,15 @@ public class Horaire {
                 this.listeActiviteAPlacer.remove(this.getListeActiviteAPlacer().get(i));
             }
         }
+    }
+    
+    public void setListeActiviteAPlacer(){
+        for (int i = 0; i < this.getListeActiviteDejaPlacee().size(); i++){
+            if (this.getListeActiviteDejaPlacee().get(i).getJourChoisi() == 0){
+                this.listeActiviteAPlacer.add(this.getListeActiviteDejaPlacee().get(i));
+                this.listeActiviteDejaPlacee.remove(this.getListeActiviteDejaPlacee().get(i));
+            }
+        }
         /*for (int i = 0; i < this.getListeActiviteDejaPlacee().size(); i++){
             if (this.getListeActiviteDejaPlacee().get(i).getJourChoisi() > 0){
                 this.listeActiviteAPlacer.add(this.getListeActiviteAPlacer().get(i));

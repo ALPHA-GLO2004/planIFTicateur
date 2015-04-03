@@ -119,6 +119,10 @@ public class MouseAdapter {
                 }
             }
         }
+        if (a.getPoint().x == 0 && a.getPoint().y ==0){
+            a.setJourChoisi(0);
+            a.setHeureDebutChoisi(0f);
+        }
     }
     
     public String getPositionCursor(){

@@ -17,7 +17,7 @@ public class ListeGrilleCh {
     
     //Retire une activté de la liste
     public void remove(GrilleCheminement grille){
-        grilleChListe.remove(grille);
+        grilleChListe.removeElement(grille);
     }
     //Retourne vrai si la liste d'activités de la grille de cheminement est vide, faux sinon
     public boolean isEmpty(){

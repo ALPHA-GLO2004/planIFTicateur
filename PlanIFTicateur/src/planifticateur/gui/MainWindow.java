@@ -327,8 +327,13 @@ public class MainWindow extends javax.swing.JFrame {
             //affichage du jour et heure dans barre d'état
             logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())); 
             //ajustement de la couleur de la bordure.
-            if(horaireController.getValiditeDeLHoraire()==true)  drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-            else drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            if(horaireController.getValiditeDeLHoraire()==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+                logMsgTextArea.setText("Horaire invalide"); 
+            }
         }
     }//GEN-LAST:event_drawingPanelMouseMoved
 
@@ -338,20 +343,21 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseDragged
 
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
-        if (horaireController.getValiditeDeLHoraire()){
+        //if (horaireController.getValiditeDeLHoraire()){
             horaireController.verificationPositionHoraire(evt.getPoint());
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
             //horaireController.dropInListe(evt.getPoint());
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
             horaireController.switchAPlacerToDejaPlacee();
+            horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
             statFenetre.setStatsToCurrentDay() ;
             
             //horaireController.setListeActiviteDejaPlacee();
-        }else{
-            horaireController.moveActivite(this.initialActivitePoint);
-        }
+        //}else{
+        //    horaireController.moveActivite(this.initialActivitePoint);
+        //}
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseReleased
 
