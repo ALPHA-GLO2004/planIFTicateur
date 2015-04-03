@@ -285,11 +285,12 @@ public class Horaire {
                         if(! stringDUneGrille.elementAt(i).equals(activite.getCode()))
                         {
                             /*
-                           if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i)) ) 
-                               reponse = false;
+                           if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i)) ){ 
+                            reponse = false;
                             messagesDerreurs.add(activite.getCode()+" et "
                                                  +stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n" 
-                                                );*/
+                                                );
+                           }*/
                         }
                     }
     
