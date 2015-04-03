@@ -28,20 +28,9 @@ public class Horaire {
     private Vector<Activite> listeActiviteComplete = new Vector<Activite>();
     private String note = "";
     private boolean modeValidationAuto = false;
-    //
     boolean valide;
-    //int nbMaxCoursEtudiantMemeJour;
-    //int nbMoyenCoursEtudiantMemeJour;
+
     //float pctCoursDebutant8h30;
-    //int indiceCovoiturage;
-    //int nbCoursLundi;
-    // int nbCoursMardi;
-    //int nbCoursMercredi;
-    //int nbCoursJeudi;
-    //int nbCoursVendredi;
-    //int nbCoursSamedi;
-    //int nbCoursDimanche;
-    //int nbMaxCoursHoraire;
     boolean horairePlein;
     ListeConflit listeConflit;
     ListeModificationActivite listeModificationActivite;
@@ -262,24 +251,27 @@ public class Horaire {
                     iPart= (long)activite.getHeureDebutMin();
                     fPart = 60.0*(activite.getHeureDebutMin() - iPart);
 
-                    messagesDerreurs.add("L'heure de debut de "  + "\" "+ activite.getNomActivite()+" \""+
-                                         " doit être >= "+ iPart +" h "+(long)fPart+ "\n");
+                    messagesDerreurs.add("L'heure de debut de "  + "\" "+activite.getCode()+" : "
+                                         + activite.getNomActivite()+" \""
+                                         +" doit être >= "+ iPart +" h "+(long)fPart+ "\n"
+                                        );
                 }
                /* if(heure > activite.getHeureDebutMax()){
                     reponse = false; 
                 }*/
-
 
                 if( heure + activite.getDuree()  > activite.getHeureFinMax() ){
                     reponse = false;
                     iPart= (long)activite.getHeureFinMax();
                     fPart = 60.0*(activite.getHeureFinMax() - iPart);
 
-                    messagesDerreurs.add("L'heure de fin de " + "\" "+activite.getNomActivite()+" \""+
-                                         " doit être <= "+ iPart +" h "+(long)fPart+ "\n"
-                                         );
+                    messagesDerreurs.add("L'heure de fin de " + "\" "+activite.getCode()+" : "
+                                          + activite.getNomActivite()+" \""
+                                          + " doit être <= "+ iPart +" h "+(long)fPart+ "\n"
+                                          );
 
                 }
+                
                 //respecte les grilles de cheminement ?
                 //On verifie si un cours lié se donne en meme tps
                 grillesChDUneActivite = getListeGrillesDeLactivite(activite.getNomActivite());
