@@ -46,7 +46,7 @@ public class HoraireDrawing {
                         g2.setStroke(new BasicStroke(1));
                         g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         Font font = new Font("Arial", Font.BOLD, 12);
-                        g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
+                        g2.drawString(a.getCode(), a.getPoint().x - 20 + (int)(a.getDuree() * ((width - (caseJourWidth))/15))/2, a.getPoint().y + 16);
                     }else{
                         g2.setColor(a.getCouleur());
                         g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
@@ -54,7 +54,7 @@ public class HoraireDrawing {
                         g2.setStroke(new BasicStroke(1));
                         g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         Font font = new Font("Arial", Font.BOLD, 12);
-                        g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
+                        g2.drawString(a.getCode(), a.getPoint().x - 20 + (int)(a.getDuree() * ((width - (caseJourWidth))/15))/2, a.getPoint().y + 16);
                     }
                 }
                 for (Activite a: horaireController.getListeActiviteDejaPlacee()){
@@ -65,7 +65,7 @@ public class HoraireDrawing {
                         g2.setStroke(new BasicStroke(1));
                         g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         Font font = new Font("Arial", Font.BOLD, 12);
-                        g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
+                        g2.drawString(a.getCode(), a.getPoint().x - 20 + (int)(a.getDuree() * ((width - (caseJourWidth))/15))/2, a.getPoint().y + 16);
                     }else{
                         g2.setColor(a.getCouleur());
                         g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
@@ -73,7 +73,7 @@ public class HoraireDrawing {
                         g2.setStroke(new BasicStroke(1));
                         g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         Font font = new Font("Arial", Font.BOLD, 12);
-                        g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
+                        g2.drawString(a.getCode(), a.getPoint().x - 20 + (int)(a.getDuree() * ((width - (caseJourWidth))/15))/2, a.getPoint().y + 16);
                     }
                 }
                 if (horaireController.getModeValidationAuto()){
