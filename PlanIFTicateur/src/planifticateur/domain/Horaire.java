@@ -155,7 +155,7 @@ public class Horaire {
     }
     
     //retourne les grilles de cheminement ou il ya l'activité
-    private Vector<GrilleCheminement> getListeGrillesDeLactivite(String nomAvtivite){
+    private Vector<GrilleCheminement> getListeGrillesDeLactivite(String codeActivite){
 
         Vector<GrilleCheminement> listeARetourner ;
         listeARetourner = new Vector<GrilleCheminement>();
@@ -163,7 +163,7 @@ public class Horaire {
         Vector<GrilleCheminement> listeComplete = listeGrilleCh.getListeGrilleCh();
         for(int i=0;i<listeComplete.size();i++)
             {
-               if( listeComplete.elementAt(i).activiteEstDansGrille(nomAvtivite) )
+               if( listeComplete.elementAt(i).activiteEstDansGrille(codeActivite) )
                        listeARetourner.add(listeComplete.elementAt(i));
             }
         
@@ -274,21 +274,22 @@ public class Horaire {
                 
                 //respecte les grilles de cheminement ?
                 //On verifie si un cours lié se donne en meme tps
-                grillesChDUneActivite = getListeGrillesDeLactivite(activite.getNomActivite());
+                grillesChDUneActivite = getListeGrillesDeLactivite(activite.getCode());
                
                 for(GrilleCheminement grille : grillesChDUneActivite )
                 {
-                    stringDUneGrille = grille.getListeDesNoms() ;
+                    stringDUneGrille = grille.getListeDesCodesDactivites() ;
                    
                     for(int i=0 ; i< stringDUneGrille.size();i++)
                     {
-                        if(! stringDUneGrille.elementAt(i).equals(activite.getNomActivite()))
+                        if(! stringDUneGrille.elementAt(i).equals(activite.getCode()))
                         {
+                            /*
                            if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i)) ) 
                                reponse = false;
-                            messagesDerreurs.add(activite.getNomActivite()+" et "
+                            messagesDerreurs.add(activite.getCode()+" et "
                                                  +stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n" 
-                                                );
+                                                );*/
                         }
                     }
     
