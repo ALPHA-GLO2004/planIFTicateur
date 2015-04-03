@@ -6,13 +6,14 @@ import java.util.List;
 public class MouseAdapter {
     private Dimension dimension;
     private String position;
+    private float dureeActiviteSelected;
     
     public MouseAdapter(Dimension d){
         this.dimension = d;
     }
     
     //Méthode pour snaper les activités à la grille horaire
-    public Point verificationDrop(Point p){
+    public Point verificationDrop(Point p, List<Activite> la){
         int width = dimension.width *3/4;
         int height = dimension.height;
         int caseJourHeight = height / 5;
@@ -24,7 +25,7 @@ public class MouseAdapter {
         int pointActiviteX = 0;
         int pointActiviteY = 0;
         
-        if (this.position == "horaire"){
+        //if (this.position == "horaire"){
             for (int i = 0; i <= 4; i++){
                 for (int j = 0; j <= 7; j++){
                     for (int k = 0; k <= 29; k++){
@@ -64,19 +65,39 @@ public class MouseAdapter {
                 pointActiviteX = 0;
                 pointActiviteY = 0;
             }
-            if (p.x > width*3/4){
 
+            int activiteWidth = (dimension.width - dimension.width /16) /15;
+            int activiteHeight = dimension.height /45;
+            
+            for (Activite a: la){
+                if (a.isSelected()){
+                    dureeActiviteSelected = a.getDuree();
+                }
             }
-        }
+            
+            for (Activite a: la){
+                if (pointActiviteX + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15)) > a.getPoint().x 
+                        && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
+                    pointActiviteX = 0;
+                    pointActiviteY = 0;
+                }
+                if (p.x > a.getPoint().x && p.x < (a.getPoint().x + (int)(a.getDuree() * ((width - (caseJourWidth))/15)))
+                        && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
+                    pointActiviteX = 0;
+                    pointActiviteY = 0;
+                }
+            }
+        //}
         return new Point(pointActiviteX, pointActiviteY);
     }
     
-    public void verificationSelection(Point p, List<Activite> activiteList){      
-        int activiteWidth = (dimension.width - dimension.width /16) /15;
+    public void verificationSelection(Point p, List<Activite> activiteList){ 
+        int width = dimension.width *3/4;
+        int caseJourWidth = width / 16;
         int activiteHeight = dimension.height /45;
         
         for (Activite a: activiteList){
-            if (p.x > a.getPoint().x && p.x < (a.getPoint().x + (a.getDuree()*activiteWidth))
+            if (p.x > a.getPoint().x && p.x < (a.getPoint().x + (int)(a.getDuree() * ((width - (caseJourWidth))/15)))
                     && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
                 a.switchSelection();
             }

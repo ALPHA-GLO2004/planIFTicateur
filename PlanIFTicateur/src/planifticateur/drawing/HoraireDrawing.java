@@ -41,18 +41,18 @@ public class HoraireDrawing {
                 for (Activite a: horaireController.getListeActiviteAPlacer()){
                     if (a.isSelected() == true){
                         g2.setColor(Color.YELLOW);
-                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
+                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         g2.setColor(Color.BLACK);
                         g2.setStroke(new BasicStroke(1));
-                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
+                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         Font font = new Font("Arial", Font.BOLD, 12);
                         g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                     }else{
                         g2.setColor(a.getCouleur());
-                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
+                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         g2.setColor(Color.BLACK);
                         g2.setStroke(new BasicStroke(1));
-                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
+                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         Font font = new Font("Arial", Font.BOLD, 12);
                         g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                     }
@@ -60,18 +60,18 @@ public class HoraireDrawing {
                 for (Activite a: horaireController.getListeActiviteDejaPlacee()){
                     if (a.isSelected() == true){
                         g2.setColor(Color.YELLOW);
-                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
+                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         g2.setColor(Color.BLACK);
                         g2.setStroke(new BasicStroke(1));
-                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
+                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         Font font = new Font("Arial", Font.BOLD, 12);
                         g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                     }else{
                         g2.setColor(a.getCouleur());
-                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
+                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         g2.setColor(Color.BLACK);
                         g2.setStroke(new BasicStroke(1));
-                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)a.getDuree() * ((width - (caseJourWidth))/15), caseHeureHeight);
+                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         Font font = new Font("Arial", Font.BOLD, 12);
                         g2.drawString(a.getNomActivite(), a.getPoint().x, a.getPoint().y + 12);
                     }
