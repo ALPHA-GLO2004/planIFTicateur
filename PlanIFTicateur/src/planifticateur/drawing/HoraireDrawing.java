@@ -230,42 +230,42 @@ public class HoraireDrawing {
         for (int i = 8; i <= 22; i++){
             if (point.y >= caseHeureHeight && point.y < caseJourHeight){
                 if (point.x >= caseJourWidth && point.x < caseJourWidth + saut){
-                    jour = "lundi " + i + "h";
+                    jour = "lundi " + i + " h";
                 }
                 if (point.x >= caseJourWidth + saut && point.x < caseJourWidth + 2*saut){
-                    jour = "lundi " + i + "h " + "30";
+                    jour = "lundi " + i + " h" + " 30";
                 }
             }
             if (point.y >= caseJourHeight + caseHeureHeight && point.y < 2*caseJourHeight){
                 if (point.x >= caseJourWidth && point.x < caseJourWidth + saut){
-                    jour = "mardi " + i + "h ";
+                    jour = "mardi " + i + " h";
                 }
                 if (point.x >= caseJourWidth + saut && point.x < caseJourWidth + 2*saut){
-                    jour = "mardi " + i + "h " + " 30";
+                    jour = "mardi " + i + " h" + " 30";
                 }
             }
             if (point.y >= 2*caseJourHeight + caseHeureHeight && point.y < 3*caseJourHeight){
                 if (point.x >= caseJourWidth && point.x < caseJourWidth + saut){
-                    jour = "mercredi " + i + "h ";
+                    jour = "mercredi " + i + " h";
                 }
                 if (point.x >= caseJourWidth + saut && point.x < caseJourWidth + 2*saut){
-                    jour = "mercredi " + i + "h " + " 30";
+                    jour = "mercredi " + i + " h" + " 30";
                 }
             }
             if (point.y >= 3*caseJourHeight + caseHeureHeight && point.y < 4*caseJourHeight){
                 if (point.x >= caseJourWidth && point.x < caseJourWidth + saut){
-                    jour = "jeudi " + i + "h ";
+                    jour = "jeudi " + i + " h";
                 }
                 if (point.x >= caseJourWidth + saut && point.x < caseJourWidth + 2*saut){
-                    jour = "jeudi " + i + "h " + "30";
+                    jour = "jeudi " + i + " h" + " 30";
                 }
             }
             if (point.y >= 4*caseJourHeight + caseHeureHeight && point.y < 5*caseJourHeight){
                 if (point.x >= caseJourWidth && point.x < caseJourWidth + saut){
-                    jour = "vendredi " + i + "h ";
+                    jour = "vendredi " + i + " h";
                 }
                 if (point.x >= caseJourWidth + saut && point.x < caseJourWidth + 2*saut){
-                    jour = "vendredi " + i + "h " + "30";
+                    jour = "vendredi " + i + " h" + " 30";
                 }
             }            
             caseJourWidth += 2*saut;
