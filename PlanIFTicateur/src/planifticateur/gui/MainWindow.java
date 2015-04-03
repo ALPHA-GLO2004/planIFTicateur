@@ -339,8 +339,11 @@ public class MainWindow extends javax.swing.JFrame {
         JFileChooser selecteurFichier = new JFileChooser();
         selecteurFichier.showOpenDialog(MainWindow.this);
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        //On efface ce qu'il y a en place
+        horaireController.resetHoraire();
         // On shoot le fileSelection à la fonction approprié du controller
         horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
+        validationAutoCheckBox.setSelected (false);
         horaireController.setModeValidationAutoOff();
         titreFichierLabel.setText(" Nom fichier d'importaion:  " + horaireController.getHoraireNom());
         drawingPanel.setVisible(true);
@@ -348,6 +351,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.initPointActivite(this.initialDimension);
         horaireController.initPointActiviteDejaPlacee(this.initialDimension);
         statFenetre.initialize(horaireController);
+        drawingPanel.repaint();
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved

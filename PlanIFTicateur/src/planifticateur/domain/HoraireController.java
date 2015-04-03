@@ -116,6 +116,10 @@ public class HoraireController {
         this.horaire.setModeValidationOff();
     }
     
+    public void resetHoraire(){
+        this.horaire = null;
+    }
+    
     public boolean getModeValidationAuto(){
         return this.horaire.getModeValidation();
     }
