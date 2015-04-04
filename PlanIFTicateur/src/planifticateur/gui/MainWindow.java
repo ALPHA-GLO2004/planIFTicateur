@@ -376,7 +376,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
-        horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
+        horaireController.moveActivite(evt.getPoint());
         updateLogMessage(evt);
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseDragged
