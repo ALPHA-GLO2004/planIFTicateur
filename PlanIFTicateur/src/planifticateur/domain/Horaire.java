@@ -238,6 +238,16 @@ public class Horaire {
         return this.activiteSelected;
     }
     
+    public boolean yaTilChevauchement(Activite a1, Activite a2){
+
+        if( (a1.getHeureDebutChoisi() >=  a2.getHeureDebutChoisi() + a2.getDuree() )
+              ||(a1.getHeureDebutChoisi()+ a1.getDuree() <=  a2.getHeureDebutChoisi() ) 
+            )
+        return false;
+        
+      return true;
+            
+    }
     //algorithme de recherche force brute pour l'instant.
      public boolean horaireEstValide(Vector<String> messagesDerreurs){
       
@@ -294,16 +304,21 @@ public class Horaire {
                     {
                         if(! stringDUneGrille.elementAt(i).equals(activite.getCode()))
                         {
-    
-                           if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i)) ){ 
+                               Activite act = new Activite();
+                               
+                            //rempli act des infos de l'activite correspondant astringDUneGrille.elementAt(i)
+                           if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i),act) ){ 
                                {
                                    //pas de doublons. utiliser un set serait pas pratique pour le GUI
-                                /*   if(!messagesDerreurs.contains(activite.getCode()+" et "+stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n"))
+                                 /*  if(!messagesDerreurs.contains(activite.getCode()+" et "+stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n"))
                                    {
-                                        reponse = false;
-                                        messagesDerreurs.add(activite.getCode()+" et "
-                                                        +stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n" 
-                                                        );
+                                       if (yaTilChevauchement(activite, act ))
+                                       {
+                                            reponse = false;
+                                            messagesDerreurs.add(activite.getCode()+" et "
+                                                            +stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n" 
+                                                            );
+                                       }
                                    }*/
                                }
                            }

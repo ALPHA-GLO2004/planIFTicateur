@@ -56,12 +56,15 @@ public class ListeActiviteDejaPlacee {
         return activiteDejaPlaceeListe.size();
     }
     
-    public boolean activiteEstEllePlacee(String codeActivite){
+    public boolean activiteEstEllePlacee(String codeActivite,Activite act){
         
         for(int i=0;i<activiteDejaPlaceeListe.size();i++)
         {
             if( activiteDejaPlaceeListe.elementAt(i).getCode().equals(codeActivite))
+            {
+                act = activiteDejaPlaceeListe.elementAt(i);
                 return true;
+            }
         }
         
         return false;

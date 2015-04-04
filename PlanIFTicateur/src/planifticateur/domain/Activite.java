@@ -32,6 +32,9 @@ public class Activite {
     private Point point; //remplace rectangle
     private boolean selectStatus = false;
     
+    
+    public Activite(){};
+    
     public Activite(String activite, String separateur){
         //Constructeur
         //À partir d'une string et du bon separateur CSD, chaque attribut essentiel de l'activité est capté par
