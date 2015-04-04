@@ -253,8 +253,10 @@ public class Horaire {
      public boolean horaireEstValide(Vector<String> messagesDerreurs){
       
         Vector<GrilleCheminement> grillesChDUneActivite ;
-        Vector<String> stringDUneGrille ;
+        Vector<String> stringDUneGrille = new Vector<String> () ;
         Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
+        ListePairesDActivites listePaires = new ListePairesDActivites() ;
+        
         float heure;
         boolean reponse ;
         long iPart;
@@ -295,6 +297,7 @@ public class Horaire {
                 
                 //respecte les grilles de cheminement ?
                 //On verifie si un cours lié se donne en meme tps
+                
                 grillesChDUneActivite = getListeGrillesDeLactivite(activite.getCode());
                
                 for(GrilleCheminement grille : grillesChDUneActivite )
@@ -320,10 +323,10 @@ public class Horaire {
   
                                        if (yaTilChevauchement(activite, act ))
                                        {
+                                           //elimine les doublons pour les paires.
+                                            listePaires.addPaire(activite, act);
                                             reponse = false;
-                                            messagesDerreurs.add(activite.getCode()+" et "
-                                                            +stringDUneGrille.elementAt(i)+"ne peuvent avoir lieu en meme temps \n" 
-                                                            );
+
                                        }
                                    }
                                }
@@ -333,8 +336,19 @@ public class Horaire {
     
                 }
                
-               
+
         }
+     
+           Vector<PaireDActivites> paires = listePaires.getListe();
+           for(PaireDActivites p : paires)
+         {
+                
+            messagesDerreurs.add(p.a1.getCode()+" et "
+                    +p.a2.getCode()+" ne peuvent avoir lieu en meme temps \n" 
+                    );  
+         }
+           
+
         return reponse;
     }
 
