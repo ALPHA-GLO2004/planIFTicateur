@@ -274,8 +274,7 @@ public class Horaire {
                     iPart= (long)activite.getHeureDebutMin();
                     fPart = 60.0*(activite.getHeureDebutMin() - iPart);
 
-                    messagesDerreurs.add("L'heure de debut de "  + "\" "+activite.getCode()+" : "
-                                         + activite.getNomActivite()+" \""
+                    messagesDerreurs.add("L'heure de debut de "  + "\" "+activite.getCode()+" \" "
                                          +" doit être >= "+ iPart +" h "+(long)fPart+ "\n"
                                         );
                 }
@@ -288,8 +287,7 @@ public class Horaire {
                     iPart= (long)activite.getHeureFinMax();
                     fPart = 60.0*(activite.getHeureFinMax() - iPart);
 
-                    messagesDerreurs.add("L'heure de fin de " + "\" "+activite.getCode()+" : "
-                                          + activite.getNomActivite()+" \""
+                    messagesDerreurs.add("L'heure de fin de " + "\" "+activite.getCode()+" \" "
                                           + " doit être <= "+ iPart +" h "+(long)fPart+ "\n"
                                           );
 
@@ -315,7 +313,7 @@ public class Horaire {
                            if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i),act) ){ 
                                {
                                    //pas le meme jour c'est correct
-                                   if(act.getJourChoisi() != activite.getJourChoisi())break ; 
+                                   if(act.getJourChoisi() != activite.getJourChoisi())continue ; 
                                    
                                    //pas de doublons. utiliser un set serait pas pratique pour le GUI
                                    if(!messagesDerreurs.contains(activite.getCode()+" et "+stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n"))
