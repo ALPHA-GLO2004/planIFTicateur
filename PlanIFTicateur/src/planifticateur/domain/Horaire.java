@@ -324,10 +324,6 @@ public class Horaire {
                                    //pas le meme jour c'est correct
                                    if(act.getJourChoisi() != activite.getJourChoisi())continue ; 
                                    
-                                   //pas de doublons. utiliser un set serait pas pratique pour le GUI
-                                   if(!messagesDerreurs.contains(activite.getCode()+" et "+stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n"))
-                                   {
-  
                                        if (yaTilChevauchement(activite, act ))
                                        {
                                            //elimine les doublons pour les paires.
@@ -335,7 +331,6 @@ public class Horaire {
                                             reponse = false;
 
                                        }
-                                   }
                                }
                            }
                         }
