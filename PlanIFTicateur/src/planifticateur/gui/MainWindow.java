@@ -18,6 +18,7 @@ public class MainWindow extends javax.swing.JFrame {
     public Point delta;
     private boolean horaireEstCharge;
     Vector<String> messagesDerreurs;
+    private int activiteList;
 
     
     public MainWindow() {
@@ -376,7 +377,14 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
-        horaireController.moveActivite(evt.getPoint());
+        if (!horaireController.verificationDrop(evt.getPoint()).equals(new Point(0,0))){
+            horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
+        }
+        else{
+            if (evt.getPoint().x > this.initialDimension.width*3/4){
+                horaireController.moveActivite(evt.getPoint());
+            }
+        }
         updateLogMessage(evt);
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseDragged
@@ -387,9 +395,10 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
+            horaireController.switchFromMoveToListDp();
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
-            horaireController.initPointActivite(this.initialDimension);
+            horaireController.initPointActivite(this.initialDimension);         
         }
         //Si la position n'est pas dans la grille ou à un endroit non valide
         else{
@@ -398,6 +407,7 @@ public class MainWindow extends javax.swing.JFrame {
                 horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint()));
                 horaireController.switchSelection();
                 horaireController.jourHeureToActivite();
+                horaireController.switchFromMoveToListAp();
                 horaireController.switchAPlacerToDejaPlacee();
                 horaireController.switchDejaPlaceeToAPlacer();
                 horaireController.initPointActivite(this.initialDimension);
@@ -405,6 +415,12 @@ public class MainWindow extends javax.swing.JFrame {
             //Si la position n'est pas valide
             else{
                 horaireController.moveActivite(this.initialActivitePoint);
+                if (this.activiteList == 0){
+                    horaireController.switchFromMoveToListAp();
+                }
+                else{
+                    horaireController.switchFromMoveToListDp();
+                }
                 horaireController.switchSelection();
                 horaireController.initPointActivite(this.initialDimension);
             }
@@ -431,6 +447,8 @@ public class MainWindow extends javax.swing.JFrame {
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
         horaireController.verificationSelection(evt.getPoint(), drawingPanel.getInitialDimension()); 
         this.initialActivitePoint = horaireController.getActiviteSelected().getPoint();
+        this.activiteList = horaireController.verificationListOfActivite(horaireController.getActiviteSelected());
+        horaireController.switchFromListToMove(horaireController.getActiviteSelected());
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed
 

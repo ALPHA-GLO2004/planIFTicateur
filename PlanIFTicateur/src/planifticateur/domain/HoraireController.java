@@ -64,7 +64,7 @@ public class HoraireController {
     
     //Méthode pour mouseAdapter
     public Point verificationDrop(Point p){
-        return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.getModeValidationAuto());
+        return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.horaire.getListeActiviteDejaPlacee(), this.getModeValidationAuto());
     }
     
     public void verificationSelection(Point p, Dimension d){
@@ -92,6 +92,28 @@ public class HoraireController {
                 a.switchSelection();
             }
         }
+    }
+    
+    public void switchFromListToMove(Activite a){
+        if (this.verificationListOfActivite(a) == 0){
+            this.getListeActiviteAPlacer().remove(a);
+        }
+        else{
+            this.getListeActiviteDejaPlacee().remove(a);
+        }
+        this.horaire.setActiviteInMove(a);
+    }
+    
+    public void switchFromMoveToListAp(){
+        this.getListeActiviteAPlacer().add(this.horaire.getActiviteInMove());
+    }
+    
+    public void switchFromMoveToListDp(){
+        this.getListeActiviteDejaPlacee().add(this.horaire.getActiviteInMove());
+    }
+    
+    public int verificationListOfActivite(Activite a){
+        return this.horaire.verificationListOfActivite(a);
     }
     
     public void note(String n){

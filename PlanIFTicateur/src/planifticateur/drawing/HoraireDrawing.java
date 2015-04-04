@@ -38,7 +38,7 @@ public class HoraireDrawing {
         
         Graphics2D g2 = (Graphics2D) g;
         if (horaireController.getHoraire() == true){
-                for (Activite a: horaireController.getListeActiviteAPlacer()){
+                for (Activite a: horaireController.getListeActiviteComplete()){
                     if (a.isSelected() == true){
                         g2.setColor(Color.YELLOW);
                         g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);

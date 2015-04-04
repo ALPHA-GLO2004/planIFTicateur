@@ -30,6 +30,7 @@ public class Horaire {
     private boolean modeValidationAuto = false;
     boolean valide;
     private Activite activiteSelected;
+    private Activite activiteInMove;
 
     //float pctCoursDebutant8h30;
     boolean horairePlein;
@@ -213,6 +214,14 @@ public class Horaire {
         }
     }
     
+    public void setActiviteInMove(Activite a){
+        this.activiteInMove = a;
+    }
+    
+    public Activite getActiviteInMove(){
+        return this.activiteInMove;
+    }
+    
     public void ajouterNote(String n){
         note += n;
     }
@@ -350,7 +359,15 @@ public class Horaire {
         return reponse;
     }
 
-
+    public int verificationListOfActivite(Activite activite){
+        for (Activite a: this.getListeActiviteAPlacer()){
+            if (a.equals(activite)){
+                return 0;
+            }
+        }
+        return 1;
+    }
+     
     public void genererAutomatiquement(){
         //En attente d'un bon algorithme
     }

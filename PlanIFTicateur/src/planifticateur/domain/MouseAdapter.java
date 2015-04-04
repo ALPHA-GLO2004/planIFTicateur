@@ -15,7 +15,7 @@ public class MouseAdapter {
     }
     
     //Méthode pour snaper les activités à la grille horaire
-    public Point verificationDrop(Point p, List<Activite> la, boolean modeValidationAuto){
+    public Point verificationDrop(Point p, List<Activite> laC, List<Activite> laDP,boolean modeValidationAuto){
         int width = dimension.width *3/4;
         int height = dimension.height;
         int caseJourHeight = height / 5;
@@ -56,7 +56,8 @@ public class MouseAdapter {
                         pointActiviteY = jumpY;
                     }
                 }
-            }            
+            }
+            
             if ((p.x >= 0 && p.x < caseJourWidth)){
                 pointActiviteX = 0;
                 pointActiviteY = 0;
@@ -64,7 +65,7 @@ public class MouseAdapter {
 
             int activiteHeight = dimension.height /45;
             
-            for (Activite a: la){
+            for (Activite a: laC){
                 if (a.isSelected()){
                     dureeActiviteSelected = a.getDuree();
                     heureFinMax = a.getHeureFinMax();
@@ -72,9 +73,9 @@ public class MouseAdapter {
                 }
             }
             
-            for (Activite a: la){
+            for (Activite a: laDP){
                 if (p.x < width){
-                    if (pointActiviteX + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15)) > a.getPoint().x 
+                    if (p.x + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15)) > a.getPoint().x 
                             && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
                         pointActiviteX = 0;
                         pointActiviteY = 0;

@@ -35,12 +35,10 @@ public class GrilleCheminement {
     }
     
      public boolean activiteEstDansGrille(String nomActivite){
-       
-         return grilleActivites.contains(nomActivite);
+         return this.grilleActivites.contains(nomActivite);
     }
      
     public Vector<String> getListeDesCodesDactivites(){
-       
-         return grilleActivites;
+         return this.grilleActivites;
     }
 }
