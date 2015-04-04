@@ -248,6 +248,7 @@ public class Horaire {
       return true;
             
     }
+
     //algorithme de recherche force brute pour l'instant.
      public boolean horaireEstValide(Vector<String> messagesDerreurs){
       
@@ -304,22 +305,27 @@ public class Horaire {
                     {
                         if(! stringDUneGrille.elementAt(i).equals(activite.getCode()))
                         {
-                               Activite act = new Activite();
+
+                            Activite act = new Activite();
                                
                             //rempli act des infos de l'activite correspondant astringDUneGrille.elementAt(i)
                            if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i),act) ){ 
                                {
+                                   //pas le meme jour c'est correct
+                                   if(act.getJourChoisi() != activite.getJourChoisi())break ; 
+                                   
                                    //pas de doublons. utiliser un set serait pas pratique pour le GUI
-                                 /*  if(!messagesDerreurs.contains(activite.getCode()+" et "+stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n"))
+                                   if(!messagesDerreurs.contains(activite.getCode()+" et "+stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n"))
                                    {
+  
                                        if (yaTilChevauchement(activite, act ))
                                        {
                                             reponse = false;
                                             messagesDerreurs.add(activite.getCode()+" et "
-                                                            +stringDUneGrille.elementAt(i)+"ne doivent pas etre placés en meme temps \n" 
+                                                            +stringDUneGrille.elementAt(i)+"ne peuvent avoir lieu en meme temps \n" 
                                                             );
                                        }
-                                   }*/
+                                   }
                                }
                            }
                         }
@@ -331,6 +337,7 @@ public class Horaire {
         }
         return reponse;
     }
+
 
     public void genererAutomatiquement(){
         //En attente d'un bon algorithme

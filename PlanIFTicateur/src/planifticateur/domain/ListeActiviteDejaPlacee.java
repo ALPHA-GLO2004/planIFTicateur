@@ -62,11 +62,11 @@ public class ListeActiviteDejaPlacee {
         {
             if( activiteDejaPlaceeListe.elementAt(i).getCode().equals(codeActivite))
             {
-                act = activiteDejaPlaceeListe.elementAt(i);
+                act.setValuesFrom(activiteDejaPlaceeListe.elementAt(i)) ;
                 return true;
             }
         }
         
         return false;
+      }
     }
-}

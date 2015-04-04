@@ -106,7 +106,26 @@ public class Activite {
         // Dans ce cas-ci, je crois que l'on pourrait changer la couleur de
         // l'activite si elle est en conflit... couleur = Color.RED par exemple.
     }
+
+        public void setValuesFrom(Activite src)
+    {
+        code =  src.code;
+        section=  src.section; 
+        type=  src.type;
+        description=  src.description; 
+        couleur=  src.couleur;
+        professeur=  src.professeur;
+        heureDebutMin=  src.heureDebutMin;
+        heureDebutMax=  src.heureDebutMax;
+        heureFinMax=  src.heureFinMax; 
+        heureDebutChoisi=  src.heureDebutChoisi;
+        jourChoisi=  src.jourChoisi;
+        duree=  src.duree;
+        point=  src.point; 
+        selectStatus=  src.selectStatus;
+    }
     
+        
     public Color getCouleur(){
         return couleur;
     }
