@@ -17,9 +17,9 @@ public class HoraireController {
         this.mouseAdapter = new MouseAdapter(d);
     }
     
-    public void chargerHoraire(File f){
+    public void chargerHoraire(String filePath){
         //peut-être serait plus logique en tant que constructeur
-        this.horaire = new Horaire(f);
+        this.horaire = new Horaire(filePath);
     }
     
     public void saveHoraire(){
