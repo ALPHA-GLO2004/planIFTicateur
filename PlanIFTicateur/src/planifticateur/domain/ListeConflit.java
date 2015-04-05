@@ -7,10 +7,11 @@ public class ListeConflit {
     
     public ListeConflit(){
         //Constructeur
+        conflitListe = new Vector<Conflit>();
     }
     
     private void add(Conflit conflit){
-        
+        conflitListe.add(conflit);
     }
     
     public boolean isEmpty(){
@@ -27,7 +28,7 @@ public class ListeConflit {
  //   }
     
     private int getNumberOfConflit(){
-        return 0;
+        return conflitListe.size();
     }
     
     public Vector<Conflit> getListeConflit(){
@@ -35,6 +36,6 @@ public class ListeConflit {
     }
     
     private void remove(Conflit conflit){ //le retour bool est vraiment utile ?
-        
+        conflitListe.remove(conflit);
     }
 }

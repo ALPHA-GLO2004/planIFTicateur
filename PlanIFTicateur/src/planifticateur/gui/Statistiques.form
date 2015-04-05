@@ -96,7 +96,7 @@
                       <Component id="jLabelNBMoyCours" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldNbMoyCours" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelIndCov" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldIndCov" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -106,7 +106,7 @@
                       <Component id="jLabelIndConges" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldIndConges" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="76" max="32767" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

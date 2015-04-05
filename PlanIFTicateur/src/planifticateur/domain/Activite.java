@@ -42,6 +42,7 @@ public class Activite {
         //Bloc try car possibles erreurs de lectures mais catch ne fait qu'afficher les erreurs
         //pour le moment.
         
+        
         String[] infoActivite = activite.split(separateur); //On coupe la chaîne pour obtenir les infos séparés
         try
         {
@@ -71,17 +72,18 @@ public class Activite {
                 }
             }
             //attribution de la couleur selon le type
-            if ( type.contains("classe")|| type.contains("Classe") ){
+            if ( type.toLowerCase().contains("classe") ){//insensible a la casse
                 couleur = new Color(49, 140, 231);
-            }
-            if ( type.contains("distance") || type.contains("Distance")  ){
+            }else if ( type.toLowerCase().contains("distance")  ){//alternatif et une seule comparaison
                 couleur = new Color(165, 209, 82);
-            }
-            if ( type.contains("labo") || type.contains("Labo")  ){
+            } else if ( type.toLowerCase().contains("labo") ){
                 couleur = new Color(223, 109, 20);
-            }
-            if ( type.contains("horsD") || type.contains("HorsD")  ){
+            } else if ( type.toLowerCase().contains("horsD") ){
                 couleur = new Color(253, 108, 158);
+            } else {//sentinelle de le cas de couleur rouge 
+                //sinon le programme plante avec une nouvelle activite en appelant : getCouleur() sera null
+                //on peut savoir que un nouveau type d'activite est ajoute au fichier
+                couleur = Color.RED;//en attendant le factory qui nous permet d'ajouter un nouveau cours sans connaitre son nom. 
             }
             heureDebutMax = heureFinMax - duree;
         }
