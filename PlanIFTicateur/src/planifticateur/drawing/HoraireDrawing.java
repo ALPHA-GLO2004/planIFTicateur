@@ -1,6 +1,7 @@
 
 package planifticateur.drawing;
 import planifticateur.domain.HoraireController;
+import planifticateur.domain.GrilleCheminement;
 import planifticateur.domain.Activite;
 import planifticateur.domain.MouseAdapter;
 import planifticateur.gui.DrawingPanel;
@@ -57,25 +58,7 @@ public class HoraireDrawing {
                         g2.drawString(a.getCode(), a.getPoint().x - 20 + (int)(a.getDuree() * ((width - (caseJourWidth))/15))/2, a.getPoint().y + 16);
                     }
                 }
-                for (Activite a: horaireController.getListeActiviteDejaPlacee()){
-                    if (a.isSelected() == true){
-                        g2.setColor(Color.YELLOW);
-                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
-                        g2.setColor(Color.BLACK);
-                        g2.setStroke(new BasicStroke(1));
-                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
-                        Font font = new Font("Arial", Font.BOLD, 12);
-                        g2.drawString(a.getCode(), a.getPoint().x - 20 + (int)(a.getDuree() * ((width - (caseJourWidth))/15))/2, a.getPoint().y + 16);
-                    }else{
-                        g2.setColor(a.getCouleur());
-                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
-                        g2.setColor(Color.BLACK);
-                        g2.setStroke(new BasicStroke(1));
-                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
-                        Font font = new Font("Arial", Font.BOLD, 12);
-                        g2.drawString(a.getCode(), a.getPoint().x - 20 + (int)(a.getDuree() * ((width - (caseJourWidth))/15))/2, a.getPoint().y + 16);
-                    }
-                }
+                
                 if (horaireController.getModeValidationAuto()){
                     //On set la couleur avec un alpha pour ombrager les activités déjà placées
                     g2.setColor(new Color(0, 0, 0, 80));
@@ -85,8 +68,21 @@ public class HoraireDrawing {
                             g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree()*saut*2), caseHeureHeight);
                         }
                     }
-                }
-        }        
+                    for (Activite a: horaireController.getListeActiviteComplete()){
+                        if (a.isSelected()){
+                        for (Activite b: horaireController.getListeActiviteDejaPlacee()){
+                            for (GrilleCheminement grille: horaireController.getListeActiviteGrilleCh()){
+                                if (grille.activiteEstDansGrille(a.getCode())){
+                                    if (grille.activiteEstDansGrille(b.getCode())){
+                                        g2.fillRect((int)((b.getHeureDebutChoisi() - 8) * saut * 2 + caseJourWidth), (b.getJourChoisi()-1) * caseJourHeight + caseHeureHeight, (int)(b.getDuree()*saut*2), caseJourHeight - caseHeureHeight);
+                                    }
+                                }
+                            }
+                            }  
+                    }
+                    }
+                }        
+        }
     }
     
     public void drawHoraire(Graphics g){

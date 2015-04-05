@@ -1,6 +1,7 @@
 
 package planifticateur.domain;
 import java.util.Vector;
+import java.util.List;
 
 public class ListeGrilleCh {
     private Vector<GrilleCheminement> grilleChListe;
@@ -30,7 +31,7 @@ public class ListeGrilleCh {
     }
     
     //Retourne la liste d'activités par grille de cheminement
-    public Vector<GrilleCheminement> getListeGrilleCh(){
+    public List<GrilleCheminement> getListeGrilleCh(){
         return grilleChListe;
     }
     

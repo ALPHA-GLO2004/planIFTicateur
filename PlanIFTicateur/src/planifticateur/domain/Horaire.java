@@ -112,7 +112,7 @@ public class Horaire {
         int saut = (width - caseJourWidth)/ 30;
         int y = caseHeureHeight;
         
-        for (Activite a: this.getListeActiviteDejaPlacee()){
+        for (Activite a: this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee()){
             int jourChoisiActivitePrecedente = a.getJourChoisi();
             y = caseHeureHeight + (a.getJourChoisi()-1)*caseJourHeight;
             int x = caseJourWidth + (int)((a.getHeureDebutChoisi()-8)*2*saut);
@@ -162,11 +162,11 @@ public class Horaire {
         Vector<GrilleCheminement> listeARetourner ;
         listeARetourner = new Vector<GrilleCheminement>();
         
-        Vector<GrilleCheminement> listeComplete = listeGrilleCh.getListeGrilleCh();
+        List<GrilleCheminement> listeComplete = listeGrilleCh.getListeGrilleCh();
         for(int i=0;i<listeComplete.size();i++)
             {
-               if( listeComplete.elementAt(i).activiteEstDansGrille(codeActivite) )
-                       listeARetourner.add(listeComplete.elementAt(i));
+               if( listeComplete.get(i).activiteEstDansGrille(codeActivite) )
+                       listeARetourner.add(listeComplete.get(i));
             }
         
         return listeARetourner ;
@@ -184,8 +184,8 @@ public class Horaire {
         return listeConflit.getListeConflit();
     }
     
-    public List<Activite> getListeActiviteDejaPlacee(){
-        return listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
+    public ListeActiviteDejaPlacee getListeActiviteDejaPlacee(){
+        return listeActiviteDejaPlacee;
     }
     
     public List<ModificationActivite> getListeModificationActivite(){
@@ -206,10 +206,10 @@ public class Horaire {
     }
     
     public void setListeActiviteAPlacer(){
-        for (int i = 0; i < this.getListeActiviteDejaPlacee().size(); i++){
-            if (this.getListeActiviteDejaPlacee().get(i).getJourChoisi() == 0){
-                this.listeActiviteAPlacer.add(this.getListeActiviteDejaPlacee().get(i));
-                this.listeActiviteDejaPlacee.remove(this.getListeActiviteDejaPlacee().get(i));
+        for (int i = 0; i < this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee().size(); i++){
+            if (this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee().get(i).getJourChoisi() == 0){
+                this.listeActiviteAPlacer.add(this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee().get(i));
+                this.listeActiviteDejaPlacee.remove(this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee().get(i));
             }
         }
     }
@@ -262,7 +262,7 @@ public class Horaire {
      public boolean horaireEstValide(Vector<String> messagesDerreurs){
       
         Vector<GrilleCheminement> grillesChDUneActivite ;
-        Vector<String> stringDUneGrille = new Vector<String> () ;
+        List<String> stringDUneGrille = new Vector<String> () ;
         Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
         ListePairesDActivites listePaires = new ListePairesDActivites() ;
         
@@ -313,13 +313,13 @@ public class Horaire {
                    
                     for(int i=0 ; i< stringDUneGrille.size();i++)
                     {
-                        if(! stringDUneGrille.elementAt(i).equals(activite.getCode()))
+                        if(! stringDUneGrille.get(i).equals(activite.getCode()))
                         {
 
                             Activite act = new Activite();
                                
                             //rempli act des infos de l'activite correspondant astringDUneGrille.elementAt(i)
-                           if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.elementAt(i),act) ){ 
+                           if( listeActiviteDejaPlacee.activiteEstEllePlacee(stringDUneGrille.get(i),act) ){ 
                                {
                                    //pas le meme jour c'est correct
                                    if(act.getJourChoisi() != activite.getJourChoisi())continue ; 

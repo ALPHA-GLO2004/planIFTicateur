@@ -34,14 +34,6 @@ public class HoraireController {
         
     }
     
-    public void dessiner(){
-        
-    }
-    
-    public void validerHoraire(){
-        
-    }
-    
     public void planificationAuto(){
         
     }
@@ -64,7 +56,7 @@ public class HoraireController {
     
     //Méthode pour mouseAdapter
     public Point verificationDrop(Point p){
-        return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.horaire.getListeActiviteDejaPlacee(), this.getModeValidationAuto());
+        return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee(), this.getModeValidationAuto());
     }
     
     public void verificationSelection(Point p, Dimension d){
@@ -167,6 +159,10 @@ public class HoraireController {
         }
     }
     
+    public boolean yaTilChevauchement(Activite a1, Activite a2){
+        return this.horaire.yaTilChevauchement(a1, a2);
+    }
+    
     public void switchAPlacerToDejaPlacee(){
         this.horaire.setListeActiviteDejaPlacee();
     }
@@ -193,7 +189,7 @@ public class HoraireController {
     }
     
     public List<Activite> getListeActiviteDejaPlacee(){
-        return horaire.getListeActiviteDejaPlacee();
+        return horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee();
     }
     
     public List<ModificationActivite> getListeModificationActivite(){
@@ -202,6 +198,10 @@ public class HoraireController {
     
     public List<Activite> getListeActiviteComplete(){
         return horaire.getListeActiviteComplete();
+    }
+    
+    public boolean activiteEstDejaPlacee(String s, Activite a){
+        return this.horaire.getListeActiviteDejaPlacee().activiteEstEllePlacee(s, a);
     }
     
     public void msgErreur(String msgErr){

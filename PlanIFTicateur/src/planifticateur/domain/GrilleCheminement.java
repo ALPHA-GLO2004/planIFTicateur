@@ -38,7 +38,7 @@ public class GrilleCheminement {
          return this.grilleActivites.contains(nomActivite);
     }
      
-    public Vector<String> getListeDesCodesDactivites(){
+    public List<String> getListeDesCodesDactivites(){
          return this.grilleActivites;
     }
 }
