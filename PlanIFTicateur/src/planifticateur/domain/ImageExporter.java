@@ -26,7 +26,7 @@ see http://stackoverflow.com/questions/14551646/convert-a-jpanel-to-an-image-in-
 *   http://stackoverflow.com/questions/4386446/problem-using-imageio-write-jpg-file
 */
 
-public class ExporterToImage {
+public class ImageExporter {
     
     //seulement jpeg actuellement
     public enum IMAGE_FORMAT {
