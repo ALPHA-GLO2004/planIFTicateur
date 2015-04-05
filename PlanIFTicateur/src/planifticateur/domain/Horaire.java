@@ -40,10 +40,10 @@ public class Horaire {
     ListeActiviteDejaPlacee listeActiviteDejaPlacee;
     ListeGrilleCh listeGrilleCh;
 
-    public Horaire(File f){
+    public Horaire(String filePath){
         //Constructeur -- Ne fais que prendre le fichier et attribuer chaque élément contenu
         //dans ce fichier au bon endroit. Ensuite fait appel au controller pour créer les activités
-        String nomFichier = f.getName().substring(0, (f.getName().length() - 4));
+        String nomFichier = filePath.substring(0, (filePath.length() - 4));
         fichierCOU = nomFichier + ".COU";   
         horairePlein = false;
         listeConflit = new ListeConflit();
@@ -52,7 +52,7 @@ public class Horaire {
         listeGrilleCh = new ListeGrilleCh();
         listeActiviteAPlacer = new ListeActiviteAPlacer();
         //pour fichier COU
-        this.lireFichier(f);
+        this.lireFichier(filePath);
         //Analyse auto du délimiteur ?
         String analyseur = listeActivite.get(0);
         String separateur = analyseur.substring(12, 13);
@@ -73,7 +73,7 @@ public class Horaire {
             }
         }
         //pour fichier CHE
-        String path = f.getPath();
+        String path = filePath;
         try{
             BufferedReader fluxCHE = new BufferedReader(new FileReader(path.substring(0, path.length() - 3) + "CHE"));
             for (String line = fluxCHE.readLine(); line != null; line = fluxCHE.readLine()){
@@ -89,11 +89,12 @@ public class Horaire {
         }
     }
     
-    private void lireFichier(File f){
+    private void lireFichier(String filePath){
         //Fonction pour transformer un fichier CSV en liste de string de son contenu
         //avec l'aide du séparateur ";"
         try{
-            BufferedReader flux = new BufferedReader(new FileReader(f));
+            
+            BufferedReader flux = new BufferedReader(new FileReader(filePath));
             for (String line = flux.readLine(); line != null; line = flux.readLine()){
                 listeActivite.add(line);
             }
