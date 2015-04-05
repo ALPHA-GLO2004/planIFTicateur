@@ -1,6 +1,7 @@
 
 package planifticateur.gui;
 import planifticateur.domain.HoraireController;
+import planifticateur.domain.ImageExporter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -19,6 +20,7 @@ public class MainWindow extends javax.swing.JFrame {
     private boolean horaireEstCharge;
     Vector<String> messagesDerreurs;
     private int activiteList;
+    private ImageExporter exporter ;
 
     
     public MainWindow() {
@@ -29,6 +31,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireEstCharge=false;
         horaireController = new HoraireController();
         statFenetre = new Statistiques();
+        exporter= new ImageExporter ();
         fenetreNote = new Note();
         messagesDerreurs = new Vector<String>() ;
         initComponents();
@@ -260,6 +263,11 @@ public class MainWindow extends javax.swing.JFrame {
         menuExport.add(menuExportCopy);
 
         menuExportPic.setText("... sous forme d'image");
+        menuExportPic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuExportPicActionPerformed(evt);
+            }
+        });
         menuExport.add(menuExportPic);
 
         topMenuBar.add(menuExport);
@@ -452,6 +460,13 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.switchFromListToMove(horaireController.getActiviteSelected());
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed
+
+    private void menuExportPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExportPicActionPerformed
+       if(horaireEstCharge)
+           exporter.exporterImage(drawingPanelContainer, ImageExporter.IMAGE_FORMAT.JPEG,
+                               "d:/saved.jpg", drawingPanelContainer.isVisible()
+                                );
+    }//GEN-LAST:event_menuExportPicActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;

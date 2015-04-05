@@ -22,8 +22,7 @@ import java.awt.image.*;
 
 
 /**
-see http://stackoverflow.com/questions/14551646/convert-a-jpanel-to-an-image-in-a-jscrollpane
-*   http://stackoverflow.com/questions/4386446/problem-using-imageio-write-jpg-file
+see < http://stackoverflow.com/questions/14551646/convert-a-jpanel-to-an-image-in-a-jscrollpane >
 */
 
 public class ImageExporter {
