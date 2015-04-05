@@ -43,7 +43,10 @@ public class Horaire {
     public Horaire(String filePath){
         //Constructeur -- Ne fais que prendre le fichier et attribuer chaque élément contenu
         //dans ce fichier au bon endroit. Ensuite fait appel au controller pour créer les activités
-        String nomFichier = filePath.substring(0, (filePath.length() - 4));
+        String[] tabString = filePath.split("\\\\");
+        
+        String nomFichier = tabString[tabString.length-1];
+               nomFichier =nomFichier.substring(0, (nomFichier.length() - 4));
         fichierCOU = nomFichier + ".COU";   
         horairePlein = false;
         listeConflit = new ListeConflit();
