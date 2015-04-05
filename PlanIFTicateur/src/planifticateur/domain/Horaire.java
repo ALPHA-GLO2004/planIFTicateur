@@ -405,14 +405,23 @@ public class Horaire {
         return 0.0f;
     }
     
-    public float calculerIndiceCovoiturage(Vector<Activite> listeDesActivites){
+    public float calculerIndiceCovoiturage(){
 
         return 0.0f;
     }
     
-     public float calculerIndiceCongestion(Vector<Activite> listeDesActivites){
+     public float calculerIndiceCongestion(){
 
-        return 0.0f;
+         float nb;
+         Vector<Activite> liste = new Vector<Activite>();
+         
+         liste = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
+         nb=0;
+         for( Activite activite : liste)
+         {
+             if(activite.getHeureDebutChoisi() == 8.5)nb++;
+         }
+        return nb*100.0f/liste.size();
     }
     
 
@@ -424,8 +433,8 @@ public class Horaire {
        stats.add(calculerNombreDeCours(listeDesActivites));
        stats.add(calculerNombreMaxDeCours(listeDesActivites));
        stats.add(calculerNombreMoyenDeCours(listeDesActivites));
-       stats.add(calculerIndiceCovoiturage(listeDesActivites));
-       stats.add(calculerIndiceCongestion(listeDesActivites));
+       stats.add(calculerIndiceCovoiturage());
+       stats.add(calculerIndiceCongestion());
         
         return stats;
     }
