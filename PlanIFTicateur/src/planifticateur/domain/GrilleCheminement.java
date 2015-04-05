@@ -29,8 +29,17 @@ public class GrilleCheminement {
         }
     }
     
-    private boolean enConflit(Activite activite){
+    private boolean enConflit(Activite activiteSynchro1,Activite activiteSynchro2){
         //À implémenter
+        // pour une meme session, un meme programme et une meme version 
+        //si la grille contient le code des 2 activites alors conflit
+        for(String s : this.grilleActivites){
+            if((s.compareTo(activiteSynchro1.getCode())==0)
+                    && (s.compareTo(activiteSynchro2.getCode())==0)){
+                return true;
+            }
+            
+        }
         return false;
     }
     
