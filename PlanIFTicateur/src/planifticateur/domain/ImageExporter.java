@@ -69,7 +69,13 @@ public class ImageExporter {
     public void  exporterImage(Component component,IMAGE_FORMAT format, String path, boolean visible) {
 
             BufferedImage image = componentToImage(component, visible);
-            saveJPeg(image, path);
+            
+            switch(format)
+            {
+                case JPEG: saveJPeg(image, path);
+                break;
+            }
+           
        }
     
     
