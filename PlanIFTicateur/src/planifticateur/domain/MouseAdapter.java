@@ -98,8 +98,8 @@ public class MouseAdapter {
                 for (GrilleCheminement grille: laGC){
                     if (grille.activiteEstDansGrille(codeSelected)){
                         if (grille.activiteEstDansGrille(b.getCode())){
-                            if (p.x < (int)(b.getHeureDebutChoisi() + b.getDuree()*2*saut)
-                                && p.x > b.getPoint().x
+                            if (pointActiviteX < (int)((b.getHeureDebutChoisi()-8 + b.getDuree())*2*saut) + caseJourWidth
+                                && pointActiviteX + (int)(dureeActiviteSelected *2*saut) > b.getPoint().x
                                 && p.y >= (int)((b.getJourChoisi()-1)*caseJourHeight) + caseHeureHeight
                                 && p.y < (int)(b.getJourChoisi()*caseJourHeight)){
                                 pointActiviteX = 0;
