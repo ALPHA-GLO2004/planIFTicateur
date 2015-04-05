@@ -59,29 +59,16 @@ public class HoraireDrawing {
                     }
                 }
                 
-                if (horaireController.getModeValidationAuto()){
+                /*if (horaireController.getModeValidationAuto()){
                     //On set la couleur avec un alpha pour ombrager les activités déjà placées
-                    g2.setColor(new Color(0, 0, 0, 80));
+                    g2.setColor(new Color(0, 0, 0, 95));
                     //On dessine les rectangles d'ombre
                     for (Activite a: horaireController.getListeActiviteDejaPlacee()){
                         if (!a.isSelected()){
                             g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree()*saut*2), caseHeureHeight);
                         }
                     }
-                    for (Activite a: horaireController.getListeActiviteComplete()){
-                        if (a.isSelected()){
-                        for (Activite b: horaireController.getListeActiviteDejaPlacee()){
-                            for (GrilleCheminement grille: horaireController.getListeActiviteGrilleCh()){
-                                if (grille.activiteEstDansGrille(a.getCode())){
-                                    if (grille.activiteEstDansGrille(b.getCode())){
-                                        g2.fillRect((int)((b.getHeureDebutChoisi() - 8) * saut * 2 + caseJourWidth), (b.getJourChoisi()-1) * caseJourHeight + caseHeureHeight, (int)(b.getDuree()*saut*2), caseJourHeight - caseHeureHeight);
-                                    }
-                                }
-                            }
-                            }  
-                    }
-                    }
-                }        
+                }  */      
         }
     }
     
@@ -96,6 +83,12 @@ public class HoraireDrawing {
         Graphics2D g2 = (Graphics2D) g;
         
         if (horaireController.getHoraire() == true){
+             if (horaireController.getModeValidationAuto()){
+                //On set la couleur avec un alpha pour ombrager les zones invalides
+                g2.setColor(new Color(80, 80, 80));
+                //On remplit chaque case selon sa validité --- En construction :)
+                g2.fillRect(0, 0, width, height);
+             }
             //frame principal
             //lignes horizontales --- noires
             g2.setColor(Color.BLACK);
@@ -157,10 +150,6 @@ public class HoraireDrawing {
             
             //mode validationAuto on
             if (horaireController.getModeValidationAuto()){
-                //On set la couleur avec un alpha pour ombrager les zones invalides
-                g2.setColor(new Color(0, 0, 0, 80));
-                //On remplit chaque case selon sa validité --- En construction :)
-                g2.fillRect(0, 0, width, height);
                 //On dessine les plages valides
                 for (Activite a: horaireController.getListeActiviteComplete()){
                     if (horaireController.activiteIsSelected(a)){
@@ -173,6 +162,16 @@ public class HoraireDrawing {
                         for (int i = 0; i <= 4; i++){
                             g2.fillRect(caseJourWidth+heureSautDebut , caseHeureHeight+(i*caseJourHeight), heureSautFin, caseJourHeight-caseHeureHeight);
                         }
+                        g2.setColor(new Color(80, 80, 80));
+                        for (Activite b: horaireController.getListeActiviteDejaPlacee()){
+                            for (GrilleCheminement grille: horaireController.getListeActiviteGrilleCh()){
+                                if (grille.activiteEstDansGrille(a.getCode())){
+                                    if (grille.activiteEstDansGrille(b.getCode())){
+                                        g2.fillRect((int)((b.getHeureDebutChoisi() - 8) * saut * 2 + caseJourWidth), (b.getJourChoisi()-1) * caseJourHeight + caseHeureHeight, (int)(b.getDuree()*saut*2), caseJourHeight - caseHeureHeight);
+                                    }
+                                }
+                            }
+                        }  
                     }
                 }
             }

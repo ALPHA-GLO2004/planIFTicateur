@@ -9,13 +9,14 @@ public class MouseAdapter {
     private float dureeActiviteSelected;
     private float heureFinMax;
     private float heureDebutMin;
+    private String codeSelected;
     
     public MouseAdapter(Dimension d){
         this.dimension = d;
     }
     
     //Méthode pour snaper les activités à la grille horaire
-    public Point verificationDrop(Point p, List<Activite> laC, List<Activite> laDP,boolean modeValidationAuto){
+    public Point verificationDrop(Point p, List<Activite> laC, List<Activite> laDP, List<GrilleCheminement> laGC, boolean modeValidationAuto){
         int width = dimension.width *3/4;
         int height = dimension.height;
         int caseJourHeight = height / 5;
@@ -70,34 +71,51 @@ public class MouseAdapter {
                     dureeActiviteSelected = a.getDuree();
                     heureFinMax = a.getHeureFinMax();
                     heureDebutMin = a.getHeureDebutMin();
+                    codeSelected = a.getCode();
                 }
             }
             
             for (Activite a: laDP){
-                if (p.x < width){
-                    if (p.x + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15)) > a.getPoint().x 
-                            && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
-                        pointActiviteX = 0;
-                        pointActiviteY = 0;
-                    }
-                    if (p.x > a.getPoint().x && p.x < (a.getPoint().x + (int)(a.getDuree() * ((width - (caseJourWidth))/15)))
-                            && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
-                        pointActiviteX = 0;
-                        pointActiviteY = 0;
-                    }
+                if (pointActiviteX + (int)(dureeActiviteSelected *2*saut) > a.getPoint().x 
+                    && pointActiviteX + (int)(dureeActiviteSelected *2*saut) <= (a.getPoint().x + (int)(a.getDuree()*2*saut))
+                    && p.y > a.getPoint().y
+                    && p.y < (a.getPoint().y + activiteHeight)){
+                    pointActiviteX = 0;
+                    pointActiviteY = 0;
                 }
-                else{
+                if (pointActiviteX > a.getPoint().x && pointActiviteX < (a.getPoint().x + (int)(a.getDuree() *2*saut))
+                    && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
                     pointActiviteX = 0;
                     pointActiviteY = 0;
                 }
             }
+            if (p.x >= width){
+                pointActiviteX = 0;
+                pointActiviteY = 0;
+            }
+
+            for (Activite b: laDP){
+                for (GrilleCheminement grille: laGC){
+                    if (grille.activiteEstDansGrille(codeSelected)){
+                        if (grille.activiteEstDansGrille(b.getCode())){
+                            if (p.x < (int)(b.getHeureDebutChoisi() + b.getDuree()*2*saut)
+                                && p.x > b.getPoint().x
+                                && p.y >= (int)((b.getJourChoisi()-1)*caseJourHeight) + caseHeureHeight
+                                && p.y < (int)(b.getJourChoisi()*caseJourHeight)){
+                                pointActiviteX = 0;
+                                pointActiviteY = 0;
+                            }
+                        }
+                    }
+                }
+            }  
             
             if (modeValidationAuto){
                 if ((pointActiviteX + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15))) > (int)(caseJourWidth + (heureFinMax - 8)*2*saut)
-                        || pointActiviteX < (int)(caseJourWidth + (heureDebutMin - 8)*2*saut)){
+                    || pointActiviteX < (int)(caseJourWidth + (heureDebutMin - 8)*2*saut)){
                     pointActiviteX = 0;
                     pointActiviteY = 0;
-            }
+                }
             }
         return new Point(pointActiviteX, pointActiviteY);
     }
