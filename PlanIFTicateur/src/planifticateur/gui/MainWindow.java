@@ -343,7 +343,9 @@ public class MainWindow extends javax.swing.JFrame {
         //On efface ce qu'il y a en place
         horaireController.resetHoraire();
         // On shoot le fileSelection à la fonction approprié du controller
-        horaireController.chargerHoraire(selecteurFichier.getSelectedFile());
+        //Larman impose un type primitif vers le controler
+        String filePath = selecteurFichier.getSelectedFile().getPath();
+        horaireController.chargerHoraire(filePath);
         validationAutoCheckBox.setSelected (false);
         horaireController.setModeValidationAutoOff();
         titreFichierLabel.setText(" Nom fichier d'importaion:  " + horaireController.getHoraireNom());
