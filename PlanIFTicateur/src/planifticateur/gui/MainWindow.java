@@ -124,11 +124,11 @@ public class MainWindow extends javax.swing.JFrame {
         drawingPanel.setLayout(drawingPanelLayout);
         drawingPanelLayout.setHorizontalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1364, Short.MAX_VALUE)
+            .addGap(0, 525, Short.MAX_VALUE)
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1111, Short.MAX_VALUE)
+            .addGap(0, 1274, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -320,22 +320,6 @@ public class MainWindow extends javax.swing.JFrame {
         } 
     }
     
-    private void quitterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitterButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_quitterButtonActionPerformed
-
-    private void noteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteButtonActionPerformed
-        fenetreNote.setVisible(true);
-    }//GEN-LAST:event_noteButtonActionPerformed
-
-    private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
-        statFenetre.setVisible(true);
-    }//GEN-LAST:event_statistiquesButtonActionPerformed
-
-    private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
-        horaireController.planificationAuto();
-    }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
-
     private void validationAutoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationAutoCheckBoxActionPerformed
         horaireController.switchValidationAuto();
         drawingPanel.repaint();
@@ -462,11 +446,34 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMousePressed
 
     private void menuExportPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExportPicActionPerformed
-       if(horaireEstCharge)
-           exporter.exporterImage(drawingPanelContainer, ImageExporter.IMAGE_FORMAT.JPEG,
-                               "d:/saved.jpg", drawingPanelContainer.isVisible()
+
+        if(horaireEstCharge)
+      /*     exporter.exporterImage(drawingPanelContainer, ImageExporter.IMAGE_FORMAT.JPEG,
+                                 drawingPanelContainer.getWidth(),drawingPanelContainer.getVerticalScrollBar().getMaximum() , 
+                                  System.getProperty("user.dir") +"_export.jpg"
                                 );
+        */
+             exporter.exporterImage(drawingPanelContainer, ImageExporter.IMAGE_FORMAT.JPEG,
+                                    drawingPanelContainer.getWidth(),drawingPanelContainer.getHeight() , 
+                                    System.getProperty("user.dir") +"_export.jpg"
+                                    );
     }//GEN-LAST:event_menuExportPicActionPerformed
+
+    private void quitterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitterButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_quitterButtonActionPerformed
+
+    private void noteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteButtonActionPerformed
+        fenetreNote.setVisible(true);
+    }//GEN-LAST:event_noteButtonActionPerformed
+
+    private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
+        statFenetre.setVisible(true);
+    }//GEN-LAST:event_statistiquesButtonActionPerformed
+
+    private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
+        horaireController.planificationAuto();
+    }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;

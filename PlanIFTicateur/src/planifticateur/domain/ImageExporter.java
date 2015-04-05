@@ -35,10 +35,10 @@ public class ImageExporter {
     private static final int[] RGB_MASKS = {0xFF0000, 0xFF00, 0xFF};
     private static final ColorModel RGB_OPAQUE = new DirectColorModel(32, RGB_MASKS[0], RGB_MASKS[1], RGB_MASKS[2]);
 
-        
-    public static BufferedImage componentToImage(Component component, boolean visible) {
+     // drawingPanelContainer.getVerticalScrollBar().getSize().getHeight()   
+    public static BufferedImage componentToImage(Component component, int width, int height) {
 
-        BufferedImage img = new BufferedImage(component.getWidth(), component.getHeight(), BufferedImage.TRANSLUCENT);
+        BufferedImage img = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
         Graphics2D g2d = (Graphics2D) img.getGraphics();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         component.paintAll(g2d);
@@ -66,9 +66,9 @@ public class ImageExporter {
         }
     }
     
-    public void  exporterImage(Component component,IMAGE_FORMAT format, String path, boolean visible) {
+    public void  exporterImage(Component component,IMAGE_FORMAT format,int width, int height, String path) {
 
-            BufferedImage image = componentToImage(component, visible);
+            BufferedImage image = componentToImage(component,width,height);
             
             switch(format)
             {
