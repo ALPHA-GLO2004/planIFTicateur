@@ -10,6 +10,7 @@ public class MouseAdapter {
     private float heureFinMax;
     private float heureDebutMin;
     private String codeSelected;
+    private String typeSelected;
     
     public MouseAdapter(Dimension d){
         this.dimension = d;
@@ -72,6 +73,7 @@ public class MouseAdapter {
                     heureFinMax = a.getHeureFinMax();
                     heureDebutMin = a.getHeureDebutMin();
                     codeSelected = a.getCode();
+                    typeSelected = a.getType();
                 }
             }
             
@@ -88,6 +90,15 @@ public class MouseAdapter {
                     pointActiviteX = 0;
                     pointActiviteY = 0;
                 }
+                /*if ((a.getType().contains("labo") && typeSelected.contains("classe")) || (a.getType().contains("classe") && typeSelected.contains("labo"))){
+                    if (pointActiviteX < (int)((a.getHeureDebutChoisi()-8 + a.getDuree())*2*saut) + caseJourWidth
+                                        && pointActiviteX + (int)(dureeActiviteSelected *2*saut) > a.getPoint().x
+                                        && p.y >= (int)((a.getJourChoisi()-1)*caseJourHeight) + caseHeureHeight
+                                        && p.y < (int)(a.getJourChoisi()*caseJourHeight)){
+                                        pointActiviteX = 0;
+                                        pointActiviteY = 0;
+                                    }
+                }*/
             }
             
             if (p.x >= width){
@@ -107,13 +118,13 @@ public class MouseAdapter {
                     for (GrilleCheminement grille: laGC){
                         if (grille.activiteEstDansGrille(codeSelected)){
                             if (grille.activiteEstDansGrille(b.getCode())){
-                                if (pointActiviteX < (int)((b.getHeureDebutChoisi()-8 + b.getDuree())*2*saut) + caseJourWidth
-                                    && pointActiviteX + (int)(dureeActiviteSelected *2*saut) > b.getPoint().x
-                                    && p.y >= (int)((b.getJourChoisi()-1)*caseJourHeight) + caseHeureHeight
-                                    && p.y < (int)(b.getJourChoisi()*caseJourHeight)){
-                                    pointActiviteX = 0;
-                                    pointActiviteY = 0;
-                                }
+                                    if (pointActiviteX < (int)((b.getHeureDebutChoisi()-8 + b.getDuree())*2*saut) + caseJourWidth
+                                        && pointActiviteX + (int)(dureeActiviteSelected *2*saut) > b.getPoint().x
+                                        && p.y >= (int)((b.getJourChoisi()-1)*caseJourHeight) + caseHeureHeight
+                                        && p.y < (int)(b.getJourChoisi()*caseJourHeight)){
+                                        pointActiviteX = 0;
+                                        pointActiviteY = 0;
+                                    }
                             }
                         }
                     }
