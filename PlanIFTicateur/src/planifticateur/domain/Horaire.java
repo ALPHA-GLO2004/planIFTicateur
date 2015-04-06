@@ -275,7 +275,8 @@ public class Horaire {
         List<String> stringDUneGrille = new Vector<String> () ;
         Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
         ListePairesDActivites listePaires = new ListePairesDActivites() ;
-        
+        ListePairesDActivites listeCoursLab = new ListePairesDActivites() ;
+         
         float heure;
         boolean reponse ;
         long iPart;
@@ -311,6 +312,33 @@ public class Horaire {
                                           );
 
                 }
+                
+                //un cours  ne peuvent se donner en meme tps que son lab
+                for(Activite activite2 : activiteDejaPlacee)
+                {
+                    if( activite.getCode().equals(activite2.getCode()) )
+                     {
+                         if( ( (activite.getType().equals("Classe") )||(activite.getType().equals("classe")))
+                              &&
+                             ( (activite2.getType().equals("Laboratoire") )||(activite2.getType().equals("laboratoire")))
+                            )
+                         {
+                             listeCoursLab.addPaire(activite, activite2);
+                             reponse = false;
+                         }
+                         else if( ( (activite2.getType().equals("Distance") )||(activite2.getType().equals("distance")))
+                              &&
+                             ( (activite.getType().equals("Laboratoire") )||(activite.getType().equals("laboratoire")))
+                            )
+                         {
+                              listeCoursLab.addPaire(activite, activite2);
+                              reponse = false;
+                         }
+                     }
+                    
+                }
+                
+                
                 
                 //respecte les grilles de cheminement ?
                 //On verifie si un cours lié se donne en meme tps
@@ -360,7 +388,14 @@ public class Horaire {
                     );  
          }
            
-
+         paires = listeCoursLab.getListe();
+           for(PaireDActivites p : paires)
+         {
+                
+            messagesDerreurs.add(p.a1.getCode() + " ne peut avoir lieu en meme temps que son laboratoire\n" 
+                    );  
+            
+         }
         return reponse;
     }
 
