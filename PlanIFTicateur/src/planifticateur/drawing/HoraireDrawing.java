@@ -162,13 +162,17 @@ public class HoraireDrawing {
                         for (int i = 0; i <= 4; i++){
                             g2.fillRect(caseJourWidth+heureSautDebut , caseHeureHeight+(i*caseJourHeight), heureSautFin, caseJourHeight-caseHeureHeight);
                         }
+                        
                         g2.setColor(new Color(80, 80, 80));
                         for (Activite b: horaireController.getListeActiviteDejaPlacee()){
+                            if ((a.getType().contains("labo") && b.getType().contains("classe")) || (a.getType().contains("classe") && b.getType().contains("labo"))){
+                                g2.fillRect((int)((b.getHeureDebutChoisi() - 8) * saut * 2 + caseJourWidth), (b.getJourChoisi()-1) * caseJourHeight + caseHeureHeight, (int)(b.getDuree()*saut*2), caseJourHeight - caseHeureHeight);
+                            }
                             for (GrilleCheminement grille: horaireController.getListeActiviteGrilleCh()){
                                 if (grille.activiteEstDansGrille(a.getCode())){
-                                    if (grille.activiteEstDansGrille(b.getCode())){
-                                        g2.fillRect((int)((b.getHeureDebutChoisi() - 8) * saut * 2 + caseJourWidth), (b.getJourChoisi()-1) * caseJourHeight + caseHeureHeight, (int)(b.getDuree()*saut*2), caseJourHeight - caseHeureHeight);
-                                    }
+                                        if (grille.activiteEstDansGrille(b.getCode())){
+                                            g2.fillRect((int)((b.getHeureDebutChoisi() - 8) * saut * 2 + caseJourWidth), (b.getJourChoisi()-1) * caseJourHeight + caseHeureHeight, (int)(b.getDuree()*saut*2), caseJourHeight - caseHeureHeight);
+                                        }
                                 }
                             }
                         }  

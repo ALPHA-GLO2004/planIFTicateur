@@ -316,43 +316,47 @@ public class Horaire {
                 //un cours  ne peuvent se donner en meme tps que son lab
                 for(Activite activite2 : activiteDejaPlacee)
                 {
+                    if(! yaTilChevauchement(activite, activite2))continue;
+                    
                     if( activite.getCode().equals(activite2.getCode()) )
                      {
               
-                         if( ( (activite.getType().equals("Classe") )||(activite.getType().equals("classe")))
+                         if( ( (activite.getType().contains("Classe") )||(activite.getType().contains("classe")))
                               &&
-                             ( (activite2.getType().equals("Laboratoire") )||(activite2.getType().equals("laboratoire")))
+                             ( (activite2.getType().contains("Laboratoire") )||(activite2.getType().contains("laboratoire")))
                             )
                          {
                              listeCoursLab.addPaire(activite, activite2);
                              reponse = false;
                          }
                          
-                         else if( ( (activite.getType().equals("Distance") )||(activite.getType().equals("Distance")))
+                         else if( ( (activite.getType().contains("Distance") )||(activite.getType().contains("distance")))
                               &&
-                             ( (activite2.getType().equals("Laboratoire") )||(activite2.getType().equals("laboratoire")))
+                             ( (activite2.getType().contains("Laboratoire") )||(activite2.getType().contains("laboratoire")))
                             )
                          {
                              listeCoursLab.addPaire(activite, activite2);
                              reponse = false;
                          }
                          
-                         else if( ( (activite.getType().equals("Laboratoire") )||(activite2.getType().equals("Laboratoire")))
+                         else if( ( (activite.getType().contains("Laboratoire") )||(activite.getType().contains("laboratoire")))
                               &&
-                             ( (activite2.getType().equals("Distance") )||(activite2.getType().equals("Distance")))
+                             ( (activite2.getType().contains("Distance") )||(activite2.getType().contains("distance")))
                             )
                          {
                               listeCoursLab.addPaire(activite, activite2);
                               reponse = false;
                          }
-                         else if( ( (activite.getType().equals("Laboratoire") )||(activite2.getType().equals("Laboratoire")))
+                         else if( ( (activite.getType().contains("Laboratoire") )||(activite.getType().contains("laboratoire")))
                               &&
-                             ( (activite2.getType().equals("Classe") )||(activite2.getType().equals("classe")))
+                             ( (activite2.getType().contains("Classe") )||(activite2.getType().contains("classe")))
                             )
                          {
                               listeCoursLab.addPaire(activite, activite2);
                               reponse = false;
                          }
+     
+              
                      }
                     
                 }
