@@ -326,9 +326,27 @@ public class Horaire {
                              listeCoursLab.addPaire(activite, activite2);
                              reponse = false;
                          }
-                         else if( ( (activite2.getType().equals("Distance") )||(activite2.getType().equals("distance")))
+                         
+                         else if( ( (activite.getType().equals("Distance") )||(activite.getType().equals("Distance")))
                               &&
-                             ( (activite.getType().equals("Laboratoire") )||(activite.getType().equals("laboratoire")))
+                             ( (activite2.getType().equals("Laboratoire") )||(activite2.getType().equals("laboratoire")))
+                            )
+                         {
+                             listeCoursLab.addPaire(activite, activite2);
+                             reponse = false;
+                         }
+                         
+                         else if( ( (activite.getType().equals("Laboratoire") )||(activite2.getType().equals("Laboratoire")))
+                              &&
+                             ( (activite2.getType().equals("Distance") )||(activite2.getType().equals("Distance")))
+                            )
+                         {
+                              listeCoursLab.addPaire(activite, activite2);
+                              reponse = false;
+                         }
+                         else if( ( (activite.getType().equals("Laboratoire") )||(activite2.getType().equals("Laboratoire")))
+                              &&
+                             ( (activite2.getType().equals("Classe") )||(activite2.getType().equals("classe")))
                             )
                          {
                               listeCoursLab.addPaire(activite, activite2);
