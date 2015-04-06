@@ -453,26 +453,31 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
 
     private void menuFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileOpenActionPerformed
-        try{
         //Fonction permettant Ã  l'utilisateur de saisir un fichier via menu "choose from"
         //et faire un appel au contrÃ´leur afin de procÃ©der Ã  la reconstitution de l'horaire.
         JFileChooser selecteurFichier = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
+        selecteurFichier.setFileFilter(filter);
         selecteurFichier.showOpenDialog(MainWindow.this);
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         //On efface ce qu'il y a en place
-        horaireController.resetHoraire();
+        //horaireController.resetHoraire();
         // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
         //Larman impose un type primitif vers le controler
         String filePath = selecteurFichier.getSelectedFile().getPath();
-        horaireController.chargerHoraire(filePath);
-        validationAutoCheckBox.setSelected (false);
-        horaireController.setModeValidationAutoOff();
-        titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom());
-        drawingPanel.setVisible(true);
-        horaireEstCharge=true;
-        horaireController.initPointActivite(this.initialDimension);
-        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
-        statFenetre.initialize(horaireController);
+        if (!(filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU"))){
+            logMsgTextArea.append(": " + filePath + " n'est pas un fichier valide.\n");
+        }
+        else{
+            horaireController.chargerHoraire(filePath);
+            validationAutoCheckBox.setSelected (false);
+            horaireController.setModeValidationAutoOff();
+            titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom());
+            drawingPanel.setVisible(true);
+            horaireEstCharge=true;
+            horaireController.initPointActivite(this.initialDimension);
+            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+            statFenetre.initialize(horaireController);
 
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
@@ -491,8 +496,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
                 
             drawingPanel.repaint();
-        }catch (Throwable ex){
-            
         }
     }//GEN-LAST:event_menuFileOpenActionPerformed
 

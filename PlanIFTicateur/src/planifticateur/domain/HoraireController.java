@@ -21,8 +21,10 @@ public class HoraireController {
     }
     
     public void chargerHoraire(String filePath){
-        //peut-être serait plus logique en tant que constructeur
-        this.horaire = new Horaire(filePath);
+    //peut-être serait plus logique en tant que constructeur
+    if (filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU")){
+            this.horaire = new Horaire(filePath);
+    }
     }
     
     public void saveHoraire(){
