@@ -259,6 +259,8 @@ public class Horaire {
     
     public boolean yaTilChevauchement(Activite a1, Activite a2){
 
+        if(a1.getJourChoisi() != a2.getJourChoisi() ) return false;
+            
         if( (a1.getHeureDebutChoisi() >=  a2.getHeureDebutChoisi() + a2.getDuree() )
               ||(a1.getHeureDebutChoisi()+ a1.getDuree() <=  a2.getHeureDebutChoisi() ) 
             )
