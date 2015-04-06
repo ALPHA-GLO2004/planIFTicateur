@@ -18,6 +18,7 @@ import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.awt.*;
+import java.util.Collections;
 
 public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
@@ -115,16 +116,21 @@ public class Horaire {
         int caseHeureHeight = caseJourHeight / 9;
         int saut = (width - caseJourWidth)/ 30;
         int y = caseHeureHeight;
-        
+
         for (Activite a: this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee()){
-            int jourChoisiActivitePrecedente = a.getJourChoisi();
+            int[] jourChoisiActivitePrecedente = {0};
             y = caseHeureHeight + (a.getJourChoisi()-1)*caseJourHeight;
             int x = caseJourWidth + (int)((a.getHeureDebutChoisi()-8)*2*saut);
+            
+            //Si une activité deja placée
+            for (Activite act: this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee()){
+                if (a.getJourChoisi() == act.getJourChoisi()
+                    && a.getHeureDebutChoisi() < (act.getHeureDebutChoisi() + act.getDuree())
+                    && a.getHeureDebutChoisi() > act.getHeureDebutChoisi()){
+                        y += caseHeureHeight;
+                }
             Point p = new Point(x, y);
             a.setPoint(p);
-            //Si une activité deja placée
-            if (a.getJourChoisi() == jourChoisiActivitePrecedente){
-                y += caseHeureHeight;
             }
         }
     }
