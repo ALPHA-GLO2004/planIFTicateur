@@ -55,7 +55,8 @@ public class HoraireController {
     }
     
     //Méthode pour mouseAdapter
-    public Point verificationDrop(Point p){
+    public Point verificationDrop(int x, int y){
+        Point p = new Point(x,y);
         return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee(), this.getListeActiviteGrilleCh(), this.getModeValidationAuto());
     }
     
@@ -63,7 +64,8 @@ public class HoraireController {
         return mouseAdapter.mouseOverToolTipText(p, this.getListeActiviteComplete());
     }
     
-    public void verificationSelection(Point p, Dimension d){
+    public void verificationSelection(int x,int y){//sans dimention
+        Point p = new Point(x,y);
         mouseAdapter.verificationSelection(p, this.getListeActiviteComplete());
     }
     
