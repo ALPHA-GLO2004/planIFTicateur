@@ -318,6 +318,7 @@ public class Horaire {
                 {
                     if( activite.getCode().equals(activite2.getCode()) )
                      {
+              
                          if( ( (activite.getType().equals("Classe") )||(activite.getType().equals("classe")))
                               &&
                              ( (activite2.getType().equals("Laboratoire") )||(activite2.getType().equals("laboratoire")))
@@ -355,7 +356,6 @@ public class Horaire {
                      }
                     
                 }
-                
                 
                 
                 //respecte les grilles de cheminement ?
