@@ -59,6 +59,10 @@ public class HoraireController {
         return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee(), this.getListeActiviteGrilleCh(), this.getModeValidationAuto());
     }
     
+    public String mouseOverToolTipText(Point p){
+        return mouseAdapter.mouseOverToolTipText(p, this.getListeActiviteComplete());
+    }
+    
     public void verificationSelection(Point p, Dimension d){
         mouseAdapter.verificationSelection(p, this.getListeActiviteComplete());
     }

@@ -89,32 +89,34 @@ public class MouseAdapter {
                     pointActiviteY = 0;
                 }
             }
+            
             if (p.x >= width){
                 pointActiviteX = 0;
                 pointActiviteY = 0;
             }
-
-            for (Activite b: laDP){
-                for (GrilleCheminement grille: laGC){
-                    if (grille.activiteEstDansGrille(codeSelected)){
-                        if (grille.activiteEstDansGrille(b.getCode())){
-                            if (pointActiviteX < (int)((b.getHeureDebutChoisi()-8 + b.getDuree())*2*saut) + caseJourWidth
-                                && pointActiviteX + (int)(dureeActiviteSelected *2*saut) > b.getPoint().x
-                                && p.y >= (int)((b.getJourChoisi()-1)*caseJourHeight) + caseHeureHeight
-                                && p.y < (int)(b.getJourChoisi()*caseJourHeight)){
-                                pointActiviteX = 0;
-                                pointActiviteY = 0;
-                            }
-                        }
-                    }
-                }
-            }  
+            
+              
             
             if (modeValidationAuto){
                 if ((pointActiviteX + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15))) > (int)(caseJourWidth + (heureFinMax - 8)*2*saut)
                     || pointActiviteX < (int)(caseJourWidth + (heureDebutMin - 8)*2*saut)){
                     pointActiviteX = 0;
                     pointActiviteY = 0;
+                }
+                for (Activite b: laDP){
+                    for (GrilleCheminement grille: laGC){
+                        if (grille.activiteEstDansGrille(codeSelected)){
+                            if (grille.activiteEstDansGrille(b.getCode())){
+                                if (pointActiviteX < (int)((b.getHeureDebutChoisi()-8 + b.getDuree())*2*saut) + caseJourWidth
+                                    && pointActiviteX + (int)(dureeActiviteSelected *2*saut) > b.getPoint().x
+                                    && p.y >= (int)((b.getJourChoisi()-1)*caseJourHeight) + caseHeureHeight
+                                    && p.y < (int)(b.getJourChoisi()*caseJourHeight)){
+                                    pointActiviteX = 0;
+                                    pointActiviteY = 0;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         return new Point(pointActiviteX, pointActiviteY);
@@ -132,6 +134,21 @@ public class MouseAdapter {
             }
         }
     }
+    
+    public String mouseOverToolTipText(Point p, List<Activite> activiteList){
+        int width = dimension.width *3/4;
+        int caseJourWidth = width / 16;
+        int activiteHeight = dimension.height /45;
+        String toolTipText = "";
+        
+        for (int i = 0; i < activiteList.size(); i++){
+            if (p.x > activiteList.get(i).getPoint().x && p.x < (activiteList.get(i).getPoint().x + (int)(activiteList.get(i).getDuree() * ((width - (caseJourWidth))/15)))
+                    && p.y > activiteList.get(i).getPoint().y && p.y < (activiteList.get(i).getPoint().y + activiteHeight)){
+                toolTipText = "\nTitre du cours au curseur: " + activiteList.get(i).getNomActivite();
+            }
+        }
+        return toolTipText;
+    }            
     
     public void verificationPositionHoraire(Point p){
         if (p.x <= dimension.width*3/4){

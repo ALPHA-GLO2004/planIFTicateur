@@ -244,6 +244,11 @@ public class MainWindow extends javax.swing.JFrame {
         menuFile.add(menuFileNew);
 
         menuFileOpen.setText("Ouvrir horaire");
+        menuFileOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileOpenActionPerformed(evt);
+            }
+        });
         menuFile.add(menuFileOpen);
 
         menuFileSave.setText("Enregistrer");
@@ -326,47 +331,14 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_validationAutoCheckBoxActionPerformed
 
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
-        //Fonction permettant à l'utilisateur de saisir un fichier via menu "choose from"
-        //et faire un appel au contrôleur afin de procéder à la reconstitution de l'horaire.
-        JFileChooser selecteurFichier = new JFileChooser();
-        selecteurFichier.showOpenDialog(MainWindow.this);
-        selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        //On efface ce qu'il y a en place
-        horaireController.resetHoraire();
-        // On shoot le fileSelection à la fonction approprié du controller
-        //Larman impose un type primitif vers le controler
-        String filePath = selecteurFichier.getSelectedFile().getPath();
-        horaireController.chargerHoraire(filePath);
-        validationAutoCheckBox.setSelected (false);
-        horaireController.setModeValidationAutoOff();
-        titreFichierLabel.setText(" Nom fichier d'importaion:  " + horaireController.getHoraireNom());
-        drawingPanel.setVisible(true);
-        horaireEstCharge=true;
-        horaireController.initPointActivite(this.initialDimension);
-        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
-        statFenetre.initialize(horaireController);
-
-            horaireController.switchSelection();
-            horaireController.jourHeureToActivite();
-            horaireController.switchAPlacerToDejaPlacee();
-            horaireController.switchDejaPlaceeToAPlacer();
-            horaireController.initPointActivite(this.initialDimension);
-            statFenetre.setStatsToCurrentDay();
-
-            
-            messagesDerreurs.removeAllElements();
-            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-            }
-            else{
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-            }
-                
-            drawingPanel.repaint();
+        
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
-        updateLogMessage(evt);        
+        updateLogMessage(evt);
+        if(horaireEstCharge){
+            this.logMsgTextArea.append(horaireController.mouseOverToolTipText(evt.getPoint()));
+        }
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
@@ -474,6 +446,46 @@ public class MainWindow extends javax.swing.JFrame {
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
         horaireController.planificationAuto();
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
+
+    private void menuFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileOpenActionPerformed
+        //Fonction permettant Ã  l'utilisateur de saisir un fichier via menu "choose from"
+        //et faire un appel au contrÃ´leur afin de procÃ©der Ã  la reconstitution de l'horaire.
+        JFileChooser selecteurFichier = new JFileChooser();
+        selecteurFichier.showOpenDialog(MainWindow.this);
+        selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        //On efface ce qu'il y a en place
+        horaireController.resetHoraire();
+        // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
+        //Larman impose un type primitif vers le controler
+        String filePath = selecteurFichier.getSelectedFile().getPath();
+        horaireController.chargerHoraire(filePath);
+        validationAutoCheckBox.setSelected (false);
+        horaireController.setModeValidationAutoOff();
+        titreFichierLabel.setText(" Nom fichier d'importaion:  " + horaireController.getHoraireNom());
+        drawingPanel.setVisible(true);
+        horaireEstCharge=true;
+        horaireController.initPointActivite(this.initialDimension);
+        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+        statFenetre.initialize(horaireController);
+
+            horaireController.switchSelection();
+            horaireController.jourHeureToActivite();
+            horaireController.switchAPlacerToDejaPlacee();
+            horaireController.switchDejaPlaceeToAPlacer();
+            horaireController.initPointActivite(this.initialDimension);
+            statFenetre.setStatsToCurrentDay();
+
+            
+            messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }
+                
+            drawingPanel.repaint();
+    }//GEN-LAST:event_menuFileOpenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
