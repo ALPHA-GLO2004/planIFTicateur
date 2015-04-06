@@ -58,8 +58,8 @@ public class MainWindow extends javax.swing.JFrame {
         quitterButton = new javax.swing.JButton();
         topMenuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
-        menuFileNew = new javax.swing.JMenuItem();
         menuFileOpen = new javax.swing.JMenuItem();
+        menuFileNew = new javax.swing.JMenuItem();
         menuFileSave = new javax.swing.JMenuItem();
         menuFileSaveAs = new javax.swing.JMenuItem();
         menuFileQuit = new javax.swing.JMenuItem();
@@ -235,14 +235,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         menuFile.setText("Fichier");
 
-        menuFileNew.setText("Nouvel horaire");
-        menuFileNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuFileNewActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuFileNew);
-
         menuFileOpen.setText("Ouvrir horaire");
         menuFileOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,6 +242,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         menuFile.add(menuFileOpen);
+
+        menuFileNew.setText("Nouvel horaire");
+        menuFileNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileNewActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuFileNew);
 
         menuFileSave.setText("Enregistrer");
         menuFile.add(menuFileSave);
