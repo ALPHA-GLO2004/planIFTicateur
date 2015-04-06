@@ -161,6 +161,14 @@ public class Horaire {
         }
     }
     
+    public void moveActivite(Point p){
+        for (Activite a: this.getListeActiviteComplete()){
+            if (a.isSelected() == true){
+                a.setPoint(p);
+            }
+        }
+    }
+    
     public String getNomFichier(){
         int i = fichierCOU.length() - 4;
         return fichierCOU.substring(0, i);

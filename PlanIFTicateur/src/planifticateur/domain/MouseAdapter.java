@@ -90,15 +90,6 @@ public class MouseAdapter {
                     pointActiviteX = 0;
                     pointActiviteY = 0;
                 }
-                /*if ((a.getType().contains("labo") && typeSelected.contains("classe")) || (a.getType().contains("classe") && typeSelected.contains("labo"))){
-                    if (pointActiviteX < (int)((a.getHeureDebutChoisi()-8 + a.getDuree())*2*saut) + caseJourWidth
-                                        && pointActiviteX + (int)(dureeActiviteSelected *2*saut) > a.getPoint().x
-                                        && p.y >= (int)((a.getJourChoisi()-1)*caseJourHeight) + caseHeureHeight
-                                        && p.y < (int)(a.getJourChoisi()*caseJourHeight)){
-                                        pointActiviteX = 0;
-                                        pointActiviteY = 0;
-                                    }
-                }*/
             }
             
             if (p.x >= width){
@@ -190,6 +181,7 @@ public class MouseAdapter {
         int saut = (width - caseJourWidth)/ 30;
         int jumpX;
         int jumpY;
+        
         Point p = a.getPoint();
         
         //set du jourChoisi et heureChoisi selon point activité

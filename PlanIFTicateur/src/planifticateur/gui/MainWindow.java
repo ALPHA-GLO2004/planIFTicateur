@@ -258,6 +258,11 @@ public class MainWindow extends javax.swing.JFrame {
         menuFile.add(menuFileSaveAs);
 
         menuFileQuit.setText("Quitter");
+        menuFileQuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileQuitActionPerformed(evt);
+            }
+        });
         menuFile.add(menuFileQuit);
 
         topMenuBar.add(menuFile);
@@ -418,7 +423,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMousePressed
 
     private void menuExportPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExportPicActionPerformed
-
+    
         if(horaireEstCharge)
       /*     exporter.exporterImage(drawingPanelContainer, ImageExporter.IMAGE_FORMAT.JPEG,
                                  drawingPanelContainer.getWidth(),drawingPanelContainer.getVerticalScrollBar().getMaximum() , 
@@ -448,6 +453,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
 
     private void menuFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileOpenActionPerformed
+        try{
         //Fonction permettant Ã  l'utilisateur de saisir un fichier via menu "choose from"
         //et faire un appel au contrÃ´leur afin de procÃ©der Ã  la reconstitution de l'horaire.
         JFileChooser selecteurFichier = new JFileChooser();
@@ -461,7 +467,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.chargerHoraire(filePath);
         validationAutoCheckBox.setSelected (false);
         horaireController.setModeValidationAutoOff();
-        titreFichierLabel.setText(" Nom fichier d'importaion:  " + horaireController.getHoraireNom());
+        titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom());
         drawingPanel.setVisible(true);
         horaireEstCharge=true;
         horaireController.initPointActivite(this.initialDimension);
@@ -485,7 +491,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
                 
             drawingPanel.repaint();
+        }catch (Throwable ex){
+            
+        }
     }//GEN-LAST:event_menuFileOpenActionPerformed
+
+    private void menuFileQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileQuitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_menuFileQuitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
