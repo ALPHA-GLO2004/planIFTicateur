@@ -148,7 +148,7 @@ public class MainWindow extends javax.swing.JFrame {
         logMsgTextArea.setColumns(20);
         logMsgTextArea.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         logMsgTextArea.setRows(5);
-        logMsgTextArea.setText("log\n--------------------------------\nmsg d'erreur");
+        logMsgTextArea.setText("Bienvenue sur PlanIFTicateur, le gestionnaire d'horaire de session!");
         logMsgTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         logMsgTextArea.setMinimumSize(new java.awt.Dimension(258, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -441,11 +441,15 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_quitterButtonActionPerformed
 
     private void noteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteButtonActionPerformed
-        fenetreNote.setVisible(true);
+        if (horaireEstCharge){
+            fenetreNote.setVisible(true);
+        }
     }//GEN-LAST:event_noteButtonActionPerformed
 
     private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
-        statFenetre.setVisible(true);
+        if (horaireEstCharge){
+            statFenetre.setVisible(true);
+        }
     }//GEN-LAST:event_statistiquesButtonActionPerformed
 
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
@@ -465,8 +469,9 @@ public class MainWindow extends javax.swing.JFrame {
         // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
         //Larman impose un type primitif vers le controler
         String filePath = selecteurFichier.getSelectedFile().getPath();
-        if (!(filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU"))){
+        if (!(filePath.substring(filePath.length() - 3).equals("cou"))){
             logMsgTextArea.append(": " + filePath + " n'est pas un fichier valide.\n");
+            drawingPanel.setVisible(false);
         }
         else{
             horaireController.chargerHoraire(filePath);

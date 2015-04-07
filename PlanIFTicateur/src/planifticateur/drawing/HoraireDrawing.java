@@ -141,8 +141,8 @@ public class HoraireDrawing {
             g2.setStroke(new BasicStroke(3));
             //horizontales
             g2.drawLine(width+saut, spaceHeightRight, width+3*saut, spaceHeightRight);
-            g2.drawString("Activités à placer (" + horaireController.getListeActiviteAPlacer().size() + ")", width+14*saut/4, spaceHeightRight*3/2);
-            g2.drawLine(width+13*saut/2, spaceHeightRight, initialDimension.width-3*saut/2, spaceHeightRight);
+            g2.drawString("Activités à placer (" + horaireController.getListeActiviteAPlacer().size() + ")", width+14*saut/4, spaceHeightRight*2);
+            g2.drawLine(width+8*saut, spaceHeightRight, initialDimension.width-3*saut/2, spaceHeightRight);
             g2.drawLine(width+saut, height-spaceHeightRight, initialDimension.width-3*saut/2, height-spaceHeightRight);
             //verticales
             g2.drawLine(width+saut, spaceHeightRight, width+saut, height-spaceHeightRight);
@@ -214,6 +214,9 @@ public class HoraireDrawing {
         else{
             g2.setColor(Color.GRAY);
             g2.fillRect(0, 0, this.initialDimension.width, height);
+            g2.setColor(Color.BLACK);
+            
+            g2.drawString("Pour commencer, cliquez sur l'onglet Fichier - Ouvrir horaire.", caseJourWidth*2, caseJourHeight);
         }
     }
     
