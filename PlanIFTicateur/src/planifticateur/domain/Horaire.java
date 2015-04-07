@@ -424,7 +424,7 @@ public class Horaire {
            for(PaireDActivites p : paires)
          {
                 
-            messagesDerreurs.add(p.a1.getCode() + " ne peut avoir lieu en meme temps que son laboratoire\n" 
+            messagesDerreurs.add( "\" "+p.a1.getCode() + " \" ne peut avoir lieu en meme temps que son laboratoire\n" 
                     );  
             
          }

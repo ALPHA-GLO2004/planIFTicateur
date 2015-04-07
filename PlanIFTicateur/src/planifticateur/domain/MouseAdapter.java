@@ -157,7 +157,7 @@ public class MouseAdapter {
         for (int i = 0; i < activiteList.size(); i++){
             if (p.x > activiteList.get(i).getPoint().x && p.x < (activiteList.get(i).getPoint().x + (int)(activiteList.get(i).getDuree() * ((width - (caseJourWidth))/15)))
                     && p.y > activiteList.get(i).getPoint().y && p.y < (activiteList.get(i).getPoint().y + activiteHeight)){
-                toolTipText = "\nActivite au curseur: " + activiteList.get(i).getNomActivite();
+                toolTipText = "\nActivite au curseur : " + activiteList.get(i).getNomActivite();
             }
         }
         return toolTipText;
