@@ -331,35 +331,35 @@ public class Horaire {
                     if( activite.getCode().equals(activite2.getCode()) )
                      {
               
-                         if( ( (activite.getType().contains("Classe") )||(activite.getType().contains("classe")))
+                         if( ( (activite.getType().toLowerCase().contains("Classe") )||(activite.getType().toLowerCase().contains("classe")))
                               &&
-                             ( (activite2.getType().contains("Laboratoire") )||(activite2.getType().contains("laboratoire")))
+                             ( (activite2.getType().toLowerCase().contains("Laboratoire") )||(activite2.getType().toLowerCase().contains("laboratoire")))
                             )
                          {
                              listeCoursLab.addPaire(activite, activite2);
                              reponse = false;
                          }
                          
-                         else if( ( (activite.getType().contains("Distance") )||(activite.getType().contains("distance")))
+                         else if( ( (activite.getType().toLowerCase().contains("Distance") )||(activite.getType().toLowerCase().contains("distance")))
                               &&
-                             ( (activite2.getType().contains("Laboratoire") )||(activite2.getType().contains("laboratoire")))
+                             ( (activite2.getType().toLowerCase().contains("Laboratoire") )||(activite2.getType().toLowerCase().contains("laboratoire")))
                             )
                          {
                              listeCoursLab.addPaire(activite, activite2);
                              reponse = false;
                          }
                          
-                         else if( ( (activite.getType().contains("Laboratoire") )||(activite.getType().contains("laboratoire")))
+                         else if( ( (activite.getType().toLowerCase().contains("Laboratoire") )||(activite.getType().toLowerCase().contains("laboratoire")))
                               &&
-                             ( (activite2.getType().contains("Distance") )||(activite2.getType().contains("distance")))
+                             ( (activite2.getType().toLowerCase().contains("Distance") )||(activite2.getType().toLowerCase().contains("distance")))
                             )
                          {
                               listeCoursLab.addPaire(activite, activite2);
                               reponse = false;
                          }
-                         else if( ( (activite.getType().contains("Laboratoire") )||(activite.getType().contains("laboratoire")))
+                         else if( ( (activite.getType().toLowerCase().contains("Laboratoire") )||(activite.getType().toLowerCase().contains("laboratoire")))
                               &&
-                             ( (activite2.getType().contains("Classe") )||(activite2.getType().contains("classe")))
+                             ( (activite2.getType().toLowerCase().contains("Classe") )||(activite2.getType().toLowerCase().contains("classe")))
                             )
                          {
                               listeCoursLab.addPaire(activite, activite2);

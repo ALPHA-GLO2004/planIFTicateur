@@ -165,7 +165,7 @@ public class HoraireDrawing {
                         
                         g2.setColor(new Color(80, 80, 80));
                         for (Activite b: horaireController.getListeActiviteDejaPlacee()){
-                            if ((a.getType().contains("labo") && b.getType().contains("classe")) || (a.getType().contains("classe") && b.getType().contains("labo"))){
+                            if ((a.getType().toLowerCase().contains("labo") && b.getType().toLowerCase().contains("classe")) || (a.getType().toLowerCase().contains("classe") && b.getType().toLowerCase().contains("labo"))){
                                 g2.fillRect((int)((b.getHeureDebutChoisi() - 8) * saut * 2 + caseJourWidth), (b.getJourChoisi()-1) * caseJourHeight + caseHeureHeight, (int)(b.getDuree()*saut*2), caseJourHeight - caseHeureHeight);
                             }
                             for (GrilleCheminement grille: horaireController.getListeActiviteGrilleCh()){

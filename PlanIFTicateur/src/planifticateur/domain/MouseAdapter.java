@@ -107,7 +107,7 @@ public class MouseAdapter {
                 }
                 
                 for (Activite b: laDP){
-                    if ((typeSelected.contains("labo") && b.getType().contains("classe")) || (typeSelected.contains("classe") && b.getType().contains("labo"))){
+                    if ((typeSelected.toLowerCase().contains("labo") && b.getType().toLowerCase().contains("classe")) || (typeSelected.toLowerCase().contains("classe") && b.getType().toLowerCase().contains("labo"))){
                         if (pointActiviteX < (int)((b.getHeureDebutChoisi()-8 + b.getDuree())*2*saut) + caseJourWidth
                                         && pointActiviteX + (int)(dureeActiviteSelected *2*saut) > b.getPoint().x
                                         && p.y >= (int)((b.getJourChoisi()-1)*caseJourHeight) + caseHeureHeight
