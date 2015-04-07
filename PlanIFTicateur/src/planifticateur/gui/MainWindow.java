@@ -5,6 +5,7 @@ import planifticateur.domain.ImageExporter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.nio.file.Files;
 import java.util.Vector;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -469,7 +470,7 @@ public class MainWindow extends javax.swing.JFrame {
         // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
         //Larman impose un type primitif vers le controler
         String filePath = selecteurFichier.getSelectedFile().getPath();
-        if (!(filePath.substring(filePath.length() - 3).equals("cou"))){
+        if (!(filePath.substring(filePath.length() - 3).toLowerCase().equals("cou"))){
             logMsgTextArea.append(": " + filePath + " n'est pas un fichier valide.\n");
             drawingPanel.setVisible(false);
         }
@@ -490,7 +491,6 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
             statFenetre.setStatsToCurrentDay();
-
             
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
