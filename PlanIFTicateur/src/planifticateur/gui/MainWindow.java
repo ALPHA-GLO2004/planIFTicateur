@@ -430,8 +430,8 @@ public class MainWindow extends javax.swing.JFrame {
                                   System.getProperty("user.dir") +"_export.jpg"
                                 );
         */
-             exporter.exporterImage(drawingPanelContainer, ImageExporter.IMAGE_FORMAT.JPEG,
-                                    drawingPanelContainer.getWidth(),drawingPanelContainer.getHeight() , 
+             exporter.exporterImage(drawingPanel, ImageExporter.IMAGE_FORMAT.JPEG,
+                                    drawingPanel.getInitialDimension().width,drawingPanel.getInitialDimension().height , 
                                     System.getProperty("user.dir") +"_export.jpg"
                                     );
     }//GEN-LAST:event_menuExportPicActionPerformed
