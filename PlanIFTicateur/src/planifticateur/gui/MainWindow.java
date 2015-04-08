@@ -20,6 +20,7 @@ public class MainWindow extends javax.swing.JFrame {
     public Statistiques statFenetre;
     private SessionChooser sessionChooser;
     public Note fenetreNote;
+    private Modifications fenetreModification;
     public Dimension initialDimension;
     public Point initialActivitePoint;
     public Point delta;
@@ -39,6 +40,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireEstCharge=false;
         horaireController = new HoraireController();
         statFenetre = new Statistiques();
+        fenetreModification = new Modifications();
         sessionChooser = new SessionChooser();
         exporter= new ImageExporter ();
         fenetreNote = new Note();
@@ -121,6 +123,9 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         drawingPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                drawingPanelMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 drawingPanelMousePressed(evt);
             }
@@ -356,6 +361,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
+        //if (!horaireController.activiteResteSurPlace(evt.getPoint().x, evt.getPoint().y) && evt.getClickCount() == 2){
         if (evt.getPoint().y >= this.initialDimension.height*2/3){
             drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
             scrolly += 15;
@@ -373,12 +379,14 @@ public class MainWindow extends javax.swing.JFrame {
                 horaireController.moveActivite(evt.getPoint());
             }
         }
+        //}
         updateLogMessage(evt);
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseDragged
 
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         //Si la position est dans la grille horaire
+        if (evt.getPoint() != this.initialActivitePoint){
         if (horaireController.existeSelection()){
         if (!horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y).equals(new Point(0,0))){
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y));
@@ -432,6 +440,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
                     
         drawingPanel.repaint();
+        }
     }//GEN-LAST:event_drawingPanelMouseReleased
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
@@ -537,6 +546,12 @@ public class MainWindow extends javax.swing.JFrame {
     private void menuFileQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileQuitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_menuFileQuitActionPerformed
+
+    private void drawingPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseClicked
+        if (evt.getClickCount() == 2){
+            fenetreModification.setVisible(true);
+        }
+    }//GEN-LAST:event_drawingPanelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;

@@ -94,6 +94,12 @@ public class HoraireController {
         }
     }
     
+    public boolean activiteResteSurPlace(int x, int y){
+        Point p = new Point(x,y);
+        Activite a = this.getActiviteSelected();
+        return this.mouseAdapter.activiteResteSurPlace(p, a);
+    }
+    
     public void switchFromListToMove(Activite a){
         if (this.verificationListOfActivite(a) == 0){
             this.getListeActiviteAPlacer().remove(a);

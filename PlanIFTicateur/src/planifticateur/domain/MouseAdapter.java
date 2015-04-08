@@ -182,6 +182,23 @@ public class MouseAdapter {
         }
     }
     
+    public boolean activiteResteSurPlace(Point p, Activite a){
+        int width = dimension.width *3/4;
+        int height = dimension.height;
+        int caseJourHeight = height / 5;
+        int caseJourWidth = width / 16;
+        int caseHeureHeight = caseJourHeight / 9;
+        int saut = (width - caseJourWidth)/ 30;
+        
+        if (p.x >= a.getPoint().x && p.x <= (a.getPoint().x + a.getDuree()*saut*2)
+            && p.y >= a.getPoint().y && p.y <= a.getPoint().y + caseHeureHeight){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     public void jourHeureToActivite(Activite a){
         int width = dimension.width *3/4;
         int height = dimension.height;
