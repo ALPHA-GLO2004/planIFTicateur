@@ -123,6 +123,16 @@ public class HoraireController {
         return a.isSelected();
     }
     
+    public boolean existeSelection(){
+        boolean existe = false;
+        for (Activite a: this.getListeActiviteComplete()){
+            if (a.isSelected()){
+                existe = true;
+            }
+        }
+        return existe;
+    }
+    
     public Activite getActiviteSelected(){
         return this.horaire.getActiviteSelected();
     }

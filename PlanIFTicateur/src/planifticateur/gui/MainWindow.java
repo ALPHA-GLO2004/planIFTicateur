@@ -369,6 +369,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         //Si la position est dans la grille horaire
+        if (horaireController.existeSelection()){
         if (!horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y).equals(new Point(0,0))){
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y));
             horaireController.switchSelection();
@@ -405,7 +406,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
             statFenetre.setStatsToCurrentDay();
             //ajustement de la couleur de la bordure.
-            
+        }
              if(horaireEstCharge)
             {
             messagesDerreurs.removeAllElements();
@@ -424,7 +425,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
         horaireController.verificationSelection(evt.getPoint().x,evt.getPoint().y); 
-        this.initialActivitePoint = horaireController.getActiviteSelected().getPoint();
+        if (horaireController.existeSelection()){
+            this.initialActivitePoint = horaireController.getActiviteSelected().getPoint();
+        }
         this.activiteList = horaireController.verificationListOfActivite(horaireController.getActiviteSelected());
         horaireController.switchFromListToMove(horaireController.getActiviteSelected());
         drawingPanel.repaint();

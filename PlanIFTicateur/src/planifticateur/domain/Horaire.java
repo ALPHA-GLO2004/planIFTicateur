@@ -77,7 +77,6 @@ public class Horaire {
                 listeActiviteAPlacer.add(a);
             }
         }
-        System.out.println(session);
         //pour fichier CHE
         String path = filePath;
         try{
