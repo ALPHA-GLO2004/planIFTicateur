@@ -28,6 +28,7 @@ public class MainWindow extends javax.swing.JFrame {
     Vector<String> messagesDerreurs;
     private int activiteList;
     private ImageExporter exporter;
+    private int scrolly = 15;
 
     
     public MainWindow() {
@@ -355,6 +356,15 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseMoved
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
+        if (evt.getPoint().y >= this.initialDimension.height*2/3){
+            drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
+            scrolly += 15;
+        }
+        if (evt.getPoint().y < this.initialDimension.height/2){
+            drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
+            scrolly -= 15;
+        }
+
         if (!horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y).equals(new Point(0,0))){
             horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y));
         }
