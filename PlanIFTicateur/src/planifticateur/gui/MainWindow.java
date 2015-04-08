@@ -464,12 +464,14 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void noteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteButtonActionPerformed
         if (horaireEstCharge){
+            fenetreNote.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
             fenetreNote.setVisible(true);
         }
     }//GEN-LAST:event_noteButtonActionPerformed
 
     private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
         if (horaireEstCharge){
+            statFenetre.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
             statFenetre.setVisible(true);
         }
     }//GEN-LAST:event_statistiquesButtonActionPerformed
