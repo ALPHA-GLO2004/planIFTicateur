@@ -50,4 +50,9 @@ public class GrilleCheminement {
     public List<String> getListeDesCodesDactivites(){
          return this.grilleActivites;
     }
+    
+        public char getSessionFirstLetter(){
+            
+         return this.session.charAt(0);
+    }
 }

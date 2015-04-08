@@ -184,7 +184,10 @@ public class Horaire {
         List<GrilleCheminement> listeComplete = listeGrilleCh.getListeGrilleCh();
         for(int i=0;i<listeComplete.size();i++)
             {
-               if( listeComplete.get(i).activiteEstDansGrille(codeActivite) )
+               if( (listeComplete.get(i).getSessionFirstLetter() == session.charAt(0) ) 
+                       &&
+                   (listeComplete.get(i).activiteEstDansGrille(codeActivite) ) 
+                  )
                        listeARetourner.add(listeComplete.get(i));
             }
         
