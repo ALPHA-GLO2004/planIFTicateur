@@ -272,6 +272,11 @@ public class HoraireDrawing {
             }            
             caseJourWidth += 2*saut;
         }
-        return "Plage horaire: " + jour;
+        if (jour != ""){
+            return "Plage horaire: " + jour + "\n";
+        }
+        else{
+            return "";
+        }
     }
 }

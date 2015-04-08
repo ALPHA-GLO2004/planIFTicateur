@@ -157,17 +157,17 @@ public class MouseAdapter {
         for (int i = 0; i < activiteList.size(); i++){
             if (p.x > activiteList.get(i).getPoint().x && p.x < (activiteList.get(i).getPoint().x + (int)(activiteList.get(i).getDuree() * ((width - (caseJourWidth))/15)))
                     && p.y > activiteList.get(i).getPoint().y && p.y < (activiteList.get(i).getPoint().y + activiteHeight)){
-                toolTipText = "\nInfo de l'activité au curseur : " + "\n" + "\tCode:\t" + activiteList.get(i).getCode()
+                toolTipText = "Info de l'activité au curseur : " + "\n" + "\tCode:\t" + activiteList.get(i).getCode()
                                                                    + "\n" + "\tSection:\t" + activiteList.get(i).getSection()
                                                                    + "\n" + "\tDescription:\t" + activiteList.get(i).getNomActivite()
-                                                                   + "\n" + "\tProfesseur:\t" + activiteList.get(i).getProfesseur()
-                                                                   + "\n" + "\tType:\t" + activiteList.get(i).getType()
+                                                                   + "\n" + "\tProfesseur:\t" + activiteList.get(i).getProfesseur() + "...";
+/*                                                                   + "\n" + "\tType:\t" + activiteList.get(i).getType()
                                                                    + "\n" + "\tDuree:\t" + activiteList.get(i).getDuree() + "h";
                 
                 if (activiteList.get(i).getJourChoisi() != 0){
                     toolTipText += "\n" + "\tJour choisi:\t" + activiteList.get(i).getJourChoisi()
                                    + "\n" + "\tHeure choisie:\t" + activiteList.get(i).getHeureDebutChoisi() + "h";
-                }
+                }*/
             }
         }
         return toolTipText;
