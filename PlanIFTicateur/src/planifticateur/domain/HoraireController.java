@@ -142,9 +142,9 @@ public class HoraireController {
         return this.horaire.getActiviteSelected();
     }
     
-    public  Vector<Float> getStats(int jour){
+    public  Vector<Float> getStats(int jour,boolean calculerCongestionEtCovoiturage){
         
-        return this.horaire.getStatistiques(jour);
+        return this.horaire.getStatistiques(jour,calculerCongestionEtCovoiturage);
 
     }
     

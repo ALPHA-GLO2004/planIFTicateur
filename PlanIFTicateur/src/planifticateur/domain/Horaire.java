@@ -511,7 +511,7 @@ public class Horaire {
     }
     
 
-    public Vector<Float> getStatistiques(int jour){
+    public Vector<Float> getStatistiques(int jour,boolean calculerCongestionEtCovoiturage){
           
        Vector<Float> stats = new Vector<Float>();
        Vector<Activite> listeDesActivites = getListeDesActivitesDUnJour(jour);
@@ -519,8 +519,12 @@ public class Horaire {
        stats.add(calculerNombreDeCours(listeDesActivites));
        stats.add(calculerNombreMaxDeCours(listeDesActivites));
        stats.add(calculerNombreMoyenDeCours(listeDesActivites));
-       stats.add(calculerIndiceCovoiturage());
-       stats.add(calculerIndiceCongestion());
+       
+       if(calculerCongestionEtCovoiturage)
+       {
+        stats.add(calculerIndiceCovoiturage());
+        stats.add(calculerIndiceCongestion());
+       }
         
         return stats;
     }
