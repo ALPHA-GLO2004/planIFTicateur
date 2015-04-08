@@ -26,8 +26,8 @@ public class Activite {
     private float heureDebutMin;
     private float heureDebutMax;
     private float heureFinMax; //Changement type: String -> float (erreur de frappe?)
-    private float heureDebutChoisi;
-    private int jourChoisi;
+    private float heureDebutChoisi = 0;
+    private int jourChoisi = 0;
     private float duree;
     private Point point; //remplace rectangle
     private boolean selectStatus = false;
@@ -148,6 +148,10 @@ public class Activite {
         return jourChoisi;
     }
     
+    public String getSection(){
+        return section;
+    }
+    
     public float getHeureDebutChoisi(){
         return heureDebutChoisi;
     }
@@ -168,6 +172,10 @@ public class Activite {
     }
     public float getHeureFinMax(){
         return heureFinMax;
+    }
+    
+    public String getProfesseur(){
+        return professeur.getInitiales();
     }
     
     public String getCode(){

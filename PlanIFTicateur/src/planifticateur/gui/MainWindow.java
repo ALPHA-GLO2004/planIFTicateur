@@ -350,7 +350,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
         updateLogMessage(evt);
         if(horaireEstCharge){
-            this.logMsgTextArea.append(horaireController.mouseOverToolTipText(evt.getPoint()));
+            this.logMsgTextArea.append(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
         }
     }//GEN-LAST:event_drawingPanelMouseMoved
 

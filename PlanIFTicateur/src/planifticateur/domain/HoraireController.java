@@ -61,7 +61,8 @@ public class HoraireController {
         return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee(), this.getListeActiviteGrilleCh(), this.getModeValidationAuto());
     }
     
-    public String mouseOverToolTipText(Point p){
+    public String mouseOverToolTipText(int x, int y){
+        Point p = new Point(x,y);
         return this.mouseAdapter.mouseOverToolTipText(p, this.getListeActiviteComplete());
     }
     
@@ -104,6 +105,10 @@ public class HoraireController {
     }
     
     public void switchFromMoveToListAp(){
+        if (this.horaire.getActiviteInMove().getJourChoisi() != 0){
+            this.horaire.getActiviteInMove().setJourChoisi(0);
+            this.horaire.getActiviteInMove().setHeureDebutChoisi(0f);
+        }
         this.getListeActiviteAPlacer().add(this.horaire.getActiviteInMove());
     }
     
