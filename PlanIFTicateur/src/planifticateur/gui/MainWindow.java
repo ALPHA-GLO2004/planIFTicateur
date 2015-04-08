@@ -18,10 +18,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
     public Statistiques statFenetre;
+    private SessionChooser sessionChooser;
     public Note fenetreNote;
     public Dimension initialDimension;
     public Point initialActivitePoint;
     public Point delta;
+    private String sessionChoisi;
     private boolean horaireEstCharge;
     Vector<String> messagesDerreurs;
     private int activiteList;
@@ -36,6 +38,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireEstCharge=false;
         horaireController = new HoraireController();
         statFenetre = new Statistiques();
+        sessionChooser = new SessionChooser();
         exporter= new ImageExporter ();
         fenetreNote = new Note();
         messagesDerreurs = new Vector<String>() ;
@@ -473,11 +476,9 @@ public class MainWindow extends javax.swing.JFrame {
         //Choix session
         JOptionPane fenetreJOption = new JOptionPane();
         fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
-        String choixSession = null;
-        Object[] sessions = {"Automne", "Ete", "Hiver"};
-        while (choixSession == null){
-            choixSession = (String)fenetreJOption.showInputDialog(this, "Pour quelle session voulez-vous ouvrir l'horaire ?", "Choix de session",JOptionPane.QUESTION_MESSAGE, null, sessions, sessions[0]);
-            }
+        while (sessionChooser.getSession() == null){
+            fenetreJOption.showMessageDialog(this, sessionChooser, "Choix de session", JOptionPane.QUESTION_MESSAGE);
+        }
         //On efface ce qu'il y a en place
         //horaireController.resetHoraire();
         // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
@@ -488,8 +489,7 @@ public class MainWindow extends javax.swing.JFrame {
             drawingPanel.setVisible(false);
         }
         else{
-            horaireController.chargerHoraire(filePath);
-            horaireController.setSession(choixSession);
+            horaireController.chargerHoraire(filePath, sessionChooser.getSession());
             validationAutoCheckBox.setSelected (false);
             horaireController.setModeValidationAutoOff();
             titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom() + " (" + horaireController.getSession() + ")");

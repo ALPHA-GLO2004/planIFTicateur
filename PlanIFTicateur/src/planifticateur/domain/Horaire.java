@@ -42,11 +42,11 @@ public class Horaire {
     ListeActiviteDejaPlacee listeActiviteDejaPlacee;
     ListeGrilleCh listeGrilleCh;
 
-    public Horaire(String filePath){
+    public Horaire(String filePath, String sessionChoisi){
         //Constructeur -- Ne fais que prendre le fichier et attribuer chaque élément contenu
         //dans ce fichier au bon endroit. Ensuite fait appel au controller pour créer les activités
         String[] tabString = filePath.split("\\\\");
-        
+        this.session = sessionChoisi;
         String nomFichier = tabString[tabString.length-1];
                nomFichier =nomFichier.substring(0, (nomFichier.length() - 4));
         fichierCOU = nomFichier + ".COU";   
@@ -77,6 +77,7 @@ public class Horaire {
                 listeActiviteAPlacer.add(a);
             }
         }
+        System.out.println(session);
         //pour fichier CHE
         String path = filePath;
         try{
