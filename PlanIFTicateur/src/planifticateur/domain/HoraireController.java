@@ -178,11 +178,14 @@ public class HoraireController {
         this.horaire.setListeActiviteAPlacer();
     }
     
+    public void setSession(String sessionChoisi){
+        this.horaire.setSession(sessionChoisi);
+    }
+    
     public void setListeActiviteDejaPlacee(){
         this.horaire.setListeActiviteDejaPlacee();
     }
-            
-            
+                  
     public List<Activite> getListeActiviteAPlacer(){
         return this.horaire.getListeActiviteAPlacer();
     }
@@ -213,6 +216,10 @@ public class HoraireController {
     
     public void msgErreur(String msgErr){
         
+    }
+    
+    public String getSession(){
+        return this.horaire.getSession();
     }
     
     public boolean getValiditeDeLHoraire(Vector<String> messagesDerreurs){

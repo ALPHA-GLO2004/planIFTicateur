@@ -32,6 +32,7 @@ public class Horaire {
     boolean valide;
     private Activite activiteSelected;
     private Activite activiteInMove;
+    private String session;
 
     //float pctCoursDebutant8h30;
     boolean horairePlein;
@@ -232,6 +233,10 @@ public class Horaire {
         }
     }
     
+    public void setSession(String sessionChoisi){
+        this.session = sessionChoisi;
+    }
+    
     public void setActiviteInMove(Activite a){
         this.activiteInMove = a;
     }
@@ -250,6 +255,10 @@ public class Horaire {
     
     public void setModeValidationOff(){
         this.modeValidationAuto = false;
+    }
+    
+    public String getSession(){
+        return this.session;
     }
     
     public boolean getModeValidation(){

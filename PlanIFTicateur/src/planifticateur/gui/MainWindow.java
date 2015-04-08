@@ -7,8 +7,12 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.Vector;
+import javafx.scene.control.RadioButton;
+import javax.swing.JPanel;
+import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainWindow extends javax.swing.JFrame {
@@ -21,7 +25,7 @@ public class MainWindow extends javax.swing.JFrame {
     private boolean horaireEstCharge;
     Vector<String> messagesDerreurs;
     private int activiteList;
-    private ImageExporter exporter ;
+    private ImageExporter exporter;
 
     
     public MainWindow() {
@@ -465,20 +469,30 @@ public class MainWindow extends javax.swing.JFrame {
         selecteurFichier.setFileFilter(filter);
         selecteurFichier.showOpenDialog(MainWindow.this);
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        
+        //Choix session
+        JOptionPane fenetreJOption = new JOptionPane();
+        fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
+        String choixSession = null;
+        Object[] sessions = {"Automne", "Ete", "Hiver"};
+        while (choixSession == null){
+            choixSession = (String)fenetreJOption.showInputDialog(this, "Pour quelle session voulez-vous ouvrir l'horaire ?", "Choix de session",JOptionPane.QUESTION_MESSAGE, null, sessions, sessions[0]);
+            }
         //On efface ce qu'il y a en place
         //horaireController.resetHoraire();
         // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
         //Larman impose un type primitif vers le controler
         String filePath = selecteurFichier.getSelectedFile().getPath();
         if (!(filePath.substring(filePath.length() - 3).toLowerCase().equals("cou"))){
-            logMsgTextArea.append(": " + filePath + " n'est pas un fichier valide.\n");
+            logMsgTextArea.append(": " + filePath + "\n n'est pas un fichier valide.\n");
             drawingPanel.setVisible(false);
         }
         else{
             horaireController.chargerHoraire(filePath);
+            horaireController.setSession(choixSession);
             validationAutoCheckBox.setSelected (false);
             horaireController.setModeValidationAutoOff();
-            titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom());
+            titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom() + " (" + horaireController.getSession() + ")");
             drawingPanel.setVisible(true);
             horaireEstCharge=true;
             horaireController.initPointActivite(this.initialDimension);
