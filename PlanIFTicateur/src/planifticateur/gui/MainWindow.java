@@ -404,7 +404,8 @@ public class MainWindow extends javax.swing.JFrame {
                 horaireController.initPointActivite(this.initialDimension);
             }
         }
-            statFenetre.setStatsToCurrentDay();
+            statFenetre.setStats();
+            
             //ajustement de la couleur de la bordure.
         }
              if(horaireEstCharge)
@@ -507,7 +508,7 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
-            statFenetre.setStatsToCurrentDay();
+            statFenetre.setStats();
             
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){

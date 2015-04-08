@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package planifticateur.gui;
+import java.awt.Dimension;
 import planifticateur.domain.HoraireController;
 import java.util.Vector;
 /**
@@ -18,14 +19,10 @@ public class Statistiques extends javax.swing.JFrame {
      */
     public Statistiques() {
         initComponents();
+        
         horaireController = null;
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        
-        jTextFieldNbCours .setText("");
-        jTextFieldNbMaxCours .setText("");
-        jTextFieldNbMoyCours .setText("");
-        jTextFieldIndCov .setText("");
-        jTextFieldIndConges.setText(""); 
+           
     }
 
     /**
@@ -48,44 +45,63 @@ public class Statistiques extends javax.swing.JFrame {
         jTextFieldNbMoyCours = new javax.swing.JTextField();
         jTextFieldIndCov = new javax.swing.JTextField();
         jTextFieldIndConges = new javax.swing.JTextField();
-        jComboBoxJour = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jTextFieldNbCours2 = new javax.swing.JTextField();
+        jTextFieldNbMaxCours2 = new javax.swing.JTextField();
+        jTextFieldNbMoyCours2 = new javax.swing.JTextField();
+        jTextFieldNbCours3 = new javax.swing.JTextField();
+        jTextFieldNbMaxCours3 = new javax.swing.JTextField();
+        jTextFieldNbMoyCours3 = new javax.swing.JTextField();
+        jTextFieldNbCours4 = new javax.swing.JTextField();
+        jTextFieldNbMaxCours4 = new javax.swing.JTextField();
+        jTextFieldNbMoyCours4 = new javax.swing.JTextField();
+        jTextFieldNbCours5 = new javax.swing.JTextField();
+        jTextFieldNbMaxCours5 = new javax.swing.JTextField();
+        jTextFieldNbMoyCours5 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 480));
+        setPreferredSize(new java.awt.Dimension(800, 380));
 
-        MainPanel.setPreferredSize(new java.awt.Dimension(640, 278));
+        MainPanel.setPreferredSize(new java.awt.Dimension(640, 480));
 
+        jLabelNbCours.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelNbCours.setText("NB de cours :");
 
+        jLabelNbMaxCours.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelNbMaxCours.setText("NB max de cours :");
 
+        jLabelNBMoyCours.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelNBMoyCours.setText("NB moy de cours :");
 
+        jLabelIndCov.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelIndCov.setText("Indice covoiturage :");
 
+        jLabelIndConges.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelIndConges.setText("Indice congestion :");
 
         jTextFieldNbCours.setEditable(false);
-        jTextFieldNbCours.setText("jTextField1");
+        jTextFieldNbCours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNbCoursActionPerformed(evt);
+            }
+        });
 
         jTextFieldNbMaxCours.setEditable(false);
-        jTextFieldNbMaxCours.setText("jTextField2");
 
         jTextFieldNbMoyCours.setEditable(false);
-        jTextFieldNbMoyCours.setText("jTextField3");
 
         jTextFieldIndCov.setEditable(false);
-        jTextFieldIndCov.setText("jTextField4");
 
         jTextFieldIndConges.setEditable(false);
-        jTextFieldIndConges.setText("jTextField5");
-
-        jComboBoxJour.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi" }));
-        jComboBoxJour.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldIndConges.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxJourActionPerformed(evt);
+                jTextFieldIndCongesActionPerformed(evt);
             }
         });
 
@@ -93,54 +109,187 @@ public class Statistiques extends javax.swing.JFrame {
 
         jLabel2.setText("%");
 
+        jTextFieldNbCours2.setEditable(false);
+        jTextFieldNbCours2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNbCours2ActionPerformed(evt);
+            }
+        });
+
+        jTextFieldNbMaxCours2.setEditable(false);
+        jTextFieldNbMaxCours2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNbMaxCours2ActionPerformed(evt);
+            }
+        });
+
+        jTextFieldNbMoyCours2.setEditable(false);
+
+        jTextFieldNbCours3.setEditable(false);
+
+        jTextFieldNbMaxCours3.setEditable(false);
+        jTextFieldNbMaxCours3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNbMaxCours3ActionPerformed(evt);
+            }
+        });
+
+        jTextFieldNbMoyCours3.setEditable(false);
+
+        jTextFieldNbCours4.setEditable(false);
+
+        jTextFieldNbMaxCours4.setEditable(false);
+
+        jTextFieldNbMoyCours4.setEditable(false);
+
+        jTextFieldNbCours5.setEditable(false);
+        jTextFieldNbCours5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNbCours5ActionPerformed(evt);
+            }
+        });
+
+        jTextFieldNbMaxCours5.setEditable(false);
+        jTextFieldNbMaxCours5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNbMaxCours5ActionPerformed(evt);
+            }
+        });
+
+        jTextFieldNbMoyCours5.setEditable(false);
+
+        jLabel3.setText("Lundi");
+
+        jLabel4.setText("Mardi");
+
+        jLabel5.setText("Mercredi");
+
+        jLabel6.setText("Jeudi");
+
+        jLabel7.setText("Vendredi");
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNbCours)
-                    .addComponent(jLabelNbMaxCours)
-                    .addComponent(jLabelNBMoyCours)
-                    .addComponent(jLabelIndCov)
-                    .addComponent(jLabelIndConges))
-                .addGap(34, 34, 34)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextFieldIndCov, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNbMoyCours, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNbMaxCours, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNbCours, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldIndConges))
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                        .addComponent(jComboBoxJour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))
-                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelIndCov)
+                            .addComponent(jLabelIndConges))
+                        .addGap(39, 39, 39)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldIndCov)
+                            .addComponent(jTextFieldIndConges, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelNbMaxCours)
+                                    .addComponent(jLabelNBMoyCours)
+                                    .addComponent(jLabelNbCours))
+                                .addGap(56, 56, 56)
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextFieldNbMoyCours, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldNbMaxCours, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNbCours, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(20, 20, 20)
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextFieldNbMoyCours2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNbMaxCours2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNbCours2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextFieldNbMoyCours3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNbMaxCours3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNbCours3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18))
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addGap(230, 230, 230)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel5)
+                                .addGap(34, 34, 34)))
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextFieldNbMoyCours4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNbMaxCours4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNbCours4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextFieldNbMoyCours5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNbMaxCours5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNbCours5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)))))
+                .addContainerGap())
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNbCours)
-                    .addComponent(jTextFieldNbCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxJour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNbMaxCours)
-                    .addComponent(jTextFieldNbMaxCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNBMoyCours)
-                    .addComponent(jTextFieldNbMoyCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(MainPanelLayout.createSequentialGroup()
+                            .addComponent(jTextFieldNbCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(20, 20, 20)
+                            .addComponent(jTextFieldNbMaxCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldNbMoyCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(MainPanelLayout.createSequentialGroup()
+                            .addComponent(jTextFieldNbCours2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(20, 20, 20)
+                            .addComponent(jTextFieldNbMaxCours2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldNbMoyCours2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(MainPanelLayout.createSequentialGroup()
+                            .addComponent(jTextFieldNbCours3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(20, 20, 20)
+                            .addComponent(jTextFieldNbMaxCours3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldNbMoyCours3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(MainPanelLayout.createSequentialGroup()
+                            .addComponent(jTextFieldNbCours4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(20, 20, 20)
+                            .addComponent(jTextFieldNbMaxCours4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldNbMoyCours4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(MainPanelLayout.createSequentialGroup()
+                            .addComponent(jTextFieldNbCours5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(20, 20, 20)
+                            .addComponent(jTextFieldNbMaxCours5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldNbMoyCours5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addComponent(jLabelNbMaxCours)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabelNBMoyCours))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addComponent(jLabelNbCours)
+                        .addGap(78, 78, 78)))
+                .addGap(67, 67, 67)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelIndCov)
                     .addComponent(jTextFieldIndCov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,54 +299,108 @@ public class Statistiques extends javax.swing.JFrame {
                     .addComponent(jLabelIndConges)
                     .addComponent(jTextFieldIndConges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(344, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFieldNbMaxCours2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNbMaxCours2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNbMaxCours2ActionPerformed
 
-              public void setStatsToCurrentDay()
+    private void jTextFieldNbCours2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNbCours2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNbCours2ActionPerformed
+
+    private void jTextFieldNbMaxCours3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNbMaxCours3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNbMaxCours3ActionPerformed
+
+    private void jTextFieldNbCours5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNbCours5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNbCours5ActionPerformed
+
+    private void jTextFieldNbMaxCours5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNbMaxCours5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNbMaxCours5ActionPerformed
+
+    private void jTextFieldNbCoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNbCoursActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNbCoursActionPerformed
+
+    private void jTextFieldIndCongesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIndCongesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIndCongesActionPerformed
+
+
+              public void setStats()
     {
         if(horaireController != null)
         {
-            int jour = jComboBoxJour.getSelectedIndex()+1;
-            Vector<Float> stats = horaireController.getStats(jour);
+            //lundi
+            Vector<Float> stats = horaireController.getStats(1,false);
 
             jTextFieldNbCours .setText(Integer.toString(Math.round(stats.elementAt(0))));
             jTextFieldNbMaxCours .setText(Integer.toString(Math.round(stats.elementAt(1))));
             jTextFieldNbMoyCours .setText(Float.toString(stats.elementAt(2)));
+
+            //mardi
+            stats=horaireController.getStats(2,false);
+
+            jTextFieldNbCours2 .setText(Integer.toString(Math.round(stats.elementAt(0))));
+            jTextFieldNbMaxCours2 .setText(Integer.toString(Math.round(stats.elementAt(1))));
+            jTextFieldNbMoyCours2 .setText(Float.toString(stats.elementAt(2)));
+
+            
+            //mercredi
+            stats=horaireController.getStats(3,false);
+
+            jTextFieldNbCours3 .setText(Integer.toString(Math.round(stats.elementAt(0))));
+            jTextFieldNbMaxCours3 .setText(Integer.toString(Math.round(stats.elementAt(1))));
+            jTextFieldNbMoyCours3 .setText(Float.toString(stats.elementAt(2)));
+
+            //jeudi
+            stats=horaireController.getStats(4,false);
+
+            jTextFieldNbCours4 .setText(Integer.toString(Math.round(stats.elementAt(0))));
+            jTextFieldNbMaxCours4 .setText(Integer.toString(Math.round(stats.elementAt(1))));
+            jTextFieldNbMoyCours4 .setText(Float.toString(stats.elementAt(2)));
+
+
+            //vendredi
+            stats=horaireController.getStats(5,true);
+
+            jTextFieldNbCours5 .setText(Integer.toString(Math.round(stats.elementAt(0))));
+            jTextFieldNbMaxCours5 .setText(Integer.toString(Math.round(stats.elementAt(1))));
+            jTextFieldNbMoyCours5 .setText(Float.toString(stats.elementAt(2)));
+
+           //indices. Calculés une seule fois pargetStats(5,true)
+            
             jTextFieldIndCov .setText(Float.toString(stats.elementAt(3)));
             jTextFieldIndConges.setText(Float.toString(stats.elementAt(4)));
-
         }
 
     }
               
               
-    private void jComboBoxJourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJourActionPerformed
-       
-        setStatsToCurrentDay();
-        
-    }//GEN-LAST:event_jComboBoxJourActionPerformed
-
  
     /**
      * @param args the command line arguments
@@ -238,23 +441,19 @@ public class Statistiques extends javax.swing.JFrame {
     public void initialize(HoraireController hc)
     {
          horaireController= hc ;
-         //on affiche lundi par default
-        Vector<Float> stats = horaireController.getStats(1);
-        
-         jTextFieldNbCours .setText(Integer.toString(Math.round(stats.elementAt(0))));
-         jTextFieldNbMaxCours .setText(Integer.toString(Math.round(stats.elementAt(1))));
-         jTextFieldNbMoyCours .setText(Float.toString(stats.elementAt(2)));
-         jTextFieldIndCov .setText(Float.toString(stats.elementAt(3)));
-         jTextFieldIndConges.setText(Float.toString(stats.elementAt(4)));
 
     }
      
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JComboBox jComboBoxJour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelIndConges;
     private javax.swing.JLabel jLabelIndCov;
     private javax.swing.JLabel jLabelNBMoyCours;
@@ -263,7 +462,19 @@ public class Statistiques extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldIndConges;
     private javax.swing.JTextField jTextFieldIndCov;
     private javax.swing.JTextField jTextFieldNbCours;
+    private javax.swing.JTextField jTextFieldNbCours2;
+    private javax.swing.JTextField jTextFieldNbCours3;
+    private javax.swing.JTextField jTextFieldNbCours4;
+    private javax.swing.JTextField jTextFieldNbCours5;
     private javax.swing.JTextField jTextFieldNbMaxCours;
+    private javax.swing.JTextField jTextFieldNbMaxCours2;
+    private javax.swing.JTextField jTextFieldNbMaxCours3;
+    private javax.swing.JTextField jTextFieldNbMaxCours4;
+    private javax.swing.JTextField jTextFieldNbMaxCours5;
     private javax.swing.JTextField jTextFieldNbMoyCours;
+    private javax.swing.JTextField jTextFieldNbMoyCours2;
+    private javax.swing.JTextField jTextFieldNbMoyCours3;
+    private javax.swing.JTextField jTextFieldNbMoyCours4;
+    private javax.swing.JTextField jTextFieldNbMoyCours5;
     // End of variables declaration//GEN-END:variables
 }
