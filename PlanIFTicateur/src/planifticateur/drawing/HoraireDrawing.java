@@ -170,6 +170,9 @@ public class HoraireDrawing {
                             }
                             for (GrilleCheminement grille: horaireController.getListeActiviteGrilleCh()){
                                 if (grille.activiteEstDansGrille(a.getCode())){
+                                    
+                                   if( grille.getSessionFirstLetter()!= horaireController.getSession().charAt(0))continue;//new yann
+                                   
                                         if (grille.activiteEstDansGrille(b.getCode())){
                                             g2.fillRect((int)((b.getHeureDebutChoisi() - 8) * saut * 2 + caseJourWidth), (b.getJourChoisi()-1) * caseJourHeight + caseHeureHeight, (int)(b.getDuree()*saut*2), caseJourHeight - caseHeureHeight);
                                         }

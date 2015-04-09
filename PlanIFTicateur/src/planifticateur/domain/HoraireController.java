@@ -11,9 +11,10 @@ import java.io.File;
 public class HoraireController {
     private Horaire horaire;            //horaire en transformation
     private MouseAdapter mouseAdapter;  
-    
+    private String session;  
+     
     public HoraireController(){
-
+        session = new String();
     }
     
     public void createMouseAdapter(Dimension d){
@@ -24,6 +25,8 @@ public class HoraireController {
     //peut-être serait plus logique en tant que constructeur
     if (filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU")){
             this.horaire = new Horaire(filePath, sessionChoisi);
+            session = sessionChoisi;
+                               
     }
     }
     
@@ -58,7 +61,7 @@ public class HoraireController {
     //Méthode pour mouseAdapter
     public Point verificationDrop(int x, int y){
         Point p = new Point(x,y);
-        return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee(), this.getListeActiviteGrilleCh(), this.getModeValidationAuto());
+        return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee(), this.getListeActiviteGrilleCh(), this.getModeValidationAuto(),session);
     }
     
     public String mouseOverToolTipText(int x, int y){

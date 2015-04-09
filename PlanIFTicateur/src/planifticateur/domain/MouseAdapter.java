@@ -11,13 +11,15 @@ public class MouseAdapter {
     private float heureDebutMin;
     private String codeSelected;
     private String typeSelected;
+    public String session ;
     
     public MouseAdapter(Dimension d){
         this.dimension = d;
+
     }
     
     //Méthode pour snaper les activités à la grille horaire
-    public Point verificationDrop(Point p, List<Activite> laC, List<Activite> laDP, List<GrilleCheminement> laGC, boolean modeValidationAuto){
+    public Point verificationDrop(Point p, List<Activite> laC, List<Activite> laDP, List<GrilleCheminement> laGC, boolean modeValidationAuto,String session){
         int width = dimension.width *3/4;
         int height = dimension.height;
         int caseJourHeight = height / 5;
@@ -117,7 +119,14 @@ public class MouseAdapter {
                         }
                     }
                     for (GrilleCheminement grille: laGC){
-                        if (grille.activiteEstDansGrille(codeSelected)){
+                        
+
+                        if ( grille.activiteEstDansGrille(codeSelected) 
+                                && 
+                            grille.getSessionFirstLetter()== session.charAt(0) //new yann
+                            )
+                        {
+                            
                             if (grille.activiteEstDansGrille(b.getCode())){
                                 
                                     if (pointActiviteX < (int)((b.getHeureDebutChoisi()-8 + b.getDuree())*2*saut) + caseJourWidth
