@@ -573,7 +573,7 @@ public class MainWindow extends javax.swing.JFrame {
             selecteurFichier.setApproveButtonText("Enregistrer");
             selecteurFichier.setApproveButtonMnemonic('a');
             selecteurFichier.setApproveButtonToolTipText("Enregistrer le fichier");
-            selecteurFichier.setDialogTitle("Sauvegarder");
+            selecteurFichier.setDialogTitle("Enregistrer");
     
             FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
             selecteurFichier.setFileFilter(filter);
