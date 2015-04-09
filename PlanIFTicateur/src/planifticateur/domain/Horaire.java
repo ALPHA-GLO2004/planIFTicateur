@@ -463,7 +463,7 @@ public class Horaire {
          
         try {
 
-                String content = new String ("CodeActivité,Section,Titre,PROF,Type,Dur‚e,DébutMin,FinMax,Jour,Heure \n");
+                String content = new String ("CodeActivit‚,Section,Titre,PROF,Type,Dur‚e,D‚butMin,FinMax,Jour,Heure \n");
                 
                 
                 //activites deja placée

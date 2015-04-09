@@ -274,6 +274,11 @@ public class MainWindow extends javax.swing.JFrame {
         menuFile.add(menuFileSave);
 
         menuFileSaveAs.setText("Enregistrer sous ...");
+        menuFileSaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileSaveAsActionPerformed(evt);
+            }
+        });
         menuFile.add(menuFileSaveAs);
 
         menuFileQuit.setText("Quitter");
@@ -555,8 +560,32 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseClicked
 
     private void menuFileSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileSaveActionPerformed
-       if(horaireEstCharge)horaireController.enregistrerHoraire(filePath);
+       if(horaireEstCharge)
+           horaireController.enregistrerHoraire(filePath);
     }//GEN-LAST:event_menuFileSaveActionPerformed
+
+    private void menuFileSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileSaveAsActionPerformed
+
+        if(horaireEstCharge)
+        {
+            JFileChooser selecteurFichier = new JFileChooser();
+            
+            selecteurFichier.setApproveButtonText("Enregistrer");
+            selecteurFichier.setApproveButtonMnemonic('a');
+            selecteurFichier.setApproveButtonToolTipText("Enregistrer le fichier");
+            selecteurFichier.setDialogTitle("Sauvegarder");
+    
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
+            selecteurFichier.setFileFilter(filter);
+            selecteurFichier.showOpenDialog(MainWindow.this);
+
+            
+            selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+
+            if(selecteurFichier.getSelectedFile().getPath().contains(".cou") ) horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() );
+            else horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+        }  
+    }//GEN-LAST:event_menuFileSaveAsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
