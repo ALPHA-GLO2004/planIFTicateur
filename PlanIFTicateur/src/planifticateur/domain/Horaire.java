@@ -19,6 +19,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.awt.*;
 import java.util.Collections;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Horaire {
     //Ajout de ma part, ça me semblait essentiel
@@ -452,11 +456,76 @@ public class Horaire {
         return 1;
     }
      
+    
+    public void enregistrerHoraire(String path){
+
+        Vector<Activite> liste = new Vector<Activite>();
+         
+        try {
+
+                String content = new String ("CodeActivité,Section,Titre,PROF,Type,Dur‚e,DébutMin,FinMax,Jour,Heure \n");
+                
+                
+                //activites deja placée
+                liste = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
+                
+                for(Activite activite : liste)
+                {
+                    content+= activite.getCode()+"," ;
+                    content+= activite.getSection()+"," ;
+                    content+= activite.getNomActivite()+"," ;
+                    content+= activite.getProfesseur()+"," ;
+                    content+= activite.getType()+"," ;
+                    content+= activite.getDuree()+"," ;
+                    content+= activite.getHeureDebutMin()+"," ;
+                    content+= activite.getHeureFinMax()+"," ;
+                    content+= activite.getJourChoisi()+"," ;
+                    content+= activite.getHeureDebutChoisi()+"\n" ;
+    
+                }
+                
+                //activites non placées
+                liste = listeActiviteAPlacer.getListeActiviteAPlacer();
+                
+                for(Activite activite : liste)
+                {
+                    content+= activite.getCode()+"," ;
+                    content+= activite.getSection()+"," ;
+                    content+= activite.getNomActivite()+"," ;
+                    content+= activite.getProfesseur()+"," ;
+                    content+= activite.getType()+"," ;
+                    content+= activite.getDuree()+"," ;
+                    content+= activite.getHeureDebutMin()+"," ;
+                    content+= activite.getHeureFinMax()+",,"+"\n" ;
+
+                }
+                
+
+
+                File file = new File(path);
+
+                if (!file.exists()) {
+                        file.createNewFile();
+                }
+
+                FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write(content);
+                bw.close();
+
+
+        } catch (IOException e) {
+                e.printStackTrace();
+        }
+    }
+        
+    
+    
     public void genererAutomatiquement(){
         //En attente d'un bon algorithme
     }
     
-    
+
 //========================================================================== 
 //  Statistiques
 //========================================================================== 

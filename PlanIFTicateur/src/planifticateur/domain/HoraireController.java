@@ -246,6 +246,12 @@ public class HoraireController {
         return this.horaire.getSession();
     }
     
+     public void enregistrerHoraire(String path){
+         this.horaire.enregistrerHoraire(path);
+    }
+    
+    
+            
     public boolean getValiditeDeLHoraire(Vector<String> messagesDerreurs){
         return this.horaire.horaireEstValide(messagesDerreurs);
     }

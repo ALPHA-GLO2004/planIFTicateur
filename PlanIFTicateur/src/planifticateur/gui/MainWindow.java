@@ -24,7 +24,7 @@ public class MainWindow extends javax.swing.JFrame {
     public Dimension initialDimension;
     public Point initialActivitePoint;
     public Point delta;
-    private String sessionChoisi;
+    String filePath;
     private boolean horaireEstCharge;
     Vector<String> messagesDerreurs;
     private int activiteList;
@@ -266,6 +266,11 @@ public class MainWindow extends javax.swing.JFrame {
         menuFile.add(menuFileNew);
 
         menuFileSave.setText("Enregistrer");
+        menuFileSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileSaveActionPerformed(evt);
+            }
+        });
         menuFile.add(menuFileSave);
 
         menuFileSaveAs.setText("Enregistrer sous ...");
@@ -456,11 +461,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void menuExportPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExportPicActionPerformed
     
         if(horaireEstCharge)
-      /*     exporter.exporterImage(drawingPanelContainer, ImageExporter.IMAGE_FORMAT.JPEG,
-                                 drawingPanelContainer.getWidth(),drawingPanelContainer.getVerticalScrollBar().getMaximum() , 
-                                  System.getProperty("user.dir") +"_export.jpg"
-                                );
-        */
+
              exporter.exporterImage(drawingPanel, ImageExporter.IMAGE_FORMAT.JPEG,
                                     drawingPanel.getInitialDimension().width,drawingPanel.getInitialDimension().height , 
                                     System.getProperty("user.dir") +"_export.jpg"
@@ -497,7 +498,7 @@ public class MainWindow extends javax.swing.JFrame {
         selecteurFichier.setFileFilter(filter);
         selecteurFichier.showOpenDialog(MainWindow.this);
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        
+
         //Choix session
         JOptionPane fenetreJOption = new JOptionPane();
         fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
@@ -508,7 +509,7 @@ public class MainWindow extends javax.swing.JFrame {
         //horaireController.resetHoraire();
         // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
         //Larman impose un type primitif vers le controler
-        String filePath = selecteurFichier.getSelectedFile().getPath();
+         filePath = selecteurFichier.getSelectedFile().getPath();
         if (!(filePath.substring(filePath.length() - 3).toLowerCase().equals("cou"))){
             logMsgTextArea.append(": " + filePath + "\n n'est pas un fichier valide.\n");
             drawingPanel.setVisible(false);
@@ -552,6 +553,10 @@ public class MainWindow extends javax.swing.JFrame {
             fenetreModification.setVisible(true);
         }
     }//GEN-LAST:event_drawingPanelMouseClicked
+
+    private void menuFileSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileSaveActionPerformed
+       if(horaireEstCharge)horaireController.enregistrerHoraire(filePath);
+    }//GEN-LAST:event_menuFileSaveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
