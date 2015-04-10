@@ -166,10 +166,10 @@ public class MouseAdapter {
         for (int i = 0; i < activiteList.size(); i++){
             if (p.x > activiteList.get(i).getPoint().x && p.x < (activiteList.get(i).getPoint().x + (int)(activiteList.get(i).getDuree() * ((width - (caseJourWidth))/15)))
                     && p.y > activiteList.get(i).getPoint().y && p.y < (activiteList.get(i).getPoint().y + activiteHeight)){
-                toolTipText = "Info de l'activité au curseur : " + "\n" + "\tCode:\t" + activiteList.get(i).getCode()
-                                                                   + "\n" + "\tSection:\t" + activiteList.get(i).getSection()
-                                                                   + "\n" + "\tDescription:\t" + activiteList.get(i).getNomActivite()
-                                                                   + "\n" + "\tProfesseur:\t" + activiteList.get(i).getProfesseur() + "...";
+                toolTipText =  "\tCode: " + activiteList.get(i).getCode()
+                               + "\n" + "Section: " + activiteList.get(i).getSection()
+                               + "\n" + "Description: " + activiteList.get(i).getNomActivite()
+                               + "\n" + "Professeur: " + activiteList.get(i).getProfesseur() + "...";
 /*                                                                   + "\n" + "\tType:\t" + activiteList.get(i).getType()
                                                                    + "\n" + "\tDuree:\t" + activiteList.get(i).getDuree() + "h";
                 

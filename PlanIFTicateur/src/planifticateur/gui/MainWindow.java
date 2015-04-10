@@ -66,7 +66,8 @@ public class MainWindow extends javax.swing.JFrame {
         planificationAutomatiqueButton = new javax.swing.JButton();
         statistiquesButton = new javax.swing.JButton();
         noteButton = new javax.swing.JButton();
-        quitterButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        activiteTextArea = new javax.swing.JTextArea();
         topMenuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuFileOpen = new javax.swing.JMenuItem();
@@ -138,11 +139,11 @@ public class MainWindow extends javax.swing.JFrame {
         drawingPanel.setLayout(drawingPanelLayout);
         drawingPanelLayout.setHorizontalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1274, Short.MAX_VALUE)
+            .addGap(0, 1045, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -175,10 +176,13 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         mainPanel.add(logMsgTextArea, gridBagConstraints);
 
+        buttonPanel.setPreferredSize(new java.awt.Dimension(426, 91));
         buttonPanel.setLayout(new java.awt.GridBagLayout());
 
         planificationAutomatiqueButton.setText("Planification automatique");
-        planificationAutomatiqueButton.setPreferredSize(new java.awt.Dimension(200, 23));
+        planificationAutomatiqueButton.setMaximumSize(new java.awt.Dimension(160, 23));
+        planificationAutomatiqueButton.setMinimumSize(new java.awt.Dimension(100, 10));
+        planificationAutomatiqueButton.setPreferredSize(new java.awt.Dimension(20, 23));
         planificationAutomatiqueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 planificationAutomatiqueButtonActionPerformed(evt);
@@ -194,7 +198,9 @@ public class MainWindow extends javax.swing.JFrame {
         buttonPanel.add(planificationAutomatiqueButton, gridBagConstraints);
 
         statistiquesButton.setText("Statistiques");
-        statistiquesButton.setPreferredSize(new java.awt.Dimension(200, 23));
+        statistiquesButton.setMaximumSize(new java.awt.Dimension(189, 23));
+        statistiquesButton.setMinimumSize(new java.awt.Dimension(100, 10));
+        statistiquesButton.setPreferredSize(new java.awt.Dimension(80, 23));
         statistiquesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statistiquesButtonActionPerformed(evt);
@@ -210,6 +216,8 @@ public class MainWindow extends javax.swing.JFrame {
         buttonPanel.add(statistiquesButton, gridBagConstraints);
 
         noteButton.setText("Notes");
+        noteButton.setMaximumSize(new java.awt.Dimension(161, 23));
+        noteButton.setPreferredSize(new java.awt.Dimension(80, 23));
         noteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noteButtonActionPerformed(evt);
@@ -224,20 +232,13 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
         buttonPanel.add(noteButton, gridBagConstraints);
 
-        quitterButton.setText("Quitter");
-        quitterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quitterButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 5);
-        buttonPanel.add(quitterButton, gridBagConstraints);
+        activiteTextArea.setEditable(false);
+        activiteTextArea.setColumns(20);
+        activiteTextArea.setRows(5);
+        activiteTextArea.setPreferredSize(new java.awt.Dimension(80, 94));
+        jScrollPane1.setViewportView(activiteTextArea);
+
+        buttonPanel.add(jScrollPane1, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -366,7 +367,8 @@ public class MainWindow extends javax.swing.JFrame {
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
         updateLogMessage(evt);
         if(horaireEstCharge){
-            this.logMsgTextArea.append(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
+           // this.logMsgTextArea.append(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
+            activiteTextArea.setText(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
         }
     }//GEN-LAST:event_drawingPanelMouseMoved
 
@@ -472,10 +474,6 @@ public class MainWindow extends javax.swing.JFrame {
                                     System.getProperty("user.dir") +"_export.jpg"
                                     );
     }//GEN-LAST:event_menuExportPicActionPerformed
-
-    private void quitterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitterButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_quitterButtonActionPerformed
 
     private void noteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteButtonActionPerformed
         if (horaireEstCharge){
@@ -588,9 +586,11 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_menuFileSaveAsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea activiteTextArea;
     private javax.swing.JPanel buttonPanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
     private javax.swing.JScrollPane drawingPanelContainer;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea logMsgTextArea;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu menuExport;
@@ -607,7 +607,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuHelpWindow;
     private javax.swing.JButton noteButton;
     private javax.swing.JButton planificationAutomatiqueButton;
-    private javax.swing.JButton quitterButton;
     private javax.swing.JButton statistiquesButton;
     private javax.swing.JLabel titreFichierLabel;
     private javax.swing.JMenuBar topMenuBar;
