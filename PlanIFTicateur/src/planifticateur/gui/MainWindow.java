@@ -68,6 +68,9 @@ public class MainWindow extends javax.swing.JFrame {
         noteButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         activiteTextArea = new javax.swing.JTextArea();
+        infoActiviteTextArea = new javax.swing.JTextArea();
+        infoLabel = new javax.swing.JLabel();
+        logLabel = new javax.swing.JLabel();
         topMenuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuFileOpen = new javax.swing.JMenuItem();
@@ -93,7 +96,7 @@ public class MainWindow extends javax.swing.JFrame {
         titreFichierLabel.setPreferredSize(new java.awt.Dimension(400, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         mainPanel.add(titreFichierLabel, gridBagConstraints);
         titreFichierLabel.getAccessibleContext().setAccessibleName("nomFichier");
@@ -139,24 +142,24 @@ public class MainWindow extends javax.swing.JFrame {
         drawingPanel.setLayout(drawingPanelLayout);
         drawingPanelLayout.setHorizontalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1364, Short.MAX_VALUE)
+            .addGap(0, 1363, Short.MAX_VALUE)
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1045, Short.MAX_VALUE)
+            .addGap(0, 997, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weighty = 50.0;
+        gridBagConstraints.weighty = 20.0;
         mainPanel.add(drawingPanelContainer, gridBagConstraints);
 
         logMsgTextArea.setEditable(false);
@@ -168,12 +171,12 @@ public class MainWindow extends javax.swing.JFrame {
         logMsgTextArea.setMinimumSize(new java.awt.Dimension(258, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
         mainPanel.add(logMsgTextArea, gridBagConstraints);
 
         buttonPanel.setPreferredSize(new java.awt.Dimension(426, 91));
@@ -242,11 +245,39 @@ public class MainWindow extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 5;
         mainPanel.add(buttonPanel, gridBagConstraints);
+
+        infoActiviteTextArea.setColumns(20);
+        infoActiviteTextArea.setRows(5);
+        infoActiviteTextArea.setPreferredSize(new java.awt.Dimension(400, 94));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        mainPanel.add(infoActiviteTextArea, gridBagConstraints);
+
+        infoLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        infoLabel.setText("Informations activité");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipady = 10;
+        mainPanel.add(infoLabel, gridBagConstraints);
+
+        logLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        logLabel.setText("Événements");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        mainPanel.add(logLabel, gridBagConstraints);
 
         menuFile.setText("Fichier");
 
@@ -590,7 +621,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel buttonPanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
     private javax.swing.JScrollPane drawingPanelContainer;
+    private javax.swing.JTextArea infoActiviteTextArea;
+    private javax.swing.JLabel infoLabel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel logLabel;
     private javax.swing.JTextArea logMsgTextArea;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu menuExport;
