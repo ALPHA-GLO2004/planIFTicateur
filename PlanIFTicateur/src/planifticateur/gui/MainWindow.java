@@ -101,7 +101,6 @@ public class MainWindow extends javax.swing.JFrame {
         mainPanel.setLayout(new java.awt.GridBagLayout());
 
         titreFichierLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        titreFichierLabel.setText("    nomFichier");
         titreFichierLabel.setPreferredSize(new java.awt.Dimension(400, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -144,7 +143,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 978, Short.MAX_VALUE)
+            .addGap(0, 973, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -318,7 +317,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         logMsgTextArea.setEditable(false);
         logMsgTextArea.setColumns(20);
-        logMsgTextArea.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        logMsgTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         logMsgTextArea.setRows(5);
         logMsgTextArea.setText("Bienvenue sur PlanIFTicateur, le gestionnaire d'horaire de session!");
         logMsgTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -329,6 +328,7 @@ public class MainWindow extends javax.swing.JFrame {
         infoActiviteTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         infoActiviteTextArea.setRows(8);
         infoActiviteTextArea.setPreferredSize(new Dimension(this.initialDimension.width*2/3, this.initialDimension.height/4));
+        infoActiviteTextArea.setText("Informations activité survolé :");
         infoActiviteTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout logPanelLayout = new javax.swing.GroupLayout(logPanel);
@@ -356,6 +356,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         mainPanel.add(logPanel, gridBagConstraints);
 
         menuFile.setText("Fichier");
