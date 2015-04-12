@@ -61,7 +61,6 @@ public class MainWindow extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         mainPanel = new javax.swing.JPanel();
-        titreFichierLabel = new javax.swing.JLabel();
         drawingPanelContainer = new javax.swing.JScrollPane();
         drawingPanel = new planifticateur.gui.DrawingPanel(this);
         buttonPanel = new javax.swing.JPanel();
@@ -76,6 +75,7 @@ public class MainWindow extends javax.swing.JFrame {
         saveAsButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
         aideButton = new javax.swing.JButton();
+        titreFichierLabel = new javax.swing.JLabel();
         logPanel = new javax.swing.JPanel();
         logMsgTextArea = new javax.swing.JTextArea();
         infoActiviteTextArea = new javax.swing.JTextArea();
@@ -99,16 +99,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         mainPanel.setPreferredSize(new Dimension(this.getWidth(), this.getHeight()));
         mainPanel.setLayout(new java.awt.GridBagLayout());
-
-        titreFichierLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        titreFichierLabel.setPreferredSize(new java.awt.Dimension(400, 15));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
-        mainPanel.add(titreFichierLabel, gridBagConstraints);
-        titreFichierLabel.getAccessibleContext().setAccessibleName("nomFichier");
 
         drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         drawingPanelContainer.setPreferredSize(new Dimension(this.mainPanel.getWidth(), this.mainPanel.getHeight()*4/6));
@@ -143,7 +133,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 973, Short.MAX_VALUE)
+            .addGap(0, 993, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -221,7 +211,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
@@ -306,6 +296,16 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         buttonPanel.add(aideButton, gridBagConstraints);
+
+        titreFichierLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        titreFichierLabel.setPreferredSize(new java.awt.Dimension(400, 15));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 100, 0, 0);
+        buttonPanel.add(titreFichierLabel, gridBagConstraints);
+        titreFichierLabel.getAccessibleContext().setAccessibleName("nomFichier");
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
