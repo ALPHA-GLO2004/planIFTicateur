@@ -17,6 +17,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.Icon;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
@@ -49,27 +50,7 @@ public class MainWindow extends javax.swing.JFrame {
         fenetreNote = new Note();
         messagesDerreurs = new Vector<String>() ;
         initComponents();
-        drawingPanelContainer.getVerticalScrollBar().setUnitIncrement(8);
-        
-  /* loading image bogue resentement       
-        try {
-
-            
-            Image img = ImageIO.read(getClass().getResource("resources/notes.bmp"));
-            noteButton.setIcon(new ImageIcon(img));
-
-            img = ImageIO.read(getClass().getResource("resources/planif.bmp"));
-            planificationAutomatiqueButton.setIcon(new ImageIcon(img));
-
-            img = ImageIO.read(getClass().getResource("resources/stats.bmp"));
-            statistiquesButton.setIcon(new ImageIcon(img));
-
-            } catch (IOException ex)
-              {  
-                 System.out.print(System.getProperty(ex.getMessage())  );
-              }
-*/
-       
+        drawingPanelContainer.getVerticalScrollBar().setUnitIncrement(8);     
     }
 
     
@@ -87,8 +68,11 @@ public class MainWindow extends javax.swing.JFrame {
         buttonPanel = new javax.swing.JPanel();
         planificationAutomatiqueButton = new javax.swing.JButton();
         statistiquesButton = new javax.swing.JButton();
-        noteButton = new javax.swing.JButton();
+        Icon noteIcon = new ImageIcon("icon_note.png");
+        noteButton = new javax.swing.JButton(noteIcon);
         validationAutoCheckBox = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         infoActiviteTextArea = new javax.swing.JTextArea();
         infoLabel = new javax.swing.JLabel();
         logLabel = new javax.swing.JLabel();
@@ -113,12 +97,14 @@ public class MainWindow extends javax.swing.JFrame {
         mainPanel.setPreferredSize(new Dimension(this.getWidth(), this.getHeight()));
         mainPanel.setLayout(new java.awt.GridBagLayout());
 
+        titreFichierLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         titreFichierLabel.setText("    nomFichier");
         titreFichierLabel.setPreferredSize(new java.awt.Dimension(400, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
         mainPanel.add(titreFichierLabel, gridBagConstraints);
         titreFichierLabel.getAccessibleContext().setAccessibleName("nomFichier");
 
@@ -155,7 +141,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 997, Short.MAX_VALUE)
+            .addGap(0, 1021, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -188,60 +174,59 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
         mainPanel.add(logMsgTextArea, gridBagConstraints);
 
-        buttonPanel.setPreferredSize(new java.awt.Dimension(426, 91));
+        buttonPanel.setPreferredSize(new java.awt.Dimension(426, 60));
         buttonPanel.setLayout(new java.awt.GridBagLayout());
 
-        planificationAutomatiqueButton.setText("Planification automatique");
+        planificationAutomatiqueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_planificationauto.png"))); // NOI18N
+        planificationAutomatiqueButton.setToolTipText("Planification automatique");
         planificationAutomatiqueButton.setMaximumSize(new java.awt.Dimension(160, 23));
         planificationAutomatiqueButton.setMinimumSize(new java.awt.Dimension(100, 10));
-        planificationAutomatiqueButton.setPreferredSize(new java.awt.Dimension(20, 60));
+        planificationAutomatiqueButton.setPreferredSize(new java.awt.Dimension(50, 50));
         planificationAutomatiqueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 planificationAutomatiqueButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 3);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         buttonPanel.add(planificationAutomatiqueButton, gridBagConstraints);
 
-        statistiquesButton.setText("Statistiques");
+        statistiquesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_stats.png"))); // NOI18N
+        statistiquesButton.setToolTipText("Statistiques");
         statistiquesButton.setMaximumSize(new java.awt.Dimension(189, 23));
         statistiquesButton.setMinimumSize(new java.awt.Dimension(100, 10));
-        statistiquesButton.setPreferredSize(new java.awt.Dimension(80, 60));
+        statistiquesButton.setPreferredSize(new java.awt.Dimension(50, 50));
         statistiquesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statistiquesButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         buttonPanel.add(statistiquesButton, gridBagConstraints);
 
-        noteButton.setText("Notes");
+        noteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_note.png"))); // NOI18N
+        noteButton.setToolTipText("Notes");
+        noteButton.setAlignmentY(0.0F);
+        noteButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         noteButton.setMaximumSize(new java.awt.Dimension(161, 23));
-        noteButton.setPreferredSize(new java.awt.Dimension(80, 60));
+        noteButton.setPreferredSize(new java.awt.Dimension(50, 50));
         noteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noteButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         buttonPanel.add(noteButton, gridBagConstraints);
 
         validationAutoCheckBox.setText("Validation automatique");
@@ -250,7 +235,32 @@ public class MainWindow extends javax.swing.JFrame {
                 validationAutoCheckBoxActionPerformed(evt);
             }
         });
-        buttonPanel.add(validationAutoCheckBox, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
+        buttonPanel.add(validationAutoCheckBox, gridBagConstraints);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_openfile.png"))); // NOI18N
+        jButton1.setToolTipText("Ouvrir horaire");
+        jButton1.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        buttonPanel.add(jButton1, gridBagConstraints);
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_newfile.png"))); // NOI18N
+        jButton2.setToolTipText("Nouvel horaire");
+        jButton2.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 5);
+        buttonPanel.add(jButton2, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -631,6 +641,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane drawingPanelContainer;
     private javax.swing.JTextArea infoActiviteTextArea;
     private javax.swing.JLabel infoLabel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel logLabel;
     private javax.swing.JTextArea logMsgTextArea;
     private javax.swing.JPanel mainPanel;
