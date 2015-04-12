@@ -169,7 +169,7 @@ public class MouseAdapter {
                 toolTipText =  "\tCode: " + activiteList.get(i).getCode()
                                + "\n" + "Section: " + activiteList.get(i).getSection()
                                + "\n" + "Description: " + activiteList.get(i).getNomActivite()
-                               + "\n" + "Professeur: " + activiteList.get(i).getProfesseur() + "...";
+                               + "\n" + "Professeur: " + activiteList.get(i).getProfesseur();
 /*                                                                   + "\n" + "\tType:\t" + activiteList.get(i).getType()
                                                                    + "\n" + "\tDuree:\t" + activiteList.get(i).getDuree() + "h";
                 

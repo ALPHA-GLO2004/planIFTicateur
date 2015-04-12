@@ -5,11 +5,14 @@ import planifticateur.domain.ImageExporter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Vector;
 import javafx.scene.control.RadioButton;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -47,6 +50,26 @@ public class MainWindow extends javax.swing.JFrame {
         messagesDerreurs = new Vector<String>() ;
         initComponents();
         drawingPanelContainer.getVerticalScrollBar().setUnitIncrement(8);
+        
+  /* loading image bogue resentement       
+        try {
+
+            
+            Image img = ImageIO.read(getClass().getResource("resources/notes.bmp"));
+            noteButton.setIcon(new ImageIcon(img));
+
+            img = ImageIO.read(getClass().getResource("resources/planif.bmp"));
+            planificationAutomatiqueButton.setIcon(new ImageIcon(img));
+
+            img = ImageIO.read(getClass().getResource("resources/stats.bmp"));
+            statistiquesButton.setIcon(new ImageIcon(img));
+
+            } catch (IOException ex)
+              {  
+                 System.out.print(System.getProperty(ex.getMessage())  );
+              }
+*/
+       
     }
 
     
@@ -238,8 +261,8 @@ public class MainWindow extends javax.swing.JFrame {
         mainPanel.add(buttonPanel, gridBagConstraints);
 
         infoActiviteTextArea.setColumns(20);
+        infoActiviteTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         infoActiviteTextArea.setRows(5);
-        infoActiviteTextArea.setPreferredSize(new java.awt.Dimension(400, 94));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
