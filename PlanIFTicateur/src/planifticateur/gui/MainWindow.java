@@ -72,6 +72,10 @@ public class MainWindow extends javax.swing.JFrame {
         validationAutoCheckBox = new javax.swing.JCheckBox();
         ouvrirFichierButton = new javax.swing.JButton();
         nouveauFichierButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        saveAsButton = new javax.swing.JButton();
+        exportButton = new javax.swing.JButton();
+        aideButton = new javax.swing.JButton();
         logPanel = new javax.swing.JPanel();
         logMsgTextArea = new javax.swing.JTextArea();
         infoActiviteTextArea = new javax.swing.JTextArea();
@@ -170,10 +174,10 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         buttonPanel.add(planificationAutomatiqueButton, gridBagConstraints);
 
         statistiquesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_stats.png"))); // NOI18N
@@ -187,7 +191,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
@@ -205,7 +209,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
@@ -218,7 +222,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
@@ -248,6 +252,61 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 5);
         buttonPanel.add(nouveauFichierButton, gridBagConstraints);
+
+        saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_save.png"))); // NOI18N
+        saveButton.setToolTipText("Enregistrer horaire");
+        saveButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        buttonPanel.add(saveButton, gridBagConstraints);
+
+        saveAsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_saveas.png"))); // NOI18N
+        saveAsButton.setToolTipText("Enregistrer sous...");
+        saveAsButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        saveAsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAsButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        buttonPanel.add(saveAsButton, gridBagConstraints);
+
+        exportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_export.png"))); // NOI18N
+        exportButton.setToolTipText("Exporter horaire en image");
+        exportButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        exportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        buttonPanel.add(exportButton, gridBagConstraints);
+
+        aideButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_help.png"))); // NOI18N
+        aideButton.setToolTipText("Aide");
+        aideButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        buttonPanel.add(aideButton, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -689,10 +748,49 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ouvrirFichierButtonActionPerformed
 
+    private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
+        if(horaireEstCharge)
+
+             exporter.exporterImage(drawingPanel, ImageExporter.IMAGE_FORMAT.JPEG,
+                                    drawingPanel.getInitialDimension().width,drawingPanel.getInitialDimension().height , 
+                                    System.getProperty("user.dir") +"_export.jpg"
+                                    );
+    }//GEN-LAST:event_exportButtonActionPerformed
+
+    private void saveAsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsButtonActionPerformed
+        if(horaireEstCharge)
+        {
+            JFileChooser selecteurFichier = new JFileChooser();
+            
+            selecteurFichier.setApproveButtonText("Enregistrer");
+            selecteurFichier.setApproveButtonMnemonic('a');
+            selecteurFichier.setApproveButtonToolTipText("Enregistrer le fichier");
+            selecteurFichier.setDialogTitle("Enregistrer");
+    
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
+            selecteurFichier.setFileFilter(filter);
+            selecteurFichier.showOpenDialog(MainWindow.this);
+
+            
+            selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+
+            if(selecteurFichier.getSelectedFile().getPath().contains(".cou") ) horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() );
+            else horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+        }
+    }//GEN-LAST:event_saveAsButtonActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        if(horaireEstCharge){
+           horaireController.enregistrerHoraire(filePath);
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aideButton;
     private javax.swing.JPanel buttonPanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
     private javax.swing.JScrollPane drawingPanelContainer;
+    private javax.swing.JButton exportButton;
     private javax.swing.JTextArea infoActiviteTextArea;
     private javax.swing.JTextArea logMsgTextArea;
     private javax.swing.JPanel logPanel;
@@ -713,6 +811,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton nouveauFichierButton;
     private javax.swing.JButton ouvrirFichierButton;
     private javax.swing.JButton planificationAutomatiqueButton;
+    private javax.swing.JButton saveAsButton;
+    private javax.swing.JButton saveButton;
     private javax.swing.JButton statistiquesButton;
     private javax.swing.JLabel titreFichierLabel;
     private javax.swing.JMenuBar topMenuBar;

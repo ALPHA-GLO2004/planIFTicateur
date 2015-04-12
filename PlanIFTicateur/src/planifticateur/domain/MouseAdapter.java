@@ -175,7 +175,7 @@ public class MouseAdapter {
                                + "\n" + "Duree:\t" + activiteList.get(i).getDuree() + "h";
                 
                 if (activiteList.get(i).getJourChoisi() != 0){
-                    toolTipText += "\n----------L'activité est placée----------"
+                    toolTipText += "\n----------L'activité est placée!----------"
                                    + "\n" + "Jour choisi:\t" + activiteList.get(i).getJourChoisi()
                                    + "\n" + "Débute à:\t" + activiteList.get(i).getHeureDebutChoisi() + "h";
                 }
