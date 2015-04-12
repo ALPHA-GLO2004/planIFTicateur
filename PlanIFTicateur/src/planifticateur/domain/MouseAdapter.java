@@ -161,22 +161,24 @@ public class MouseAdapter {
         int width = dimension.width *3/4;
         int caseJourWidth = width / 16;
         int activiteHeight = dimension.height /45;
-        String toolTipText = "";
+        String toolTipText = "\t\t---Info activités---";
         
         for (int i = 0; i < activiteList.size(); i++){
             if (p.x > activiteList.get(i).getPoint().x && p.x < (activiteList.get(i).getPoint().x + (int)(activiteList.get(i).getDuree() * ((width - (caseJourWidth))/15)))
                     && p.y > activiteList.get(i).getPoint().y && p.y < (activiteList.get(i).getPoint().y + activiteHeight)){
-                toolTipText =  "\tCode: " + activiteList.get(i).getCode()
-                               + "\n" + "Section: " + activiteList.get(i).getSection()
-                               + "\n" + "Description: " + activiteList.get(i).getNomActivite()
-                               + "\n" + "Professeur: " + activiteList.get(i).getProfesseur();
-/*                                                                   + "\n" + "\tType:\t" + activiteList.get(i).getType()
-                                                                   + "\n" + "\tDuree:\t" + activiteList.get(i).getDuree() + "h";
+                toolTipText =  "\t\t---Info activités---"
+                               + "\nCode:\t" + activiteList.get(i).getCode()
+                               + "\n" + "Section:\t" + activiteList.get(i).getSection()
+                               + "\n" + "Description:\t" + activiteList.get(i).getNomActivite()
+                               + "\n" + "Professeur:\t" + activiteList.get(i).getProfesseur()
+                               + "\n" + "Type:\t" + activiteList.get(i).getType()
+                               + "\n" + "Duree:\t" + activiteList.get(i).getDuree() + "h";
                 
                 if (activiteList.get(i).getJourChoisi() != 0){
-                    toolTipText += "\n" + "\tJour choisi:\t" + activiteList.get(i).getJourChoisi()
-                                   + "\n" + "\tHeure choisie:\t" + activiteList.get(i).getHeureDebutChoisi() + "h";
-                }*/
+                    toolTipText += "\n----------L'activité est placée----------"
+                                   + "\n" + "Jour choisi:\t" + activiteList.get(i).getJourChoisi()
+                                   + "\n" + "Débute à:\t" + activiteList.get(i).getHeureDebutChoisi() + "h";
+                }
             }
         }
         return toolTipText;
