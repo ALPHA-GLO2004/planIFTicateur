@@ -172,12 +172,12 @@ public class MouseAdapter {
                                + "\n" + "Description:\t" + activiteList.get(i).getNomActivite()
                                + "\n" + "Professeur:\t" + activiteList.get(i).getProfesseur()
                                + "\n" + "Type:\t" + activiteList.get(i).getType()
-                               + "\n" + "Duree:\t" + activiteList.get(i).getDuree() + "h";
+                               + "\n" + "Duree:\t" + activiteList.get(i).conversionHeure(activiteList.get(i).getDuree());
                 
                 if (activiteList.get(i).getJourChoisi() != 0){
-                    toolTipText += "\n----------L'activité est placée!----------"
-                                   + "\n" + "Jour choisi:\t" + activiteList.get(i).getJourChoisi()
-                                   + "\n" + "Débute à:\t" + activiteList.get(i).getHeureDebutChoisi() + "h";
+                    toolTipText += "\n\n----------L'activité est placée!----------"
+                                   + "\n" + "Jour choisi:\t" + activiteList.get(i).conversionJour(activiteList.get(i).getJourChoisi())
+                                   + "\n" + "Débute à:\t" + activiteList.get(i).conversionHeure(activiteList.get(i).getHeureDebutChoisi());
                 }
             }
         }

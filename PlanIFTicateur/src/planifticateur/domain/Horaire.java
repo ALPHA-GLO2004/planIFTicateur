@@ -265,7 +265,17 @@ public class Horaire {
     }
     
     public String getSession(){
-        return this.session;
+        String periode = "";
+        if (this.session.equals("A")){
+            periode = "Automne";
+        }
+        if (this.session.equals("E")){
+            periode = "Été";
+        }
+        if (this.session.equals("H")){
+            periode = "Hiver";
+        }
+        return periode;
     }
     
     public boolean getModeValidation(){
@@ -446,7 +456,7 @@ public class Horaire {
          }
         return reponse;
     }
-
+    
     public int verificationListOfActivite(Activite activite){
         for (Activite a: this.getListeActiviteAPlacer()){
             if (a.equals(activite)){

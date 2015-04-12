@@ -108,8 +108,48 @@ public class Activite {
         // Dans ce cas-ci, je crois que l'on pourrait changer la couleur de
         // l'activite si elle est en conflit... couleur = Color.RED par exemple.
     }
-
-        public void setValuesFrom(Activite src)
+    
+    public String conversionJour(int jour){
+        if (jour == 1){
+            return "lundi";
+        }
+        if (jour == 2){
+            return "mardi";
+        }
+        if (jour == 3){
+            return "mercredi";
+        }
+        if (jour == 4){
+            return "jeudi";
+        }
+        if (jour == 5){
+            return "verdredi";
+        }
+        else{
+            return "";
+        }
+    }
+    
+    public String conversionHeure(float heure){
+        String heureChaine = Float.toString(heure);
+        String heureConverti = "";
+        
+        if (heureChaine.length() == 3){
+            heureConverti = heureChaine.substring(0, 1) + "h";
+            if (heureChaine.substring(2).equals("5")){
+                heureConverti += "30";
+            }
+        }
+        if (heureChaine.length() == 4){
+            heureConverti = heureChaine.substring(0, 2) + "h";
+            if (heureChaine.substring(3).equals("5")){
+                heureConverti += "30";
+            }
+        }
+        return heureConverti;
+    }
+    
+    public void setValuesFrom(Activite src)
     {
         code =  src.code;
         section=  src.section; 
