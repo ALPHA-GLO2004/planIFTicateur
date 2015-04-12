@@ -486,6 +486,8 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
         //if (!horaireController.activiteResteSurPlace(evt.getPoint().x, evt.getPoint().y) && evt.getClickCount() == 2){
+        
+        //auto-scroll du scrollBar
         if (evt.getPoint().y >= this.initialDimension.height*2/3){
             drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
             scrolly += 15;
@@ -494,9 +496,10 @@ public class MainWindow extends javax.swing.JFrame {
             drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
             scrolly -= 15;
         }
-
-        if (!horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y).equals(new Point(0,0))){
-            horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y));
+        
+        //Gestion du move d'une activité
+        if (!horaireController.verificationDrop(evt.getPoint().x /*- delta.x*/,evt.getPoint().y /*- delta.y*/).equals(new Point(0,0))){
+            horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x /*- delta.x*/, evt.getPoint().y /*- delta.y*/));
         }
         else{
             if (evt.getPoint().x > this.initialDimension.width*3/4){
@@ -513,7 +516,7 @@ public class MainWindow extends javax.swing.JFrame {
         if (evt.getPoint() != this.initialActivitePoint){
         if (horaireController.existeSelection()){
         if (!horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y).equals(new Point(0,0))){
-            horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y));
+            horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x /*- delta.x*/,evt.getPoint().y /*- delta.y*/));
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
             horaireController.switchFromMoveToListDp();
@@ -571,6 +574,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.verificationSelection(evt.getPoint().x,evt.getPoint().y); 
         if (horaireController.existeSelection()){
             this.initialActivitePoint = horaireController.getActiviteSelected().getPoint();
+            delta = horaireController.deltaMaker(evt.getPoint());
         }
         this.activiteList = horaireController.verificationListOfActivite(horaireController.getActiviteSelected());
         horaireController.switchFromListToMove(horaireController.getActiviteSelected());

@@ -34,6 +34,10 @@ public class MouseAdapter {
                 for (int j = 0; j <= 7; j++){
                     for (int k = 0; k <= 29; k++){
                         jumpX = caseJourWidth + k*saut;
+                        if (p.x <= caseJourWidth){
+                            jumpX = 0;
+                            jumpY = 0;
+                        }
                         if (p.x >= jumpX && p.x < (jumpX + saut)){
                             if (p.y >= 0 && p.y < caseHeureHeight){
                                 jumpX = 0;
@@ -191,6 +195,11 @@ public class MouseAdapter {
         else{
             this.position = "liste";
         }
+    }
+    
+    public Point deltaMaker(Point p, Activite a){
+        Point delta = new Point(p.x - a.getPoint().x, p.y - a.getPoint().y);
+        return delta;
     }
     
     public boolean activiteResteSurPlace(Point p, Activite a){
