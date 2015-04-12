@@ -58,7 +58,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         titreFichierLabel = new javax.swing.JLabel();
-        validationAutoCheckBox = new javax.swing.JCheckBox();
         drawingPanelContainer = new javax.swing.JScrollPane();
         drawingPanel = new planifticateur.gui.DrawingPanel(this);
         logMsgTextArea = new javax.swing.JTextArea();
@@ -66,8 +65,7 @@ public class MainWindow extends javax.swing.JFrame {
         planificationAutomatiqueButton = new javax.swing.JButton();
         statistiquesButton = new javax.swing.JButton();
         noteButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        activiteTextArea = new javax.swing.JTextArea();
+        validationAutoCheckBox = new javax.swing.JCheckBox();
         infoActiviteTextArea = new javax.swing.JTextArea();
         infoLabel = new javax.swing.JLabel();
         logLabel = new javax.swing.JLabel();
@@ -100,18 +98,6 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         mainPanel.add(titreFichierLabel, gridBagConstraints);
         titreFichierLabel.getAccessibleContext().setAccessibleName("nomFichier");
-
-        validationAutoCheckBox.setText("Validation automatique");
-        validationAutoCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                validationAutoCheckBoxActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        mainPanel.add(validationAutoCheckBox, gridBagConstraints);
 
         drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         drawingPanelContainer.setPreferredSize(new Dimension(this.mainPanel.getWidth(), this.mainPanel.getHeight()*4/6));
@@ -185,7 +171,7 @@ public class MainWindow extends javax.swing.JFrame {
         planificationAutomatiqueButton.setText("Planification automatique");
         planificationAutomatiqueButton.setMaximumSize(new java.awt.Dimension(160, 23));
         planificationAutomatiqueButton.setMinimumSize(new java.awt.Dimension(100, 10));
-        planificationAutomatiqueButton.setPreferredSize(new java.awt.Dimension(20, 23));
+        planificationAutomatiqueButton.setPreferredSize(new java.awt.Dimension(20, 60));
         planificationAutomatiqueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 planificationAutomatiqueButtonActionPerformed(evt);
@@ -203,7 +189,7 @@ public class MainWindow extends javax.swing.JFrame {
         statistiquesButton.setText("Statistiques");
         statistiquesButton.setMaximumSize(new java.awt.Dimension(189, 23));
         statistiquesButton.setMinimumSize(new java.awt.Dimension(100, 10));
-        statistiquesButton.setPreferredSize(new java.awt.Dimension(80, 23));
+        statistiquesButton.setPreferredSize(new java.awt.Dimension(80, 60));
         statistiquesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statistiquesButtonActionPerformed(evt);
@@ -220,7 +206,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         noteButton.setText("Notes");
         noteButton.setMaximumSize(new java.awt.Dimension(161, 23));
-        noteButton.setPreferredSize(new java.awt.Dimension(80, 23));
+        noteButton.setPreferredSize(new java.awt.Dimension(80, 60));
         noteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noteButtonActionPerformed(evt);
@@ -235,13 +221,13 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
         buttonPanel.add(noteButton, gridBagConstraints);
 
-        activiteTextArea.setEditable(false);
-        activiteTextArea.setColumns(20);
-        activiteTextArea.setRows(5);
-        activiteTextArea.setPreferredSize(new java.awt.Dimension(80, 94));
-        jScrollPane1.setViewportView(activiteTextArea);
-
-        buttonPanel.add(jScrollPane1, new java.awt.GridBagConstraints());
+        validationAutoCheckBox.setText("Validation automatique");
+        validationAutoCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validationAutoCheckBoxActionPerformed(evt);
+            }
+        });
+        buttonPanel.add(validationAutoCheckBox, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -399,7 +385,7 @@ public class MainWindow extends javax.swing.JFrame {
         updateLogMessage(evt);
         if(horaireEstCharge){
            // this.logMsgTextArea.append(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
-            activiteTextArea.setText(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
+            infoActiviteTextArea.setText(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
         }
     }//GEN-LAST:event_drawingPanelMouseMoved
 
@@ -617,13 +603,11 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_menuFileSaveAsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea activiteTextArea;
     private javax.swing.JPanel buttonPanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
     private javax.swing.JScrollPane drawingPanelContainer;
     private javax.swing.JTextArea infoActiviteTextArea;
     private javax.swing.JLabel infoLabel;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logLabel;
     private javax.swing.JTextArea logMsgTextArea;
     private javax.swing.JPanel mainPanel;
