@@ -64,18 +64,17 @@ public class MainWindow extends javax.swing.JFrame {
         titreFichierLabel = new javax.swing.JLabel();
         drawingPanelContainer = new javax.swing.JScrollPane();
         drawingPanel = new planifticateur.gui.DrawingPanel(this);
-        logMsgTextArea = new javax.swing.JTextArea();
         buttonPanel = new javax.swing.JPanel();
         planificationAutomatiqueButton = new javax.swing.JButton();
         statistiquesButton = new javax.swing.JButton();
         Icon noteIcon = new ImageIcon("icon_note.png");
         noteButton = new javax.swing.JButton(noteIcon);
         validationAutoCheckBox = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ouvrirFichierButton = new javax.swing.JButton();
+        nouveauFichierButton = new javax.swing.JButton();
+        logPanel = new javax.swing.JPanel();
+        logMsgTextArea = new javax.swing.JTextArea();
         infoActiviteTextArea = new javax.swing.JTextArea();
-        infoLabel = new javax.swing.JLabel();
-        logLabel = new javax.swing.JLabel();
         topMenuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuFileOpen = new javax.swing.JMenuItem();
@@ -137,11 +136,11 @@ public class MainWindow extends javax.swing.JFrame {
         drawingPanel.setLayout(drawingPanelLayout);
         drawingPanelLayout.setHorizontalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1363, Short.MAX_VALUE)
+            .addGap(0, 1504, Short.MAX_VALUE)
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1021, Short.MAX_VALUE)
+            .addGap(0, 978, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -156,23 +155,6 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weighty = 20.0;
         mainPanel.add(drawingPanelContainer, gridBagConstraints);
-
-        logMsgTextArea.setEditable(false);
-        logMsgTextArea.setColumns(20);
-        logMsgTextArea.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        logMsgTextArea.setRows(5);
-        logMsgTextArea.setText("Bienvenue sur PlanIFTicateur, le gestionnaire d'horaire de session!");
-        logMsgTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        logMsgTextArea.setMinimumSize(new java.awt.Dimension(258, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
-        mainPanel.add(logMsgTextArea, gridBagConstraints);
 
         buttonPanel.setPreferredSize(new java.awt.Dimension(426, 60));
         buttonPanel.setLayout(new java.awt.GridBagLayout());
@@ -243,24 +225,29 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         buttonPanel.add(validationAutoCheckBox, gridBagConstraints);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_openfile.png"))); // NOI18N
-        jButton1.setToolTipText("Ouvrir horaire");
-        jButton1.setPreferredSize(new java.awt.Dimension(50, 50));
+        ouvrirFichierButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_openfile.png"))); // NOI18N
+        ouvrirFichierButton.setToolTipText("Ouvrir horaire");
+        ouvrirFichierButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        ouvrirFichierButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ouvrirFichierButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
-        buttonPanel.add(jButton1, gridBagConstraints);
+        buttonPanel.add(ouvrirFichierButton, gridBagConstraints);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_newfile.png"))); // NOI18N
-        jButton2.setToolTipText("Nouvel horaire");
-        jButton2.setPreferredSize(new java.awt.Dimension(50, 50));
+        nouveauFichierButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_newfile.png"))); // NOI18N
+        nouveauFichierButton.setToolTipText("Nouvel horaire");
+        nouveauFichierButton.setPreferredSize(new java.awt.Dimension(50, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 5);
-        buttonPanel.add(jButton2, gridBagConstraints);
+        buttonPanel.add(nouveauFichierButton, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -270,33 +257,47 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.ipady = 5;
         mainPanel.add(buttonPanel, gridBagConstraints);
 
-        infoActiviteTextArea.setColumns(20);
+        logMsgTextArea.setEditable(false);
+        logMsgTextArea.setColumns(20);
+        logMsgTextArea.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        logMsgTextArea.setRows(5);
+        logMsgTextArea.setText("Bienvenue sur PlanIFTicateur, le gestionnaire d'horaire de session!");
+        logMsgTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        logMsgTextArea.setMinimumSize(new java.awt.Dimension(258, 25));
+
+        infoActiviteTextArea.setEditable(false);
+        infoActiviteTextArea.setColumns(1);
         infoActiviteTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        infoActiviteTextArea.setRows(5);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
-        mainPanel.add(infoActiviteTextArea, gridBagConstraints);
+        infoActiviteTextArea.setRows(8);
+        infoActiviteTextArea.setPreferredSize(new Dimension(this.initialDimension.width*2/3, this.initialDimension.height/4));
+        infoActiviteTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
-        infoLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        infoLabel.setText("Informations activité");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipady = 10;
-        mainPanel.add(infoLabel, gridBagConstraints);
+        javax.swing.GroupLayout logPanelLayout = new javax.swing.GroupLayout(logPanel);
+        logPanel.setLayout(logPanelLayout);
+        logPanelLayout.setHorizontalGroup(
+            logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logPanelLayout.createSequentialGroup()
+                .addComponent(logMsgTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
+        );
+        logPanelLayout.setVerticalGroup(
+            logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logMsgTextArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
-        logLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        logLabel.setText("Événements");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        mainPanel.add(logLabel, gridBagConstraints);
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        mainPanel.add(logPanel, gridBagConstraints);
 
         menuFile.setText("Fichier");
 
@@ -373,7 +374,7 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1374, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1514, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -635,16 +636,66 @@ public class MainWindow extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_menuFileSaveAsActionPerformed
 
+    private void ouvrirFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ouvrirFichierButtonActionPerformed
+        //Identique à ouvrirFichier dans onglet fichier
+        JFileChooser selecteurFichier = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
+        selecteurFichier.setFileFilter(filter);
+        selecteurFichier.showOpenDialog(MainWindow.this);
+        selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+
+        //Choix session
+        JOptionPane fenetreJOption = new JOptionPane();
+        fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
+        while (sessionChooser.getSession() == null){
+            fenetreJOption.showMessageDialog(this, sessionChooser, "Choix de session", JOptionPane.QUESTION_MESSAGE);
+        }
+        //On efface ce qu'il y a en place
+        //horaireController.resetHoraire();
+        // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
+        //Larman impose un type primitif vers le controler
+         filePath = selecteurFichier.getSelectedFile().getPath();
+        if (!(filePath.substring(filePath.length() - 3).toLowerCase().equals("cou"))){
+            logMsgTextArea.append(": " + filePath + "\n n'est pas un fichier valide.\n");
+            drawingPanel.setVisible(false);
+        }
+        else{
+            horaireController.chargerHoraire(filePath, sessionChooser.getSession());
+            validationAutoCheckBox.setSelected (false);
+            horaireController.setModeValidationAutoOff();
+            titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom() + " (" + horaireController.getSession() + ")");
+            drawingPanel.setVisible(true);
+            horaireEstCharge=true;
+            horaireController.initPointActivite(this.initialDimension);
+            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+            statFenetre.initialize(horaireController);
+
+            horaireController.switchSelection();
+            horaireController.jourHeureToActivite();
+            horaireController.switchAPlacerToDejaPlacee();
+            horaireController.switchDejaPlaceeToAPlacer();
+            horaireController.initPointActivite(this.initialDimension);
+            statFenetre.setStats();
+            
+            messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }
+                
+            drawingPanel.repaint();
+        }
+    }//GEN-LAST:event_ouvrirFichierButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
     private javax.swing.JScrollPane drawingPanelContainer;
     private javax.swing.JTextArea infoActiviteTextArea;
-    private javax.swing.JLabel infoLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel logLabel;
     private javax.swing.JTextArea logMsgTextArea;
+    private javax.swing.JPanel logPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu menuExport;
     private javax.swing.JMenuItem menuExportCopy;
@@ -659,6 +710,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuHelpAbout;
     private javax.swing.JMenuItem menuHelpWindow;
     private javax.swing.JButton noteButton;
+    private javax.swing.JButton nouveauFichierButton;
+    private javax.swing.JButton ouvrirFichierButton;
     private javax.swing.JButton planificationAutomatiqueButton;
     private javax.swing.JButton statistiquesButton;
     private javax.swing.JLabel titreFichierLabel;

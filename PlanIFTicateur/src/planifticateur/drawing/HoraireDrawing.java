@@ -138,7 +138,7 @@ public class HoraireDrawing {
             //Dessin du cadre pour la liste des activités à placer
             int spaceHeightRight = caseHeureHeight /3;
             g2.setColor(Color.BLACK);
-            g2.setStroke(new BasicStroke(3));
+            g2.setStroke(new BasicStroke(1));
             //horizontales
             g2.drawLine(width+saut, spaceHeightRight, width+3*saut, spaceHeightRight);
             g2.drawString("Activités à placer (" + horaireController.getListeActiviteAPlacer().size() + ")", width+14*saut/4, spaceHeightRight*2);
