@@ -26,6 +26,7 @@ public class MainWindow extends javax.swing.JFrame {
     public Note fenetreNote;
     private Modifications fenetreModification;
     public Dimension initialDimension;
+    public Point validActivitePoint;
     public Point initialActivitePoint;
     public Point delta;
     String filePath;
@@ -506,6 +507,7 @@ public class MainWindow extends javax.swing.JFrame {
         if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
             p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
             horaireController.moveActivite(p.x, p.y);
+            this.validActivitePoint = new Point(p);
         }
         else{
             if (evt.getPoint().x > this.initialDimension.width*3/4){
@@ -543,22 +545,22 @@ public class MainWindow extends javax.swing.JFrame {
                 horaireController.switchFromMoveToListAp();
                 horaireController.switchAPlacerToDejaPlacee();
                 horaireController.switchDejaPlaceeToAPlacer();
-                horaireController.classerListeAPlacer();
                 horaireController.initPointActivite(this.initialDimension);
             }
             //Si la position n'est pas valide
             else{
-                horaireController.moveActivite(this.initialActivitePoint.x, this.initialActivitePoint.y);
                 if (this.activiteList == 0){
                     horaireController.switchFromMoveToListAp();
                 }
                 else{
                     horaireController.switchFromMoveToListDp();
                 }
+                horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
                 horaireController.switchSelection();
                 horaireController.initPointActivite(this.initialDimension);
             }
         }
+            horaireController.classerListeAPlacer();
             statFenetre.setStats();
             
             //ajustement de la couleur de la bordure.
@@ -584,7 +586,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.verificationSelection(evt.getPoint().x,evt.getPoint().y); 
         if (horaireController.existeSelection()){
             this.initialActivitePoint = horaireController.getActiviteSelected().getPoint();
-            delta = horaireController.deltaMaker(evt.getPoint());
+            delta = horaireController.deltaMaker(evt.getPoint().x, evt.getPoint().y);
         }
         this.activiteList = horaireController.verificationListOfActivite(horaireController.getActiviteSelected());
         horaireController.switchFromListToMove(horaireController.getActiviteSelected());

@@ -76,11 +76,13 @@ public class HoraireController {
         this.mouseAdapter.verificationSelection(p, this.getListeActiviteComplete());
     }
     
-    public void verificationPositionHoraire(Point p){
+    public void verificationPositionHoraire(int x, int y){
+        Point p = new Point(x,y);
         this.mouseAdapter.verificationPositionHoraire(p);
     }
     
-    public Point deltaMaker(Point p){
+    public Point deltaMaker(int x, int y){
+        Point p = new Point(x,y);
         return this.mouseAdapter.deltaMaker(p, this.getActiviteSelected());
     }
     
