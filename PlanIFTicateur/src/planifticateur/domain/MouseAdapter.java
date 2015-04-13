@@ -86,7 +86,7 @@ public class MouseAdapter {
                     typeSelected = a.getType();
                 }
             }
-            System.out.println(pointActiviteX);
+            
             for (Activite a: laDP){
                 if (pointActiviteY == a.getPoint().y 
                     && pointActiviteX + (int)(dureeActiviteSelected*2*saut) > a.getPoint().x

@@ -198,6 +198,86 @@ public class HoraireController {
         }
     }
     
+    public String getCode(){
+        Activite a = this.getActiviteSelected();
+        return a.getCode();
+    }
+    
+    public String getSection(){
+        Activite a = this.getActiviteSelected();
+        return a.getSection();
+    }
+    
+    public String getTitre(){
+        Activite a = this.getActiviteSelected();
+        return a.getNomActivite();
+    }
+    
+    public String getProfesseur(){
+        Activite a = this.getActiviteSelected();
+        return a.getProfesseur();
+    }
+    
+    public String getType(){
+        Activite a = this.getActiviteSelected();
+        return a.getType();
+    }
+    
+    public String getDuree(){
+        Activite a = this.getActiviteSelected();
+        return Float.toString(a.getDuree());
+    }
+    public String getHeureDebutMin(){
+        Activite a = this.getActiviteSelected();
+        return Float.toString(a.getHeureDebutMin());
+    }
+    
+    public String getHeureFinMax(){
+        Activite a = this.getActiviteSelected();
+        return Float.toString(a.getHeureFinMax());
+    }
+    
+    //Set des modifications
+    public void modificationCode(String code){
+        Activite a = this.getActiviteSelected();
+        a.setCode(code);
+    }
+    
+    public void modificationSection(String section){
+        Activite a = this.getActiviteSelected();
+        a.setSection(section);
+    }
+    
+    public void modificationTitre(String titre){
+        Activite a = this.getActiviteSelected();
+        a.setTitre(titre);
+    }
+    
+    public void modificationProfesseur(String initiales){
+        Activite a = this.getActiviteSelected();
+        a.setProfesseur(initiales);
+    }
+    
+    public void modificationType(String type){
+        Activite a = this.getActiviteSelected();
+        a.setType(type);
+    }
+    
+    public void modificationDuree(String duree){
+        Activite a = this.getActiviteSelected();
+        a.setDuree(Float.valueOf(duree));
+    }
+    
+    public void modificationHeureDebutMin(String heure){
+        Activite a = this.getActiviteSelected();
+        a.setHeureDebutMin(Float.valueOf(heure));
+    }
+    
+    public void modificationHeureFinMax(String heure){
+        Activite a = this.getActiviteSelected();
+        a.setHeureFinMax(Float.valueOf(heure));
+    }
+    
     public boolean yaTilChevauchement(Activite a1, Activite a2){
         return this.horaire.yaTilChevauchement(a1, a2);
     }

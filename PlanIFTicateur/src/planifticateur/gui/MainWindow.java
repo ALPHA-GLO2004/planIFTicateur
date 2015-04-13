@@ -45,7 +45,6 @@ public class MainWindow extends javax.swing.JFrame {
         horaireEstCharge=false;
         horaireController = new HoraireController();
         statFenetre = new Statistiques();
-        fenetreModification = new Modifications();
         sessionChooser = new SessionChooser();
         exporter= new ImageExporter ();
         fenetreNote = new Note();
@@ -560,7 +559,7 @@ public class MainWindow extends javax.swing.JFrame {
                 else{
                     horaireController.switchFromMoveToListDp();
                 }
-                horaireController.moveActivite(this.validActivitePoint.x - delta.x, this.validActivitePoint.y - delta.y);
+                horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
                 horaireController.switchSelection();
                 horaireController.classerListeAPlacer();
                 horaireController.initPointActivite(this.initialDimension);
@@ -684,8 +683,15 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_menuFileQuitActionPerformed
 
     private void drawingPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseClicked
-        if (evt.getClickCount() == 2){
-            fenetreModification.setVisible(true);
+        if (horaireEstCharge){
+            if (evt.getClickCount() == 2){
+                horaireController.verificationSelection(evt.getPoint().x, evt.getPoint().y);
+                if (horaireController.existeSelection()){
+                    fenetreModification = new Modifications(this.horaireController);
+                    fenetreModification.setVisible(true);
+                    drawingPanel.repaint();
+                }
+            }
         }
     }//GEN-LAST:event_drawingPanelMouseClicked
 

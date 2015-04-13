@@ -235,6 +235,38 @@ public class Activite implements Comparable<Activite>{
         return code;
     }
     
+    public void setCode(String code){
+        this.code = code;
+    }
+    
+    public void setSection(String section){
+        this.section = section;
+    }
+    
+    public void setTitre(String titre){
+        this.description = titre;
+    }
+    
+    public void setProfesseur(String initiales){
+        this.professeur.setInitiales(initiales);
+    }
+    
+    public void setType(String type){
+        this.type = type;
+    }
+    
+    public void setDuree(float duree){
+        this.duree = duree;
+    }
+    
+    public void setHeureDebutMin(float heure){
+        this.heureDebutMin = heure;
+    }
+    
+    public void setHeureFinMax(float heure){
+        this.heureFinMax = heure;
+    }
+    
     public void setJourChoisi(int jour){
         this.jourChoisi = jour;
     }

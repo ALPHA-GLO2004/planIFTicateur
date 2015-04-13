@@ -199,6 +199,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Accepter"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="accepterButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="annulerButton">
           <Properties>
@@ -210,42 +213,58 @@
         </Component>
         <Component class="javax.swing.JTextField" name="codeTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="this.horaireController.getCode()" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="sectionTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="horaireController.getSection()" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="descriptionTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="horaireController.getTitre()" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="professeurTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="horaireController.getProfesseur()" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="typeTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="horaireController.getType()" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="dureeTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="horaireController.getDuree()" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="heureDebutMinTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="horaireController.getHeureDebutMin()" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="heureFinMaxTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="horaireController.getHeureFinMax()" type="code"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

@@ -15,4 +15,8 @@ public class Professeur {
     public String getInitiales(){
         return this.initiales;
     }
+    
+    public void setInitiales(String initiales){
+        this.initiales = initiales;
+    }
 }
