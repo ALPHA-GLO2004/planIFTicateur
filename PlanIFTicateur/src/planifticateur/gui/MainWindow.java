@@ -489,7 +489,7 @@ public class MainWindow extends javax.swing.JFrame {
         Point p = new Point(0, 0);
         
         //auto-scroll du scrollBar
-        if (evt.getPoint().y >= this.initialDimension.height*2/3){
+        if (evt.getPoint().y >= this.initialDimension.height/2){
             drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
             if (drawingPanelContainer.getVerticalScrollBar().getValue() <= 381){
                 scrolly += 15;
@@ -543,6 +543,7 @@ public class MainWindow extends javax.swing.JFrame {
                 horaireController.switchFromMoveToListAp();
                 horaireController.switchAPlacerToDejaPlacee();
                 horaireController.switchDejaPlaceeToAPlacer();
+                horaireController.classerListeAPlacer();
                 horaireController.initPointActivite(this.initialDimension);
             }
             //Si la position n'est pas valide

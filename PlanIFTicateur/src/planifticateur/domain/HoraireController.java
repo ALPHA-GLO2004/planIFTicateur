@@ -3,6 +3,7 @@ package planifticateur.domain;
 import java.awt.*;
 import java.util.Vector;
 import java.util.List;
+import java.util.Collections;
 import java.io.File;
 
 //Classe basée sur le concept de contrôleur de Larman
@@ -26,7 +27,7 @@ public class HoraireController {
     if (filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU")){
             this.horaire = new Horaire(filePath, sessionChoisi);
             session = sessionChoisi;
-                               
+            this.classerListeAPlacer();
     }
     }
     
@@ -218,7 +219,13 @@ public class HoraireController {
     public List<Activite> getListeActiviteAPlacer(){
         return this.horaire.getListeActiviteAPlacer();
     }
-
+    
+    public List<Activite> classerListeAPlacer(){
+        List aap = this.horaire.getListeActiviteAPlacer();
+        Collections.sort(aap);
+        return aap;
+    }
+    
     public List<GrilleCheminement> getListeActiviteGrilleCh(){
         return this.horaire.getListeActiviteGrilleCh();
     }

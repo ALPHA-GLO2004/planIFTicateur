@@ -15,7 +15,7 @@ import java.awt.*;
 import java.lang.*;
 import java.util.List;
 
-public class Activite {
+public class Activite implements Comparable<Activite>{
     //J'ai tout mis en string étant donné que ce n'est pas tant pertinent d'avoir un paquet de type différent pour le moment.
     private String code;
     private String section; // Ajout de ma part
@@ -32,6 +32,19 @@ public class Activite {
     private Point point; //remplace rectangle
     private boolean selectStatus = false;
     
+    public int compareTo(Activite a){
+        //Méthode pour classer la liste d'activité à placer selon le code de l'activité
+        int i = getCode().substring(0, 3).compareTo(a.getCode().substring(0, 3));
+        
+        if (i == 0){
+            int codeA = Integer.parseInt(getCode().substring(4, 8));
+            int codeB = Integer.parseInt(a.getCode().substring(4, 8));
+            return codeA > codeB ? 1 : codeA < codeB ? -1 : 0;
+        }
+        else{
+            return i;
+        }
+    }
     
     public Activite(){};
     
