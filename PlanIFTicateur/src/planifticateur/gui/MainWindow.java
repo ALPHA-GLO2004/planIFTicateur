@@ -486,24 +486,30 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
         //if (!horaireController.activiteResteSurPlace(evt.getPoint().x, evt.getPoint().y) && evt.getClickCount() == 2){
+        Point p = new Point(0, 0);
         
         //auto-scroll du scrollBar
         if (evt.getPoint().y >= this.initialDimension.height*2/3){
             drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
-            scrolly += 15;
+            if (drawingPanelContainer.getVerticalScrollBar().getValue() <= 381){
+                scrolly += 15;
+            }
         }
         if (evt.getPoint().y < this.initialDimension.height/2){
             drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
-            scrolly -= 15;
+            if (drawingPanelContainer.getVerticalScrollBar().getValue() >= 0){
+                scrolly -= 15;
+            }
         }
         
         //Gestion du move d'une activité
-        if (!horaireController.verificationDrop(evt.getPoint().x /*- delta.x*/,evt.getPoint().y /*- delta.y*/).equals(new Point(0,0))){
-            horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x /*- delta.x*/, evt.getPoint().y /*- delta.y*/));
+        if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
+            p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
+            horaireController.moveActivite(p.x, p.y);
         }
         else{
             if (evt.getPoint().x > this.initialDimension.width*3/4){
-                horaireController.moveActivite(evt.getPoint());
+                horaireController.moveActivite(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
             }
         }
         //}
@@ -513,10 +519,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         //Si la position est dans la grille horaire
+        Point p = new Point(0, 0);
         if (evt.getPoint() != this.initialActivitePoint){
         if (horaireController.existeSelection()){
         if (!horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y).equals(new Point(0,0))){
-            horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x /*- delta.x*/,evt.getPoint().y /*- delta.y*/));
+            p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
+            horaireController.moveActivite(p.x, p.y);
             horaireController.switchSelection();
             horaireController.jourHeureToActivite();
             horaireController.switchFromMoveToListDp();
@@ -528,7 +536,8 @@ public class MainWindow extends javax.swing.JFrame {
         else{
             //Si la position est dans la liste
             if (evt.getPoint().x > this.initialDimension.width*3/4){
-                horaireController.moveActivite(horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y));
+                p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
+                horaireController.moveActivite(p.x, p.y);
                 horaireController.switchSelection();
                 horaireController.jourHeureToActivite();
                 horaireController.switchFromMoveToListAp();
@@ -538,7 +547,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
             //Si la position n'est pas valide
             else{
-                horaireController.moveActivite(this.initialActivitePoint);
+                horaireController.moveActivite(this.initialActivitePoint.x, this.initialActivitePoint.y);
                 if (this.activiteList == 0){
                     horaireController.switchFromMoveToListAp();
                 }

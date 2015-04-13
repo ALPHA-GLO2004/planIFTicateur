@@ -33,32 +33,36 @@ public class MouseAdapter {
             for (int i = 0; i <= 4; i++){
                 for (int j = 0; j <= 7; j++){
                     for (int k = 0; k <= 29; k++){
-                        jumpX = caseJourWidth + k*saut;
-                        if (p.x <= caseJourWidth){
-                            jumpX = 0;
-                            jumpY = 0;
+                        if (p.x > caseJourWidth && p.x < dimension.width && p.y > caseHeureHeight && p.y < height){
+                            jumpX = caseJourWidth + k*saut;
+                        
+                            if (p.x >= jumpX && p.x < (jumpX + saut)){
+                                if (p.y >= 0 && p.y < caseHeureHeight){
+                                    jumpX = 0;
+                                }
+                                if (p.y >= caseJourHeight && p.y < caseJourHeight+caseHeureHeight){
+                                    jumpX = 0;
+                                }
+                                if (p.y >= 2*caseJourHeight && p.y < 2*caseJourHeight+caseHeureHeight){
+                                    jumpX = 0;
+                                }
+                                if (p.y >= 3*caseJourHeight && p.y < 3*caseJourHeight+caseHeureHeight){
+                                    jumpX = 0;
+                                }
+                                if (p.y >= 4*caseJourHeight && p.y < 4*caseJourHeight+caseHeureHeight){
+                                    jumpX = 0;
+                                }
+                                else{
+                                    pointActiviteX = jumpX;
+                                }
+                            }
                         }
-                        if (p.x >= jumpX && p.x < (jumpX + saut)){
-                            if (p.y >= 0 && p.y < caseHeureHeight){
-                                jumpX = 0;
-                            }
-                            if (p.y >= caseJourHeight && p.y < caseJourHeight+caseHeureHeight){
-                                jumpX = 0;
-                            }
-                            if (p.y >= 2*caseJourHeight && p.y < 2*caseJourHeight+caseHeureHeight){
-                                jumpX = 0;
-                            }
-                            if (p.y >= 3*caseJourHeight && p.y < 3*caseJourHeight+caseHeureHeight){
-                                jumpX = 0;
-                            }
-                            if (p.y >= 4*caseJourHeight && p.y < 4*caseJourHeight+caseHeureHeight){
-                                jumpX = 0;
-                            }
-                            else{
-                                pointActiviteX = jumpX;
-                            }
+                        else{
+                            pointActiviteX = 0;
+                            pointActiviteY = 0;
                         }
                     }
+                    
                     jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight;
                     if (p.y >= jumpY && p.y < jumpY + caseHeureHeight){
                         pointActiviteY = jumpY;
@@ -66,11 +70,11 @@ public class MouseAdapter {
                 }
             }
             
-            if ((p.x >= 0 && p.x < caseJourWidth)){
+            if (p.x >= width){
                 pointActiviteX = 0;
                 pointActiviteY = 0;
             }
-
+            
             int activiteHeight = dimension.height /45;
             
             for (Activite a: laC){
@@ -84,27 +88,20 @@ public class MouseAdapter {
             }
             
             for (Activite a: laDP){
-                if (pointActiviteX + (int)(dureeActiviteSelected *2*saut) > a.getPoint().x 
-                    && pointActiviteX + (int)(dureeActiviteSelected *2*saut) <= (a.getPoint().x + (int)(a.getDuree()*2*saut))
+                if (pointActiviteX + (int)(dureeActiviteSelected*2*saut) > a.getPoint().x 
+                    && pointActiviteX + (int)(dureeActiviteSelected*2*saut) <= (a.getPoint().x + (int)(a.getDuree()*2*saut))
                     && p.y > a.getPoint().y
                     && p.y < (a.getPoint().y + activiteHeight)){
-                    pointActiviteX = 0;
-                    pointActiviteY = 0;
+                        pointActiviteX = 0;
+                        pointActiviteY = 0;
                 }
                 if (pointActiviteX > a.getPoint().x && pointActiviteX < (a.getPoint().x + (int)(a.getDuree() *2*saut))
                     && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
-                    pointActiviteX = 0;
-                    pointActiviteY = 0;
+                        pointActiviteX = 0;
+                        pointActiviteY = 0;
                 }
             }
-            
-            if (p.x >= width){
-                pointActiviteX = 0;
-                pointActiviteY = 0;
-            }
-            
-              
-            
+
             if (modeValidationAuto){
                 if ((pointActiviteX + (int)(dureeActiviteSelected * ((width - (caseJourWidth))/15))) > (int)(caseJourWidth + (heureFinMax - 8)*2*saut)
                     || pointActiviteX < (int)(caseJourWidth + (heureDebutMin - 8)*2*saut)){

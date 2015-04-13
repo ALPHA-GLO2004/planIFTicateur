@@ -54,7 +54,8 @@ public class HoraireController {
         this.horaire.initPointActiviteDejaPlacee(initialDimension);
     }
     
-    public void moveActivite(Point p){
+    public void moveActivite(int x, int y){
+        Point p = new Point(x,y);
         this.horaire.moveActivite(p);
     }
     
