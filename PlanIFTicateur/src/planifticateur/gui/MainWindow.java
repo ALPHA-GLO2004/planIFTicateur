@@ -562,6 +562,7 @@ public class MainWindow extends javax.swing.JFrame {
                 }
                 horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
                 horaireController.switchSelection();
+                horaireController.classerListeAPlacer();
                 horaireController.initPointActivite(this.initialDimension);
             }
         }
@@ -580,11 +581,9 @@ public class MainWindow extends javax.swing.JFrame {
             }
             
             updateLogMessage(evt);
-            }
-                    
-        drawingPanel.repaint();
-        
+            }        
         }
+        drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseReleased
 
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
