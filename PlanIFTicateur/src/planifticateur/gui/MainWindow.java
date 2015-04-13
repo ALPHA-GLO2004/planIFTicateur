@@ -490,7 +490,7 @@ public class MainWindow extends javax.swing.JFrame {
         Point p = new Point(0, 0);
         
         //auto-scroll du scrollBar
-        if (evt.getPoint().y >= this.initialDimension.height/2){
+        /*if (evt.getPoint().y >= this.initialDimension.height/2){
             drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
             if (drawingPanelContainer.getVerticalScrollBar().getValue() <= 381){
                 scrolly += 15;
@@ -501,7 +501,7 @@ public class MainWindow extends javax.swing.JFrame {
             if (drawingPanelContainer.getVerticalScrollBar().getValue() >= 0){
                 scrolly -= 15;
             }
-        }
+        }*/
         
         //Gestion du move d'une activité
         if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
@@ -510,7 +510,7 @@ public class MainWindow extends javax.swing.JFrame {
             this.validActivitePoint = new Point(p);
         }
         else{
-            if (evt.getPoint().x > this.initialDimension.width*3/4){
+            if (evt.getPoint().x - delta.x > this.initialDimension.width*3/4){
                 horaireController.moveActivite(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
             }
         }
@@ -522,9 +522,11 @@ public class MainWindow extends javax.swing.JFrame {
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         //Si la position est dans la grille horaire
         Point p = new Point(0, 0);
-        if (evt.getPoint() != this.initialActivitePoint){
+        Point point = new Point(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
+        
+        if (point != this.initialActivitePoint){
         if (horaireController.existeSelection()){
-        if (!horaireController.verificationDrop(evt.getPoint().x,evt.getPoint().y).equals(new Point(0,0))){
+        if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
             p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
             horaireController.moveActivite(p.x, p.y);
             horaireController.switchSelection();
@@ -532,12 +534,13 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.switchFromMoveToListDp();
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
+            horaireController.classerListeAPlacer();
             horaireController.initPointActivite(this.initialDimension);         
         }
         //Si la position n'est pas dans la grille ou à un endroit non valide
         else{
             //Si la position est dans la liste
-            if (evt.getPoint().x > this.initialDimension.width*3/4){
+            if (evt.getPoint().x - delta.x > this.initialDimension.width*3/4){
                 p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
                 horaireController.moveActivite(p.x, p.y);
                 horaireController.switchSelection();
@@ -545,10 +548,12 @@ public class MainWindow extends javax.swing.JFrame {
                 horaireController.switchFromMoveToListAp();
                 horaireController.switchAPlacerToDejaPlacee();
                 horaireController.switchDejaPlaceeToAPlacer();
+                horaireController.classerListeAPlacer();
                 horaireController.initPointActivite(this.initialDimension);
             }
             //Si la position n'est pas valide
             else{
+                horaireController.classerListeAPlacer();
                 if (this.activiteList == 0){
                     horaireController.switchFromMoveToListAp();
                 }
@@ -560,7 +565,6 @@ public class MainWindow extends javax.swing.JFrame {
                 horaireController.initPointActivite(this.initialDimension);
             }
         }
-            horaireController.classerListeAPlacer();
             statFenetre.setStats();
             
             //ajustement de la couleur de la bordure.
@@ -579,6 +583,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
                     
         drawingPanel.repaint();
+        
         }
     }//GEN-LAST:event_drawingPanelMouseReleased
 

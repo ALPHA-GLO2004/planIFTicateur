@@ -26,10 +26,22 @@ public class MouseAdapter {
         int caseJourWidth = width / 16;
         int caseHeureHeight = caseJourHeight / 9;
         int saut = (width - caseJourWidth)/ 30;
+        int activiteHeight = dimension.height /45;
         int jumpX;
         int jumpY;
         int pointActiviteX = 0;
         int pointActiviteY = 0;
+        
+            for (Activite a: laC){
+                if (a.isSelected()){
+                    dureeActiviteSelected = a.getDuree();
+                    heureFinMax = a.getHeureFinMax();
+                    heureDebutMin = a.getHeureDebutMin();
+                    codeSelected = a.getCode();
+                    typeSelected = a.getType();
+                }
+            }
+            
             for (int i = 0; i <= 4; i++){
                 for (int j = 0; j <= 7; j++){
                     for (int k = 0; k <= 29; k++){
@@ -75,30 +87,25 @@ public class MouseAdapter {
                 pointActiviteY = 0;
             }
             
-            int activiteHeight = dimension.height /45;
             
-            for (Activite a: laC){
-                if (a.isSelected()){
-                    dureeActiviteSelected = a.getDuree();
-                    heureFinMax = a.getHeureFinMax();
-                    heureDebutMin = a.getHeureDebutMin();
-                    codeSelected = a.getCode();
-                    typeSelected = a.getType();
-                }
-            }
             
             for (Activite a: laDP){
-                if (p.x + (int)(dureeActiviteSelected*2*saut) > a.getPoint().x 
-                    && p.x + (int)(dureeActiviteSelected*2*saut) <= (a.getPoint().x + (int)(a.getDuree()*2*saut))
-                    && p.y > a.getPoint().y
-                    && p.y < (a.getPoint().y + activiteHeight)){
-                        pointActiviteX = 0;
-                        pointActiviteY = 0;
-                }
-                if (p.x > a.getPoint().x && p.x < (a.getPoint().x + (int)(a.getDuree() *2*saut))
-                    && p.y > a.getPoint().y && p.y < (a.getPoint().y + activiteHeight)){
-                        pointActiviteX = 0;
-                        pointActiviteY = 0;
+                if (p.y < a.getPoint().y + activiteHeight){
+                    if (p.y > a.getPoint().y){
+                        if (p.x + (int)(dureeActiviteSelected*2*saut) > a.getPoint().x){ 
+                            if (p.x + (int)(dureeActiviteSelected*2*saut) <= (a.getPoint().x + (int)(a.getDuree()*2*saut))){
+                                pointActiviteX = 0;
+                                pointActiviteY = 0;
+                            }
+                        }
+                        if (p.x < (a.getPoint().x + (int)(a.getDuree() *2*saut))){
+                            if (p.x > a.getPoint().x){
+                                pointActiviteX = 0;
+                                pointActiviteY = 0;
+                            }
+                        }
+                    }
+                    
                 }
             }
 
