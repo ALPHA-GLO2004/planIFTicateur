@@ -560,7 +560,7 @@ public class MainWindow extends javax.swing.JFrame {
                 else{
                     horaireController.switchFromMoveToListDp();
                 }
-                horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
+                horaireController.moveActivite(this.validActivitePoint.x - delta.x, this.validActivitePoint.y - delta.y);
                 horaireController.switchSelection();
                 horaireController.classerListeAPlacer();
                 horaireController.initPointActivite(this.initialDimension);
