@@ -506,7 +506,7 @@ public class Horaire{
          
         try {
 
-                String content = new String ("CodeActivit‚,Section,Titre,PROF,Type,Dur‚e,D‚butMin,FinMax,Jour,Heure \n");
+                String content = new String ("CodeActivite,Section,Titre,PROF,Type,Duree,DebutMin,FinMax,Jour,Heure \n");
                 
                 
                 //activites deja placée
