@@ -312,6 +312,7 @@ public class Horaire {
         Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
         ListePairesDActivites listePaires = new ListePairesDActivites() ;
         ListePairesDActivites listeCoursLab = new ListePairesDActivites() ;
+         ListePairesDActivites listeCoursMemeProf = new ListePairesDActivites() ;
          
         float heure;
         boolean reponse ;
@@ -349,12 +350,15 @@ public class Horaire {
 
                 }
                 
-                //un cours  ne peuvent se donner en meme tps que son lab
+                
                 for(Activite activite2 : activiteDejaPlacee)
                 {
+
+
                     if(! yaTilChevauchement(activite, activite2))continue;
                     
-                    if( activite.getCode().equals(activite2.getCode()) )
+                   //un cours  ne peuvent se donner en meme tps que son lab
+                     if( activite.getCode().equals(activite2.getCode()) )
                      {
               
                          if( ( (activite.getType().toLowerCase().contains("classe")))
@@ -394,6 +398,15 @@ public class Horaire {
      
               
                      }
+                      
+                     //un prof ne peut donner deux cours different en meme tps
+                     else if(activite.getProfesseur().equals(activite2.getProfesseur()))
+                    {
+                        listeCoursMemeProf.addPaire(activite, activite2);
+                        reponse = false;
+                      
+                    }
+                    
                     
                 }
                 
@@ -441,8 +454,8 @@ public class Horaire {
            for(PaireDActivites p : paires)
          {
                 
-            messagesDerreurs.add(p.a1.getCode()+" et "
-                    +p.a2.getCode()+" ne peuvent avoir lieu en meme temps \n" 
+            messagesDerreurs.add( "\" " + p.a1.getCode()+ " \"" +" et "
+                    + "\" " +p.a2.getCode()+ " \"" + " ne peuvent avoir lieu en meme temps \n" 
                     );  
          }
            
@@ -454,6 +467,18 @@ public class Horaire {
                     );  
             
          }
+        
+          paires = listeCoursMemeProf.getListe();
+           for(PaireDActivites p : paires)
+         {
+                
+            messagesDerreurs.add( "\" "+p.a1.getProfesseur() + " \" " + "ne peut donner " 
+                                 + "\" " +p.a1.getCode() + " \" "  + "et " 
+                                 +  "\" " +p.a2.getCode() + " \" "  + "en meme temps \n"
+                                );  
+            
+         }
+           
         return reponse;
     }
     
