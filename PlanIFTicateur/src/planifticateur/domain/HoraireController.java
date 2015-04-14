@@ -29,11 +29,11 @@ public class HoraireController {
     
     public void chargerHoraire(String filePath, String sessionChoisi){
     //peut-être serait plus logique en tant que constructeur
-    if (filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU")){
-            this.horaire = new Horaire(filePath, sessionChoisi);
-            session = sessionChoisi;
-            this.classerListeAPlacer();
-    }
+        if (filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU")){
+                this.horaire = new Horaire(filePath, sessionChoisi);
+                session = sessionChoisi;
+                this.classerListeAPlacer();
+        }
     }
     
     public void addActivite(String[] attributsActivite){

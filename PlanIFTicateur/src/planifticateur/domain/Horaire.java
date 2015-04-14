@@ -31,6 +31,7 @@ public class Horaire{
     private List<String> listeActivite = new ArrayList<String>();
     private List<String> listeGrille = new ArrayList<String>();
     private Vector<Activite> listeActiviteComplete = new Vector<Activite>();
+    private Vector cloneListe;
     private String note = "";
     private boolean modeValidationAuto = false;
     boolean valide;
@@ -157,7 +158,6 @@ public class Horaire{
         }
     }
     
-        
     public void setEtiquetteActivite(int index){
         for (Activite a: this.getListeActiviteComplete()){
             String[] choixEtiquette = {a.getCode(), a.getNomActivite(), a.getType(), a.getProfesseur()};
