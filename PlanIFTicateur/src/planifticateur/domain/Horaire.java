@@ -24,7 +24,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Horaire {
+public class Horaire{
     //Ajout de ma part, ça me semblait essentiel
     String fichierCOU;
     String fichierCHE;
@@ -37,7 +37,7 @@ public class Horaire {
     private Activite activiteSelected;
     private Activite activiteInMove;
     private String session;
-
+    private String separateur;
     //float pctCoursDebutant8h30;
     boolean horairePlein;
     ListeConflit listeConflit;
@@ -45,7 +45,7 @@ public class Horaire {
     ListeActiviteAPlacer listeActiviteAPlacer;
     ListeActiviteDejaPlacee listeActiviteDejaPlacee;
     ListeGrilleCh listeGrilleCh;
-
+    
     public Horaire(String filePath, String sessionChoisi){
         //Constructeur -- Ne fais que prendre le fichier et attribuer chaque élément contenu
         //dans ce fichier au bon endroit. Ensuite fait appel au controller pour créer les activités
@@ -64,7 +64,7 @@ public class Horaire {
         this.lireFichier(filePath);
         //Analyse auto du délimiteur ?
         String analyseur = listeActivite.get(0);
-        String separateur = analyseur.substring(12, 13);
+        separateur = analyseur.substring(12, 13);
         //
         listeActivite.remove(0); //On retire la premiere ligne
         
@@ -514,16 +514,16 @@ public class Horaire {
                 
                 for(Activite activite : liste)
                 {
-                    content+= activite.getCode()+"," ;
-                    content+= activite.getSection()+"," ;
-                    content+= activite.getNomActivite()+"," ;
-                    content+= activite.getProfesseur()+"," ;
-                    content+= activite.getType()+"," ;
-                    content+= activite.getDuree()+"," ;
-                    content+= activite.getHeureDebutMin()+"," ;
-                    content+= activite.getHeureFinMax()+"," ;
-                    content+= activite.getJourChoisi()+"," ;
-                    content+= activite.getHeureDebutChoisi()+"\n" ;
+                    content += activite.getCode()+this.separateur;
+                    content += activite.getSection()+this.separateur;
+                    content += activite.getNomActivite()+this.separateur;
+                    content += activite.getProfesseur()+this.separateur;
+                    content += activite.getType()+this.separateur;
+                    content += activite.getDuree()+this.separateur;
+                    content += activite.getHeureDebutMin()+this.separateur;
+                    content += activite.getHeureFinMax()+this.separateur;
+                    content += activite.getJourChoisi()+this.separateur;
+                    content += activite.getHeureDebutChoisi()+this.separateur + "\n";
     
                 }
                 
@@ -532,14 +532,14 @@ public class Horaire {
                 
                 for(Activite activite : liste)
                 {
-                    content+= activite.getCode()+"," ;
-                    content+= activite.getSection()+"," ;
-                    content+= activite.getNomActivite()+"," ;
-                    content+= activite.getProfesseur()+"," ;
-                    content+= activite.getType()+"," ;
-                    content+= activite.getDuree()+"," ;
-                    content+= activite.getHeureDebutMin()+"," ;
-                    content+= activite.getHeureFinMax()+",,"+"\n" ;
+                    content+= activite.getCode()+this.separateur;
+                    content+= activite.getSection()+this.separateur;
+                    content+= activite.getNomActivite()+this.separateur;
+                    content+= activite.getProfesseur()+this.separateur;
+                    content+= activite.getType()+this.separateur;
+                    content+= activite.getDuree()+this.separateur;
+                    content+= activite.getHeureDebutMin()+this.separateur;
+                    content+= activite.getHeureFinMax()+this.separateur+"\n" ;
 
                 }
                 
