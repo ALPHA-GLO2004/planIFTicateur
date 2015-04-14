@@ -26,6 +26,7 @@ public class MainWindow extends javax.swing.JFrame {
     public Statistiques statFenetre;
     private SessionChooser sessionChooser;
     public Note fenetreNote;
+    public AjoutActivite fenetreAjouterActivite;
     private Modifications fenetreModification;
     public Dimension initialDimension;
     public Point validActivitePoint;
@@ -78,6 +79,8 @@ public class MainWindow extends javax.swing.JFrame {
         exportButton = new javax.swing.JButton();
         aideButton = new javax.swing.JButton();
         titreFichierLabel = new javax.swing.JLabel();
+        ajouterActiviteButton = new javax.swing.JButton();
+        filtreActiviteButton = new javax.swing.JButton();
         logPanel = new javax.swing.JPanel();
         logMsgTextArea = new javax.swing.JTextArea();
         infoActiviteTextArea = new javax.swing.JTextArea();
@@ -222,10 +225,9 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         buttonPanel.add(validationAutoCheckBox, gridBagConstraints);
 
@@ -316,8 +318,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         buttonPanel.add(aideButton, gridBagConstraints);
 
         titreFichierLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -326,9 +327,39 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 100, 0, 0);
         buttonPanel.add(titreFichierLabel, gridBagConstraints);
         titreFichierLabel.getAccessibleContext().setAccessibleName("nomFichier");
+
+        ajouterActiviteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_addActivite.png"))); // NOI18N
+        ajouterActiviteButton.setToolTipText("Ajouter activité");
+        ajouterActiviteButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        ajouterActiviteButton.setMinimumSize(new java.awt.Dimension(50, 50));
+        ajouterActiviteButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        ajouterActiviteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajouterActiviteButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        buttonPanel.add(ajouterActiviteButton, gridBagConstraints);
+
+        filtreActiviteButton.setText("Code");
+        filtreActiviteButton.setToolTipText("Filtre étiquettes activité");
+        filtreActiviteButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        filtreActiviteButton.setMinimumSize(new java.awt.Dimension(50, 50));
+        filtreActiviteButton.setPreferredSize(new java.awt.Dimension(70, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 50);
+        buttonPanel.add(filtreActiviteButton, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -703,6 +734,7 @@ public class MainWindow extends javax.swing.JFrame {
                 if (horaireController.existeSelection()){
                     fenetreModification = new Modifications(this.horaireController);
                     fenetreModification.setVisible(true);
+                    horaireController.switchSelection();
                     drawingPanel.repaint();
                 }
             }
@@ -839,12 +871,22 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formComponentResized
 
+    private void ajouterActiviteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActiviteButtonActionPerformed
+        if (horaireEstCharge){
+            fenetreAjouterActivite = new AjoutActivite(horaireController);
+            fenetreAjouterActivite.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
+            fenetreAjouterActivite.setVisible(true);
+        }
+    }//GEN-LAST:event_ajouterActiviteButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aideButton;
+    private javax.swing.JButton ajouterActiviteButton;
     private javax.swing.JPanel buttonPanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
     private javax.swing.JScrollPane drawingPanelContainer;
     private javax.swing.JButton exportButton;
+    private javax.swing.JButton filtreActiviteButton;
     private javax.swing.JTextArea infoActiviteTextArea;
     private javax.swing.JTextArea logMsgTextArea;
     private javax.swing.JPanel logPanel;

@@ -31,15 +31,7 @@ public class HoraireController {
     }
     }
     
-    public void saveHoraire(){
-        
-    }
-    
-    public void saveAsHoraire(){
-        
-    }
-    
-    public void addActivite(){
+    public void addActivite(String[] attributsActivite){
         
     }
     
