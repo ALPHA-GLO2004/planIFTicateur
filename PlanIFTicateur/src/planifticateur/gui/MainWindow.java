@@ -357,8 +357,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         filtreActiviteButton.setText(this.nomEtiquette[0]);
         filtreActiviteButton.setToolTipText("Filtre étiquettes activité");
-        filtreActiviteButton.setMaximumSize(new java.awt.Dimension(50, 50));
-        filtreActiviteButton.setMinimumSize(new java.awt.Dimension(50, 50));
+        filtreActiviteButton.setMaximumSize(new java.awt.Dimension(70, 50));
+        filtreActiviteButton.setMinimumSize(new java.awt.Dimension(70, 50));
         filtreActiviteButton.setPreferredSize(new java.awt.Dimension(70, 50));
         filtreActiviteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
