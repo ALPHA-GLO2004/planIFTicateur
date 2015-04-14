@@ -15,7 +15,6 @@ public class HoraireDrawing {
     public HoraireDrawing(HoraireController horaireController, Dimension initialDimension){
         this.horaireController = horaireController;
         this.initialDimension = initialDimension;
-        horaireController.createMouseAdapter(this.initialDimension);
     }
     
     public void draw(Graphics g){
@@ -194,7 +193,7 @@ public class HoraireDrawing {
                     g2.drawLine(caseJourWidth, y, width, y);
                     y += caseHeureHeight;
                 }
-                y += 2*caseHeureHeight;
+                y = i*caseJourHeight + 2*caseHeureHeight;
             }
 
             x = caseJourWidth + saut;
@@ -281,5 +280,9 @@ public class HoraireDrawing {
         else{
             return "";
         }
+    }
+    
+    public void setInitialDimension(Dimension initialDimension){
+        this.initialDimension = initialDimension;
     }
 }

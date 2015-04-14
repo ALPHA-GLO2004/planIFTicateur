@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.Icon;
+import javax.swing.JFrame;
 
 public class MainWindow extends javax.swing.JFrame {
     public HoraireController horaireController;
@@ -96,7 +97,14 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PlanIFTicateur");
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setMinimumSize(new java.awt.Dimension(1024, 768));
         setName("mainWindow"); // NOI18N
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         mainPanel.setPreferredSize(new Dimension(this.getWidth(), this.getHeight()));
         mainPanel.setLayout(new java.awt.GridBagLayout());
@@ -156,8 +164,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         planificationAutomatiqueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_planificationauto.png"))); // NOI18N
         planificationAutomatiqueButton.setToolTipText("Planification automatique");
-        planificationAutomatiqueButton.setMaximumSize(new java.awt.Dimension(160, 23));
-        planificationAutomatiqueButton.setMinimumSize(new java.awt.Dimension(100, 10));
+        planificationAutomatiqueButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        planificationAutomatiqueButton.setMinimumSize(new java.awt.Dimension(50, 50));
         planificationAutomatiqueButton.setPreferredSize(new java.awt.Dimension(50, 50));
         planificationAutomatiqueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,8 +181,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         statistiquesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_stats.png"))); // NOI18N
         statistiquesButton.setToolTipText("Statistiques");
-        statistiquesButton.setMaximumSize(new java.awt.Dimension(189, 23));
-        statistiquesButton.setMinimumSize(new java.awt.Dimension(100, 10));
+        statistiquesButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        statistiquesButton.setMinimumSize(new java.awt.Dimension(50, 50));
         statistiquesButton.setPreferredSize(new java.awt.Dimension(50, 50));
         statistiquesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +200,8 @@ public class MainWindow extends javax.swing.JFrame {
         noteButton.setToolTipText("Notes");
         noteButton.setAlignmentY(0.0F);
         noteButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        noteButton.setMaximumSize(new java.awt.Dimension(161, 23));
+        noteButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        noteButton.setMinimumSize(new java.awt.Dimension(50, 50));
         noteButton.setPreferredSize(new java.awt.Dimension(50, 50));
         noteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,6 +231,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         ouvrirFichierButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_openfile.png"))); // NOI18N
         ouvrirFichierButton.setToolTipText("Ouvrir horaire");
+        ouvrirFichierButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        ouvrirFichierButton.setMinimumSize(new java.awt.Dimension(50, 50));
         ouvrirFichierButton.setPreferredSize(new java.awt.Dimension(50, 50));
         ouvrirFichierButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +248,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         nouveauFichierButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_newfile.png"))); // NOI18N
         nouveauFichierButton.setToolTipText("Nouvel horaire");
+        nouveauFichierButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        nouveauFichierButton.setMinimumSize(new java.awt.Dimension(50, 50));
         nouveauFichierButton.setPreferredSize(new java.awt.Dimension(50, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -246,6 +259,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_save.png"))); // NOI18N
         saveButton.setToolTipText("Enregistrer horaire");
+        saveButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        saveButton.setMinimumSize(new java.awt.Dimension(50, 50));
         saveButton.setPreferredSize(new java.awt.Dimension(50, 50));
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,6 +276,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         saveAsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_saveas.png"))); // NOI18N
         saveAsButton.setToolTipText("Enregistrer sous...");
+        saveAsButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        saveAsButton.setMinimumSize(new java.awt.Dimension(50, 50));
         saveAsButton.setPreferredSize(new java.awt.Dimension(50, 50));
         saveAsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,6 +293,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         exportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_export.png"))); // NOI18N
         exportButton.setToolTipText("Exporter horaire en image");
+        exportButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        exportButton.setMinimumSize(new java.awt.Dimension(50, 50));
         exportButton.setPreferredSize(new java.awt.Dimension(50, 50));
         exportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,6 +310,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         aideButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_help.png"))); // NOI18N
         aideButton.setToolTipText("Aide");
+        aideButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        aideButton.setMinimumSize(new java.awt.Dimension(50, 50));
         aideButton.setPreferredSize(new java.awt.Dimension(50, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
@@ -511,66 +532,69 @@ public class MainWindow extends javax.swing.JFrame {
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         //Si la position est dans la grille horaire
         Point p = new Point(0, 0);
-        Point point = new Point(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
+        Point point = new Point();
+        if (horaireController.existeSelection()){
+            point = new Point(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
+        }
         
         if (point != this.initialActivitePoint){
-        if (horaireController.existeSelection()){
-        if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
-            p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
-            horaireController.moveActivite(p.x, p.y);
-            horaireController.switchSelection();
-            horaireController.jourHeureToActivite();
-            horaireController.switchFromMoveToListDp();
-            horaireController.switchAPlacerToDejaPlacee();
-            horaireController.switchDejaPlaceeToAPlacer();
-            horaireController.classerListeAPlacer();
-            horaireController.initPointActivite(this.initialDimension);         
-        }
-        //Si la position n'est pas dans la grille ou à un endroit non valide
-        else{
-            //Si la position est dans la liste
-            if (evt.getPoint().x - delta.x > this.initialDimension.width*3/4){
-                p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
-                horaireController.moveActivite(p.x, p.y);
-                horaireController.switchSelection();
-                horaireController.jourHeureToActivite();
-                horaireController.switchFromMoveToListAp();
-                horaireController.switchAPlacerToDejaPlacee();
-                horaireController.switchDejaPlaceeToAPlacer();
-                horaireController.classerListeAPlacer();
-                horaireController.initPointActivite(this.initialDimension);
-            }
-            //Si la position n'est pas valide
-            else{
-                horaireController.classerListeAPlacer();
-                if (this.activiteList == 0){
-                    horaireController.switchFromMoveToListAp();
-                }
-                else{
+            if (horaireController.existeSelection()){
+                if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
+                    p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
+                    horaireController.moveActivite(p.x, p.y);
+                    horaireController.switchSelection();
+                    horaireController.jourHeureToActivite();
                     horaireController.switchFromMoveToListDp();
+                    horaireController.switchAPlacerToDejaPlacee();
+                    horaireController.switchDejaPlaceeToAPlacer();
+                    horaireController.classerListeAPlacer();
+                    horaireController.initPointActivite(this.initialDimension);         
                 }
-                horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
-                horaireController.switchSelection();
-                horaireController.classerListeAPlacer();
-                horaireController.initPointActivite(this.initialDimension);
-            }
-        }
+                //Si la position n'est pas dans la grille ou à un endroit non valide
+                else{
+                    //Si la position est dans la liste
+                    if (evt.getPoint().x - delta.x > this.initialDimension.width*3/4){
+                        p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
+                        horaireController.moveActivite(p.x, p.y);
+                        horaireController.switchSelection();
+                        horaireController.jourHeureToActivite();
+                        horaireController.switchFromMoveToListAp();
+                        horaireController.switchAPlacerToDejaPlacee();
+                        horaireController.switchDejaPlaceeToAPlacer();
+                        horaireController.classerListeAPlacer();
+                        horaireController.initPointActivite(this.initialDimension);
+                    }
+                    //Si la position n'est pas valide
+                    else{
+                        horaireController.classerListeAPlacer();
+                        if (this.activiteList == 0){
+                            horaireController.switchFromMoveToListAp();
+                        }
+                        else{
+                            horaireController.switchFromMoveToListDp();
+                        }
+                        horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
+                        horaireController.switchSelection();
+                        horaireController.classerListeAPlacer();
+                        horaireController.initPointActivite(this.initialDimension);
+                    }
+                }
             statFenetre.setStats();
             
             //ajustement de la couleur de la bordure.
-        }
-             if(horaireEstCharge)
-            {
-            messagesDerreurs.removeAllElements();
-            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
             }
-            else{
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-            }
-            
-            updateLogMessage(evt);
-            }        
+            if(horaireEstCharge)
+                {
+                messagesDerreurs.removeAllElements();
+                    if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                        drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+                    }
+                    else{
+                        drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+                    }
+
+                updateLogMessage(evt);
+                }        
         }
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseReleased
@@ -802,6 +826,18 @@ public class MainWindow extends javax.swing.JFrame {
            horaireController.enregistrerHoraire(filePath);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        this.initialDimension = new Dimension(evt.getComponent().getSize());
+        drawingPanel.setInitialDimension(this.initialDimension);
+        horaireController.createMouseAdapter(this.initialDimension);
+        if (horaireEstCharge){
+            drawingPanel.getMainHoraire().setInitialDimension(this.initialDimension);
+            horaireController.initPointActivite(this.initialDimension);
+            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+            drawingPanel.repaint();
+        }
+    }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aideButton;
