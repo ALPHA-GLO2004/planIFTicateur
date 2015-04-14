@@ -254,6 +254,11 @@ public class MainWindow extends javax.swing.JFrame {
         nouveauFichierButton.setMaximumSize(new java.awt.Dimension(50, 50));
         nouveauFichierButton.setMinimumSize(new java.awt.Dimension(50, 50));
         nouveauFichierButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        nouveauFichierButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nouveauFichierButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -381,7 +386,7 @@ public class MainWindow extends javax.swing.JFrame {
         logMsgTextArea.setRows(5);
         logMsgTextArea.setText("Bienvenue sur PlanIFTicateur, le gestionnaire d'horaire de session!");
         logMsgTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        logMsgTextArea.setMinimumSize(new java.awt.Dimension(258, 25));
+        logMsgTextArea.setMinimumSize(new java.awt.Dimension(20, 19));
         logMsgTextArea.setPreferredSize(new Dimension(this.initialDimension.width*3/4, this.initialDimension.height/4));
 
         infoActiviteTextArea.setEditable(false);
@@ -390,6 +395,7 @@ public class MainWindow extends javax.swing.JFrame {
         infoActiviteTextArea.setRows(8);
         infoActiviteTextArea.setText("Informations activité survolé :");
         infoActiviteTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        infoActiviteTextArea.setMinimumSize(new java.awt.Dimension(22, 19));
         infoActiviteTextArea.setPreferredSize(new Dimension(this.initialDimension.width/4, this.initialDimension.height/4));
 
         javax.swing.GroupLayout logPanelLayout = new javax.swing.GroupLayout(logPanel);
@@ -399,7 +405,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(logPanelLayout.createSequentialGroup()
                 .addComponent(logMsgTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         logPanelLayout.setVerticalGroup(
             logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,7 +539,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_validationAutoCheckBoxActionPerformed
 
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
-        
+        //horaireController.nouvelHoraire("1", "A");
     }//GEN-LAST:event_menuFileNewActionPerformed
 
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
@@ -894,6 +900,10 @@ public class MainWindow extends javax.swing.JFrame {
         filtreActiviteButton.setText(nomEtiquette[indexEtiquette]);
         drawingPanel.repaint();
     }//GEN-LAST:event_filtreActiviteButtonActionPerformed
+
+    private void nouveauFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauFichierButtonActionPerformed
+        //horaireController.nouvelHoraire("1", "A");
+    }//GEN-LAST:event_nouveauFichierButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aideButton;

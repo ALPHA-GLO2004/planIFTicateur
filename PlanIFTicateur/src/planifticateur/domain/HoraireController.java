@@ -22,6 +22,11 @@ public class HoraireController {
         this.mouseAdapter = new MouseAdapter(d);
     }
     
+    public void nouvelHoraire(String filePath, String sessionChoisi){
+        this.horaire = new Horaire(filePath, sessionChoisi);
+        session = sessionChoisi;
+    }
+    
     public void chargerHoraire(String filePath, String sessionChoisi){
     //peut-être serait plus logique en tant que constructeur
     if (filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU")){
