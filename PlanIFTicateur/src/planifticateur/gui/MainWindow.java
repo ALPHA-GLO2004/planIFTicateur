@@ -1,5 +1,6 @@
 
 package planifticateur.gui;
+import com.sun.glass.ui.Screen;
 import planifticateur.domain.HoraireController;
 import planifticateur.domain.ImageExporter;
 import java.awt.*;
@@ -101,6 +102,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainPanel.setLayout(new java.awt.GridBagLayout());
 
         drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        drawingPanelContainer.setAutoscrolls(true);
         drawingPanelContainer.setPreferredSize(new Dimension(this.mainPanel.getWidth(), this.mainPanel.getHeight()*4/6));
 
         drawingPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -487,21 +489,9 @@ public class MainWindow extends javax.swing.JFrame {
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
         //if (!horaireController.activiteResteSurPlace(evt.getPoint().x, evt.getPoint().y) && evt.getClickCount() == 2){
         Point p = new Point(0, 0);
-        
-        //auto-scroll du scrollBar
-        /*if (evt.getPoint().y >= this.initialDimension.height/2){
-            drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
-            if (drawingPanelContainer.getVerticalScrollBar().getValue() <= 381){
-                scrolly += 15;
-            }
-        }
-        if (evt.getPoint().y < this.initialDimension.height/2){
-            drawingPanelContainer.getVerticalScrollBar().setValue(scrolly);
-            if (drawingPanelContainer.getVerticalScrollBar().getValue() >= 0){
-                scrolly -= 15;
-            }
-        }*/
-        
+        //Auto-scroll
+        Rectangle invisibleRect = new Rectangle(evt.getPoint());
+        drawingPanel.scrollRectToVisible(invisibleRect);
         //Gestion du move d'une activité
         if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
             p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
