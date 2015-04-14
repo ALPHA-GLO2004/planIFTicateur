@@ -38,7 +38,8 @@ public class MainWindow extends javax.swing.JFrame {
     private int activiteList;
     private ImageExporter exporter;
     private int scrolly = 15;
-
+    private int indexEtiquette = 0;
+    private String[] nomEtiquette = {"code","nom","type","prof"};
     
     public MainWindow() {
         int width = (int) ((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width));
@@ -349,11 +350,16 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
         buttonPanel.add(ajouterActiviteButton, gridBagConstraints);
 
-        filtreActiviteButton.setText("Code");
+        filtreActiviteButton.setText(this.nomEtiquette[0]);
         filtreActiviteButton.setToolTipText("Filtre étiquettes activité");
         filtreActiviteButton.setMaximumSize(new java.awt.Dimension(50, 50));
         filtreActiviteButton.setMinimumSize(new java.awt.Dimension(50, 50));
         filtreActiviteButton.setPreferredSize(new java.awt.Dimension(70, 50));
+        filtreActiviteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtreActiviteButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 0;
@@ -878,6 +884,16 @@ public class MainWindow extends javax.swing.JFrame {
             fenetreAjouterActivite.setVisible(true);
         }
     }//GEN-LAST:event_ajouterActiviteButtonActionPerformed
+
+    private void filtreActiviteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtreActiviteButtonActionPerformed
+        indexEtiquette += 1;
+        if (indexEtiquette > 3){
+            indexEtiquette = 0;
+        }
+        horaireController.setEtiquette(indexEtiquette);
+        filtreActiviteButton.setText(nomEtiquette[indexEtiquette]);
+        drawingPanel.repaint();
+    }//GEN-LAST:event_filtreActiviteButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aideButton;

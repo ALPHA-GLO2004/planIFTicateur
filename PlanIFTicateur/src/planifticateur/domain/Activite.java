@@ -17,6 +17,7 @@ import java.util.List;
 
 public class Activite implements Comparable<Activite>{
     //J'ai tout mis en string étant donné que ce n'est pas tant pertinent d'avoir un paquet de type différent pour le moment.
+    private String etiquette;
     private String code;
     private String section; // Ajout de ma part
     private String type; //Changement type: Type -> char (aucune utilité à faire une classe Type...)
@@ -99,6 +100,7 @@ public class Activite implements Comparable<Activite>{
                 couleur = Color.RED;//en attendant le factory qui nous permet d'ajouter un nouveau cours sans connaitre son nom. 
             }
             heureDebutMax = heureFinMax - duree;
+            etiquette = code;
         }
         catch (Throwable ex){
             System.out.println(ex.getMessage());
@@ -180,7 +182,14 @@ public class Activite implements Comparable<Activite>{
         selectStatus=  src.selectStatus;
     }
     
-        
+    public void setEtiquette(String s){
+        this.etiquette = s;
+    }
+    
+    public String getEtiquette(){
+        return etiquette;
+    }
+    
     public Color getCouleur(){
         return couleur;
     }

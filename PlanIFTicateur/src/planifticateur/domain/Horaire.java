@@ -156,7 +156,15 @@ public class Horaire {
             y += 3*caseHeureHeight/2;
         }
     }
+    
         
+    public void setEtiquetteActivite(int index){
+        for (Activite a: this.getListeActiviteComplete()){
+            String[] choixEtiquette = {a.getCode(), a.getNomActivite(), a.getType(), a.getProfesseur()};
+            a.setEtiquette(choixEtiquette[index]);
+        }
+    }
+    
     private void validerHoraire(){
         if (listeConflit.isEmpty()){
             valide = true;

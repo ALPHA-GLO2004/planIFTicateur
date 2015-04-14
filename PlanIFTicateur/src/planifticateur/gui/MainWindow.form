@@ -504,7 +504,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="filtreActiviteButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Code"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.nomEtiquette[0]" type="code"/>
+                </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Filtre &#xe9;tiquettes activit&#xe9;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
@@ -516,6 +518,9 @@
                   <Dimension value="[70, 50]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filtreActiviteButtonActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="11" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="5" insetsBottom="0" insetsRight="50" anchor="13" weightX="0.0" weightY="0.0"/>

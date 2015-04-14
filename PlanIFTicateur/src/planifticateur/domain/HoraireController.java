@@ -32,11 +32,15 @@ public class HoraireController {
     }
     
     public void addActivite(String[] attributsActivite){
-        
+        //À implémenter
+    }
+    
+    public void setEtiquette(int index){
+        this.horaire.setEtiquetteActivite(index);
     }
     
     public void planificationAuto(){
-        
+        //À implémenter
     }
     
     public void initPointActivite(Dimension initialDimension){
