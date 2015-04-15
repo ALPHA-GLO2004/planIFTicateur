@@ -7,6 +7,10 @@ import planifticateur.domain.MouseAdapter;
 import planifticateur.gui.DrawingPanel;
 import java.awt.*;
 import java.util.List;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.File;
+import javax.swing.ImageIcon;
 
 public class HoraireDrawing {
     private final HoraireController horaireController;
@@ -208,11 +212,13 @@ public class HoraireDrawing {
             }
         }
         else{
-            g2.setColor(Color.GRAY);
-            g2.fillRect(0, 0, this.initialDimension.width, height);
-            g2.setColor(Color.BLACK);
+            try{
+                BufferedImage logo = ImageIO.read(new File("C:\\EcoleH2015\\GLO-2004\\PlanIFTicateur_v1\\PlanIFTicateur\\src\\planifticateur\\resources\\logo2.jpg"));
+                g2.drawImage(logo, 0, 0, null);
             
-            g2.drawString("Pour commencer, cliquez sur l'onglet Fichier - Ouvrir horaire.", caseJourWidth*2, caseJourHeight);
+            }catch (Throwable ex){
+                System.out.println(ex.getMessage());
+            }
         }
     }
     

@@ -7,7 +7,9 @@ import planifticateur.drawing.HoraireDrawing;
 import planifticateur.domain.HoraireController;
 import java.awt.*;
 import java.io.Serializable;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
 
 public class DrawingPanel extends JPanel implements Serializable
