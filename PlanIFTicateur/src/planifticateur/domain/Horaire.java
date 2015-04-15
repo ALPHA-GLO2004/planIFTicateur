@@ -131,12 +131,13 @@ public class Horaire{
             for (Activite act: this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee()){
                 if (a.getJourChoisi() == act.getJourChoisi()
                     && a.getHeureDebutChoisi() < (act.getHeureDebutChoisi() + act.getDuree())
-                    && a.getHeureDebutChoisi() > act.getHeureDebutChoisi()){
+                    && a.getHeureDebutChoisi() > act.getHeureDebutChoisi()
+                    && a.getRangee() == 0){
                         y += caseHeureHeight;
                 }
+            }
             Point p = new Point(x, y);
             a.setPoint(p);
-            }
         }
     }
     

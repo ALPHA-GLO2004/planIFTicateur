@@ -85,7 +85,7 @@ public class MouseAdapter {
                     }
                     
                     jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight;
-                    if (p.y > jumpY && p.y < jumpY + caseHeureHeight){
+                    if (p.y >= jumpY && p.y < jumpY + caseHeureHeight){
                         pointActiviteY = jumpY;
                     }
                 }
