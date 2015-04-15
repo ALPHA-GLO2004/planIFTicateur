@@ -124,11 +124,10 @@ public class Horaire{
         int y = caseHeureHeight;
 
         for (Activite a: this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee()){
-            int[] jourChoisiActivitePrecedente = {0};
-            y = caseHeureHeight + (a.getJourChoisi()-1)*caseJourHeight;
+            y = caseHeureHeight + (a.getJourChoisi()-1)*caseJourHeight + a.getRangee()*caseHeureHeight;
             int x = caseJourWidth + (int)((a.getHeureDebutChoisi()-8)*2*saut);
             
-            //Si une activité deja placée
+            //Activité déjà placée avant attribution d'une rangée
             for (Activite act: this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee()){
                 if (a.getJourChoisi() == act.getJourChoisi()
                     && a.getHeureDebutChoisi() < (act.getHeureDebutChoisi() + act.getDuree())
@@ -154,6 +153,7 @@ public class Horaire{
         for (Activite a: this.getListeActiviteAPlacer()){
             Point p = new Point(widthListe + 3*saut/2, y);
             a.setPoint(p);
+            a.setRangee(0);
             y += 3*caseHeureHeight/2;
         }
     }

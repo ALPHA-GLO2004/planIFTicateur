@@ -17,6 +17,27 @@ public class MouseAdapter {
         this.dimension = d;
 
     }
+    //Méthode pour déterminer le chiffre correspondant à la rangée où est placée une activité
+    public int verificationRangee(Point p){
+        int width = dimension.width *3/4;
+        int height = dimension.height;
+        int caseJourHeight = height / 5;
+        int caseHeureHeight = caseJourHeight / 9;
+        int rangee = 0;
+        int jumpY;
+        
+        for (int i = 0; i <= 4; i++){
+            for (int j = 1; j <= 8; j++){
+                jumpY = i*caseJourHeight + j*caseHeureHeight;
+                if (p.x <= width){
+                    if (p.y == jumpY){
+                        rangee = j;
+                    }
+                }
+            }
+        }
+        return rangee;
+    }
     
     //Méthode pour snaper les activités à la grille horaire
     public Point verificationDrop(Point p, List<Activite> laC, List<Activite> laDP, List<GrilleCheminement> laGC, boolean modeValidationAuto,String session){

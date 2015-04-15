@@ -564,7 +564,7 @@ public class MainWindow extends javax.swing.JFrame {
             this.validActivitePoint = new Point(p);
         }
         else{
-            if (evt.getPoint().x - delta.x > this.initialDimension.width*3/4){
+            if (evt.getPoint().x - delta.x >= this.initialDimension.width*3/4){
                 horaireController.moveActivite(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
             }
         }
@@ -586,6 +586,7 @@ public class MainWindow extends javax.swing.JFrame {
                 if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
                     p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
                     horaireController.moveActivite(p.x, p.y);
+                    horaireController.setRangee(p.x, p.y);
                     horaireController.switchSelection();
                     horaireController.jourHeureToActivite();
                     horaireController.switchFromMoveToListDp();
@@ -597,9 +598,10 @@ public class MainWindow extends javax.swing.JFrame {
                 //Si la position n'est pas dans la grille ou à un endroit non valide
                 else{
                     //Si la position est dans la liste
-                    if (evt.getPoint().x - delta.x > this.initialDimension.width*3/4){
+                    if (evt.getPoint().x - delta.x >= this.initialDimension.width*3/4){
                         p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
                         horaireController.moveActivite(p.x, p.y);
+                        horaireController.setRangee(p.x, p.y);
                         horaireController.switchSelection();
                         horaireController.jourHeureToActivite();
                         horaireController.switchFromMoveToListAp();
@@ -618,6 +620,7 @@ public class MainWindow extends javax.swing.JFrame {
                             horaireController.switchFromMoveToListDp();
                         }
                         horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
+                        horaireController.setRangee(this.validActivitePoint.x, this.validActivitePoint.y);
                         horaireController.switchSelection();
                         horaireController.classerListeAPlacer();
                         horaireController.initPointActivite(this.initialDimension);

@@ -62,6 +62,15 @@ public class HoraireController {
         return this.horaire.verificationListOfActivite(a);
     }
     //Méthode pour mouseAdapter
+    public void setRangee(int x, int y){
+        Point p = new Point(x,y);
+        this.getActiviteSelected().setRangee(mouseAdapter.verificationRangee(p));
+    }
+    //Potentiel de flushage
+    /*public void setRangee(int x, int y){
+        Point p = new Point(x,y);
+        this.getActiviteSelected().setRangee(mouseAdapter.verificationRangee(p));
+    }*/
     
     public Point verificationDrop(int x, int y){
         Point p = new Point(x,y);

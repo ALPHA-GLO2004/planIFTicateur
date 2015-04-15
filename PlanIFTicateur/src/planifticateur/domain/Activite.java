@@ -17,6 +17,7 @@ import java.util.List;
 
 public class Activite implements Comparable<Activite>{
     //J'ai tout mis en string étant donné que ce n'est pas tant pertinent d'avoir un paquet de type différent pour le moment.
+    private int rangee;
     private String etiquette;
     private String code;
     private String section; // Ajout de ma part
@@ -77,13 +78,19 @@ public class Activite implements Comparable<Activite>{
                     jourChoisi = 0;
                 }
             }
-            if (infoActivite.length == 10){
+            if (infoActivite.length >= 10){
                 if (!infoActivite[9].equals("0") || !infoActivite[9].equals(null)){
                     heureDebutChoisi = Float.parseFloat(infoActivite[9]); //transformation de string à float
                 }
                 else{
                     heureDebutChoisi = 0;
                 }
+            }
+            if (infoActivite.length == 11){
+                this.rangee = Integer.valueOf(infoActivite[10]);
+            }
+            else{
+                this.rangee = 0;
             }
             //attribution de la couleur selon le type
             if ( type.toLowerCase().contains("classe") ){//insensible a la casse
@@ -116,6 +123,14 @@ public class Activite implements Comparable<Activite>{
         else{
             return false;
         }
+    }
+    
+    public void setRangee(int rangee){
+        this.rangee = rangee;
+    }
+    
+    public int getRangee(){
+        return this.rangee;
     }
     
     public void afficherValidite(){
