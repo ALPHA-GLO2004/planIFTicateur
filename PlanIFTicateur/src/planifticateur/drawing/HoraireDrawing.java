@@ -86,7 +86,7 @@ public class HoraireDrawing {
             //lignes horizontales --- noires
             g2.setColor(Color.BLACK);
             g2.setStroke(new BasicStroke(1));
-
+            
             g2.drawLine(caseJourWidth, caseHeureHeight, width, caseHeureHeight);
             for (int i = 1; i <= 5; i++){
                 g2.drawLine(0, caseJourHeight*i, width, caseJourHeight*i);

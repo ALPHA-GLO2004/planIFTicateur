@@ -30,7 +30,7 @@ public class MouseAdapter {
             for (int j = 1; j <= 8; j++){
                 jumpY = i*caseJourHeight + j*caseHeureHeight;
                 if (p.x <= width){
-                    if (p.y == jumpY){
+                    if (p.y > jumpY && p.y <= jumpY + caseHeureHeight){
                         rangee = j;
                     }
                 }
@@ -54,7 +54,7 @@ public class MouseAdapter {
             for (int i = 0; i <= 4; i++){
                 for (int j = 0; j <= 7; j++){
                     for (int k = 0; k <= 29; k++){
-                        if (p.x > caseJourWidth && p.x < dimension.width && p.y > caseHeureHeight && p.y < height){
+                        if (p.x > caseJourWidth && p.x < dimension.width && p.y > caseHeureHeight && p.y <= height){
                             jumpX = caseJourWidth + k*saut;
                         
                             if (p.x >= jumpX && p.x < (jumpX + saut)){
@@ -85,7 +85,7 @@ public class MouseAdapter {
                     }
                     
                     jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight;
-                    if (p.y >= jumpY && p.y < jumpY + caseHeureHeight){
+                    if (p.y > jumpY && p.y < jumpY + caseHeureHeight){
                         pointActiviteY = jumpY;
                     }
                 }

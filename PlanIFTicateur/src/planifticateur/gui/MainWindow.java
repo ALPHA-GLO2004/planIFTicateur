@@ -874,6 +874,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        //Rectangle aspectRatio = evt.getComponent().getBounds();
+        //evt.getComponent().setBounds(aspectRatio.x, aspectRatio.y, aspectRatio.width, aspectRatio.width*9/16);
         this.initialDimension = new Dimension(evt.getComponent().getSize());
         drawingPanel.setInitialDimension(this.initialDimension);
         horaireController.createMouseAdapter(this.initialDimension);
@@ -883,6 +885,7 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             drawingPanel.repaint();
         }
+        System.out.println(evt.getComponent().getSize());
     }//GEN-LAST:event_formComponentResized
 
     private void ajouterActiviteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActiviteButtonActionPerformed
