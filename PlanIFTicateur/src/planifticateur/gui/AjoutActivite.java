@@ -9,6 +9,7 @@ public class AjoutActivite extends javax.swing.JFrame {
     public AjoutActivite(HoraireController horaireController) {
         this.horaireController = horaireController;
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")

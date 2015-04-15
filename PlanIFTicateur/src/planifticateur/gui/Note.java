@@ -8,6 +8,7 @@ public class Note extends javax.swing.JFrame {
 
     public Note() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
 
