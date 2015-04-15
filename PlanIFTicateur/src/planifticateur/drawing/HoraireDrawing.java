@@ -213,7 +213,8 @@ public class HoraireDrawing {
         }
         else{
             try{
-                BufferedImage logo = ImageIO.read(new File("C:\\EcoleH2015\\GLO-2004\\PlanIFTicateur_v1\\PlanIFTicateur\\src\\planifticateur\\resources\\logo2.jpg"));
+                System.out.println(System.getProperty("user.dir"));
+                BufferedImage logo = ImageIO.read(new File(System.getProperty("user.dir") + "\\src\\planifticateur\\resources\\logo2.jpg"));
                 g2.drawImage(logo, 0, 0, null);
             
             }catch (Throwable ex){
