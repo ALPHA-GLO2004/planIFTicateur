@@ -48,7 +48,9 @@ public class Activite implements Comparable<Activite>{
         }
     }
     
-    public Activite(){};
+    public Activite(){
+    
+    }
     
     public Activite(String activite, String separateur){
         //Constructeur

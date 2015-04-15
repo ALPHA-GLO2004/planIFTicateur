@@ -45,8 +45,8 @@ public class HoraireController {
         this.horaire.initPointActiviteDejaPlacee(initialDimension);
     }
     //Méthode pour la création d'une activité dans l'horaire
-    public void addActivite(String[] attributsActivite){
-        //À implémenter
+    public void addActivite(String attributsActivite){
+        this.horaire.addActivite(attributsActivite);
     }
     //Planification auto...
     public void planificationAuto(){
@@ -66,11 +66,6 @@ public class HoraireController {
         Point p = new Point(x,y);
         this.getActiviteSelected().setRangee(mouseAdapter.verificationRangee(p));
     }
-    //Potentiel de flushage
-    /*public void setRangee(int x, int y){
-        Point p = new Point(x,y);
-        this.getActiviteSelected().setRangee(mouseAdapter.verificationRangee(p));
-    }*/
     
     public Point verificationDrop(int x, int y){
         Point p = new Point(x,y);

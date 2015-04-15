@@ -5,8 +5,10 @@ import planifticateur.domain.HoraireController;
 
 public class AjoutActivite extends javax.swing.JFrame {
     private HoraireController horaireController;
+    private MainWindow mainWindow;
     
-    public AjoutActivite(HoraireController horaireController) {
+    public AjoutActivite(HoraireController horaireController, MainWindow mainWindow) {
+        this.mainWindow = mainWindow;
         this.horaireController = horaireController;
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -203,15 +205,18 @@ public class AjoutActivite extends javax.swing.JFrame {
     }//GEN-LAST:event_annulerButtonActionPerformed
 
     private void ajouterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterButtonActionPerformed
-        String[] attributs = {codeTextField.getText(),
-                              sectionTextField.getText(),
-                              descriptionTextField.getText(),
-                              professeurTextField.getText(),
-                              typeTextField.getText(),
-                              dureeTextField.getText(),
-                              heureDebutMinTextField.getText(),
-                              heureFinMaxTextField.getText()};
+        String attributs = codeTextField.getText() + ","
+                              + sectionTextField.getText() + ","
+                              + descriptionTextField.getText() + ","
+                              + professeurTextField.getText() + ","
+                              + typeTextField.getText() + ","
+                              + dureeTextField.getText() + ","
+                              + heureDebutMinTextField.getText() + ","
+                              + heureFinMaxTextField.getText();
         horaireController.addActivite(attributs);
+        horaireController.classerListeAPlacer();
+        horaireController.initPointActivite(mainWindow.getDrawingPanel().getInitialDimension());
+        mainWindow.getDrawingPanel().repaint();
         this.dispose();
     }//GEN-LAST:event_ajouterButtonActionPerformed
 

@@ -159,6 +159,12 @@ public class Horaire{
         }
     }
     
+    public void addActivite(String attributs){
+        Activite nouvelActivite = new Activite(attributs, ",");
+        this.listeActiviteComplete.add(nouvelActivite);
+        this.listeActiviteAPlacer.add(nouvelActivite);
+    }
+    
     public void setEtiquetteActivite(int index){
         for (Activite a: this.getListeActiviteComplete()){
             String[] choixEtiquette = {a.getCode(), a.getNomActivite(), a.getType(), a.getProfesseur()};

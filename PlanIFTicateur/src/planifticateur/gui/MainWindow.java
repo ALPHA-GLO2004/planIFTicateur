@@ -891,7 +891,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void ajouterActiviteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActiviteButtonActionPerformed
         if (horaireEstCharge){
-            fenetreAjouterActivite = new AjoutActivite(horaireController);
+            fenetreAjouterActivite = new AjoutActivite(horaireController, this);
             fenetreAjouterActivite.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
             fenetreAjouterActivite.setVisible(true);
         }
@@ -910,7 +910,11 @@ public class MainWindow extends javax.swing.JFrame {
     private void nouveauFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauFichierButtonActionPerformed
         //horaireController.nouvelHoraire("1", "A");
     }//GEN-LAST:event_nouveauFichierButtonActionPerformed
-
+    
+    public DrawingPanel getDrawingPanel(){
+        return this.drawingPanel;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aideButton;
     private javax.swing.JButton ajouterActiviteButton;
