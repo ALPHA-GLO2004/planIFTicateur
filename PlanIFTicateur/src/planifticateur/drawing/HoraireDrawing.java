@@ -41,24 +41,10 @@ public class HoraireDrawing {
                 for (Activite a: horaireController.getListeActiviteComplete()){
                     if (a.isSelected() == true){
                         g2.setColor(Color.YELLOW);
-                        g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
-                        g2.setColor(Color.BLACK);
-                        g2.setStroke(new BasicStroke(1));
-                        g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
-                        Font font = new Font("Arial", Font.BOLD, 12);
-                        if (a.getEtiquette().equals(a.getNomActivite())){
-                            if (a.getEtiquette().length() > 18){
-                                g2.drawString(a.getEtiquette().substring(0, 18) + "...", a.getPoint().x + 5, a.getPoint().y + 16);
-                            }
-                            else{
-                                g2.drawString(a.getEtiquette(), a.getPoint().x + 5, a.getPoint().y + 16);
-                            }
-                        }
-                        else{
-                            g2.drawString(a.getEtiquette(), a.getPoint().x - 20 + (int)(a.getDuree() * ((width - (caseJourWidth))/15))/2, a.getPoint().y + 16);
-                        }
-                    }else{
+                    }
+                    else{
                         g2.setColor(a.getCouleur());
+                    }
                         g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         g2.setColor(Color.BLACK);
                         g2.setStroke(new BasicStroke(1));
@@ -75,20 +61,8 @@ public class HoraireDrawing {
                         else{
                             g2.drawString(a.getEtiquette(), a.getPoint().x - 20 + (int)(a.getDuree() * ((width - (caseJourWidth))/15))/2, a.getPoint().y + 16);
                         }
-                    }
                 }
-                
-                /*if (horaireController.getModeValidationAuto()){
-                    //On set la couleur avec un alpha pour ombrager les activités déjà placées
-                    g2.setColor(new Color(0, 0, 0, 95));
-                    //On dessine les rectangles d'ombre
-                    for (Activite a: horaireController.getListeActiviteDejaPlacee()){
-                        if (!a.isSelected()){
-                            g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree()*saut*2), caseHeureHeight);
-                        }
-                    }
-                }  */      
-        }
+        }     
     }
     
     public void drawHoraire(Graphics g){

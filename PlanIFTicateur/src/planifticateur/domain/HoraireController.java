@@ -13,20 +13,21 @@ public class HoraireController {
     private Horaire horaire;            //horaire en transformation
     private MouseAdapter mouseAdapter;  
     private String session;  
-     
+    
+    //Constructeur
     public HoraireController(){
         session = new String();
     }
-    
+    //Création du mouseAdapter
     public void createMouseAdapter(Dimension d){
         this.mouseAdapter = new MouseAdapter(d);
     }
-    
+    //Méthode nouvel horaire
     public void nouvelHoraire(String filePath, String sessionChoisi){
         this.horaire = new Horaire(filePath, sessionChoisi);
         session = sessionChoisi;
     }
-    
+    //Méthode pour charger un horaire
     public void chargerHoraire(String filePath, String sessionChoisi){
     //peut-être serait plus logique en tant que constructeur
         if (filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU")){
@@ -35,41 +36,36 @@ public class HoraireController {
                 this.classerListeAPlacer();
         }
     }
-    
-    public void addActivite(String[] attributsActivite){
-        //À implémenter
-    }
-    
-    public void setEtiquette(int index){
-        this.horaire.setEtiquetteActivite(index);
-    }
-    
-    public void planificationAuto(){
-        //À implémenter
-    }
-    
+    //Méthode pour créer des points pour les activités importées (liste)
     public void initPointActivite(Dimension initialDimension){
         this.horaire.initPointActivite(initialDimension);
     }
-    
+    //Méthode pour créer des points pour les activités importées (grille)
     public void initPointActiviteDejaPlacee(Dimension initialDimension){
         this.horaire.initPointActiviteDejaPlacee(initialDimension);
     }
-    
+    //Méthode pour la création d'une activité dans l'horaire
+    public void addActivite(String[] attributsActivite){
+        //À implémenter
+    }
+    //Planification auto...
+    public void planificationAuto(){
+        //À implémenter
+    }
+    //Méthode pour le changement d'un point d'une activité
     public void moveActivite(int x, int y){
         Point p = new Point(x,y);
         this.horaire.moveActivite(p);
     }
     
+    public int verificationListOfActivite(Activite a){
+        return this.horaire.verificationListOfActivite(a);
+    }
     //Méthode pour mouseAdapter
+    
     public Point verificationDrop(int x, int y){
         Point p = new Point(x,y);
         return mouseAdapter.verificationDrop(p, this.horaire.getListeActiviteComplete(), this.horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee(), this.getListeActiviteGrilleCh(), this.getModeValidationAuto(),session);
-    }
-    
-    public String mouseOverToolTipText(int x, int y){
-        Point p = new Point(x,y);
-        return this.mouseAdapter.mouseOverToolTipText(p, this.getListeActiviteComplete());
     }
     
     public void verificationSelection(int x, int y){//sans dimention
@@ -80,6 +76,11 @@ public class HoraireController {
     public void verificationPositionHoraire(int x, int y){
         Point p = new Point(x,y);
         this.mouseAdapter.verificationPositionHoraire(p);
+    }
+    
+    public String mouseOverToolTipText(int x, int y){
+        Point p = new Point(x,y);
+        return this.mouseAdapter.mouseOverToolTipText(p, this.getListeActiviteComplete());
     }
     
     public Point deltaMaker(int x, int y){
@@ -96,21 +97,13 @@ public class HoraireController {
     public String getPositionCursor(){
         return this.mouseAdapter.getPositionCursor();
     }
-    //
-    //à déplacer dans horaire
-    public void switchSelection(){
-        for (Activite a: this.getListeActiviteComplete()){
-            if (a.isSelected()){
-                a.switchSelection();
-            }
-        }
-    }
-    
+        
     public boolean activiteResteSurPlace(int x, int y){
         Point p = new Point(x,y);
         Activite a = this.getActiviteSelected();
         return this.mouseAdapter.activiteResteSurPlace(p, a);
     }
+    ///////
     
     public void switchFromListToMove(Activite a){
         if (this.verificationListOfActivite(a) == 0){
@@ -120,6 +113,14 @@ public class HoraireController {
             this.getListeActiviteDejaPlacee().remove(a);
         }
         this.horaire.setActiviteInMove(a);
+    }
+        //à déplacer dans horaire
+    public void switchSelection(){
+        for (Activite a: this.getListeActiviteComplete()){
+            if (a.isSelected()){
+                a.switchSelection();
+            }
+        }
     }
     
     public void switchFromMoveToListAp(){
@@ -134,48 +135,24 @@ public class HoraireController {
         this.getListeActiviteDejaPlacee().add(this.horaire.getActiviteInMove());
     }
     
-    public int verificationListOfActivite(Activite a){
-        return this.horaire.verificationListOfActivite(a);
+    public void switchValidationAuto(){
+        this.horaire.switchModeValidation();
+    }
+      
+    public void switchAPlacerToDejaPlacee(){
+        this.horaire.setListeActiviteDejaPlacee();
     }
     
-    public void note(String n){
-        this.horaire.ajouterNote(n);
+    public void switchDejaPlaceeToAPlacer(){
+        this.horaire.setListeActiviteAPlacer();
     }
     
-    public boolean activiteIsSelected(Activite a){
-        return a.isSelected();
-    }
-    
-    public boolean existeSelection(){
-        boolean existe = false;
-        for (Activite a: this.getListeActiviteComplete()){
-            if (a.isSelected()){
-                existe = true;
-            }
-        }
-        return existe;
+    public  Vector<Float> getStats(int jour,boolean calculerCongestionEtCovoiturage){
+        return this.horaire.getStatistiques(jour,calculerCongestionEtCovoiturage);
     }
     
     public Activite getActiviteSelected(){
         return this.horaire.getActiviteSelected();
-    }
-    
-    public  Vector<Float> getStats(int jour,boolean calculerCongestionEtCovoiturage){
-        
-        return this.horaire.getStatistiques(jour,calculerCongestionEtCovoiturage);
-
-    }
-    
-    public void switchValidationAuto(){
-        this.horaire.switchModeValidation();
-    }
-    
-    public void setModeValidationAutoOff(){
-        this.horaire.setModeValidationOff();
-    }
-    
-    public void resetHoraire(){
-        this.horaire = null;
     }
     
     public boolean getModeValidationAuto(){
@@ -238,6 +215,38 @@ public class HoraireController {
         return Float.toString(a.getHeureFinMax());
     }
     
+    public List<GrilleCheminement> getListeActiviteGrilleCh(){
+        return this.horaire.getListeActiviteGrilleCh();
+    }
+    
+    public List<Conflit> getListeConflit(){
+        return this.horaire.getListeConflit();
+    }
+    
+    public List<Activite> getListeActiviteDejaPlacee(){
+        return this.horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee();
+    }
+    
+    public List<ModificationActivite> getListeModificationActivite(){
+        return this.horaire.getListeModificationActivite();
+    }
+    
+    public List<Activite> getListeActiviteComplete(){
+        return this.horaire.getListeActiviteComplete();
+    }
+    
+    public List<Activite> getListeActiviteAPlacer(){
+        return this.horaire.getListeActiviteAPlacer();
+    }
+
+    public String getSession(){
+        return this.horaire.getSession();
+    }
+        
+    public boolean getValiditeDeLHoraire(Vector<String> messagesDerreurs){
+        return this.horaire.horaireEstValide(messagesDerreurs);
+    }
+    
     //Set des modifications
     public void modificationCode(String code){
         Activite a = this.getActiviteSelected();
@@ -279,28 +288,21 @@ public class HoraireController {
         a.setHeureFinMax(Float.valueOf(heure));
     }
     
-    public boolean yaTilChevauchement(Activite a1, Activite a2){
-        return this.horaire.yaTilChevauchement(a1, a2);
-    }
-    
-    public void switchAPlacerToDejaPlacee(){
-        this.horaire.setListeActiviteDejaPlacee();
-    }
-    
-    public void switchDejaPlaceeToAPlacer(){
-        this.horaire.setListeActiviteAPlacer();
+    //Méthode pour attitrer la bonne étiquette aux activités
+    public void setEtiquette(int index){
+        this.horaire.setEtiquetteActivite(index);
     }
     
     public void setSession(String sessionChoisi){
         this.horaire.setSession(sessionChoisi);
     }
     
+    public void setModeValidationAutoOff(){
+        this.horaire.setModeValidationOff();
+    }
+    
     public void setListeActiviteDejaPlacee(){
         this.horaire.setListeActiviteDejaPlacee();
-    }
-                  
-    public List<Activite> getListeActiviteAPlacer(){
-        return this.horaire.getListeActiviteAPlacer();
     }
     
     public List<Activite> classerListeAPlacer(){
@@ -309,44 +311,38 @@ public class HoraireController {
         return aap;
     }
     
-    public List<GrilleCheminement> getListeActiviteGrilleCh(){
-        return this.horaire.getListeActiviteGrilleCh();
+    public boolean yaTilChevauchement(Activite a1, Activite a2){
+        return this.horaire.yaTilChevauchement(a1, a2);
     }
-    
-    public List<Conflit> getListeConflit(){
-        return this.horaire.getListeConflit();
-    }
-    
-    public List<Activite> getListeActiviteDejaPlacee(){
-        return this.horaire.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee();
-    }
-    
-    public List<ModificationActivite> getListeModificationActivite(){
-        return this.horaire.getListeModificationActivite();
-    }
-    
-    public List<Activite> getListeActiviteComplete(){
-        return this.horaire.getListeActiviteComplete();
-    }
-    
+        
     public boolean activiteEstDejaPlacee(String s, Activite a){
         return this.horaire.getListeActiviteDejaPlacee().activiteEstEllePlacee(s, a);
     }
-    
-    public void msgErreur(String msgErr){
-        
-    }
-    
-    public String getSession(){
-        return this.horaire.getSession();
-    }
-    
+
     public void enregistrerHoraire(String path){
          this.horaire.enregistrerHoraire(path);
     }
-            
-    public boolean getValiditeDeLHoraire(Vector<String> messagesDerreurs){
-        return this.horaire.horaireEstValide(messagesDerreurs);
+    
+    public void note(String n){
+        this.horaire.ajouterNote(n);
+    }
+    
+    public boolean activiteIsSelected(Activite a){
+        return a.isSelected();
+    }
+    
+    public boolean existeSelection(){
+        boolean existe = false;
+        for (Activite a: this.getListeActiviteComplete()){
+            if (a.isSelected()){
+                existe = true;
+            }
+        }
+        return existe;
+    }
+    
+    public void resetHoraire(){
+        this.horaire = null;
     }
     //et ainsi de suite...
 }

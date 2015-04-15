@@ -547,6 +547,7 @@ public class MainWindow extends javax.swing.JFrame {
         if(horaireEstCharge){
            // this.logMsgTextArea.append(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
             infoActiviteTextArea.setText(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
+            drawingPanel.repaint();
         }
     }//GEN-LAST:event_drawingPanelMouseMoved
 
@@ -746,8 +747,6 @@ public class MainWindow extends javax.swing.JFrame {
                 if (horaireController.existeSelection()){
                     fenetreModification = new Modifications(this.horaireController);
                     fenetreModification.setVisible(true);
-                    horaireController.switchSelection();
-                    drawingPanel.repaint();
                 }
             }
         }
