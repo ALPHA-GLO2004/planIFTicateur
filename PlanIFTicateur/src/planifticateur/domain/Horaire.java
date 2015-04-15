@@ -523,7 +523,8 @@ public class Horaire{
                     content += activite.getHeureDebutMin()+this.separateur;
                     content += activite.getHeureFinMax()+this.separateur;
                     content += activite.getJourChoisi()+this.separateur;
-                    content += activite.getHeureDebutChoisi()+this.separateur + "\n";
+                    content += activite.getHeureDebutChoisi()+this.separateur;
+                    content += activite.getRangee()+this.separateur + "\n";
     
                 }
                 
@@ -539,7 +540,7 @@ public class Horaire{
                     content+= activite.getType()+this.separateur;
                     content+= activite.getDuree()+this.separateur;
                     content+= activite.getHeureDebutMin()+this.separateur;
-                    content+= activite.getHeureFinMax()+this.separateur+"\n" ;
+                    content+= activite.getHeureFinMax()+this.separateur + "\n" ;
 
                 }
                 
