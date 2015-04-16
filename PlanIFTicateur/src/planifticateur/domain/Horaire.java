@@ -185,7 +185,7 @@ public class Horaire{
         for (Activite a: this.getListeActiviteComplete()){
             if (a.isSelected() == true){
                 a.setPoint(p);
-                System.out.println(a.getPoint());
+                //System.out.println(a.getPoint());
             }
         }
     }
