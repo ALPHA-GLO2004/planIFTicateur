@@ -396,10 +396,9 @@ public class Horaire{
                    //un cours  ne peuvent se donner en meme tps que son lab
                      if( activite.getCode().equals(activite2.getCode()) )
                      {
-              
                          if( ( (activite.getType().toLowerCase().contains("classe")))
                               &&
-                             ((activite2.getType().toLowerCase().contains("laboratoire")))
+                             ((activite2.getType().toLowerCase().contains("labo")))
                             )
                          {
                              listeCoursLab.addPaire(activite, activite2);
@@ -408,14 +407,14 @@ public class Horaire{
                          
                          else if((activite.getType().toLowerCase().contains("distance"))
                               &&
-                             (activite2.getType().toLowerCase().contains("laboratoire"))
+                             (activite2.getType().toLowerCase().contains("labo"))
                             )
                          {
                              listeCoursLab.addPaire(activite, activite2);
                              reponse = false;
                          }
                          
-                         else if((activite.getType().toLowerCase().contains("laboratoire"))
+                         else if((activite.getType().toLowerCase().contains("labo"))
                               &&
                              (activite2.getType().toLowerCase().contains("distance"))
                             )
@@ -423,7 +422,7 @@ public class Horaire{
                               listeCoursLab.addPaire(activite, activite2);
                               reponse = false;
                          }
-                         else if((activite.getType().toLowerCase().contains("laboratoire"))
+                         else if((activite.getType().toLowerCase().contains("labo"))
                               &&
                              (activite2.getType().toLowerCase().contains("classe"))
                             )
