@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="GLO 2004" company="" webLink="http://" view-date="2015-03-02" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7" locale="fr">
+<?xml version="1.0" encoding="UTF-8"?><project name="GLO 2004" company="" webLink="http://" view-date="2015-02-09" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7" locale="fr">
     <description/>
     <view zooming-state="default:4" id="gantt-chart">
         <field id="tpd3" name="Nom" width="55" order="0"/>
@@ -73,15 +73,15 @@ Diagramme de package
             <depend id="29" type="2" difference="0" hardness="Strong"/>
             <depend id="30" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="15" name="B1" color="#8cb6ce" meeting="false" start="2015-03-16" duration="9" complete="0" expand="true">
+        <task id="15" name="B1" color="#8cb6ce" meeting="false" start="2015-03-16" duration="9" complete="100" expand="true">
             <notes><![CDATA[Enregistrer l’horaire (le fichier précédent est supprimé). ]]></notes>
             <depend id="16" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="16" name="B2" color="#8cb6ce" meeting="false" start="2015-03-27" duration="3" complete="0" expand="true">
+        <task id="16" name="B2" color="#8cb6ce" meeting="false" start="2015-03-27" duration="3" complete="100" expand="true">
             <notes><![CDATA[Option « enregistrer sous » pour l’horaire est possible.]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="17" name="B3" color="#8cb6ce" meeting="false" start="2015-03-16" duration="5" complete="0" expand="true">
+        <task id="17" name="B3" color="#8cb6ce" meeting="false" start="2015-03-16" duration="5" complete="100" expand="true">
             <notes><![CDATA[Exporter l’image de l’horaire dans un format image.]]></notes>
         </task>
         <task id="29" name="C1" color="#8cb6ce" meeting="false" start="2015-03-16" duration="7" complete="100" expand="true">
@@ -123,15 +123,15 @@ De cette manière, l’horaire affiché est en tout temps valide (sauf si les do
 ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="60" name="E" color="#8cb6ce" meeting="false" start="2015-04-01" duration="9" complete="0" expand="true">
+        <task id="60" name="E" color="#8cb6ce" meeting="false" start="2015-04-01" duration="9" complete="100" expand="true">
             <notes><![CDATA[Placer de manière automatique dans la grille horaire tous les cours qui se trouvent dans l’espace à droite (bouton « planification automatique »). ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="61" name="F1" color="#8cb6ce" meeting="false" start="2015-04-01" duration="12" complete="0" expand="true">
+        <task id="61" name="F1" color="#8cb6ce" meeting="false" start="2015-04-01" duration="12" complete="100" expand="true">
             <notes><![CDATA[Nombre maximal de cours qu’un étudiant pourrait avoir la même journée Cet indicateur est à calculer pour chaque jour de la semaine. ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="62" name="F2" color="#8cb6ce" meeting="false" start="2015-04-01" duration="12" complete="0" expand="true">
+        <task id="62" name="F2" color="#8cb6ce" meeting="false" start="2015-04-01" duration="12" complete="100" expand="true">
             <notes><![CDATA[Nombre moyen de cours qu’un étudiant devrait avoir la même journée (en supposant qu’il y a le même nombre d’étudiant pour chacune des grilles de cheminement fournies). Cet indicateur est à calculer pour chaque jour de la semaine. ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
@@ -143,7 +143,7 @@ De cette manière, l’horaire affiché est en tout temps valide (sauf si les do
             <notes><![CDATA[Indice de congestion de la circulation : % des cours qui débutent à 8h30. ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="65" name="F5" color="#8cb6ce" meeting="false" start="2015-04-01" duration="11" complete="0" expand="true">
+        <task id="65" name="F5" color="#8cb6ce" meeting="false" start="2015-04-01" duration="11" complete="100" expand="true">
             <notes><![CDATA[Indice de covoiturage (voir spécifications du projet). ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
@@ -151,11 +151,11 @@ De cette manière, l’horaire affiché est en tout temps valide (sauf si les do
             <notes><![CDATA[Lorsqu’on déplace la souris dans la grille horaire, le jour et l’heure associés à la case sous la souris s’affichent dans la barre d’état de l’application. ]]></notes>
             <depend id="71" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="71" name="G2" color="#8cb6ce" meeting="false" start="2015-04-17" duration="1" complete="0" expand="true">
+        <task id="71" name="G2" color="#8cb6ce" meeting="false" start="2015-04-17" duration="1" complete="100" expand="true">
             <notes><![CDATA[Pour toute comparaison de chaîne de caractère, l’application ne doit pas être sensible à la casse. ]]></notes>
             <depend id="79" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="79" name="Remise" color="#8cb6ce" meeting="false" start="2015-04-20" duration="1" complete="0" expand="true"/>
+        <task id="79" name="Remise" color="#8cb6ce" meeting="false" start="2015-04-20" duration="1" complete="100" expand="true"/>
     </tasks>
     <resources>
         <resource id="0" name="Yann" function="Default:0" contacts="" phone="">
