@@ -155,6 +155,10 @@ public class HoraireController {
         return this.horaire.getStatistiques(jour,calculerCongestionEtCovoiturage);
     }
     
+    public int getEtiquette(){
+        return this.horaire.getEtiquette();
+    }
+    
     public Activite getActiviteSelected(){
         return this.horaire.getActiviteSelected();
     }

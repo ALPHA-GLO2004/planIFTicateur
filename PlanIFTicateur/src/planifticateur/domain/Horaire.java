@@ -34,18 +34,19 @@ public class Horaire{
     private Vector cloneListe;
     private String note = "";
     private boolean modeValidationAuto = false;
-    boolean valide;
+    private boolean valide;
+    private int indexEtiquette;
     private Activite activiteSelected;
     private Activite activiteInMove;
     private String session;
     private String separateur;
     //float pctCoursDebutant8h30;
-    boolean horairePlein;
-    ListeConflit listeConflit;
-    ListeModificationActivite listeModificationActivite;
-    ListeActiviteAPlacer listeActiviteAPlacer;
-    ListeActiviteDejaPlacee listeActiviteDejaPlacee;
-    ListeGrilleCh listeGrilleCh;
+    private boolean horairePlein;
+    private ListeConflit listeConflit;
+    private ListeModificationActivite listeModificationActivite;
+    private ListeActiviteAPlacer listeActiviteAPlacer;
+    private ListeActiviteDejaPlacee listeActiviteDejaPlacee;
+    private ListeGrilleCh listeGrilleCh;
     
     public Horaire(String filePath, String sessionChoisi){
         //Constructeur -- Ne fais que prendre le fichier et attribuer chaque élément contenu
@@ -165,7 +166,12 @@ public class Horaire{
         this.listeActiviteAPlacer.add(nouvelActivite);
     }
     
+    public int getEtiquette(){
+        return this.indexEtiquette;
+    }
+    
     public void setEtiquetteActivite(int index){
+        this.indexEtiquette = index;
         for (Activite a: this.getListeActiviteComplete()){
             String[] choixEtiquette = {a.getCode(), a.getNomActivite(), a.getType(), a.getProfesseur()};
             a.setEtiquette(choixEtiquette[index]);
