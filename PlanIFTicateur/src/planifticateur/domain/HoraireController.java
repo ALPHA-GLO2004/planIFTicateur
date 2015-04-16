@@ -315,6 +315,10 @@ public class HoraireController {
         return aap;
     }
     
+    public void deplacerToutDansListe(){
+        this.horaire.deplacerToutDansListe();
+    }
+    
     public boolean yaTilChevauchement(Activite a1, Activite a2){
         return this.horaire.yaTilChevauchement(a1, a2);
     }

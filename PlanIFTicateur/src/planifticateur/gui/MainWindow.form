@@ -195,7 +195,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="691" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="659" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -606,7 +606,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="infoActiviteTextArea" alignment="1" pref="525" max="32767" attributes="0"/>
+                  <Component id="infoActiviteTextArea" alignment="1" pref="557" max="32767" attributes="0"/>
                   <Component id="logMsgTextArea" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -644,7 +644,7 @@
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="rows" type="int" value="8"/>
-                <Property name="text" type="java.lang.String" value="Info. activit&#xe9; survol&#xe9;e"/>
+                <Property name="text" type="java.lang.String" value="Info. activit&#xe9; survol&#xe9;e:"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>

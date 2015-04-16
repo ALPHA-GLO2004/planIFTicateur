@@ -149,7 +149,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 691, Short.MAX_VALUE)
+            .addGap(0, 659, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -433,7 +433,7 @@ public class MainWindow extends javax.swing.JFrame {
         infoActiviteTextArea.setColumns(1);
         infoActiviteTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         infoActiviteTextArea.setRows(8);
-        infoActiviteTextArea.setText("Info. activité survolée");
+        infoActiviteTextArea.setText("Info. activité survolée:");
         infoActiviteTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         infoActiviteTextArea.setMinimumSize(new java.awt.Dimension(300, 180));
         infoActiviteTextArea.setPreferredSize(new Dimension(this.initialDimension.width/4, this.initialDimension.height/5));
@@ -449,7 +449,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         logPanelLayout.setVerticalGroup(
             logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+            .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
             .addComponent(logMsgTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -651,7 +651,6 @@ public class MainWindow extends javax.swing.JFrame {
                         else{
                             horaireController.switchFromMoveToListDp();
                         }
-                        horaireController.classerListeAPlacer();
                         horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
                         horaireController.setRangee(this.validActivitePoint.x, this.validActivitePoint.y);
                         horaireController.jourHeureToActivite();
@@ -874,7 +873,7 @@ public class MainWindow extends javax.swing.JFrame {
         if(horaireEstCharge)
 
              exporter.exporterImage(drawingPanel, ImageExporter.IMAGE_FORMAT.JPEG,
-                                    drawingPanel.getInitialDimension().width,drawingPanel.getInitialDimension().height , 
+                                    drawingPanel.getInitialDimension().width*3/4,drawingPanel.getInitialDimension().height, 
                                     System.getProperty("user.dir") +"_export.jpg"
                                     );
     }//GEN-LAST:event_exportButtonActionPerformed
@@ -945,7 +944,20 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_nouveauFichierButtonActionPerformed
 
     private void resetHoraireButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetHoraireButtonActionPerformed
-        
+        int confirmation = JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir effacer l'horaire ?", "Effacement de l'horaire", JOptionPane.YES_NO_OPTION);
+        if (confirmation == 0){
+            horaireController.deplacerToutDansListe();
+            horaireController.classerListeAPlacer();
+            horaireController.initPointActivite(this.initialDimension);
+            messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }       
+            drawingPanel.repaint();
+        }
     }//GEN-LAST:event_resetHoraireButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed

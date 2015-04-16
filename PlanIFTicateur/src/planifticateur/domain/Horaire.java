@@ -298,6 +298,20 @@ public class Horaire{
         return this.modeValidationAuto;
     }
     
+    public void deplacerToutDansListe(){
+        Vector<Activite> tempListe = new Vector<Activite>();
+        
+        for (Activite a: this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee()){
+            a.setJourChoisi(0);
+            tempListe.addElement(a);
+        }
+
+        for (Activite a: tempListe){
+            this.listeActiviteAPlacer.add(a);
+            this.getListeActiviteDejaPlacee().remove(a);
+        }
+    }
+    
     public Activite getActiviteSelected(){
         for (Activite a: this.getListeActiviteComplete()){
             if (a.isSelected()){
