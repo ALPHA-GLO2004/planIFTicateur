@@ -612,15 +612,16 @@ public class MainWindow extends javax.swing.JFrame {
                     }
                     //Si la position n'est pas valide
                     else{
-                        horaireController.classerListeAPlacer();
                         if (this.activiteList == 0){
                             horaireController.switchFromMoveToListAp();
                         }
                         else{
                             horaireController.switchFromMoveToListDp();
                         }
+                        horaireController.classerListeAPlacer();
                         horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
                         horaireController.setRangee(this.validActivitePoint.x, this.validActivitePoint.y);
+                        horaireController.jourHeureToActivite();
                         horaireController.switchSelection();
                         horaireController.classerListeAPlacer();
                         horaireController.initPointActivite(this.initialDimension);
@@ -748,7 +749,7 @@ public class MainWindow extends javax.swing.JFrame {
             if (evt.getClickCount() == 2){
                 horaireController.verificationSelection(evt.getPoint().x, evt.getPoint().y);
                 if (horaireController.existeSelection()){
-                    fenetreModification = new Modifications(this.horaireController);
+                    fenetreModification = new Modifications(this.horaireController, this);
                     fenetreModification.setVisible(true);
                 }
             }
@@ -886,7 +887,6 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             drawingPanel.repaint();
         }
-        System.out.println(evt.getComponent().getSize());
     }//GEN-LAST:event_formComponentResized
 
     private void ajouterActiviteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActiviteButtonActionPerformed

@@ -6,9 +6,11 @@ import planifticateur.domain.HoraireController;
 
 public class Modifications extends javax.swing.JFrame {
     private HoraireController horaireController;
+    private MainWindow mainWindow;
 
-    public Modifications(HoraireController horaireController) {
+    public Modifications(HoraireController horaireController, MainWindow mainWindow) {
         this.horaireController = horaireController;
+        this.mainWindow = mainWindow;
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
@@ -205,7 +207,7 @@ public class Modifications extends javax.swing.JFrame {
         horaireController.modificationHeureDebutMin(heureDebutMinTextField.getText());
         horaireController.modificationHeureFinMax(heureFinMaxTextField.getText());
         horaireController.switchSelection();
-        
+        mainWindow.getDrawingPanel().repaint();
         this.dispose();
     }//GEN-LAST:event_accepterButtonActionPerformed
 

@@ -111,13 +111,13 @@ public class MouseAdapter {
             for (Activite a: laDP){
                 if (pointActiviteY == a.getPoint().y 
                     && pointActiviteX + (int)(dureeActiviteSelected*2*saut) > a.getPoint().x
-                    && pointActiviteX + (int)(dureeActiviteSelected*2*saut) <= (a.getPoint().x + (int)(a.getDuree()*2*saut))){
+                    && pointActiviteX < (a.getPoint().x + (int)(a.getDuree()*2*saut))){
                         pointActiviteX = 0;
                         pointActiviteY = 0;
                     }
                 if (pointActiviteY == a.getPoint().y 
                     && pointActiviteX < (a.getPoint().x + (int)(a.getDuree() *2*saut))
-                    && pointActiviteX >= a.getPoint().x){
+                    && pointActiviteX + (int)(dureeActiviteSelected*2*saut) > a.getPoint().x){
                         pointActiviteX = 0;
                         pointActiviteY = 0;
                     }
