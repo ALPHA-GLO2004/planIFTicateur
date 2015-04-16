@@ -72,7 +72,6 @@ public class MainWindow extends javax.swing.JFrame {
         statistiquesButton = new javax.swing.JButton();
         Icon noteIcon = new ImageIcon("icon_note.png");
         noteButton = new javax.swing.JButton(noteIcon);
-        validationAutoCheckBox = new javax.swing.JCheckBox();
         ouvrirFichierButton = new javax.swing.JButton();
         nouveauFichierButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
@@ -82,6 +81,9 @@ public class MainWindow extends javax.swing.JFrame {
         titreFichierLabel = new javax.swing.JLabel();
         ajouterActiviteButton = new javax.swing.JButton();
         filtreActiviteButton = new javax.swing.JButton();
+        resetHoraireButton = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
+        validationAutoButton = new javax.swing.JToggleButton();
         logPanel = new javax.swing.JPanel();
         logMsgTextArea = new javax.swing.JTextArea();
         infoActiviteTextArea = new javax.swing.JTextArea();
@@ -147,7 +149,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1089, Short.MAX_VALUE)
+            .addGap(0, 691, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -158,8 +160,8 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 20.0;
         mainPanel.add(drawingPanelContainer, gridBagConstraints);
 
@@ -177,7 +179,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 13;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
@@ -219,19 +221,6 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         buttonPanel.add(noteButton, gridBagConstraints);
 
-        validationAutoCheckBox.setText("Validation automatique");
-        validationAutoCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                validationAutoCheckBoxActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 12;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
-        buttonPanel.add(validationAutoCheckBox, gridBagConstraints);
-
         ouvrirFichierButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_openfile.png"))); // NOI18N
         ouvrirFichierButton.setToolTipText("Ouvrir horaire");
         ouvrirFichierButton.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -262,6 +251,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 5);
         buttonPanel.add(nouveauFichierButton, gridBagConstraints);
 
@@ -296,7 +286,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 50);
         buttonPanel.add(saveAsButton, gridBagConstraints);
 
         exportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_export.png"))); // NOI18N
@@ -310,7 +300,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
@@ -322,19 +312,20 @@ public class MainWindow extends javax.swing.JFrame {
         aideButton.setMinimumSize(new java.awt.Dimension(50, 50));
         aideButton.setPreferredSize(new java.awt.Dimension(50, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 50);
         buttonPanel.add(aideButton, gridBagConstraints);
 
-        titreFichierLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        titreFichierLabel.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         titreFichierLabel.setPreferredSize(new java.awt.Dimension(400, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridx = 15;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 100, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 80, 0, 0);
         buttonPanel.add(titreFichierLabel, gridBagConstraints);
         titreFichierLabel.getAccessibleContext().setAccessibleName("nomFichier");
 
@@ -349,10 +340,10 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         buttonPanel.add(ajouterActiviteButton, gridBagConstraints);
 
         filtreActiviteButton.setText(this.nomEtiquette[0]);
@@ -368,16 +359,65 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 50);
         buttonPanel.add(filtreActiviteButton, gridBagConstraints);
+
+        resetHoraireButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_reset.png"))); // NOI18N
+        resetHoraireButton.setToolTipText("Recommencer l'horaire (retire les activités de la grille horaire)");
+        resetHoraireButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        resetHoraireButton.setMinimumSize(new java.awt.Dimension(50, 50));
+        resetHoraireButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        resetHoraireButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetHoraireButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 14;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 60);
+        buttonPanel.add(resetHoraireButton, gridBagConstraints);
+
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_search.png"))); // NOI18N
+        searchButton.setToolTipText("Recherche par titre");
+        searchButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        searchButton.setMinimumSize(new java.awt.Dimension(50, 50));
+        searchButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        buttonPanel.add(searchButton, gridBagConstraints);
+
+        validationAutoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/gui/icon/icon_validationAuto.png"))); // NOI18N
+        validationAutoButton.setToolTipText("mode validation automatique (Arrêt)");
+        validationAutoButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        validationAutoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validationAutoButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        buttonPanel.add(validationAutoButton, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipady = 5;
+        gridBagConstraints.ipady = 15;
         mainPanel.add(buttonPanel, gridBagConstraints);
 
         logMsgTextArea.setEditable(false);
@@ -387,33 +427,30 @@ public class MainWindow extends javax.swing.JFrame {
         logMsgTextArea.setText("Bienvenue sur PlanIFTicateur, le gestionnaire d'horaire de session!");
         logMsgTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         logMsgTextArea.setMinimumSize(new java.awt.Dimension(20, 19));
-        logMsgTextArea.setPreferredSize(new Dimension(this.initialDimension.width*3/4, this.initialDimension.height/4));
+        logMsgTextArea.setPreferredSize(new Dimension(this.initialDimension.width*3/4, this.initialDimension.height/5));
 
         infoActiviteTextArea.setEditable(false);
         infoActiviteTextArea.setColumns(1);
         infoActiviteTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         infoActiviteTextArea.setRows(8);
-        infoActiviteTextArea.setText("Informations activité survolé :");
+        infoActiviteTextArea.setText("Info. activité survolée");
         infoActiviteTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        infoActiviteTextArea.setMinimumSize(new java.awt.Dimension(22, 19));
-        infoActiviteTextArea.setPreferredSize(new Dimension(this.initialDimension.width/4, this.initialDimension.height/4));
+        infoActiviteTextArea.setMinimumSize(new java.awt.Dimension(300, 180));
+        infoActiviteTextArea.setPreferredSize(new Dimension(this.initialDimension.width/4, this.initialDimension.height/5));
 
         javax.swing.GroupLayout logPanelLayout = new javax.swing.GroupLayout(logPanel);
         logPanel.setLayout(logPanelLayout);
         logPanelLayout.setHorizontalGroup(
             logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logPanelLayout.createSequentialGroup()
-                .addComponent(logMsgTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(logMsgTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, 1642, Short.MAX_VALUE))
         );
         logPanelLayout.setVerticalGroup(
             logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logMsgTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+            .addComponent(logMsgTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -421,8 +458,9 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         mainPanel.add(logPanel, gridBagConstraints);
 
@@ -533,11 +571,6 @@ public class MainWindow extends javax.swing.JFrame {
         } 
     }
     
-    private void validationAutoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationAutoCheckBoxActionPerformed
-        horaireController.switchValidationAuto();
-        drawingPanel.repaint();
-    }//GEN-LAST:event_validationAutoCheckBoxActionPerformed
-
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
         //horaireController.nouvelHoraire("1", "A");
     }//GEN-LAST:event_menuFileNewActionPerformed
@@ -712,7 +745,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
         else{
             horaireController.chargerHoraire(filePath, sessionChooser.getSession());
-            validationAutoCheckBox.setSelected (false);
+            validationAutoButton.setSelected (false);
             horaireController.setModeValidationAutoOff();
             titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom() + " (" + horaireController.getSession() + ")");
             drawingPanel.setVisible(true);
@@ -809,7 +842,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
         else{
             horaireController.chargerHoraire(filePath, sessionChooser.getSession());
-            validationAutoCheckBox.setSelected (false);
+            validationAutoButton.setSelected(false);
             horaireController.setModeValidationAutoOff();
             titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom() + " (" + horaireController.getSession() + ")");
             drawingPanel.setVisible(true);
@@ -910,6 +943,37 @@ public class MainWindow extends javax.swing.JFrame {
     private void nouveauFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauFichierButtonActionPerformed
         //horaireController.nouvelHoraire("1", "A");
     }//GEN-LAST:event_nouveauFichierButtonActionPerformed
+
+    private void resetHoraireButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetHoraireButtonActionPerformed
+        
+    }//GEN-LAST:event_resetHoraireButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void validationAutoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationAutoButtonActionPerformed
+        if (validationAutoButton.isSelected()){
+            if (horaireEstCharge){
+                horaireController.switchValidationAuto();
+                validationAutoButton.setToolTipText("mode validation automatique (en marche)");
+                drawingPanel.repaint();
+            }
+            else{
+                validationAutoButton.setSelected(false);
+            }
+        }
+        else{
+            if (!horaireEstCharge){
+                validationAutoButton.setSelected(false);
+            }
+            else{
+                validationAutoButton.setToolTipText("mode validation automatique (arrêt)");
+                horaireController.switchValidationAuto();
+                drawingPanel.repaint();
+            }
+        }
+    }//GEN-LAST:event_validationAutoButtonActionPerformed
     
     public DrawingPanel getDrawingPanel(){
         return this.drawingPanel;
@@ -943,11 +1007,13 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton nouveauFichierButton;
     private javax.swing.JButton ouvrirFichierButton;
     private javax.swing.JButton planificationAutomatiqueButton;
+    private javax.swing.JButton resetHoraireButton;
     private javax.swing.JButton saveAsButton;
     private javax.swing.JButton saveButton;
+    private javax.swing.JButton searchButton;
     private javax.swing.JButton statistiquesButton;
     private javax.swing.JLabel titreFichierLabel;
     private javax.swing.JMenuBar topMenuBar;
-    private javax.swing.JCheckBox validationAutoCheckBox;
+    private javax.swing.JToggleButton validationAutoButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -183,12 +183,12 @@ public class MouseAdapter {
         int width = dimension.width *3/4;
         int caseJourWidth = width / 16;
         int activiteHeight = dimension.height /45;
-        String toolTipText = "\t\t---Info activités---";
+        String toolTipText = "Info. activité survolée:";
         
         for (int i = 0; i < activiteList.size(); i++){
             if (p.x > activiteList.get(i).getPoint().x && p.x < (activiteList.get(i).getPoint().x + (int)(activiteList.get(i).getDuree() * ((width - (caseJourWidth))/15)))
                     && p.y > activiteList.get(i).getPoint().y && p.y < (activiteList.get(i).getPoint().y + activiteHeight)){
-                toolTipText =  "\t\t---Info activités---"
+                toolTipText =  "Info. activité survolée:"
                                + "\nCode:\t" + activiteList.get(i).getCode()
                                + "\n" + "Section:\t" + activiteList.get(i).getSection()
                                + "\n" + "Description:\t" + activiteList.get(i).getNomActivite()
@@ -197,7 +197,7 @@ public class MouseAdapter {
                                + "\n" + "Duree:\t" + activiteList.get(i).conversionHeure(activiteList.get(i).getDuree());
                 
                 if (activiteList.get(i).getJourChoisi() != 0){
-                    toolTipText += "\n\n----------L'activité est placée!----------"
+                    toolTipText += "\n----------L'activité est placée!----------"
                                    + "\n" + "Jour choisi:\t" + activiteList.get(i).conversionJour(activiteList.get(i).getJourChoisi())
                                    + "\n" + "Débute à:\t" + activiteList.get(i).conversionHeure(activiteList.get(i).getHeureDebutChoisi());
                 }
