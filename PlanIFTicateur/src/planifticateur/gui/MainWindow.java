@@ -84,6 +84,8 @@ public class MainWindow extends javax.swing.JFrame {
         resetHoraireButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         validationAutoButton = new javax.swing.JToggleButton();
+        undoButton = new javax.swing.JButton();
+        redoButton = new javax.swing.JButton();
         logPanel = new javax.swing.JPanel();
         logMsgTextArea = new javax.swing.JTextArea();
         infoActiviteTextArea = new javax.swing.JTextArea();
@@ -412,6 +414,38 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         buttonPanel.add(validationAutoButton, gridBagConstraints);
 
+        undoButton.setText("jButton1");
+        undoButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        undoButton.setMinimumSize(new java.awt.Dimension(50, 50));
+        undoButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        undoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                undoButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 16;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        buttonPanel.add(undoButton, gridBagConstraints);
+
+        redoButton.setText("jButton2");
+        redoButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        redoButton.setMinimumSize(new java.awt.Dimension(50, 50));
+        redoButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        redoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                redoButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 17;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 20);
+        buttonPanel.add(redoButton, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -715,7 +749,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_statistiquesButtonActionPerformed
 
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
-        horaireController.planificationAuto();
+        //horaireController.planificationAuto();
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
 
     private void menuFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileOpenActionPerformed
@@ -940,7 +974,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_filtreActiviteButtonActionPerformed
 
     private void nouveauFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauFichierButtonActionPerformed
-        //horaireController.nouvelHoraire("1", "A");
+        //
     }//GEN-LAST:event_nouveauFichierButtonActionPerformed
 
     private void resetHoraireButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetHoraireButtonActionPerformed
@@ -986,6 +1020,34 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_validationAutoButtonActionPerformed
+
+    private void redoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redoButtonActionPerformed
+        horaireController.redo();
+        horaireController.initPointActivite(this.initialDimension);
+        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+        statFenetre.initialize(horaireController);
+
+        horaireController.jourHeureToActivite();
+        horaireController.switchAPlacerToDejaPlacee();
+        horaireController.switchDejaPlaceeToAPlacer();
+        horaireController.initPointActivite(this.initialDimension);
+        statFenetre.setStats();
+        drawingPanel.repaint();
+    }//GEN-LAST:event_redoButtonActionPerformed
+
+    private void undoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_undoButtonActionPerformed
+        horaireController.undo();
+        horaireController.initPointActivite(this.initialDimension);
+        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+        statFenetre.initialize(horaireController);
+
+        horaireController.jourHeureToActivite();
+        horaireController.switchAPlacerToDejaPlacee();
+        horaireController.switchDejaPlaceeToAPlacer();
+        horaireController.initPointActivite(this.initialDimension);
+        statFenetre.setStats();
+        drawingPanel.repaint();
+    }//GEN-LAST:event_undoButtonActionPerformed
     
     public DrawingPanel getDrawingPanel(){
         return this.drawingPanel;
@@ -1019,6 +1081,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton nouveauFichierButton;
     private javax.swing.JButton ouvrirFichierButton;
     private javax.swing.JButton planificationAutomatiqueButton;
+    private javax.swing.JButton redoButton;
     private javax.swing.JButton resetHoraireButton;
     private javax.swing.JButton saveAsButton;
     private javax.swing.JButton saveButton;
@@ -1026,6 +1089,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton statistiquesButton;
     private javax.swing.JLabel titreFichierLabel;
     private javax.swing.JMenuBar topMenuBar;
+    private javax.swing.JButton undoButton;
     private javax.swing.JToggleButton validationAutoButton;
     // End of variables declaration//GEN-END:variables
 }

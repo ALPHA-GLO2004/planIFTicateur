@@ -525,7 +525,6 @@ public class Horaire{
         }
         return 1;
     }
-     
     
     public void enregistrerHoraire(String path){
 
