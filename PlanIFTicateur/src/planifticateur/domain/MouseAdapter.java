@@ -57,7 +57,7 @@ public class MouseAdapter {
                         if (p.x > caseJourWidth && p.x < dimension.width && p.y > caseHeureHeight && p.y <= height){
                             jumpX = caseJourWidth + k*saut;
                         
-                            if (p.x >= jumpX && p.x < (jumpX + saut)){
+                            if (p.x > jumpX && p.x <= (jumpX + saut)){
                                 if (p.y >= 0 && p.y < caseHeureHeight){
                                     jumpX = 0;
                                 }
