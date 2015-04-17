@@ -96,9 +96,21 @@ public class MainWindow extends javax.swing.JFrame {
         menuFileSave = new javax.swing.JMenuItem();
         menuFileSaveAs = new javax.swing.JMenuItem();
         menuFileQuit = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         menuExport = new javax.swing.JMenu();
         menuExportCopy = new javax.swing.JMenuItem();
         menuExportPic = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         menuHelpWindow = new javax.swing.JMenuItem();
         menuHelpAbout = new javax.swing.JMenuItem();
@@ -537,6 +549,33 @@ public class MainWindow extends javax.swing.JFrame {
 
         topMenuBar.add(menuFile);
 
+        jMenu1.setText("Édition");
+
+        jMenuItem1.setText("Undo");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Redo");
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Notes");
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem8.setText("Ajouter activité");
+        jMenu1.add(jMenuItem8);
+
+        jMenuItem9.setText("Planification automatique");
+        jMenu1.add(jMenuItem9);
+
+        jMenuItem10.setText("Effacer horaire");
+        jMenu1.add(jMenuItem10);
+
+        topMenuBar.add(jMenu1);
+
         menuExport.setText("Exporter");
 
         menuExportCopy.setText("Copier (Presse-papier)");
@@ -551,6 +590,22 @@ public class MainWindow extends javax.swing.JFrame {
         menuExport.add(menuExportPic);
 
         topMenuBar.add(menuExport);
+
+        jMenu2.setText("Outils");
+
+        jMenuItem4.setText("Statistiques");
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Validation automatique");
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem6.setText("Recherche activité");
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem7.setText("filtre activités");
+        jMenu2.add(jMenuItem7);
+
+        topMenuBar.add(jMenu2);
 
         menuHelp.setText("Aide");
 
@@ -1110,6 +1165,10 @@ public class MainWindow extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     
     public DrawingPanel getDrawingPanel(){
         return this.drawingPanel;
@@ -1123,6 +1182,18 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton exportButton;
     private javax.swing.JButton filtreActiviteButton;
     private javax.swing.JTextArea infoActiviteTextArea;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JTextArea logMsgTextArea;
     private javax.swing.JPanel logPanel;
     private javax.swing.JPanel mainPanel;
