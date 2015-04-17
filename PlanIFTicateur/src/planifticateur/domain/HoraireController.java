@@ -261,6 +261,10 @@ public class HoraireController {
         return this.horaire.horaireEstValide(messagesDerreurs);
     }
     
+    public boolean getSaved(){
+        return this.horaire.getSaved();
+    }
+    
     //Set des modifications
     public void modificationCode(String code){
         Activite a = this.getActiviteSelected();
@@ -300,6 +304,14 @@ public class HoraireController {
     public void modificationHeureFinMax(String heure){
         Activite a = this.getActiviteSelected();
         a.setHeureFinMax(Float.valueOf(heure));
+    }
+    
+    public void setSaved(){
+        this.horaire.setSaved();
+    }
+    
+    public void setUnsaved(){
+        this.horaire.setUnsaved();
     }
     
     //Méthode pour attitrer la bonne étiquette aux activités

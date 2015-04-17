@@ -54,7 +54,8 @@ public class MainWindow extends javax.swing.JFrame {
         fenetreNote = new Note();
         messagesDerreurs = new Vector<String>() ;
         initComponents();
-        drawingPanelContainer.getVerticalScrollBar().setUnitIncrement(8);     
+        drawingPanelContainer.getVerticalScrollBar().setUnitIncrement(8);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
     
@@ -103,7 +104,6 @@ public class MainWindow extends javax.swing.JFrame {
         menuHelpWindow = new javax.swing.JMenuItem();
         menuHelpAbout = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PlanIFTicateur");
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMinimumSize(new java.awt.Dimension(1024, 768));
@@ -111,6 +111,11 @@ public class MainWindow extends javax.swing.JFrame {
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -665,6 +670,7 @@ public class MainWindow extends javax.swing.JFrame {
                     horaireController.classerListeAPlacer();
                     horaireController.initPointActivite(this.initialDimension);
                     horaireController.enregistrerUndo();
+                    horaireController.setUnsaved();
                 }
                 //Si la position n'est pas dans la grille ou à un endroit non valide
                 else{
@@ -681,6 +687,7 @@ public class MainWindow extends javax.swing.JFrame {
                         horaireController.classerListeAPlacer();
                         horaireController.initPointActivite(this.initialDimension);
                         horaireController.enregistrerUndo();
+                        horaireController.setUnsaved();
                     }
                     //Si la position n'est pas valide
                     else{
@@ -814,7 +821,21 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_menuFileOpenActionPerformed
 
     private void menuFileQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileQuitActionPerformed
-        System.exit(0);
+        if (horaireEstCharge){
+            if (!horaireController.getSaved()){
+                int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment quitter sans sauvegarder l'horaire ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
+                if (confirm == 0){
+                    horaireController.enregistrerHoraire(filePath);
+                    System.exit(0);
+                }
+            }
+            else{
+                System.exit(0);
+            }
+        }
+        else{
+            System.exit(0);
+        }
     }//GEN-LAST:event_menuFileQuitActionPerformed
 
     private void drawingPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseClicked
@@ -830,8 +851,10 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_drawingPanelMouseClicked
 
     private void menuFileSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileSaveActionPerformed
-       if(horaireEstCharge)
+       if(horaireEstCharge){
            horaireController.enregistrerHoraire(filePath);
+           horaireController.setSaved();
+       }
     }//GEN-LAST:event_menuFileSaveActionPerformed
 
     private void menuFileSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileSaveAsActionPerformed
@@ -849,11 +872,15 @@ public class MainWindow extends javax.swing.JFrame {
             selecteurFichier.setFileFilter(filter);
             selecteurFichier.showOpenDialog(MainWindow.this);
 
-            
             selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
-            if(selecteurFichier.getSelectedFile().getPath().contains(".cou") ) horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() );
-            else horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+            if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
+                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
+            }
+            else {
+                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+            }
+            horaireController.setSaved();
         }  
     }//GEN-LAST:event_menuFileSaveAsActionPerformed
 
@@ -937,14 +964,20 @@ public class MainWindow extends javax.swing.JFrame {
             
             selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
-            if(selecteurFichier.getSelectedFile().getPath().contains(".cou") ) horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() );
-            else horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+            if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
+                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() );
+            }
+            else {
+                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+            }
+            horaireController.setSaved();
         }
     }//GEN-LAST:event_saveAsButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         if(horaireEstCharge){
            horaireController.enregistrerHoraire(filePath);
+           horaireController.setSaved();
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -1041,12 +1074,13 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.initPointActivite(this.initialDimension);
         statFenetre.setStats();
         messagesDerreurs.removeAllElements();
-            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-            }
-            else{
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-            }       
+        if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+        }
+        else{
+            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+        }
+        horaireController.setUnsaved();
         drawingPanel.repaint();
     }//GEN-LAST:event_redoButtonActionPerformed
 
@@ -1062,14 +1096,33 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.initPointActivite(this.initialDimension);
         statFenetre.setStats();
         messagesDerreurs.removeAllElements();
-            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-            }
-            else{
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-            }       
+        if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+        }
+        else{
+            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+        }
+        horaireController.setUnsaved();
         drawingPanel.repaint();
     }//GEN-LAST:event_undoButtonActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        if (horaireEstCharge){
+            if (!horaireController.getSaved()){
+                int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment quitter sans sauvegarder l'horaire ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
+                if (confirm == 0){
+                    horaireController.enregistrerHoraire(filePath);
+                    System.exit(0);
+                }
+            }
+            else{
+                System.exit(0);
+            }
+        }
+        else{
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
     
     public DrawingPanel getDrawingPanel(){
         return this.drawingPanel;

@@ -29,8 +29,9 @@ import java.io.IOException;
 
 public class Horaire{
     //Ajout de ma part, ça me semblait essentiel
-    String fichierCOU;
-    String fichierCHE;
+    private boolean saved = false;
+    private String fichierCOU;
+    private String fichierCHE;
     private List<String> listeActivite = new ArrayList<String>();
     private List<String> listeGrille = new ArrayList<String>();
     private Vector<Activite> listeActiviteComplete = new Vector<Activite>();
@@ -537,6 +538,18 @@ public class Horaire{
             }
         }
         return 1;
+    }
+    
+    public boolean getSaved(){
+        return this.saved;
+    }
+    
+    public void setSaved(){
+        this.saved = true;
+    }
+    
+    public void setUnsaved(){
+        this.saved = false;
     }
     
     public void enregistrerCHE(String pathACopier, String pathAColler){
