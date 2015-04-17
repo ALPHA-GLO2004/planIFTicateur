@@ -103,7 +103,10 @@ public class Activite implements Comparable<Activite>{
                 couleur = new Color(223, 109, 20);
             } else if ( type.toLowerCase().contains("horsD") ){
                 couleur = new Color(253, 108, 158);
-            } else {//sentinelle de le cas de couleur rouge 
+            } else if ( type.toLowerCase().contains("hybride") ){
+                couleur = new Color(222, 77, 169);
+            }
+            else {//sentinelle de le cas de couleur rouge 
                 //sinon le programme plante avec une nouvelle activite en appelant : getCouleur() sera null
                 //on peut savoir que un nouveau type d'activite est ajoute au fichier
                 couleur = Color.RED;//en attendant le factory qui nous permet d'ajouter un nouveau cours sans connaitre son nom. 

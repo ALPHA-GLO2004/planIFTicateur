@@ -78,7 +78,6 @@ public class MainWindow extends javax.swing.JFrame {
         saveButton = new javax.swing.JButton();
         saveAsButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
-        aideButton = new javax.swing.JButton();
         titreFichierLabel = new javax.swing.JLabel();
         ajouterActiviteButton = new javax.swing.JButton();
         filtreActiviteButton = new javax.swing.JButton();
@@ -226,7 +225,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 30);
         buttonPanel.add(noteButton, gridBagConstraints);
 
         ouvrirFichierButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_openfile.png"))); // NOI18N
@@ -294,7 +293,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 20);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 30);
         buttonPanel.add(saveAsButton, gridBagConstraints);
 
         exportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_export.png"))); // NOI18N
@@ -313,18 +312,6 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         buttonPanel.add(exportButton, gridBagConstraints);
-
-        aideButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_help.png"))); // NOI18N
-        aideButton.setToolTipText("Aide");
-        aideButton.setMaximumSize(new java.awt.Dimension(50, 50));
-        aideButton.setMinimumSize(new java.awt.Dimension(50, 50));
-        aideButton.setPreferredSize(new java.awt.Dimension(50, 50));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 10;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 20);
-        buttonPanel.add(aideButton, gridBagConstraints);
 
         titreFichierLabel.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         titreFichierLabel.setPreferredSize(new java.awt.Dimension(400, 15));
@@ -368,7 +355,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridx = 13;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 20);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 30);
         buttonPanel.add(filtreActiviteButton, gridBagConstraints);
 
         resetHoraireButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_reset.png"))); // NOI18N
@@ -451,7 +438,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 20);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 30);
         buttonPanel.add(redoButton, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1129,7 +1116,6 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aideButton;
     private javax.swing.JButton ajouterActiviteButton;
     private javax.swing.JPanel buttonPanel;
     private planifticateur.gui.DrawingPanel drawingPanel;
