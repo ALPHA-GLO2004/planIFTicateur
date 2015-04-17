@@ -5,7 +5,9 @@ import planifticateur.domain.HoraireController;
 import planifticateur.domain.ImageExporter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Vector;
@@ -859,6 +861,30 @@ public class MainWindow extends javax.swing.JFrame {
             }
                 
             drawingPanel.repaint();
+    
+            //enregistrement des notes s'il yen a
+            String txt = new String();
+            txt =filePath.substring(0, (filePath.length() - 3));
+            txt+= "txt";   
+        
+            try{
+                
+                File f = new File(txt);    
+                if(f.exists() && !f.isDirectory()) { 
+                    
+                    BufferedReader flux = new BufferedReader(new FileReader(txt));
+
+                    for (String line = flux.readLine(); line != null; line = flux.readLine()){
+                        txt+=line;
+                    }
+                    flux.close();
+                    fenetreNote.setText(txt);
+                }
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+                }
+
+            
         }
     }//GEN-LAST:event_menuFileOpenActionPerformed
 

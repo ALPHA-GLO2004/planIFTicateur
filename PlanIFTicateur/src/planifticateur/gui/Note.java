@@ -11,6 +11,15 @@ public class Note extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
+    public String getText(String txt) {
+
+       return noteTextArea.getText();
+    }
+
+    public void setText(String txt) {
+        noteTextArea.setText(txt);
+    }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
