@@ -6,8 +6,10 @@ import planifticateur.domain.ImageExporter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Vector;
@@ -61,6 +63,57 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     
+        private void ouvrirNotes()
+    {
+
+        String txt = new String();
+        String path = new String();
+
+        path =filePath.substring(0, (filePath.length() - 3));
+        path+= "txt";   
+
+        try{
+
+            File f = new File(path);    
+            if(f.exists() && !f.isDirectory()) { 
+
+                BufferedReader flux = new BufferedReader(new FileReader(path));
+
+                for (String line = flux.readLine(); line != null; line = flux.readLine()){
+                    txt+=line+"\n";
+                }
+                flux.close();
+                fenetreNote.setText(txt);
+            }
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+            }
+        
+    }   
+        
+    private void sauvegarderNotes(String path )
+    {
+        
+        path =filePath.substring(0, (filePath.length() - 3));
+        path+= "txt";   
+            
+        try{
+            
+            File file = new File(path);
+
+           if (!file.exists()) {
+                   file.createNewFile();
+           }
+
+           FileWriter fw = new FileWriter(file.getAbsoluteFile());
+           BufferedWriter bw = new BufferedWriter(fw);
+           bw.write(fenetreNote.getText());
+           bw.close();
+
+        } catch (IOException e) {
+                e.printStackTrace();
+              };
+    }   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -862,29 +915,9 @@ public class MainWindow extends javax.swing.JFrame {
                 
             drawingPanel.repaint();
     
-            //enregistrement des notes s'il yen a
-            String txt = new String();
-            txt =filePath.substring(0, (filePath.length() - 3));
-            txt+= "txt";   
-        
-            try{
-                
-                File f = new File(txt);    
-                if(f.exists() && !f.isDirectory()) { 
-                    
-                    BufferedReader flux = new BufferedReader(new FileReader(txt));
+            //initialisation des notes s'il yen a
+            ouvrirNotes();
 
-                    for (String line = flux.readLine(); line != null; line = flux.readLine()){
-                        txt+=line;
-                    }
-                    flux.close();
-                    fenetreNote.setText(txt);
-                }
-            }catch (Exception ex){
-                System.out.println(ex.getMessage());
-                }
-
-            
         }
     }//GEN-LAST:event_menuFileOpenActionPerformed
 
@@ -921,6 +954,7 @@ public class MainWindow extends javax.swing.JFrame {
        if(horaireEstCharge){
            horaireController.enregistrerHoraire(filePath);
            horaireController.setSaved();
+           sauvegarderNotes(filePath);
        }
     }//GEN-LAST:event_menuFileSaveActionPerformed
 
@@ -947,6 +981,8 @@ public class MainWindow extends javax.swing.JFrame {
             else {
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
             }
+            
+            sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
             horaireController.setSaved();
         }  
     }//GEN-LAST:event_menuFileSaveAsActionPerformed
@@ -1002,6 +1038,9 @@ public class MainWindow extends javax.swing.JFrame {
             }
                 
             drawingPanel.repaint();
+            
+            //initialisation des notes s'il yen a
+            ouvrirNotes();
         }
     }//GEN-LAST:event_ouvrirFichierButtonActionPerformed
 
@@ -1037,6 +1076,7 @@ public class MainWindow extends javax.swing.JFrame {
             else {
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
             }
+            sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
             horaireController.setSaved();
         }
     }//GEN-LAST:event_saveAsButtonActionPerformed
@@ -1044,6 +1084,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         if(horaireEstCharge){
            horaireController.enregistrerHoraire(filePath);
+           sauvegarderNotes(filePath);
            horaireController.setSaved();
         }
     }//GEN-LAST:event_saveButtonActionPerformed

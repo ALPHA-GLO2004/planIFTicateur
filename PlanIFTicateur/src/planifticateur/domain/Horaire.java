@@ -579,7 +579,6 @@ public class Horaire{
 
                 String content = new String ("CodeActivite,Section,Titre,PROF,Type,Duree,DebutMin,FinMax,Jour,Heure \n");
                 
-                
                 //activites deja placée
                 liste = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
                 

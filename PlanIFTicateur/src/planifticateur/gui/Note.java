@@ -11,7 +11,7 @@ public class Note extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
-    public String getText(String txt) {
+    public String getText() {
 
        return noteTextArea.getText();
     }

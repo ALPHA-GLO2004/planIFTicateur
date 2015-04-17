@@ -1,8 +1,8 @@
 CodeActivite,Section,Titre,PROF,Type,Duree,DebutMin,FinMax,Jour,Heure 
+gif-2000,A,�lectronique pour ing�nieurs informaticiens,HLH,Laboratoire,3.0,8.5,21.5,1,16.5,4,
 gif-1001,A,Ordinateurs�: structure et applications,JFL,Classe,3.0,8.5,21.5,
 gif-1003,A,Programmation avanc�e en C++,ETS,Classe,3.0,8.5,21.5,
 gif-1003,B,Programmation avanc�e en C++,ETS,Classe,3.0,8.5,21.5,
-gif-2000,A,�lectronique pour ing�nieurs informaticiens,HLH,Laboratoire,3.0,8.5,21.5,
 gif-3003,A,Syst�mes parall�les et temps r�el,RB,Classe,3.0,8.5,21.5,
 gif-4105,A,Photographie algorithmique,JFL,Classe,3.0,8.5,21.5,
 glo-2001,A,Syst�mes d'exploitation pour ing�nieurs,PG,Classe,3.0,8.5,21.5,
