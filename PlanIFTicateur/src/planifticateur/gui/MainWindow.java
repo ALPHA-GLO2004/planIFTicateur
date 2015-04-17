@@ -835,7 +835,7 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.chargerHoraire(filePath, sessionChooser.getSession());
             validationAutoButton.setSelected (false);
             horaireController.setModeValidationAutoOff();
-            titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom() + " (" + horaireController.getSession() + ")");
+            titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");
             drawingPanel.setVisible(true);
             horaireEstCharge=true;
             horaireController.initPointActivite(this.initialDimension);
@@ -867,7 +867,6 @@ public class MainWindow extends javax.swing.JFrame {
             if (!horaireController.getSaved()){
                 int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment quitter sans sauvegarder l'horaire ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
                 if (confirm == 0){
-                    horaireController.enregistrerHoraire(filePath);
                     System.exit(0);
                 }
             }
@@ -953,7 +952,7 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.chargerHoraire(filePath, sessionChooser.getSession());
             validationAutoButton.setSelected(false);
             horaireController.setModeValidationAutoOff();
-            titreFichierLabel.setText(" Nom fichier d'importation:  " + horaireController.getHoraireNom() + " (" + horaireController.getSession() + ")");
+            titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");
             drawingPanel.setVisible(true);
             horaireEstCharge=true;
             horaireController.initPointActivite(this.initialDimension);
@@ -1153,7 +1152,6 @@ public class MainWindow extends javax.swing.JFrame {
             if (!horaireController.getSaved()){
                 int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment quitter sans sauvegarder l'horaire ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
                 if (confirm == 0){
-                    horaireController.enregistrerHoraire(filePath);
                     System.exit(0);
                 }
             }
