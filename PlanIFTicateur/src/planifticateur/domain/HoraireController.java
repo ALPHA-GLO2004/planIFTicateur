@@ -354,7 +354,7 @@ public class HoraireController {
         }
         return existe;
     }
-    
+    //Gestion du undo/redo
     public void enregistrerCHE(String path1, String path2){
         this.horaire.enregistrerCHE(path1, path2);
     }
@@ -362,12 +362,21 @@ public class HoraireController {
     public void enregistrerUndo(){
         if (backupFichierNb <= 4){
             this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(backupFichierNb)+".cou");
+            
             if (backupFichierNb > 0){
                 this.horaire.enregistrerCHE(System.getProperty("user.dir") + "//resources//"+ "0.che", System.getProperty("user.dir") + "//resources//"+ Integer.toString(backupFichierNb)+".che");
             }
             backupFichierNb += 1;
             indexUndo += 1;
         }
+        else{
+            
+        }
+    }
+    
+    public void resetUndoIndex(){
+        backupFichierNb = 0;
+        indexUndo = 0;
     }
     
     public void undo(){
@@ -375,7 +384,6 @@ public class HoraireController {
             this.chargerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(indexUndo-2)+".cou", session);
             indexUndo -= 1;
         }
-        System.out.println(indexUndo);
     }
     
     public void redo(){
@@ -383,7 +391,6 @@ public class HoraireController {
             this.chargerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(indexUndo)+".cou", session);
             indexUndo += 1;
         }
-        System.out.println(indexUndo);
     }
     
     public void resetHoraire(){
