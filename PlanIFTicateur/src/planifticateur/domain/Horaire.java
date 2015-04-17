@@ -352,8 +352,8 @@ public class Horaire{
         Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
         ListePairesDActivites listePaires = new ListePairesDActivites() ;
         ListePairesDActivites listeCoursLab = new ListePairesDActivites() ;
-         ListePairesDActivites listeCoursMemeProf = new ListePairesDActivites() ;
-         
+        ListePairesDActivites listeCoursMemeProf = new ListePairesDActivites() ;
+        messagesDerreurs.add("Erreur:\n");
         float heure;
         boolean reponse ;
         long iPart;
@@ -371,7 +371,7 @@ public class Horaire{
                     iPart= (long)activite.getHeureDebutMin();
                     fPart = 60.0*(activite.getHeureDebutMin() - iPart);
 
-                    messagesDerreurs.add("L'heure de debut de "  + "\" "+activite.getCode()+" \" "
+                    messagesDerreurs.add("\t---L'heure de debut de "  + "\" "+activite.getCode()+" \" "
                                          +" doit être >= "+ iPart +" h "+(long)fPart+ "\n"
                                         );
                 }
@@ -384,7 +384,7 @@ public class Horaire{
                     iPart= (long)activite.getHeureFinMax();
                     fPart = 60.0*(activite.getHeureFinMax() - iPart);
 
-                    messagesDerreurs.add("L'heure de fin de " + "\" "+activite.getCode()+" \" "
+                    messagesDerreurs.add("\t---L'heure de fin de " + "\" "+activite.getCode()+" \" "
                                           + " doit être <= "+ iPart +" h "+(long)fPart+ "\n"
                                           );
 
@@ -503,7 +503,7 @@ public class Horaire{
            for(PaireDActivites p : paires)
          {
                 
-            messagesDerreurs.add( "\" " + p.a1.getCode()+ " \"" +" et "
+            messagesDerreurs.add( "\t---\" " + p.a1.getCode()+ " \"" +" et "
                     + "\" " +p.a2.getCode()+ " \"" + " ne peuvent avoir lieu en meme temps \n" 
                     );  
          }
@@ -512,7 +512,7 @@ public class Horaire{
            for(PaireDActivites p : paires)
          {
                 
-            messagesDerreurs.add( "\" "+p.a1.getCode() + " \" ne peut avoir lieu en meme temps que son laboratoire\n" 
+            messagesDerreurs.add( "\t---\" "+p.a1.getCode() + " \" ne peut avoir lieu en meme temps que son laboratoire\n" 
                     );  
             
          }
@@ -521,7 +521,7 @@ public class Horaire{
            for(PaireDActivites p : paires)
          {
                 
-            messagesDerreurs.add( "\" "+p.a1.getProfesseur() + " \" " + "ne peut donner " 
+            messagesDerreurs.add( "\t---\" "+p.a1.getProfesseur() + " \" " + "ne peut donner " 
                                  + "\" " +p.a1.getCode() + " \" "  + "et " 
                                  +  "\" " +p.a2.getCode() + " \" "  + "en meme temps \n"
                                 );  

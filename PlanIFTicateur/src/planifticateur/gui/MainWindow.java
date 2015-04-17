@@ -474,7 +474,7 @@ public class MainWindow extends javax.swing.JFrame {
         infoActiviteTextArea.setColumns(1);
         infoActiviteTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         infoActiviteTextArea.setRows(8);
-        infoActiviteTextArea.setText("Info. activité survolée:");
+        infoActiviteTextArea.setText("\n\n          Informations sur activité survolée");
         infoActiviteTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         infoActiviteTextArea.setMinimumSize(new java.awt.Dimension(300, 180));
         infoActiviteTextArea.setPreferredSize(new Dimension(this.initialDimension.width/4, this.initialDimension.height/5));
