@@ -5,6 +5,10 @@ import java.util.Vector;
 import java.util.List;
 import java.util.Collections;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 //Classe basée sur le concept de contrôleur de Larman
 //--- Les méthodes ci-dessous consistent à faire le lien entre une interface et le package domain qui contient toutes
@@ -370,7 +374,26 @@ public class HoraireController {
             indexUndo += 1;
         }
         else{
-            
+            InputStream is = null;
+            OutputStream os = null;
+            try{
+                for (int i = 0; i < 4; i++){
+                    is = new FileInputStream(System.getProperty("user.dir") + "//resources//" + Integer.toString(i+1) + ".cou");
+                    os = new FileOutputStream(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
+                    byte[] buffer = new byte[1024];
+                    int length;
+                    while ((length = is.read(buffer)) > 0){
+                        os.write(buffer, 0, length);
+                    }
+                    is.close();
+                    os.close();
+                }
+            }
+            catch (Throwable ex){
+                System.out.println(ex.getMessage());
+            }
+        this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(4)+".cou");
+        backupFichierNb = 5;
         }
     }
     
