@@ -1040,6 +1040,13 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.switchDejaPlaceeToAPlacer();
         horaireController.initPointActivite(this.initialDimension);
         statFenetre.setStats();
+        messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }       
         drawingPanel.repaint();
     }//GEN-LAST:event_redoButtonActionPerformed
 
@@ -1054,6 +1061,13 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.switchDejaPlaceeToAPlacer();
         horaireController.initPointActivite(this.initialDimension);
         statFenetre.setStats();
+        messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }       
         drawingPanel.repaint();
     }//GEN-LAST:event_undoButtonActionPerformed
     
