@@ -357,7 +357,6 @@ public class HoraireController {
     
     public void enregistrerUndo(){
         if (backupFichierNb <= 4){
-            System.out.println("test");
             this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(backupFichierNb)+".cou");
             backupFichierNb += 1;
             indexUndo += 1;
@@ -365,17 +364,19 @@ public class HoraireController {
     }
     
     public void undo(){
-        if (backupFichierNb >= 1){
-            this.chargerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(indexUndo-1)+".cou", session);
+        if (backupFichierNb > 1 && indexUndo > 1){
+            this.chargerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(indexUndo-2)+".cou", session);
             indexUndo -= 1;
         }
+        System.out.println(indexUndo);
     }
     
     public void redo(){
         if (backupFichierNb > indexUndo){
-            this.chargerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(indexUndo+1)+".cou", session);
+            this.chargerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(indexUndo)+".cou", session);
             indexUndo += 1;
         }
+        System.out.println(indexUndo);
     }
     
     public void resetHoraire(){

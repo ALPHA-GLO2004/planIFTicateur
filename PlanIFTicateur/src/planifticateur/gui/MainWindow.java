@@ -662,7 +662,8 @@ public class MainWindow extends javax.swing.JFrame {
                     horaireController.switchAPlacerToDejaPlacee();
                     horaireController.switchDejaPlaceeToAPlacer();
                     horaireController.classerListeAPlacer();
-                    horaireController.initPointActivite(this.initialDimension);         
+                    horaireController.initPointActivite(this.initialDimension);
+                    horaireController.enregistrerUndo();
                 }
                 //Si la position n'est pas dans la grille ou à un endroit non valide
                 else{
@@ -678,6 +679,7 @@ public class MainWindow extends javax.swing.JFrame {
                         horaireController.switchDejaPlaceeToAPlacer();
                         horaireController.classerListeAPlacer();
                         horaireController.initPointActivite(this.initialDimension);
+                        horaireController.enregistrerUndo();
                     }
                     //Si la position n'est pas valide
                     else{
@@ -718,7 +720,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
         horaireController.verificationSelection(evt.getPoint().x,evt.getPoint().y); 
         if (horaireController.existeSelection()){
-            horaireController.enregistrerUndo();
+            //horaireController.enregistrerUndo();
             this.initialActivitePoint = horaireController.getActiviteSelected().getPoint();
             delta = horaireController.deltaMaker(evt.getPoint().x, evt.getPoint().y);
         }
@@ -796,6 +798,7 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
             statFenetre.setStats();
+            horaireController.enregistrerUndo();
             
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
@@ -893,7 +896,7 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
             statFenetre.setStats();
-            
+            horaireController.enregistrerUndo();
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
                 drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
