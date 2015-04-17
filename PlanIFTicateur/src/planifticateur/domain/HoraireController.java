@@ -363,6 +363,7 @@ public class HoraireController {
         this.horaire.enregistrerCHE(path1, path2);
     }
     
+    //Méthode doit être faite par controller
     public void enregistrerUndo(){
         if (backupFichierNb <= 4){
             this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(backupFichierNb)+".cou");
@@ -415,7 +416,7 @@ public class HoraireController {
             indexUndo += 1;
         }
     }
-    
+    //Fin gestion du undo/redo
     public void resetHoraire(){
         this.horaire = null;
     }
