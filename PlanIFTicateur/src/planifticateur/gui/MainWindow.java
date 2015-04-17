@@ -1171,47 +1171,51 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_validationAutoButtonActionPerformed
 
     private void redoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redoButtonActionPerformed
-        horaireController.redo();
-        horaireController.initPointActivite(this.initialDimension);
-        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
-        statFenetre.initialize(horaireController);
+        if (horaireEstCharge){
+            horaireController.redo();
+            horaireController.initPointActivite(this.initialDimension);
+            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+            statFenetre.initialize(horaireController);
 
-        horaireController.jourHeureToActivite();
-        horaireController.switchAPlacerToDejaPlacee();
-        horaireController.switchDejaPlaceeToAPlacer();
-        horaireController.initPointActivite(this.initialDimension);
-        statFenetre.setStats();
-        messagesDerreurs.removeAllElements();
-        if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            horaireController.jourHeureToActivite();
+            horaireController.switchAPlacerToDejaPlacee();
+            horaireController.switchDejaPlaceeToAPlacer();
+            horaireController.initPointActivite(this.initialDimension);
+            statFenetre.setStats();
+            messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }
+            horaireController.setUnsaved();
+            drawingPanel.repaint();
         }
-        else{
-            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-        }
-        horaireController.setUnsaved();
-        drawingPanel.repaint();
     }//GEN-LAST:event_redoButtonActionPerformed
 
     private void undoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_undoButtonActionPerformed
-        horaireController.undo();
-        horaireController.initPointActivite(this.initialDimension);
-        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
-        statFenetre.initialize(horaireController);
+        if (horaireEstCharge){
+            horaireController.undo();
+            horaireController.initPointActivite(this.initialDimension);
+            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+            statFenetre.initialize(horaireController);
 
-        horaireController.jourHeureToActivite();
-        horaireController.switchAPlacerToDejaPlacee();
-        horaireController.switchDejaPlaceeToAPlacer();
-        horaireController.initPointActivite(this.initialDimension);
-        statFenetre.setStats();
-        messagesDerreurs.removeAllElements();
-        if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            horaireController.jourHeureToActivite();
+            horaireController.switchAPlacerToDejaPlacee();
+            horaireController.switchDejaPlaceeToAPlacer();
+            horaireController.initPointActivite(this.initialDimension);
+            statFenetre.setStats();
+            messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }
+            horaireController.setUnsaved();
+            drawingPanel.repaint();
         }
-        else{
-            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-        }
-        horaireController.setUnsaved();
-        drawingPanel.repaint();
     }//GEN-LAST:event_undoButtonActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
