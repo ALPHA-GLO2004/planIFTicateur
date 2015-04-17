@@ -16,11 +16,14 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.InputStreamReader;
 import java.awt.*;
 import java.util.Collections;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -534,6 +537,25 @@ public class Horaire{
             }
         }
         return 1;
+    }
+    
+    public void enregistrerCHE(String pathACopier, String pathAColler){
+        InputStream is = null;
+        OutputStream os = null;
+        try{
+            is = new FileInputStream(pathACopier);
+            os = new FileOutputStream(pathAColler);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0){
+                os.write(buffer, 0, length);
+            }
+            is.close();
+            os.close();
+        }
+        catch (Throwable ex){
+            System.out.println(ex.getMessage());
+        }
     }
     
     public void enregistrerHoraire(String path){

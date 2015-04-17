@@ -355,9 +355,16 @@ public class HoraireController {
         return existe;
     }
     
+    public void enregistrerCHE(String path1, String path2){
+        this.horaire.enregistrerCHE(path1, path2);
+    }
+    
     public void enregistrerUndo(){
         if (backupFichierNb <= 4){
             this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(backupFichierNb)+".cou");
+            if (backupFichierNb > 0){
+                this.horaire.enregistrerCHE(System.getProperty("user.dir") + "//resources//"+ "0.che", System.getProperty("user.dir") + "//resources//"+ Integer.toString(backupFichierNb)+".che");
+            }
             backupFichierNb += 1;
             indexUndo += 1;
         }

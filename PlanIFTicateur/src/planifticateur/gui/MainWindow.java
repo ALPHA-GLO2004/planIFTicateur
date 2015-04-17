@@ -897,6 +897,7 @@ public class MainWindow extends javax.swing.JFrame {
             horaireController.initPointActivite(this.initialDimension);
             statFenetre.setStats();
             horaireController.enregistrerUndo();
+            horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", System.getProperty("user.dir") + "//resources//" + "0.che");
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
                 drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
