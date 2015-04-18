@@ -4,7 +4,7 @@ import com.sun.glass.ui.Screen;
 import planifticateur.domain.HoraireController;
 import planifticateur.domain.ImageExporter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -24,6 +24,7 @@ import javax.swing.JRadioButton;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.Icon;
 import javax.swing.JFrame;
+import javax.swing.KeyStroke;
 
 public class MainWindow extends javax.swing.JFrame{
     public HoraireController horaireController;
@@ -143,21 +144,21 @@ public class MainWindow extends javax.swing.JFrame{
         menuFileSave = new javax.swing.JMenuItem();
         menuFileSaveAs = new javax.swing.JMenuItem();
         menuFileQuit = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        menuEdition = new javax.swing.JMenu();
+        menuEditionUndo = new javax.swing.JMenuItem();
+        menuEditionRedo = new javax.swing.JMenuItem();
+        menuEditionNotes = new javax.swing.JMenuItem();
+        menuEditionAddActivite = new javax.swing.JMenuItem();
+        menuEditionPlanificationAuto = new javax.swing.JMenuItem();
+        menuEditionEffacerHoraire = new javax.swing.JMenuItem();
         menuExport = new javax.swing.JMenu();
         menuExportCopy = new javax.swing.JMenuItem();
         menuExportPic = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        menuOutils = new javax.swing.JMenu();
+        menuOutilsStats = new javax.swing.JMenuItem();
+        menuOutilsValidationAuto = new javax.swing.JMenuItem();
+        menuOutilsRechercher = new javax.swing.JMenuItem();
+        menuOutilsFiltreActivite = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         menuHelpWindow = new javax.swing.JMenuItem();
         menuHelpAbout = new javax.swing.JMenuItem();
@@ -571,6 +572,7 @@ public class MainWindow extends javax.swing.JFrame{
         menuFile.add(menuFileNew);
 
         menuFileSave.setText("Enregistrer");
+        menuFileSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
         menuFileSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFileSaveActionPerformed(evt);
@@ -587,6 +589,7 @@ public class MainWindow extends javax.swing.JFrame{
         menuFile.add(menuFileSaveAs);
 
         menuFileQuit.setText("Quitter");
+        menuFileQuit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK));
         menuFileQuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFileQuitActionPerformed(evt);
@@ -596,32 +599,63 @@ public class MainWindow extends javax.swing.JFrame{
 
         topMenuBar.add(menuFile);
 
-        jMenu1.setText("Édition");
+        menuEdition.setText("Édition");
 
-        jMenuItem1.setText("Undo");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuEditionUndo.setText("Undo");
+        menuEditionUndo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
+        menuEditionUndo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuEditionUndoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuEdition.add(menuEditionUndo);
 
-        jMenuItem2.setText("Redo");
-        jMenu1.add(jMenuItem2);
+        menuEditionRedo.setText("Redo");
+        menuEditionRedo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, KeyEvent.CTRL_DOWN_MASK));
+        menuEditionRedo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditionRedoActionPerformed(evt);
+            }
+        });
+        menuEdition.add(menuEditionRedo);
 
-        jMenuItem3.setText("Notes");
-        jMenu1.add(jMenuItem3);
+        menuEditionNotes.setText("Notes");
+        menuEditionNotes.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
+        menuEditionNotes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditionNotesActionPerformed(evt);
+            }
+        });
+        menuEdition.add(menuEditionNotes);
 
-        jMenuItem8.setText("Ajouter activité");
-        jMenu1.add(jMenuItem8);
+        menuEditionAddActivite.setText("Ajouter activité");
+        menuEditionAddActivite.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK));
+        menuEditionAddActivite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditionAddActiviteActionPerformed(evt);
+            }
+        });
+        menuEdition.add(menuEditionAddActivite);
 
-        jMenuItem9.setText("Planification automatique");
-        jMenu1.add(jMenuItem9);
+        menuEditionPlanificationAuto.setText("Planification automatique");
+        menuEditionPlanificationAuto.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK));
+        menuEditionPlanificationAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditionPlanificationAutoActionPerformed(evt);
+            }
+        });
+        menuEdition.add(menuEditionPlanificationAuto);
 
-        jMenuItem10.setText("Effacer horaire");
-        jMenu1.add(jMenuItem10);
+        menuEditionEffacerHoraire.setText("Effacer horaire");
+        menuEditionEffacerHoraire.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, KeyEvent.CTRL_DOWN_MASK));
+        menuEditionEffacerHoraire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditionEffacerHoraireActionPerformed(evt);
+            }
+        });
+        menuEdition.add(menuEditionEffacerHoraire);
 
-        topMenuBar.add(jMenu1);
+        topMenuBar.add(menuEdition);
 
         menuExport.setText("Exporter");
 
@@ -629,6 +663,7 @@ public class MainWindow extends javax.swing.JFrame{
         menuExport.add(menuExportCopy);
 
         menuExportPic.setText("... sous forme d'image");
+        menuExportPic.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_J, KeyEvent.CTRL_DOWN_MASK));
         menuExportPic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuExportPicActionPerformed(evt);
@@ -638,25 +673,30 @@ public class MainWindow extends javax.swing.JFrame{
 
         topMenuBar.add(menuExport);
 
-        jMenu2.setText("Outils");
+        menuOutils.setText("Outils");
 
-        jMenuItem4.setText("Statistiques");
-        jMenu2.add(jMenuItem4);
+        menuOutilsStats.setText("Statistiques");
+        menuOutilsStats.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK));
+        menuOutils.add(menuOutilsStats);
 
-        jMenuItem5.setText("Validation automatique");
-        jMenu2.add(jMenuItem5);
+        menuOutilsValidationAuto.setText("Validation automatique");
+        menuOutilsValidationAuto.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_DOWN_MASK));
+        menuOutils.add(menuOutilsValidationAuto);
 
-        jMenuItem6.setText("Recherche activité");
-        jMenu2.add(jMenuItem6);
+        menuOutilsRechercher.setText("Recherche activité");
+        menuOutilsRechercher.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.CTRL_DOWN_MASK));
+        menuOutils.add(menuOutilsRechercher);
 
-        jMenuItem7.setText("filtre activités");
-        jMenu2.add(jMenuItem7);
+        menuOutilsFiltreActivite.setText("filtre activités");
+        menuOutilsFiltreActivite.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK));
+        menuOutils.add(menuOutilsFiltreActivite);
 
-        topMenuBar.add(jMenu2);
+        topMenuBar.add(menuOutils);
 
         menuHelp.setText("Aide");
 
         menuHelpWindow.setText("fenêtre Aide");
+        menuHelpWindow.setMnemonic(KeyEvent.VK_F1);
         menuHelp.add(menuHelpWindow);
 
         menuHelpAbout.setText("À propos ...");
@@ -1256,9 +1296,91 @@ public class MainWindow extends javax.swing.JFrame{
         }
     }//GEN-LAST:event_formWindowClosing
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void menuEditionUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionUndoActionPerformed
+        if (horaireEstCharge){
+            horaireController.undo();
+            horaireController.initPointActivite(this.initialDimension);
+            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+            statFenetre.initialize(horaireController);
+
+            horaireController.jourHeureToActivite();
+            horaireController.switchAPlacerToDejaPlacee();
+            horaireController.switchDejaPlaceeToAPlacer();
+            horaireController.initPointActivite(this.initialDimension);
+            statFenetre.setStats();
+            messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }
+            horaireController.setUnsaved();
+            drawingPanel.repaint();
+        }
+    }//GEN-LAST:event_menuEditionUndoActionPerformed
+
+    private void menuEditionRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionRedoActionPerformed
+        if (horaireEstCharge){
+            horaireController.redo();
+            horaireController.initPointActivite(this.initialDimension);
+            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+            statFenetre.initialize(horaireController);
+
+            horaireController.jourHeureToActivite();
+            horaireController.switchAPlacerToDejaPlacee();
+            horaireController.switchDejaPlaceeToAPlacer();
+            horaireController.initPointActivite(this.initialDimension);
+            statFenetre.setStats();
+            messagesDerreurs.removeAllElements();
+            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            }
+            else{
+                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+            }
+            horaireController.setUnsaved();
+            drawingPanel.repaint();
+        }
+    }//GEN-LAST:event_menuEditionRedoActionPerformed
+
+    private void menuEditionNotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionNotesActionPerformed
+        if (horaireEstCharge){
+            fenetreNote.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
+            fenetreNote.setVisible(true);
+        }
+    }//GEN-LAST:event_menuEditionNotesActionPerformed
+
+    private void menuEditionAddActiviteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionAddActiviteActionPerformed
+        if (horaireEstCharge){
+            fenetreAjouterActivite = new AjoutActivite(horaireController, this);
+            fenetreAjouterActivite.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
+            fenetreAjouterActivite.setVisible(true);
+        }
+    }//GEN-LAST:event_menuEditionAddActiviteActionPerformed
+
+    private void menuEditionPlanificationAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionPlanificationAutoActionPerformed
+        //horaireController.planificationAuto();
+    }//GEN-LAST:event_menuEditionPlanificationAutoActionPerformed
+
+    private void menuEditionEffacerHoraireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionEffacerHoraireActionPerformed
+        if (horaireEstCharge){
+            int confirmation = JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir effacer l'horaire ?", "Effacement de l'horaire", JOptionPane.YES_NO_OPTION);
+            if (confirmation == 0){
+                horaireController.deplacerToutDansListe();
+                horaireController.classerListeAPlacer();
+                horaireController.initPointActivite(this.initialDimension);
+                messagesDerreurs.removeAllElements();
+                if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                    drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+                }
+                else{
+                    drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+                }       
+                drawingPanel.repaint();
+            }
+        }
+    }//GEN-LAST:event_menuEditionEffacerHoraireActionPerformed
     
     public DrawingPanel getDrawingPanel(){
         return this.drawingPanel;
@@ -1272,21 +1394,16 @@ public class MainWindow extends javax.swing.JFrame{
     private javax.swing.JButton exportButton;
     private javax.swing.JButton filtreActiviteButton;
     private javax.swing.JTextArea infoActiviteTextArea;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JTextArea logMsgTextArea;
     private javax.swing.JPanel logPanel;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JMenu menuEdition;
+    private javax.swing.JMenuItem menuEditionAddActivite;
+    private javax.swing.JMenuItem menuEditionEffacerHoraire;
+    private javax.swing.JMenuItem menuEditionNotes;
+    private javax.swing.JMenuItem menuEditionPlanificationAuto;
+    private javax.swing.JMenuItem menuEditionRedo;
+    private javax.swing.JMenuItem menuEditionUndo;
     private javax.swing.JMenu menuExport;
     private javax.swing.JMenuItem menuExportCopy;
     private javax.swing.JMenuItem menuExportPic;
@@ -1299,6 +1416,11 @@ public class MainWindow extends javax.swing.JFrame{
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenuItem menuHelpAbout;
     private javax.swing.JMenuItem menuHelpWindow;
+    private javax.swing.JMenu menuOutils;
+    private javax.swing.JMenuItem menuOutilsFiltreActivite;
+    private javax.swing.JMenuItem menuOutilsRechercher;
+    private javax.swing.JMenuItem menuOutilsStats;
+    private javax.swing.JMenuItem menuOutilsValidationAuto;
     private javax.swing.JButton noteButton;
     private javax.swing.JButton nouveauFichierButton;
     private javax.swing.JButton ouvrirFichierButton;
