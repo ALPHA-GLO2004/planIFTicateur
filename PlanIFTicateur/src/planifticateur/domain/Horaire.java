@@ -26,6 +26,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Iterator;
 
 public class Horaire{
     //Ajout de ma part, ça me semblait essentiel
@@ -685,6 +686,24 @@ public class Horaire{
         return listeDesActivites.size();
         
     }
+    
+    public Vector<Integer> calculerNombreDeCoursParJourSelonGrille(GrilleCheminement grille){
+        Vector<Integer> coursParJour ; 
+        coursParJour = new Vector<Integer>();
+        for (int i = 0; i <= 4; i++) {
+            Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
+             int jour = i;
+             int nbCoursParJours = 0;
+                for(Activite activite : activiteDejaPlacee){
+                    if(activite.getJourChoisi() == jour && grille.activiteEstDansGrille(activite.getNomActivite())){
+                        nbCoursParJours++;
+                    }
+                    coursParJour.add(nbCoursParJours);
+                }
+            }   
+        return coursParJour;
+    }
+    
     
     public float calculerNombreMaxDeCours(Vector<Activite> listeDesActivites){
 
