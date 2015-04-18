@@ -31,6 +31,7 @@ public class MainWindow extends javax.swing.JFrame{
     public Statistiques statFenetre;
     private SessionChooser sessionChooser;
     public Note fenetreNote;
+    public Rechercher fenetreRecherche;
     public AjoutActivite fenetreAjouterActivite;
     private Modifications fenetreModification;
     public Dimension initialDimension;
@@ -1220,7 +1221,10 @@ public class MainWindow extends javax.swing.JFrame{
     }//GEN-LAST:event_resetHoraireButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        
+        if (horaireEstCharge){
+            fenetreRecherche = new Rechercher(horaireController, this);
+            fenetreRecherche.setVisible(true);
+        }
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void validationAutoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationAutoButtonActionPerformed

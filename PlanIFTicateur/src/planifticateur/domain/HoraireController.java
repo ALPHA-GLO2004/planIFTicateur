@@ -265,6 +265,14 @@ public class HoraireController {
         return this.horaire.getSaved();
     }
     
+    public List<Activite> getRechercherListe(){
+        return this.horaire.getRechercherListe();
+    }
+    
+    public void viderRechercherListe(){
+        this.horaire.viderRechercherListe();
+    }
+    
     //Set des modifications
     public void modificationCode(String code){
         Activite a = this.getActiviteSelected();
@@ -373,6 +381,10 @@ public class HoraireController {
     //Gestion du undo/redo
     public void enregistrerCHE(String path1, String path2){
         this.horaire.enregistrerCHE(path1, path2);
+    }
+    
+    public void rechercherListe(String saisie){
+        this.horaire.rechercherListe(saisie);
     }
     
     //Méthode doit être faite par controller

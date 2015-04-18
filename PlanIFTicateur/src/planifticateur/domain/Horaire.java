@@ -30,6 +30,7 @@ import java.io.IOException;
 public class Horaire{
     //Ajout de ma part, ça me semblait essentiel
     private boolean saved = false;
+    private List<Activite> rechercherListe = new ArrayList<Activite>();
     private String fichierCOU;
     private String fichierCHE;
     private List<String> listeActivite = new ArrayList<String>();
@@ -538,6 +539,24 @@ public class Horaire{
             }
         }
         return 1;
+    }
+    
+    public void rechercherListe(String saisie){
+        for (Activite a: this.getListeActiviteComplete()){
+            if (saisie.length() > 2){
+                if (a.getNomActivite().contains(saisie)){
+                    rechercherListe.add(a);
+                }
+            }
+        }
+    }
+    
+    public void viderRechercherListe(){
+        rechercherListe = new ArrayList<Activite>();
+    }
+    
+    public List<Activite> getRechercherListe(){
+        return this.rechercherListe;
     }
     
     public boolean getSaved(){

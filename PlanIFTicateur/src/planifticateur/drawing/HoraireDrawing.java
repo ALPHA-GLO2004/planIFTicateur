@@ -50,8 +50,22 @@ public class HoraireDrawing {
                         g2.setColor(a.getCouleur());
                     }
                         g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
-                        g2.setColor(Color.BLACK);
-                        g2.setStroke(new BasicStroke(1));
+                        if (!horaireController.getRechercherListe().isEmpty()){
+                            for (Activite act: horaireController.getRechercherListe()){
+                                if (a.equals(act)){
+                                    g2.setColor(Color.GREEN);
+                                    g2.setStroke(new BasicStroke(2));
+                                }
+                                else{
+                                    g2.setColor(Color.BLACK);
+                                    g2.setStroke(new BasicStroke(1));
+                                }
+                            }
+                        }
+                        else{
+                            g2.setColor(Color.BLACK);
+                            g2.setStroke(new BasicStroke(1));
+                        }
                         g2.drawRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                         Font font = new Font("Arial", Font.BOLD, 12);
                         if (a.getEtiquette().equals(a.getNomActivite())){
