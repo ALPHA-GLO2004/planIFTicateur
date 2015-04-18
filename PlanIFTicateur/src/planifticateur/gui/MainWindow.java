@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.Icon;
 import javax.swing.JFrame;
 
-public class MainWindow extends javax.swing.JFrame {
+public class MainWindow extends javax.swing.JFrame{
     public HoraireController horaireController;
     public Statistiques statFenetre;
     private SessionChooser sessionChooser;
@@ -45,7 +45,8 @@ public class MainWindow extends javax.swing.JFrame {
     private int indexEtiquette = 0;
     private String[] nomEtiquette = {"code","nom","type","prof"};
     
-    public MainWindow() {
+    //Constructeur application 
+    public MainWindow(){
         int width = (int) ((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width));
         int height = (int)((java.awt.Toolkit.getDefaultToolkit().getScreenSize().height));
         initialDimension = new Dimension(width, height);
@@ -62,18 +63,15 @@ public class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
-    
-        private void ouvrirNotes()
-    {
-
+    //Prise en charge des notes (si présente) et affichage de celles-ci à l'endroit approprié (fenetre Notes)
+    private void ouvrirNotes(){
         String txt = new String();
         String path = new String();
-
+        //Ouverture du fichier txt portant même nom que fichier ouvert
         path =filePath.substring(0, (filePath.length() - 3));
         path+= "txt";   
 
         try{
-
             File f = new File(path);    
             if(f.exists() && !f.isDirectory()) { 
 
@@ -88,31 +86,25 @@ public class MainWindow extends javax.swing.JFrame {
         }catch (Exception ex){
             System.out.println(ex.getMessage());
             }
-        
     }   
-        
-    private void sauvegarderNotes(String path )
-    {
-        
+    //Sauvegarde des notes prises dans fenetre Notes
+    private void sauvegarderNotes(String path){
         path =filePath.substring(0, (filePath.length() - 3));
         path+= "txt";   
-            
+        //Enregistrement des notes dans un fichier txt
         try{
-            
-            File file = new File(path);
+           File file = new File(path);
 
            if (!file.exists()) {
                    file.createNewFile();
            }
-
            FileWriter fw = new FileWriter(file.getAbsoluteFile());
            BufferedWriter bw = new BufferedWriter(fw);
            bw.write(fenetreNote.getText());
            bw.close();
-
-        } catch (IOException e) {
-                e.printStackTrace();
-              };
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }   
 
     @SuppressWarnings("unchecked")
@@ -689,6 +681,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    //Méthode de mise à jour du panneau "log" en bas d'écran
     private void updateLogMessage(java.awt.event.MouseEvent evt)
     {
         if(horaireEstCharge)
@@ -700,31 +693,34 @@ public class MainWindow extends javax.swing.JFrame {
                 {
                     txt+= mess;
                 }
-               logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())
-                                       + "\n"+txt
-                                      ); 
+               logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint()) + "\n"+txt); 
             }
             //affichage uniquement du jour et heure dans barre d'état
-            else  logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint())); 
-            
+            else{
+                logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint()));
+            } 
         } 
     }
-    
+    //Action nouvel horaire du menu Fichier - Crée un nouvel horaire nu afin d'y créer des activités et des grilles de chem.
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
         //horaireController.nouvelHoraire("1", "A");
     }//GEN-LAST:event_menuFileNewActionPerformed
-
+    //Lors d'un mouseMove dans le drawingPanel (section centrale):
+                    //-affichage des info pertinentes sur activités en mouseOver;
+                    //-mise à jour du log.
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
         updateLogMessage(evt);
         if(horaireEstCharge){
-           // this.logMsgTextArea.append(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
             infoActiviteTextArea.setText(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
             drawingPanel.repaint();
         }
     }//GEN-LAST:event_drawingPanelMouseMoved
-
+    //Lors d'un mouseDrag dans le drawingPanel (section centrale):
+                    //-Gestion du auto-scroll du drawingPanelContainer;
+                    //-Affichage du drag d'une activité, lorsque sélectionnée;
+                    //-enregistrement du dernier point valide d'une activité (en temps réel);
+                    //-mise à jour du log.
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
-        //if (!horaireController.activiteResteSurPlace(evt.getPoint().x, evt.getPoint().y) && evt.getClickCount() == 2){
         Point p = new Point(0, 0);
         //Auto-scroll
         Rectangle invisibleRect = new Rectangle(evt.getPoint());
@@ -744,7 +740,14 @@ public class MainWindow extends javax.swing.JFrame {
         updateLogMessage(evt);
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseDragged
-
+    //Lors d'un mouseReleased dans le drawingPanel (section centrale):
+                    //-Gestion du drop d'une activité;
+                    //-Affichage et attribution des points/rangées d'une activité;
+                    //-Changement de listes appropriées;
+                    //-Enregistrement undo;
+                    //-Horaire passe en mode unsaved;
+                    //-Mise à jour des stats;
+                    //-Mise à jour de la validité de l'horaire.
     private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
         //Si la position est dans la grille horaire
         Point p = new Point(0, 0);
@@ -752,9 +755,11 @@ public class MainWindow extends javax.swing.JFrame {
         if (horaireController.existeSelection()){
             point = new Point(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
         }
-        
+        //Si la position n'est pas la même qu'au pressed
         if (point != this.initialActivitePoint){
+            //Si une activité est sélectionnée - Gestion erreur d'un mouseReleased sans activité sélectionnée
             if (horaireController.existeSelection()){
+                //Si la position (après vérification du drop) n'est pas 0,0 (position valide)
                 if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
                     p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
                     horaireController.moveActivite(p.x, p.y);
@@ -821,7 +826,11 @@ public class MainWindow extends javax.swing.JFrame {
         }
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseReleased
-
+    //Lors d'un mousePressed dans le drawingPanel (section centrale):
+                    //-Vérification de la présence d'une activité sous la position;
+                    //-Enregistrement du point de départ de l'activité;
+                    //-Enregistrement du delta (position sur activité);
+                    //-Switch de l'activité sélectionnée en mode déplacement.
     private void drawingPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMousePressed
         horaireController.verificationSelection(evt.getPoint().x,evt.getPoint().y); 
         if (horaireController.existeSelection()){
@@ -833,7 +842,7 @@ public class MainWindow extends javax.swing.JFrame {
         horaireController.switchFromListToMove(horaireController.getActiviteSelected());
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed
-
+    //Méthode pour l'exportation de l'horaire en jpg du menu/bouton exporter
     private void menuExportPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExportPicActionPerformed
     
         if(horaireEstCharge)
@@ -843,81 +852,85 @@ public class MainWindow extends javax.swing.JFrame {
                                     System.getProperty("user.dir") +"_export.jpg"
                                     );
     }//GEN-LAST:event_menuExportPicActionPerformed
-
+    //Méthode d'ouverture de la fenêtre Notes
     private void noteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteButtonActionPerformed
         if (horaireEstCharge){
             fenetreNote.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
             fenetreNote.setVisible(true);
         }
     }//GEN-LAST:event_noteButtonActionPerformed
-
+    //Méthode d'ouverture de la fenêtre Statistiques
     private void statistiquesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistiquesButtonActionPerformed
         if (horaireEstCharge){
             statFenetre.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
             statFenetre.setVisible(true);
         }
     }//GEN-LAST:event_statistiquesButtonActionPerformed
-
+    //Méthode pour bouton/menuItem planification automatique
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
         //horaireController.planificationAuto();
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
-
+    //Méthode d'ouverture de fichier horaire du menuItem/bouton
     private void menuFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileOpenActionPerformed
         //Fonction permettant Ã  l'utilisateur de saisir un fichier via menu "choose from"
         //et faire un appel au contrÃ´leur afin de procÃ©der Ã  la reconstitution de l'horaire.
         JFileChooser selecteurFichier = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
         selecteurFichier.setFileFilter(filter);
-        selecteurFichier.showOpenDialog(MainWindow.this);
+        int openFile = selecteurFichier.showOpenDialog(MainWindow.this);
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
-        //Choix session
-        JOptionPane fenetreJOption = new JOptionPane();
-        fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
-        while (sessionChooser.getSession() == null){
-            fenetreJOption.showMessageDialog(this, sessionChooser, "Choix de session", JOptionPane.QUESTION_MESSAGE);
+        //Gestion cancel
+        if (openFile == selecteurFichier.CANCEL_OPTION){
+            logMsgTextArea.append("\n\n Aucun fichier choisi...\n");
         }
-        //On efface ce qu'il y a en place
-        //horaireController.resetHoraire();
-        // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
-        //Larman impose un type primitif vers le controler
-         filePath = selecteurFichier.getSelectedFile().getPath();
-        if (!(filePath.substring(filePath.length() - 3).toLowerCase().equals("cou"))){
-            logMsgTextArea.append(": " + filePath + "\n n'est pas un fichier valide.\n");
-            drawingPanel.setVisible(false);
-        }
+        //Fichier choisi
         else{
-            horaireController.chargerHoraire(filePath, sessionChooser.getSession());
-            validationAutoButton.setSelected (false);
-            horaireController.setModeValidationAutoOff();
-            titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");
-            drawingPanel.setVisible(true);
-            horaireEstCharge=true;
-            horaireController.initPointActivite(this.initialDimension);
-            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
-            statFenetre.initialize(horaireController);
-
-            horaireController.switchSelection();
-            horaireController.jourHeureToActivite();
-            horaireController.switchAPlacerToDejaPlacee();
-            horaireController.switchDejaPlaceeToAPlacer();
-            horaireController.initPointActivite(this.initialDimension);
-            statFenetre.setStats();
-            horaireController.enregistrerUndo();
-            
-            messagesDerreurs.removeAllElements();
-            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            filePath = selecteurFichier.getSelectedFile().getPath();
+            //Le fichier doit être un fichier COU
+            if (!(filePath.substring(filePath.length() - 3).toLowerCase().equals("cou"))){
+                logMsgTextArea.append("\n" + filePath + " n'est pas un fichier valide.\n");
             }
             else{
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-            }
-                
-            drawingPanel.repaint();
-    
-            //initialisation des notes s'il yen a
-            ouvrirNotes();
+                //Choix session
+                JOptionPane fenetreJOption = new JOptionPane();
+                fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
+                //Obligation de choisir une réponse
+                while (sessionChooser.getSession() == null){
+                    fenetreJOption.showMessageDialog(this, sessionChooser, "Choix de session", JOptionPane.QUESTION_MESSAGE);
+                }
+                // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
+                //Larman impose un type primitif vers le controler
+                horaireController.chargerHoraire(filePath, sessionChooser.getSession());
+                validationAutoButton.setSelected(false);
+                horaireController.setModeValidationAutoOff();
+                titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");
+                drawingPanel.setVisible(true);
+                horaireEstCharge=true;
+                horaireController.initPointActivite(this.initialDimension);
+                horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+                statFenetre.initialize(horaireController);
 
+                horaireController.switchSelection();
+                horaireController.jourHeureToActivite();
+                horaireController.switchAPlacerToDejaPlacee();
+                horaireController.switchDejaPlaceeToAPlacer();
+                horaireController.initPointActivite(this.initialDimension);
+                statFenetre.setStats();
+                horaireController.enregistrerUndo();
+                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", System.getProperty("user.dir") + "//resources//" + "0.che");
+                messagesDerreurs.removeAllElements();
+                if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                    drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+                }
+                else{
+                    drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+                }
+
+                drawingPanel.repaint();
+
+                //initialisation des notes s'il yen a
+                ouvrirNotes();
+            }
         }
     }//GEN-LAST:event_menuFileOpenActionPerformed
 
@@ -992,55 +1005,59 @@ public class MainWindow extends javax.swing.JFrame {
         JFileChooser selecteurFichier = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
         selecteurFichier.setFileFilter(filter);
-        selecteurFichier.showOpenDialog(MainWindow.this);
+        int openFile = selecteurFichier.showOpenDialog(MainWindow.this);
         selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
-        //Choix session
-        JOptionPane fenetreJOption = new JOptionPane();
-        fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
-        while (sessionChooser.getSession() == null){
-            fenetreJOption.showMessageDialog(this, sessionChooser, "Choix de session", JOptionPane.QUESTION_MESSAGE);
-        }
-        //On efface ce qu'il y a en place
-        //horaireController.resetHoraire();
-        // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
-        //Larman impose un type primitif vers le controler
-        filePath = selecteurFichier.getSelectedFile().getPath();
-        if (!(filePath.substring(filePath.length() - 3).toLowerCase().equals("cou"))){
-            logMsgTextArea.append(": " + filePath + "\n n'est pas un fichier valide.\n");
-            drawingPanel.setVisible(false);
+        
+        if (openFile == selecteurFichier.CANCEL_OPTION){
+            logMsgTextArea.append("\n\n Aucun fichier choisi...\n");
         }
         else{
-            horaireController.chargerHoraire(filePath, sessionChooser.getSession());
-            validationAutoButton.setSelected(false);
-            horaireController.setModeValidationAutoOff();
-            titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");
-            drawingPanel.setVisible(true);
-            horaireEstCharge=true;
-            horaireController.initPointActivite(this.initialDimension);
-            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
-            statFenetre.initialize(horaireController);
-
-            horaireController.switchSelection();
-            horaireController.jourHeureToActivite();
-            horaireController.switchAPlacerToDejaPlacee();
-            horaireController.switchDejaPlaceeToAPlacer();
-            horaireController.initPointActivite(this.initialDimension);
-            statFenetre.setStats();
-            horaireController.enregistrerUndo();
-            horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", System.getProperty("user.dir") + "//resources//" + "0.che");
-            messagesDerreurs.removeAllElements();
-            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+            filePath = selecteurFichier.getSelectedFile().getPath();
+            //Le fichier doit être un fichier COU
+            if (!(filePath.substring(filePath.length() - 3).toLowerCase().equals("cou"))){
+                logMsgTextArea.append("\n" + filePath + " n'est pas un fichier valide.\n");
             }
             else{
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+                //Choix session
+                JOptionPane fenetreJOption = new JOptionPane();
+                fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
+                //Obligation de choisir une réponse
+                while (sessionChooser.getSession() == null){
+                    fenetreJOption.showMessageDialog(this, sessionChooser, "Choix de session", JOptionPane.QUESTION_MESSAGE);
+                }
+                // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
+                //Larman impose un type primitif vers le controler
+                horaireController.chargerHoraire(filePath, sessionChooser.getSession());
+                validationAutoButton.setSelected(false);
+                horaireController.setModeValidationAutoOff();
+                titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");
+                drawingPanel.setVisible(true);
+                horaireEstCharge=true;
+                horaireController.initPointActivite(this.initialDimension);
+                horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+                statFenetre.initialize(horaireController);
+
+                horaireController.switchSelection();
+                horaireController.jourHeureToActivite();
+                horaireController.switchAPlacerToDejaPlacee();
+                horaireController.switchDejaPlaceeToAPlacer();
+                horaireController.initPointActivite(this.initialDimension);
+                statFenetre.setStats();
+                horaireController.enregistrerUndo();
+                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", System.getProperty("user.dir") + "//resources//" + "0.che");
+                messagesDerreurs.removeAllElements();
+                if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                    drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+                }
+                else{
+                    drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+                }
+
+                drawingPanel.repaint();
+
+                //initialisation des notes s'il yen a
+                ouvrirNotes();
             }
-                
-            drawingPanel.repaint();
-            
-            //initialisation des notes s'il yen a
-            ouvrirNotes();
         }
     }//GEN-LAST:event_ouvrirFichierButtonActionPerformed
 
@@ -1113,13 +1130,15 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ajouterActiviteButtonActionPerformed
 
     private void filtreActiviteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtreActiviteButtonActionPerformed
-        indexEtiquette += 1;
-        if (indexEtiquette > 3){
-            indexEtiquette = 0;
+        if (horaireEstCharge){
+            indexEtiquette += 1;
+            if (indexEtiquette > 3){
+                indexEtiquette = 0;
+            }
+            horaireController.setEtiquette(indexEtiquette);
+            filtreActiviteButton.setText(nomEtiquette[indexEtiquette]);
+            drawingPanel.repaint();
         }
-        horaireController.setEtiquette(indexEtiquette);
-        filtreActiviteButton.setText(nomEtiquette[indexEtiquette]);
-        drawingPanel.repaint();
     }//GEN-LAST:event_filtreActiviteButtonActionPerformed
 
     private void nouveauFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauFichierButtonActionPerformed
@@ -1127,19 +1146,21 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_nouveauFichierButtonActionPerformed
 
     private void resetHoraireButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetHoraireButtonActionPerformed
-        int confirmation = JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir effacer l'horaire ?", "Effacement de l'horaire", JOptionPane.YES_NO_OPTION);
-        if (confirmation == 0){
-            horaireController.deplacerToutDansListe();
-            horaireController.classerListeAPlacer();
-            horaireController.initPointActivite(this.initialDimension);
-            messagesDerreurs.removeAllElements();
-            if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+        if (horaireEstCharge){
+            int confirmation = JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir effacer l'horaire ?", "Effacement de l'horaire", JOptionPane.YES_NO_OPTION);
+            if (confirmation == 0){
+                horaireController.deplacerToutDansListe();
+                horaireController.classerListeAPlacer();
+                horaireController.initPointActivite(this.initialDimension);
+                messagesDerreurs.removeAllElements();
+                if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                    drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+                }
+                else{
+                    drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+                }       
+                drawingPanel.repaint();
             }
-            else{
-                drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-            }       
-            drawingPanel.repaint();
         }
     }//GEN-LAST:event_resetHoraireButtonActionPerformed
 
