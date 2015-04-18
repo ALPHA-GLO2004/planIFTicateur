@@ -41,6 +41,7 @@ public class Modifications extends javax.swing.JFrame {
         heureFinMaxTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Modifier une activité");
 
         titreLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         titreLabel.setText("Fenêtre de modification d'une activité");

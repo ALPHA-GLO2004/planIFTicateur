@@ -30,6 +30,7 @@ public class Note extends javax.swing.JFrame {
         noteTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Notes");
 
         quitterNoteButton.setText("Fermer");
         quitterNoteButton.addActionListener(new java.awt.event.ActionListener() {

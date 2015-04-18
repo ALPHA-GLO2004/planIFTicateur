@@ -40,6 +40,7 @@ public class AjoutActivite extends javax.swing.JFrame {
         ajouterButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ajouter une activité");
 
         titreLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         titreLabel.setText("Ajouter une activité");

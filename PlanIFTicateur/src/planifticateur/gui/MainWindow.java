@@ -1220,7 +1220,7 @@ public class MainWindow extends javax.swing.JFrame{
     }//GEN-LAST:event_resetHoraireButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void validationAutoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationAutoButtonActionPerformed
@@ -1299,14 +1299,32 @@ public class MainWindow extends javax.swing.JFrame{
             if (!horaireController.getSaved()){
                 int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment quitter sans sauvegarder l'horaire ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
                 if (confirm == 0){
+                    for (int i = 0; i < 5; i++){
+                        File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
+                        File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                        fileCOU.delete();
+                        fileCHE.delete();
+                    }
                     System.exit(0);
                 }
             }
             else{
+                for (int i = 0; i < 5; i++){
+                    File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
+                    File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                    fileCOU.delete();
+                    fileCHE.delete();
+                }
                 System.exit(0);
             }
         }
         else{
+            for (int i = 0; i < 5; i++){
+                File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
+                File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                fileCOU.delete();
+                fileCHE.delete();
+            }
             System.exit(0);
         }
     }//GEN-LAST:event_formWindowClosing
