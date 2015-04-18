@@ -677,10 +677,20 @@ public class MainWindow extends javax.swing.JFrame{
 
         menuOutilsStats.setText("Statistiques");
         menuOutilsStats.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK));
+        menuOutilsStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuOutilsStatsActionPerformed(evt);
+            }
+        });
         menuOutils.add(menuOutilsStats);
 
         menuOutilsValidationAuto.setText("Validation automatique");
         menuOutilsValidationAuto.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_DOWN_MASK));
+        menuOutilsValidationAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuOutilsValidationAutoActionPerformed(evt);
+            }
+        });
         menuOutils.add(menuOutilsValidationAuto);
 
         menuOutilsRechercher.setText("Recherche activité");
@@ -689,6 +699,11 @@ public class MainWindow extends javax.swing.JFrame{
 
         menuOutilsFiltreActivite.setText("filtre activités");
         menuOutilsFiltreActivite.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK));
+        menuOutilsFiltreActivite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuOutilsFiltreActiviteActionPerformed(evt);
+            }
+        });
         menuOutils.add(menuOutilsFiltreActivite);
 
         topMenuBar.add(menuOutils);
@@ -1381,6 +1396,48 @@ public class MainWindow extends javax.swing.JFrame{
             }
         }
     }//GEN-LAST:event_menuEditionEffacerHoraireActionPerformed
+
+    private void menuOutilsStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOutilsStatsActionPerformed
+        if (horaireEstCharge){
+            statFenetre.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
+            statFenetre.setVisible(true);
+        }
+    }//GEN-LAST:event_menuOutilsStatsActionPerformed
+
+    private void menuOutilsValidationAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOutilsValidationAutoActionPerformed
+        if (validationAutoButton.isSelected()){
+            if (horaireEstCharge){
+                horaireController.switchValidationAuto();
+                validationAutoButton.setToolTipText("mode validation automatique (en marche)");
+                drawingPanel.repaint();
+            }
+            else{
+                validationAutoButton.setSelected(false);
+            }
+        }
+        else{
+            if (!horaireEstCharge){
+                validationAutoButton.setSelected(false);
+            }
+            else{
+                validationAutoButton.setToolTipText("mode validation automatique (arrêt)");
+                horaireController.switchValidationAuto();
+                drawingPanel.repaint();
+            }
+        }
+    }//GEN-LAST:event_menuOutilsValidationAutoActionPerformed
+
+    private void menuOutilsFiltreActiviteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOutilsFiltreActiviteActionPerformed
+        if (horaireEstCharge){
+            indexEtiquette += 1;
+            if (indexEtiquette > 3){
+                indexEtiquette = 0;
+            }
+            horaireController.setEtiquette(indexEtiquette);
+            filtreActiviteButton.setText(nomEtiquette[indexEtiquette]);
+            drawingPanel.repaint();
+        }
+    }//GEN-LAST:event_menuOutilsFiltreActiviteActionPerformed
     
     public DrawingPanel getDrawingPanel(){
         return this.drawingPanel;
