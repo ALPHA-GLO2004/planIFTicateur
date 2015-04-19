@@ -77,20 +77,58 @@ public class Modifications extends javax.swing.JFrame {
         });
 
         codeTextField.setText(this.horaireController.getCode());
+        codeTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                codeTextFieldKeyTyped(evt);
+            }
+        });
 
         sectionTextField.setText(horaireController.getSection());
+        sectionTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                sectionTextFieldKeyTyped(evt);
+            }
+        });
 
         descriptionTextField.setText(horaireController.getTitre());
 
         professeurTextField.setText(horaireController.getProfesseur());
+        professeurTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                professeurTextFieldKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                professeurTextFieldKeyTyped(evt);
+            }
+        });
 
         typeTextField.setText(horaireController.getType());
+        typeTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                typeTextFieldKeyTyped(evt);
+            }
+        });
 
         dureeTextField.setText(horaireController.getDuree());
+        dureeTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                dureeTextFieldKeyTyped(evt);
+            }
+        });
 
         heureDebutMinTextField.setText(horaireController.getHeureDebutMin());
+        heureDebutMinTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                heureDebutMinTextFieldKeyTyped(evt);
+            }
+        });
 
         heureFinMaxTextField.setText(horaireController.getHeureFinMax());
+        heureFinMaxTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                heureFinMaxTextFieldKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout modificationContainerLayout = new javax.swing.GroupLayout(modificationContainer);
         modificationContainer.setLayout(modificationContainerLayout);
@@ -199,19 +237,86 @@ public class Modifications extends javax.swing.JFrame {
     }//GEN-LAST:event_annulerButtonActionPerformed
 
     private void accepterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accepterButtonActionPerformed
-        horaireController.modificationCode(codeTextField.getText());
-        horaireController.modificationSection(sectionTextField.getText());
-        horaireController.modificationTitre(descriptionTextField.getText());
-        horaireController.modificationProfesseur(professeurTextField.getText());
-        horaireController.modificationType(typeTextField.getText());
-        horaireController.modificationDuree(dureeTextField.getText());
-        horaireController.modificationHeureDebutMin(heureDebutMinTextField.getText());
-        horaireController.modificationHeureFinMax(heureFinMaxTextField.getText());
-        horaireController.switchSelection();
-        horaireController.setEtiquette(horaireController.getEtiquette());
-        mainWindow.getDrawingPanel().repaint();
-        this.dispose();
+            horaireController.modificationCode(codeTextField.getText());
+            horaireController.modificationSection(sectionTextField.getText());
+            horaireController.modificationTitre(descriptionTextField.getText());
+            horaireController.modificationProfesseur(professeurTextField.getText());
+            horaireController.modificationType(typeTextField.getText());
+            horaireController.modificationDuree(dureeTextField.getText());
+            horaireController.modificationHeureDebutMin(heureDebutMinTextField.getText());
+            horaireController.modificationHeureFinMax(heureFinMaxTextField.getText());
+            horaireController.switchSelection();
+            horaireController.setEtiquette(horaireController.getEtiquette());
+            mainWindow.getDrawingPanel().repaint();
+            this.dispose();
     }//GEN-LAST:event_accepterButtonActionPerformed
+
+    private void codeTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codeTextFieldKeyTyped
+        if (codeTextField.getText().length() > 7){
+            evt.consume();
+        }
+    }//GEN-LAST:event_codeTextFieldKeyTyped
+
+    private void sectionTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sectionTextFieldKeyTyped
+        if (sectionTextField.getText().length() > 1){
+            evt.consume();
+        }
+    }//GEN-LAST:event_sectionTextFieldKeyTyped
+
+    private void professeurTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_professeurTextFieldKeyPressed
+        
+    }//GEN-LAST:event_professeurTextFieldKeyPressed
+
+    private void professeurTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_professeurTextFieldKeyTyped
+        if (evt.getKeyChar() < 'A' || evt.getKeyChar() < 'a' && evt.getKeyChar() > 'Z' || evt.getKeyChar() > 'z'){
+            evt.consume();
+        }
+    }//GEN-LAST:event_professeurTextFieldKeyTyped
+
+    private void typeTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_typeTextFieldKeyTyped
+        if (evt.getKeyChar() < 'A' || evt.getKeyChar() < 'a' && evt.getKeyChar() > 'Z' || evt.getKeyChar() > 'z'){
+            evt.consume();
+        }
+    }//GEN-LAST:event_typeTextFieldKeyTyped
+
+    private void dureeTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dureeTextFieldKeyTyped
+        if (evt.getKeyChar() < '0' && evt.getKeyChar() != '.' || evt.getKeyChar() > '9'){
+            evt.consume();
+        }
+        else{
+            if (evt.getKeyChar() == '.'){
+                if (dureeTextField.getText().contains(".")){
+                    evt.consume();
+                }
+            }
+        }
+    }//GEN-LAST:event_dureeTextFieldKeyTyped
+
+    private void heureDebutMinTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_heureDebutMinTextFieldKeyTyped
+        if (evt.getKeyChar() < '0' && evt.getKeyChar() != '.' || evt.getKeyChar() > '9'){
+            evt.consume();
+        }
+        else{
+            if (evt.getKeyChar() == '.'){
+                if (dureeTextField.getText().contains(".")){
+                    evt.consume();
+                }
+            }
+        }
+    }//GEN-LAST:event_heureDebutMinTextFieldKeyTyped
+
+    private void heureFinMaxTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_heureFinMaxTextFieldKeyTyped
+        if (evt.getKeyChar() < '0' && evt.getKeyChar() != '.' || evt.getKeyChar() > '9'){
+            evt.consume();
+        }
+        else{
+            if (evt.getKeyChar() == '.'){
+                if (dureeTextField.getText().contains(".")){
+                    evt.consume();
+                }
+            }
+        }
+    }//GEN-LAST:event_heureFinMaxTextFieldKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accepterButton;

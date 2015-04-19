@@ -218,6 +218,9 @@
               <Connection code="this.horaireController.getCode()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="codeTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="sectionTextField">
           <Properties>
@@ -225,6 +228,9 @@
               <Connection code="horaireController.getSection()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="sectionTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="descriptionTextField">
           <Properties>
@@ -239,6 +245,10 @@
               <Connection code="horaireController.getProfesseur()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="professeurTextFieldKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="professeurTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="typeTextField">
           <Properties>
@@ -246,6 +256,9 @@
               <Connection code="horaireController.getType()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="typeTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="dureeTextField">
           <Properties>
@@ -253,6 +266,9 @@
               <Connection code="horaireController.getDuree()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="dureeTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="heureDebutMinTextField">
           <Properties>
@@ -260,6 +276,9 @@
               <Connection code="horaireController.getHeureDebutMin()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="heureDebutMinTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="heureFinMaxTextField">
           <Properties>
@@ -267,6 +286,9 @@
               <Connection code="horaireController.getHeureFinMax()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="heureFinMaxTextFieldKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
