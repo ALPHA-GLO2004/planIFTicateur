@@ -265,12 +265,12 @@ public class HoraireController {
         return this.horaire.getSaved();
     }
     
-    public List<Activite> getRechercherListe(){
-        return this.horaire.getRechercherListe();
+    public String getRechercherNom(){
+        return this.horaire.getRechercherNom();
     }
     
-    public void viderRechercherListe(){
-        this.horaire.viderRechercherListe();
+    public void viderRechercherNom(){
+        this.horaire.viderRechercherNom();
     }
     
     //Set des modifications
@@ -383,8 +383,8 @@ public class HoraireController {
         this.horaire.enregistrerCHE(path1, path2);
     }
     
-    public void rechercherListe(String saisie){
-        this.horaire.rechercherListe(saisie);
+    public void rechercherNom(String saisie){
+        this.horaire.rechercherNom(saisie);
     }
     
     //Méthode doit être faite par controller

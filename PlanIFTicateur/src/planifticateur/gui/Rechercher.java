@@ -11,6 +11,7 @@ public class Rechercher extends javax.swing.JFrame {
     public Rechercher(HoraireController horaireController, MainWindow mainWindow) {
         this.horaireController = horaireController;
         this.mainWindow = mainWindow;
+        this.setAlwaysOnTop(true);
         initComponents();
     }
 
@@ -23,10 +24,18 @@ public class Rechercher extends javax.swing.JFrame {
         rechercherLabel = new javax.swing.JLabel();
         rechercherTerminerButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Recherche");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         rechercherTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                rechercherTextFieldKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 rechercherTextFieldKeyTyped(evt);
             }
@@ -84,18 +93,26 @@ public class Rechercher extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rechercherTerminerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercherTerminerButtonActionPerformed
-        horaireController.viderRechercherListe();
+        horaireController.viderRechercherNom();
+        mainWindow.getDrawingPanel().repaint();
         this.dispose();
     }//GEN-LAST:event_rechercherTerminerButtonActionPerformed
 
     private void rechercherTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rechercherTextFieldKeyTyped
-        horaireController.viderRechercherListe();
-        horaireController.rechercherListe(rechercherTextField.getText());
-        if (horaireController.getRechercherListe().size() > 1){
-        System.out.println(horaireController.getRechercherListe().get(0).getNomActivite());
-        System.out.println(horaireController.getRechercherListe().get(1).getNomActivite());}
         mainWindow.getDrawingPanel().repaint();
     }//GEN-LAST:event_rechercherTextFieldKeyTyped
+
+    private void rechercherTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rechercherTextFieldKeyReleased
+        horaireController.viderRechercherNom();
+        horaireController.rechercherNom(rechercherTextField.getText());
+        mainWindow.getDrawingPanel().repaint();
+    }//GEN-LAST:event_rechercherTextFieldKeyReleased
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        horaireController.viderRechercherNom();
+        mainWindow.getDrawingPanel().repaint();
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel rechercherLabel;
