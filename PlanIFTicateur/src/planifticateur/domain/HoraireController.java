@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -30,9 +31,47 @@ public class HoraireController {
         this.mouseAdapter = new MouseAdapter(d);
     }
     //Méthode nouvel horaire
-    public void nouvelHoraire(String filePath, String sessionChoisi){
-        this.horaire = new Horaire(filePath, sessionChoisi);
-        session = sessionChoisi;
+    public void creerNouveauFichier(String path){
+        try{
+            FileWriter newFileCOU = new FileWriter(path);
+            newFileCOU.append("CodeActivité");
+            newFileCOU.append(",");
+            newFileCOU.append("Section");
+            newFileCOU.append(",");
+            newFileCOU.append("Titre");
+            newFileCOU.append(",");
+            newFileCOU.append("Prof");
+            newFileCOU.append(",");
+            newFileCOU.append("Type");
+            newFileCOU.append(",");
+            newFileCOU.append("Durée");
+            newFileCOU.append(",");
+            newFileCOU.append("DébutMin");
+            newFileCOU.append(",");
+            newFileCOU.append("FinMax");
+            newFileCOU.append(",");
+            newFileCOU.append("Jour");
+            newFileCOU.append(",");
+            newFileCOU.append("Heure");
+            newFileCOU.append("\n");
+            
+            newFileCOU.close();
+            
+            FileWriter newFileCHE = new FileWriter(path.substring(0, path.length() - 2) + "he");
+            newFileCHE.append("Programme");
+            newFileCHE.append(",");
+            newFileCHE.append("Version");
+            newFileCHE.append(",");
+            newFileCHE.append("Session");
+            newFileCHE.append(",");
+            newFileCHE.append("Cours");
+            newFileCHE.append("\n");
+            
+            newFileCHE.close();
+        }
+        catch (Throwable ex){
+            System.out.println(ex.getMessage());
+        }
     }
     //Méthode pour charger un horaire
     public void chargerHoraire(String filePath, String sessionChoisi){

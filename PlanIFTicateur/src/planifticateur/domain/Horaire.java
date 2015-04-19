@@ -63,7 +63,7 @@ public class Horaire{
         String[] tabString = filePath.split("\\\\");
         this.session = sessionChoisi;
         String nomFichier = tabString[tabString.length-1];
-               nomFichier =nomFichier.substring(0, (nomFichier.length() - 4));
+               nomFichier = nomFichier.substring(0, (nomFichier.length() - 4));
         fichierCOU = nomFichier + ".COU";   
         horairePlein = false;
         listeConflit = new ListeConflit();
