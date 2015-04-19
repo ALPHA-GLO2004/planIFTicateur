@@ -1193,7 +1193,7 @@ public class MainWindow extends javax.swing.JFrame{
         evt.getComponent().setBounds(aspectRatio.x, aspectRatio.y, aspectRatio.width, aspectRatio.width*9/16 - aEnlever);
         this.initialDimension = new Dimension(evt.getComponent().getSize());
         drawingPanel.setInitialDimension(this.initialDimension);
-        horaireController.createMouseAdapter(this.initialDimension);
+        horaireController.createMouseAdapter(this.initialDimension.width, this.initialDimension.height);
         if (horaireEstCharge){
             drawingPanel.getMainHoraire().setInitialDimension(this.initialDimension);
             horaireController.initPointActivite(this.initialDimension);
@@ -1277,7 +1277,14 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void redoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redoButtonActionPerformed
         if (horaireEstCharge){
+            boolean modeV = false;
+            if (horaireController.getModeValidationAuto()){
+                modeV = true;
+            }
             horaireController.redo();
+            if (modeV){
+                horaireController.switchValidationAuto();
+            }
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
@@ -1301,7 +1308,14 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void undoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_undoButtonActionPerformed
         if (horaireEstCharge){
+            boolean modeV = false;
+            if (horaireController.getModeValidationAuto()){
+                modeV = true;
+            }
             horaireController.undo();
+            if (modeV){
+                horaireController.switchValidationAuto();
+            }
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
@@ -1355,7 +1369,14 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void menuEditionUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionUndoActionPerformed
         if (horaireEstCharge){
+            boolean modeV = false;
+            if (horaireController.getModeValidationAuto()){
+                modeV = true;
+            }
             horaireController.undo();
+            if (modeV){
+                horaireController.switchValidationAuto();
+            }
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
@@ -1379,7 +1400,14 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void menuEditionRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionRedoActionPerformed
         if (horaireEstCharge){
+            boolean modeV = false;
+            if (horaireController.getModeValidationAuto()){
+                modeV = true;
+            }
             horaireController.redo();
+            if (modeV){
+                horaireController.switchValidationAuto();
+            }
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);

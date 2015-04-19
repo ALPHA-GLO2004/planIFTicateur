@@ -25,7 +25,8 @@ public class HoraireController {
         session = new String();
     }
     //Création du mouseAdapter
-    public void createMouseAdapter(Dimension d){
+    public void createMouseAdapter(int x, int y){
+        Dimension d = new Dimension(x,y);
         this.mouseAdapter = new MouseAdapter(d);
     }
     //Méthode nouvel horaire
@@ -36,7 +37,7 @@ public class HoraireController {
     //Méthode pour charger un horaire
     public void chargerHoraire(String filePath, String sessionChoisi){
     //peut-être serait plus logique en tant que constructeur
-        if (filePath.substring(filePath.length() - 3).equals("cou") || filePath.substring(filePath.length() - 3).equals("COU")){
+        if (filePath.substring(filePath.length() - 3).toLowerCase().equals("cou")){
                 this.horaire = new Horaire(filePath, sessionChoisi);
                 session = sessionChoisi;
                 this.classerListeAPlacer();
