@@ -1060,10 +1060,12 @@ public class MainWindow extends javax.swing.JFrame{
             if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
                 horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
+                filePath = selecteurFichier.getSelectedFile().getPath();
             }
             else {
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
                 horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath() + "che");
+                filePath = selecteurFichier.getSelectedFile().getPath() + ".cou";
             }
             
             sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
@@ -1159,12 +1161,14 @@ public class MainWindow extends javax.swing.JFrame{
             selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
             if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
-                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() );
+                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
                 horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
+                filePath = selecteurFichier.getSelectedFile().getPath();
             }
             else {
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
-                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + ".che", selecteurFichier.getSelectedFile().getPath() + ".che");
+                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath() + ".che");
+                filePath = selecteurFichier.getSelectedFile().getPath() + ".cou";
             }
             sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
             horaireController.setSaved();
