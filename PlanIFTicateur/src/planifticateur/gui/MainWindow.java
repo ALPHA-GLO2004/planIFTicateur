@@ -1054,27 +1054,31 @@ public class MainWindow extends javax.swing.JFrame{
     
             FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
             selecteurFichier.setFileFilter(filter);
-            selecteurFichier.showOpenDialog(MainWindow.this);
+            int s = selecteurFichier.showOpenDialog(MainWindow.this);
 
             selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            if (s == selecteurFichier.CANCEL_OPTION){
+                logMsgTextArea.append("\nSauvegarde non complétée...\n");
+            }
+            else{
+                if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
+                    horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
+                    String oldFilePath = filePath.substring(0, filePath.length() - 3) + "che";
+                    filePath = selecteurFichier.getSelectedFile().getPath();
+                    horaireController.enregistrerCHE(oldFilePath, selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
 
-            if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
-                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
-                String oldFilePath = filePath.substring(0, filePath.length() - 3) + "che";
-                filePath = selecteurFichier.getSelectedFile().getPath();
-                horaireController.enregistrerCHE(oldFilePath, selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
-                
-            }
-            else {
-                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
-                String oldFilePath = filePath.substring(0, filePath.length() - 3) + "che";
-                filePath = selecteurFichier.getSelectedFile().getPath() + ".cou";;
-                horaireController.enregistrerCHE(oldFilePath, selecteurFichier.getSelectedFile().getPath() + "che");
-            }
-            
-            sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
-            horaireController.setSaved();
-        }  
+                }
+                else {
+                    horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+                    String oldFilePath = filePath.substring(0, filePath.length() - 3) + "che";
+                    filePath = selecteurFichier.getSelectedFile().getPath() + ".cou";;
+                    horaireController.enregistrerCHE(oldFilePath, selecteurFichier.getSelectedFile().getPath() + "che");
+                }
+
+                sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
+                horaireController.setSaved();
+            } 
+        }
     }//GEN-LAST:event_menuFileSaveAsActionPerformed
 
     private void ouvrirFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ouvrirFichierButtonActionPerformed
@@ -1159,23 +1163,27 @@ public class MainWindow extends javax.swing.JFrame{
     
             FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
             selecteurFichier.setFileFilter(filter);
-            selecteurFichier.showOpenDialog(MainWindow.this);
+            int s = selecteurFichier.showOpenDialog(MainWindow.this);
 
             
             selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
-            if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
-                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
-                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
-                filePath = selecteurFichier.getSelectedFile().getPath();
+            if (s == selecteurFichier.CANCEL_OPTION){
+                logMsgTextArea.append("\nSauvegarde non complétée...\n");
             }
-            else {
-                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
-                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath() + ".che");
-                filePath = selecteurFichier.getSelectedFile().getPath() + ".cou";
+            else{
+                if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
+                    horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
+                    horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
+                    filePath = selecteurFichier.getSelectedFile().getPath();
+                }
+                else {
+                    horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+                    horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath() + ".che");
+                    filePath = selecteurFichier.getSelectedFile().getPath() + ".cou";
+                }
+                sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
+                horaireController.setSaved();
             }
-            sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
-            horaireController.setSaved();
         }
     }//GEN-LAST:event_saveAsButtonActionPerformed
 
@@ -1193,7 +1201,7 @@ public class MainWindow extends javax.swing.JFrame{
         evt.getComponent().setBounds(aspectRatio.x, aspectRatio.y, aspectRatio.width, aspectRatio.width*9/16 - aEnlever);
         this.initialDimension = new Dimension(evt.getComponent().getSize());
         drawingPanel.setInitialDimension(this.initialDimension);
-        horaireController.createMouseAdapter(this.initialDimension);
+        horaireController.createMouseAdapter(this.initialDimension.width, this.initialDimension.height);
         if (horaireEstCharge){
             drawingPanel.getMainHoraire().setInitialDimension(this.initialDimension);
             horaireController.initPointActivite(this.initialDimension);
@@ -1223,7 +1231,21 @@ public class MainWindow extends javax.swing.JFrame{
     }//GEN-LAST:event_filtreActiviteButtonActionPerformed
 
     private void nouveauFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauFichierButtonActionPerformed
-        //
+        //Initialise un horaire vide
+        String nomFichier = JOptionPane.showInputDialog(this, "Nom du fichier créé:");
+        filePath = System.getProperty("user.dir") + "//temp//" + nomFichier + ".cou";
+        
+        //Choix session
+        JOptionPane fenetreJOption = new JOptionPane();
+        fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
+        //Obligation de choisir une réponse
+        while (sessionChooser.getSession() == null){
+            fenetreJOption.showMessageDialog(this, sessionChooser, "Choix de session", JOptionPane.QUESTION_MESSAGE);
+        }
+        horaireController.creerNouveauFichier(filePath);
+        horaireController.chargerHoraire(filePath, sessionChooser.getSession());
+        horaireEstCharge = true;
+        drawingPanel.repaint();
     }//GEN-LAST:event_nouveauFichierButtonActionPerformed
 
     private void resetHoraireButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetHoraireButtonActionPerformed
@@ -1277,7 +1299,14 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void redoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redoButtonActionPerformed
         if (horaireEstCharge){
+            boolean modeV = false;
+            if (horaireController.getModeValidationAuto()){
+                modeV = true;
+            }
             horaireController.redo();
+            if (modeV){
+                horaireController.switchValidationAuto();
+            }
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
@@ -1301,7 +1330,14 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void undoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_undoButtonActionPerformed
         if (horaireEstCharge){
+            boolean modeV = false;
+            if (horaireController.getModeValidationAuto()){
+                modeV = true;
+            }
             horaireController.undo();
+            if (modeV){
+                horaireController.switchValidationAuto();
+            }
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
@@ -1355,7 +1391,14 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void menuEditionUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionUndoActionPerformed
         if (horaireEstCharge){
+            boolean modeV = false;
+            if (horaireController.getModeValidationAuto()){
+                modeV = true;
+            }
             horaireController.undo();
+            if (modeV){
+                horaireController.switchValidationAuto();
+            }
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
@@ -1379,7 +1422,14 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void menuEditionRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionRedoActionPerformed
         if (horaireEstCharge){
+            boolean modeV = false;
+            if (horaireController.getModeValidationAuto()){
+                modeV = true;
+            }
             horaireController.redo();
+            if (modeV){
+                horaireController.switchValidationAuto();
+            }
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
