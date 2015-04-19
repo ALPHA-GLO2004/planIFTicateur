@@ -925,7 +925,7 @@ public class MainWindow extends javax.swing.JFrame{
     }//GEN-LAST:event_statistiquesButtonActionPerformed
     //Méthode pour bouton/menuItem planification automatique
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
-        //horaireController.planificationAuto();
+        horaireController.planificationAuto();
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
     //Méthode d'ouverture de fichier horaire du menuItem/bouton
     private void menuFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileOpenActionPerformed
