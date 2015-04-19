@@ -993,12 +993,25 @@ public class MainWindow extends javax.swing.JFrame{
     private void menuFileQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileQuitActionPerformed
         if (horaireEstCharge){
             if (!horaireController.getSaved()){
-                int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment quitter sans sauvegarder l'horaire ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous sauvegarder l'horaire avant de quitter ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
                 if (confirm == 0){
-                    System.exit(0);
+                    horaireController.enregistrerHoraire(filePath);
                 }
+                for (int i = 0; i < 5; i++){
+                    File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
+                    File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                    fileCOU.delete();
+                    fileCHE.delete();
+                }
+                System.exit(0);
             }
             else{
+                for (int i = 0; i < 5; i++){
+                    File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
+                    File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                    fileCOU.delete();
+                    fileCHE.delete();
+                }
                 System.exit(0);
             }
         }
@@ -1046,9 +1059,11 @@ public class MainWindow extends javax.swing.JFrame{
 
             if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
+                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
             }
             else {
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath() + "che");
             }
             
             sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
@@ -1145,9 +1160,11 @@ public class MainWindow extends javax.swing.JFrame{
 
             if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() );
+                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
             }
             else {
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + ".che", selecteurFichier.getSelectedFile().getPath() + ".che");
             }
             sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
             horaireController.setSaved();
@@ -1301,16 +1318,17 @@ public class MainWindow extends javax.swing.JFrame{
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         if (horaireEstCharge){
             if (!horaireController.getSaved()){
-                int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment quitter sans sauvegarder l'horaire ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous sauvegarder l'horaire avant de quitter ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
                 if (confirm == 0){
-                    for (int i = 0; i < 5; i++){
-                        File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
-                        File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
-                        fileCOU.delete();
-                        fileCHE.delete();
-                    }
-                    System.exit(0);
+                    horaireController.enregistrerHoraire(filePath);
                 }
+                for (int i = 0; i < 5; i++){
+                    File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
+                    File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                    fileCOU.delete();
+                    fileCHE.delete();
+                }
+                System.exit(0);
             }
             else{
                 for (int i = 0; i < 5; i++){
@@ -1323,12 +1341,6 @@ public class MainWindow extends javax.swing.JFrame{
             }
         }
         else{
-            for (int i = 0; i < 5; i++){
-                File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
-                File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
-                fileCOU.delete();
-                fileCHE.delete();
-            }
             System.exit(0);
         }
     }//GEN-LAST:event_formWindowClosing
