@@ -56,7 +56,7 @@ public class HoraireController {
     }
     //Planification auto...
     public void planificationAuto(){
-        //À implémenter
+        this.horaire.genererAutomatiquement();
     }
     //Méthode pour le changement d'un point d'une activité
     public void moveActivite(int x, int y){
