@@ -26,7 +26,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Iterator;
+import java.lang.Object;
+import java.nio.charset.Charset;
 
 public class Horaire{
     //Ajout de ma part, ça me semblait essentiel
@@ -110,8 +113,8 @@ public class Horaire{
         //Fonction pour transformer un fichier CSV en liste de string de son contenu
         //avec l'aide du séparateur ";"
         try{
-            
-            BufferedReader flux = new BufferedReader(new FileReader(filePath));
+            //Lecture du fichier avec conversion pour garder les accents
+            BufferedReader flux = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
             for (String line = flux.readLine(); line != null; line = flux.readLine()){
                 listeActivite.add(line);
             }
@@ -635,14 +638,14 @@ public class Horaire{
                 
 
 
-                File file = new File(path);
+                FileOutputStream file = new FileOutputStream(path);
 
-                if (!file.exists()) {
+                /*if (!file.exists()) {
                         file.createNewFile();
                 }
-
-                FileWriter fw = new FileWriter(file.getAbsoluteFile());
-                BufferedWriter bw = new BufferedWriter(fw);
+                
+                //FileWriter fw = new FileWriter(file.getAbsoluteFile());*/
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(file, "UTF-8"));
                 bw.write(content);
                 bw.close();
 
