@@ -810,7 +810,7 @@ public class MainWindow extends javax.swing.JFrame{
         Point point = new Point();
         if (horaireController.existeSelection()){
             point = new Point(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
-        }
+
         //Si la position n'est pas la même qu'au pressed
         if (point != this.initialActivitePoint){
             //Si une activité est sélectionnée - Gestion erreur d'un mouseReleased sans activité sélectionnée
@@ -867,6 +867,7 @@ public class MainWindow extends javax.swing.JFrame{
             
             //ajustement de la couleur de la bordure.
             }
+        }
             if(horaireEstCharge)
                 {
                 messagesDerreurs.removeAllElements();
@@ -878,7 +879,7 @@ public class MainWindow extends javax.swing.JFrame{
                     }
 
                 updateLogMessage(evt);
-                }        
+                }
         }
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMouseReleased
@@ -893,9 +894,9 @@ public class MainWindow extends javax.swing.JFrame{
             //horaireController.enregistrerUndo();
             this.initialActivitePoint = horaireController.getActiviteSelected().getPoint();
             delta = horaireController.deltaMaker(evt.getPoint().x, evt.getPoint().y);
+            horaireController.switchFromListToMove(horaireController.getActiviteSelected());
+            this.activiteList = horaireController.verificationListOfActivite(horaireController.getActiviteSelected());
         }
-        this.activiteList = horaireController.verificationListOfActivite(horaireController.getActiviteSelected());
-        horaireController.switchFromListToMove(horaireController.getActiviteSelected());
         drawingPanel.repaint();
     }//GEN-LAST:event_drawingPanelMousePressed
     //Méthode pour l'exportation de l'horaire en jpg du menu/bouton exporter
@@ -1059,13 +1060,16 @@ public class MainWindow extends javax.swing.JFrame{
 
             if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
-                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
+                String oldFilePath = filePath.substring(0, filePath.length() - 3) + "che";
                 filePath = selecteurFichier.getSelectedFile().getPath();
+                horaireController.enregistrerCHE(oldFilePath, selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
+                
             }
             else {
                 horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
-                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath() + "che");
-                filePath = selecteurFichier.getSelectedFile().getPath() + ".cou";
+                String oldFilePath = filePath.substring(0, filePath.length() - 3) + "che";
+                filePath = selecteurFichier.getSelectedFile().getPath() + ".cou";;
+                horaireController.enregistrerCHE(oldFilePath, selecteurFichier.getSelectedFile().getPath() + "che");
             }
             
             sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
