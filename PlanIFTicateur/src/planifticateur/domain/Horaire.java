@@ -658,7 +658,7 @@ public class Horaire{
     
     
     public void genererAutomatiquement(){
-        //En attente d'un bon algorithme
+        //Planification automatique 
         
     }
     
