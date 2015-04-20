@@ -689,29 +689,24 @@ public class Horaire{
         return listeDesActivites.size();
         
     }
-    
-    public Vector<Integer> calculerNombreDeCoursParJourSelonGrille(GrilleCheminement grille)
-    {
-        Vector<Integer> coursParJour ; 
-        coursParJour = new Vector<Integer>();
-        for (int i = 0; i <= 4; i++) {
-            Vector<Activite> activiteDejaPlacee = listeActiviteDejaPlacee.getListeActiviteDejaPlacee();
-             int jour = i;
-             int nbCoursParJours = 0;
-                for(Activite activite : activiteDejaPlacee){
-                    if(activite.getJourChoisi() == jour && grille.activiteEstDansGrille(activite.getNomActivite())){
-                        nbCoursParJours++;
-                    }
-                    coursParJour.add(nbCoursParJours);
-                }
-        }   
-        return coursParJour;
-    }
-    
+
     
     public float calculerNombreMaxDeCours(Vector<Activite> listeDesActivites){
-
-        return 0.0f;
+        float maxCoursParJours = 0.0f;
+        List<GrilleCheminement> listeGrilleCheminementCharger = listeGrilleCh.getListeGrilleCh();
+        for (GrilleCheminement grilleCheminement : listeGrilleCheminementCharger){
+            float nbCoursParJours =0.0f;
+            for (Activite activite : listeDesActivites) {
+                
+                if (grilleCheminement.activiteEstDansGrille(activite.getCode())){
+                    
+                    nbCoursParJours= nbCoursParJours + 1.0f;
+                }
+                maxCoursParJours = Math.max(maxCoursParJours, nbCoursParJours);
+            }
+            
+          }
+        return maxCoursParJours;
     }
     
     public float calculerNombreMoyenDeCours(Vector<Activite> listeDesActivites){
