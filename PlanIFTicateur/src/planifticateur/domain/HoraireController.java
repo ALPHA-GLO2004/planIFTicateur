@@ -480,6 +480,7 @@ public class HoraireController {
         }
     }
     //Fin gestion du undo/redo
+    
     public void resetHoraire(){
         this.horaire = null;
     }

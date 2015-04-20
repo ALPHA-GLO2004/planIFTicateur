@@ -114,7 +114,7 @@ public class Horaire{
         //avec l'aide du séparateur ";"
         try{
             //Lecture du fichier avec conversion pour garder les accents
-            BufferedReader flux = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
+            BufferedReader flux = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "858"));
             for (String line = flux.readLine(); line != null; line = flux.readLine()){
                 listeActivite.add(line);
             }
@@ -645,7 +645,7 @@ public class Horaire{
                 }
                 
                 //FileWriter fw = new FileWriter(file.getAbsoluteFile());*/
-                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(file, "UTF-8"));
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(file, "858"));
                 bw.write(content);
                 bw.close();
 

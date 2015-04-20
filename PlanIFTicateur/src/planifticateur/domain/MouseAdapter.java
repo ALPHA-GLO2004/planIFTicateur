@@ -271,6 +271,20 @@ public class MouseAdapter {
         }
     }
     
+    public int setDessinHeight(List<Activite> listeAPlacer){
+        int height = dimension.height;
+        int caseJourHeight = height / 5;
+        int caseHeureHeight = caseJourHeight / 9;
+        int distPointAct = 3*caseHeureHeight/2;
+        int nbActAPlacer = listeAPlacer.size();
+        int nouvelleHauteur = 0;
+                
+        if (nbActAPlacer > 29){
+            nouvelleHauteur = (nbActAPlacer - 29)*distPointAct;
+        }
+        return nouvelleHauteur;
+    }
+    
     public String getPositionCursor(){
         return this.position;
     }
