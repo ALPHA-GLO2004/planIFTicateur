@@ -428,11 +428,12 @@ public class HoraireController {
     
     //Méthode doit être faite par controller
     public void enregistrerUndo(){
+        new File("backup").mkdir(); 
         if (backupFichierNb <= 4){
-            this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(backupFichierNb)+".cou");
+            this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//backup//"+ Integer.toString(backupFichierNb)+".cou");
             
             if (backupFichierNb > 0){
-                this.horaire.enregistrerCHE(System.getProperty("user.dir") + "//resources//"+ "0.che", System.getProperty("user.dir") + "//resources//"+ Integer.toString(backupFichierNb)+".che");
+                this.horaire.enregistrerCHE(System.getProperty("user.dir") + "//backup//"+ "0.che", System.getProperty("user.dir") + "//backup//"+ Integer.toString(backupFichierNb)+".che");
             }
             backupFichierNb += 1;
             indexUndo += 1;
@@ -442,8 +443,8 @@ public class HoraireController {
             OutputStream os = null;
             try{
                 for (int i = 0; i < 4; i++){
-                    is = new FileInputStream(System.getProperty("user.dir") + "//resources//" + Integer.toString(i+1) + ".cou");
-                    os = new FileOutputStream(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
+                    is = new FileInputStream(System.getProperty("user.dir") + "//backup//" + Integer.toString(i+1) + ".cou");
+                    os = new FileOutputStream(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
                     byte[] buffer = new byte[1024];
                     int length;
                     while ((length = is.read(buffer)) > 0){
@@ -456,7 +457,7 @@ public class HoraireController {
             catch (Throwable ex){
                 System.out.println(ex.getMessage());
             }
-        this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(4)+".cou");
+        this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//backup//"+ Integer.toString(4)+".cou");
         backupFichierNb = 5;
         }
     }
@@ -468,14 +469,14 @@ public class HoraireController {
     
     public void undo(){
         if (backupFichierNb > 1 && indexUndo > 1){
-            this.chargerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(indexUndo-2)+".cou", session);
+            this.chargerHoraire(System.getProperty("user.dir") + "//backup//"+ Integer.toString(indexUndo-2)+".cou", session);
             indexUndo -= 1;
         }
     }
     
     public void redo(){
         if (backupFichierNb > indexUndo){
-            this.chargerHoraire(System.getProperty("user.dir") + "//resources//"+ Integer.toString(indexUndo)+".cou", session);
+            this.chargerHoraire(System.getProperty("user.dir") + "//backup//"+ Integer.toString(indexUndo)+".cou", session);
             indexUndo += 1;
         }
     }

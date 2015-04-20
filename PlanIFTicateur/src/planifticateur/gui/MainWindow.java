@@ -981,7 +981,7 @@ public class MainWindow extends javax.swing.JFrame{
                 horaireController.initPointActivite(this.initialDimension);
                 statFenetre.setStats();
                 horaireController.enregistrerUndo();
-                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", System.getProperty("user.dir") + "//resources//" + "0.che");
+                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", System.getProperty("user.dir") + "//backup//" + "0.che");
                 messagesDerreurs.removeAllElements();
                 if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
                     drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
@@ -1006,8 +1006,8 @@ public class MainWindow extends javax.swing.JFrame{
                     horaireController.enregistrerHoraire(filePath);
                 }
                 for (int i = 0; i < 5; i++){
-                    File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
-                    File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                    File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
+                    File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
                     fileCOU.delete();
                     fileCHE.delete();
                 }
@@ -1015,8 +1015,8 @@ public class MainWindow extends javax.swing.JFrame{
             }
             else{
                 for (int i = 0; i < 5; i++){
-                    File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
-                    File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                    File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
+                    File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
                     fileCOU.delete();
                     fileCHE.delete();
                 }
@@ -1132,7 +1132,7 @@ public class MainWindow extends javax.swing.JFrame{
                 horaireController.initPointActivite(this.initialDimension);
                 statFenetre.setStats();
                 horaireController.enregistrerUndo();
-                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", System.getProperty("user.dir") + "//resources//" + "0.che");
+                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", System.getProperty("user.dir") + "//backup//" + "0.che");
                 messagesDerreurs.removeAllElements();
                 if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
                     drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
@@ -1240,6 +1240,7 @@ public class MainWindow extends javax.swing.JFrame{
     private void nouveauFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauFichierButtonActionPerformed
         //Initialise un horaire vide
         String nomFichier = JOptionPane.showInputDialog(this, "Nom du fichier créé:");
+        new File("temp").mkdir();
         filePath = System.getProperty("user.dir") + "//temp//" + nomFichier + ".cou";
         
         //Choix session
@@ -1374,8 +1375,8 @@ public class MainWindow extends javax.swing.JFrame{
                     horaireController.enregistrerHoraire(filePath);
                 }
                 for (int i = 0; i < 5; i++){
-                    File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
-                    File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                    File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
+                    File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
                     fileCOU.delete();
                     fileCHE.delete();
                 }
@@ -1383,8 +1384,8 @@ public class MainWindow extends javax.swing.JFrame{
             }
             else{
                 for (int i = 0; i < 5; i++){
-                    File fileCOU = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".cou");
-                    File fileCHE = new File(System.getProperty("user.dir") + "//resources//" + Integer.toString(i) + ".che");
+                    File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
+                    File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
                     fileCOU.delete();
                     fileCHE.delete();
                 }
