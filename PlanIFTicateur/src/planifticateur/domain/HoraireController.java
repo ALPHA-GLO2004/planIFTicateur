@@ -33,29 +33,28 @@ public class HoraireController {
     //Méthode nouvel horaire
     public void creerNouveauFichier(String path){
         try{
-            FileWriter newFileCOU = new FileWriter(path);
-            newFileCOU.append("CodeActivité");
-            newFileCOU.append(",");
-            newFileCOU.append("Section");
-            newFileCOU.append(",");
-            newFileCOU.append("Titre");
-            newFileCOU.append(",");
-            newFileCOU.append("Prof");
-            newFileCOU.append(",");
-            newFileCOU.append("Type");
-            newFileCOU.append(",");
-            newFileCOU.append("Durée");
-            newFileCOU.append(",");
-            newFileCOU.append("DébutMin");
-            newFileCOU.append(",");
-            newFileCOU.append("FinMax");
-            newFileCOU.append(",");
-            newFileCOU.append("Jour");
-            newFileCOU.append(",");
-            newFileCOU.append("Heure");
-            newFileCOU.append("\n");
-            
-            newFileCOU.close();
+            try (FileWriter newFileCOU = new FileWriter(path)) {
+                newFileCOU.append("CodeActivité");
+                newFileCOU.append(",");
+                newFileCOU.append("Section");
+                newFileCOU.append(",");
+                newFileCOU.append("Titre");
+                newFileCOU.append(",");
+                newFileCOU.append("Prof");
+                newFileCOU.append(",");
+                newFileCOU.append("Type");
+                newFileCOU.append(",");
+                newFileCOU.append("Durée");
+                newFileCOU.append(",");
+                newFileCOU.append("DébutMin");
+                newFileCOU.append(",");
+                newFileCOU.append("FinMax");
+                newFileCOU.append(",");
+                newFileCOU.append("Jour");
+                newFileCOU.append(",");
+                newFileCOU.append("Heure");
+                newFileCOU.append("\n");
+            }
             
             FileWriter newFileCHE = new FileWriter(path.substring(0, path.length() - 2) + "he");
             newFileCHE.append("Programme");
