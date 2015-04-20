@@ -1380,6 +1380,7 @@ public class MainWindow extends javax.swing.JFrame{
                     fileCOU.delete();
                     fileCHE.delete();
                 }
+                new File("backup").delete();
                 System.exit(0);
             }
             else{
@@ -1389,6 +1390,7 @@ public class MainWindow extends javax.swing.JFrame{
                     fileCOU.delete();
                     fileCHE.delete();
                 }
+                new File("backup").delete();
                 System.exit(0);
             }
         }
