@@ -441,13 +441,18 @@ public class Horaire{
                          }
                          
                         //un prof ne peut donner deux cours differents en meme tps 
-                         else if(activite.getProfesseur().equals(activite2.getProfesseur()) 
-                             &&
-                             (!activite.getType().equals(activite2.getType()) )
-                             )
+                         else if(activite.getProfesseur().equals(activite2.getProfesseur()) )
                           {
-                              listeCoursMemeProf.addPaire(activite, activite2);
-                              reponse = false;
+                             if(!activite.getType().equals(activite2.getType()))
+                             {
+                                listeCoursMemeProf.addPaire(activite, activite2);
+                                reponse = false;
+                             }
+                             else if(!activite.getSection().equals(activite2.getSection()))
+                             {
+                                listeCoursMemeProf.addPaire(activite, activite2);
+                                reponse = false; 
+                             }
 
                           }
               
