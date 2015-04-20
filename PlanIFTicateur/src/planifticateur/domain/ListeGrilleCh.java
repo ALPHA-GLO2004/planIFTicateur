@@ -35,6 +35,18 @@ public class ListeGrilleCh {
         return grilleChListe;
     }
     
+    
+    public List<GrilleCheminement> getListeGrilleChSession(String session){
+        List<GrilleCheminement> lstChem = new Vector<GrilleCheminement>();
+        for(GrilleCheminement g:lstChem){
+            if(g.session.substring(0, 2).compareToIgnoreCase(session.substring(0, 2))==0){
+                lstChem.add(g);
+        
+            }
+        }
+        return lstChem;
+    }
+    
     //Retourne le nombre d'activités dans la liste d'activités de la grille de cheminement
     public int getNumberOfActivite(){
         return grilleChListe.size();
