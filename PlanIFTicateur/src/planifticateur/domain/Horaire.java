@@ -162,7 +162,7 @@ public class Horaire{
         int y = caseHeureHeight;
         
         for (Activite a: this.getListeActiviteAPlacer()){
-            Point p = new Point(widthListe + 3*saut/2, y);
+            Point p = new Point(widthListe + 2*saut, y);
             a.setPoint(p);
             a.setRangee(0);
             y += 3*caseHeureHeight/2;

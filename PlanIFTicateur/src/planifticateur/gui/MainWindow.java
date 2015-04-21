@@ -789,7 +789,10 @@ public class MainWindow extends javax.swing.JFrame{
                 this.validActivitePoint = new Point(p);
             }
             else{
-                if (evt.getPoint().x - delta.x >= this.initialDimension.width*3/4){
+                if (evt.getPoint().x >= this.initialDimension.width*3/4){
+                    horaireController.moveActivite(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
+                }
+                if (evt.getPoint().y - delta.y > initialDimension.height){
                     horaireController.moveActivite(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
                 }
             }
@@ -852,18 +855,30 @@ public class MainWindow extends javax.swing.JFrame{
                         }
                         //Si la position n'est pas valide
                         else{
-                            if (this.activiteList == 0){
+                            if (evt.getPoint().y - delta.y >= this.initialDimension.height && !(evt.getPoint().x - delta.x >= this.initialDimension.width*3/4)){
                                 horaireController.switchFromMoveToListAp();
+                                p = new Point(horaireController.verificationDrop(0, 0));
+                                horaireController.moveActivite(p.x, p.y);
+                                horaireController.switchSelection();
+                                horaireController.classerListeAPlacer();
+                                horaireController.initPointActivite(this.initialDimension);
+                                horaireController.enregistrerUndo();
+                                horaireController.setUnsaved();
                             }
                             else{
-                                horaireController.switchFromMoveToListDp();
+                                if (this.activiteList == 0){
+                                horaireController.switchFromMoveToListAp();
+                                }
+                                else{
+                                    horaireController.switchFromMoveToListDp();
+                                }
+                                horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
+                                horaireController.setRangee(this.validActivitePoint.x, this.validActivitePoint.y);
+                                horaireController.jourHeureToActivite();
+                                horaireController.switchSelection();
+                                horaireController.classerListeAPlacer();
+                                horaireController.initPointActivite(this.initialDimension);
                             }
-                            horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
-                            horaireController.setRangee(this.validActivitePoint.x, this.validActivitePoint.y);
-                            horaireController.jourHeureToActivite();
-                            horaireController.switchSelection();
-                            horaireController.classerListeAPlacer();
-                            horaireController.initPointActivite(this.initialDimension);
                         }
                     }
                 statFenetre.setStats();
@@ -965,6 +980,7 @@ public class MainWindow extends javax.swing.JFrame{
                 // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
                 //Larman impose un type primitif vers le controler
                 horaireController.chargerHoraire(filePath, sessionChooser.getSession());
+                drawingPanel.setHeight(horaireController.setDessinHeight());
                 validationAutoButton.setSelected(false);
                 horaireController.setModeValidationAutoOff();
                 titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");
@@ -1116,6 +1132,7 @@ public class MainWindow extends javax.swing.JFrame{
                 // On shoot le fileSelection Ã  la fonction appropriÃ© du controller
                 //Larman impose un type primitif vers le controler
                 horaireController.chargerHoraire(filePath, sessionChooser.getSession());
+                drawingPanel.setHeight(horaireController.setDessinHeight());
                 validationAutoButton.setSelected(false);
                 horaireController.setModeValidationAutoOff();
                 titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");

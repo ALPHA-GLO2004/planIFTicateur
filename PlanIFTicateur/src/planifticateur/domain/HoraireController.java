@@ -378,6 +378,10 @@ public class HoraireController {
         this.horaire.setListeActiviteDejaPlacee();
     }
     
+    public int setDessinHeight(){
+        return this.mouseAdapter.setDessinHeight(this.getListeActiviteAPlacer());
+    }
+    
     public List<Activite> classerListeAPlacer(){
         List aap = this.horaire.getListeActiviteAPlacer();
         Collections.sort(aap);

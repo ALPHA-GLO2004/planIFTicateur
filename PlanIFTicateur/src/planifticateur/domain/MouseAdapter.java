@@ -54,7 +54,7 @@ public class MouseAdapter {
             for (int i = 0; i <= 4; i++){
                 for (int j = 0; j <= 7; j++){
                     for (int k = 0; k <= 29; k++){
-                        if (p.x > caseJourWidth && p.x < dimension.width && p.y > caseHeureHeight && p.y <= height){
+                        if (p.x >= caseJourWidth && p.x < dimension.width && p.y > caseHeureHeight && p.y < height){
                             jumpX = caseJourWidth + k*saut;
                         
                             if (p.x >= jumpX && p.x < (jumpX + saut)){
@@ -73,6 +73,9 @@ public class MouseAdapter {
                                 if (p.y >= 4*caseJourHeight && p.y < 4*caseJourHeight+caseHeureHeight){
                                     jumpX = 0;
                                 }
+                                if (p.y >= 5*caseJourHeight){
+                                    jumpX = 0;
+                                }
                                 else{
                                     pointActiviteX = jumpX;
                                 }
@@ -88,10 +91,17 @@ public class MouseAdapter {
                     if (p.y >= jumpY && p.y < jumpY + caseHeureHeight){
                         pointActiviteY = jumpY;
                     }
+                    if (p.y >= 5*caseJourHeight){
+                        pointActiviteY = 0;
+                    }
                 }
             }
             
             if (p.x >= width){
+                pointActiviteX = 0;
+                pointActiviteY = 0;
+            }
+            if (p.y > height){
                 pointActiviteX = 0;
                 pointActiviteY = 0;
             }
@@ -280,7 +290,10 @@ public class MouseAdapter {
         int nouvelleHauteur = 0;
                 
         if (nbActAPlacer > 29){
-            nouvelleHauteur = (nbActAPlacer - 29)*distPointAct;
+            nouvelleHauteur = dimension.height + (nbActAPlacer - 29)*distPointAct;
+        }
+        else{
+            nouvelleHauteur = dimension.height;
         }
         return nouvelleHauteur;
     }
