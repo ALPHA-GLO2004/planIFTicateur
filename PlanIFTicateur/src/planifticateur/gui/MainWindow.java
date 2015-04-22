@@ -759,7 +759,24 @@ public class MainWindow extends javax.swing.JFrame{
     }
     //Action nouvel horaire du menu Fichier - Crée un nouvel horaire nu afin d'y créer des activités et des grilles de chem.
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
-        //horaireController.nouvelHoraire("1", "A");
+        //Initialise un horaire vide
+        JOptionPane.showInputDialog(this, "Entrez votre mot de passe:");
+        
+        String nomFichier = JOptionPane.showInputDialog(this, "Nom du fichier créé:");
+        new File("temp").mkdir();
+        filePath = System.getProperty("user.dir") + "//temp//" + nomFichier + ".cou";
+        
+        //Choix session
+        JOptionPane fenetreJOption = new JOptionPane();
+        fenetreJOption.setLocation(this.initialDimension.width/2, this.initialDimension.height/2);
+        //Obligation de choisir une réponse
+        while (sessionChooser.getSession() == null){
+            fenetreJOption.showMessageDialog(this, sessionChooser, "Choix de session", JOptionPane.QUESTION_MESSAGE);
+        }
+        horaireController.creerNouveauFichier(filePath);
+        horaireController.chargerHoraire(filePath, sessionChooser.getSession());
+        horaireEstCharge = true;
+        drawingPanel.repaint();
     }//GEN-LAST:event_menuFileNewActionPerformed
     //Lors d'un mouseMove dans le drawingPanel (section centrale):
                     //-affichage des info pertinentes sur activités en mouseOver;
@@ -1061,11 +1078,16 @@ public class MainWindow extends javax.swing.JFrame{
     }//GEN-LAST:event_drawingPanelMouseClicked
 
     private void menuFileSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileSaveActionPerformed
-       if(horaireEstCharge){
-           horaireController.enregistrerHoraire(filePath);
-           horaireController.setSaved();
-           sauvegarderNotes(filePath);
-       }
+        if(horaireEstCharge){
+            if (filePath.contains(System.getProperty("user.dir") + "//temp//")){
+                saveAsButtonActionPerformed(evt);
+            }
+            else{
+               horaireController.enregistrerHoraire(filePath);
+            }
+            horaireController.setSaved();
+            sauvegarderNotes(filePath);
+        }
     }//GEN-LAST:event_menuFileSaveActionPerformed
 
     private void menuFileSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileSaveAsActionPerformed
@@ -1218,9 +1240,14 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         if(horaireEstCharge){
-           horaireController.enregistrerHoraire(filePath);
-           sauvegarderNotes(filePath);
-           horaireController.setSaved();
+            if (filePath.contains(System.getProperty("user.dir") + "//temp//")){
+                saveAsButtonActionPerformed(evt);
+            }
+            else{
+             horaireController.enregistrerHoraire(filePath);
+            }
+            sauvegarderNotes(filePath);
+            horaireController.setSaved();
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -1261,6 +1288,8 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void nouveauFichierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauFichierButtonActionPerformed
         //Initialise un horaire vide
+        JOptionPane.showInputDialog(this, "Entrez votre mot de passe:");
+        
         String nomFichier = JOptionPane.showInputDialog(this, "Nom du fichier créé:");
         new File("temp").mkdir();
         filePath = System.getProperty("user.dir") + "//temp//" + nomFichier + ".cou";
@@ -1394,6 +1423,39 @@ public class MainWindow extends javax.swing.JFrame{
             if (!horaireController.getSaved()){
                 int confirm = JOptionPane.showConfirmDialog(this, "Voulez-vous sauvegarder l'horaire avant de quitter ?", "Quitter PlanIFTicateur", JOptionPane.YES_NO_OPTION);
                 if (confirm == 0){
+                    if (filePath.contains(System.getProperty("user.dir") + "//temp//")){
+                        //Si le fichier était un nouveauFichier --- faire enregistrer sous
+                        JFileChooser selecteurFichier = new JFileChooser();
+            
+                        selecteurFichier.setApproveButtonText("Enregistrer");
+                        selecteurFichier.setApproveButtonMnemonic('a');
+                        selecteurFichier.setApproveButtonToolTipText("Enregistrer le fichier");
+                        selecteurFichier.setDialogTitle("Enregistrer");
+
+                        FileNameExtensionFilter filter = new FileNameExtensionFilter("COU files","cou");
+                        selecteurFichier.setFileFilter(filter);
+                        int s = selecteurFichier.showOpenDialog(MainWindow.this);
+
+
+                        selecteurFichier.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+                        if (s == selecteurFichier.CANCEL_OPTION){
+                            logMsgTextArea.append("\nSauvegarde non complétée...\n");
+                        }
+                        else{
+                            if(selecteurFichier.getSelectedFile().getPath().contains(".cou")){
+                                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath());
+                                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath().substring(0, selecteurFichier.getSelectedFile().getPath().length() - 2) + "he");
+                                filePath = selecteurFichier.getSelectedFile().getPath();
+                            }
+                            else {
+                                horaireController.enregistrerHoraire(selecteurFichier.getSelectedFile().getPath() + ".cou");
+                                horaireController.enregistrerCHE(filePath.substring(0, filePath.length() - 3) + "che", selecteurFichier.getSelectedFile().getPath() + ".che");
+                                filePath = selecteurFichier.getSelectedFile().getPath() + ".cou";
+                            }
+                            sauvegarderNotes(selecteurFichier.getSelectedFile().getPath());
+                            horaireController.setSaved();
+                        }
+                    }
                     horaireController.enregistrerHoraire(filePath);
                 }
                 for (int i = 0; i < 5; i++){
