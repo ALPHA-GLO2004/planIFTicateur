@@ -581,22 +581,22 @@ public class Horaire{
     
     public void ajouterGrille(String grille, String path){
         try{            
-            String toutesGrilles = "Programme,Version,Session,Cours\n";
+            String toutesGrilles = new String("");
             
-            for (GrilleCheminement g: this.listeGrilleCh.getListeGrilleCh()){
-                toutesGrilles += g.toString() + "\n";
+            BufferedReader loadCHE = new BufferedReader(new FileReader(path.substring(0, path.length() - 3) + "CHE"));
+            for (String line = loadCHE.readLine(); line != null; line = loadCHE.readLine()){
+                toutesGrilles += line;
+                toutesGrilles += "\n";
             }
+            loadCHE.close();
+            toutesGrilles += grille;
             
-            FileOutputStream file = new FileOutputStream(path);
+            FileOutputStream file = new FileOutputStream(path.substring(0, path.length() - 3) + "CHE");
 
-                /*if (!file.exists()) {
-                        file.createNewFile();
-                }
-                
-                //FileWriter fw = new FileWriter(file.getAbsoluteFile());*/
-                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(file, "858"));
-                bw.write(toutesGrilles);
-                bw.close();
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(file, "858"));
+            System.out.println(toutesGrilles);
+            bw.write(toutesGrilles);
+            bw.close();
             
             //ajustement grilles avec fichier CHE
             BufferedReader fluxCHE = new BufferedReader(new FileReader(path.substring(0, path.length() - 3) + "CHE"));
@@ -605,7 +605,7 @@ public class Horaire{
             }
             listeGrille.remove(0);
             for (String elementGrille: listeGrille){
-                GrilleCheminement g = new GrilleCheminement(elementGrille,separateur);
+                GrilleCheminement g = new GrilleCheminement(elementGrille,",");
                 listeGrilleCh.add(g);
             }
             fluxCHE.close();

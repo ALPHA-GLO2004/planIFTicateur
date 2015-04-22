@@ -1057,7 +1057,6 @@ public class MainWindow extends javax.swing.JFrame{
                 for (int i = 0; i < 5; i++){
                     File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
                     File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
-                    new File("temp").delete();
                     fileCOU.delete();
                     fileCHE.delete();
                 }
@@ -1067,7 +1066,6 @@ public class MainWindow extends javax.swing.JFrame{
                 for (int i = 0; i < 5; i++){
                     File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
                     File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
-                    new File("temp").delete();
                     fileCOU.delete();
                     fileCHE.delete();
                 }
@@ -1075,7 +1073,6 @@ public class MainWindow extends javax.swing.JFrame{
             }
         }
         else{
-            new File("temp").delete();
             System.exit(0);
         }
     }//GEN-LAST:event_menuFileQuitActionPerformed
@@ -1480,7 +1477,6 @@ public class MainWindow extends javax.swing.JFrame{
                     fileCOU.delete();
                     fileCHE.delete();
                 }
-                new File("temp").delete();
                 new File("backup").delete();
                 System.exit(0);
             }
@@ -1491,7 +1487,6 @@ public class MainWindow extends javax.swing.JFrame{
                     fileCOU.delete();
                     fileCHE.delete();
                 }
-                new File("temp").delete();
                 new File("backup").delete();
                 System.exit(0);
             }

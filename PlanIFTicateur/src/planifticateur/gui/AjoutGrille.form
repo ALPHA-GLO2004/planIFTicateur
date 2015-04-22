@@ -75,7 +75,7 @@
                                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                   <Component id="coursTextField8" min="-2" pref="54" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="ajouterButton" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                              <Component id="enregistrerButton" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -151,7 +151,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ajouterButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="enregistrerButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="quitterButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -231,12 +231,12 @@
             <Property name="text" type="java.lang.String" value="Cours"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="ajouterButton">
+        <Component class="javax.swing.JButton" name="enregistrerButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ajouter grille/Continuer"/>
+            <Property name="text" type="java.lang.String" value="Enregistrer grille"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ajouterButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enregistrerButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="quitterButton">

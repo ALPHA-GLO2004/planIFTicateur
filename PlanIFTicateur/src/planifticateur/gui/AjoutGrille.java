@@ -2,17 +2,18 @@
 package planifticateur.gui;
 import java.awt.Component;
 import java.util.List;
+import java.util.Vector;
 import java.util.ArrayList;
 
 public class AjoutGrille extends javax.swing.JFrame {
     private MainWindow mainWindow;
-    private List<String> grille;
+    private Vector<String> grille;
     private List<Component> listeCours;
     
     public AjoutGrille(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
         initComponents();
-        this.grille = new ArrayList<String>();
+        this.grille = new Vector<String>();
         this.listeCours = new ArrayList<Component>();
         listeCours.add(coursTextField1);
         listeCours.add(coursTextField2);
@@ -40,7 +41,7 @@ public class AjoutGrille extends javax.swing.JFrame {
         versionSessionComboBox = new javax.swing.JComboBox();
         versionAnneeComboBox = new javax.swing.JComboBox();
         coursLabel = new javax.swing.JLabel();
-        ajouterButton = new javax.swing.JButton();
+        enregistrerButton = new javax.swing.JButton();
         quitterButton = new javax.swing.JButton();
         coursTextField1 = new javax.swing.JTextField();
         coursTextField2 = new javax.swing.JTextField();
@@ -74,10 +75,10 @@ public class AjoutGrille extends javax.swing.JFrame {
 
         coursLabel.setText("Cours");
 
-        ajouterButton.setText("Ajouter grille/Continuer");
-        ajouterButton.addActionListener(new java.awt.event.ActionListener() {
+        enregistrerButton.setText("Enregistrer grille");
+        enregistrerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ajouterButtonActionPerformed(evt);
+                enregistrerButtonActionPerformed(evt);
             }
         });
 
@@ -114,7 +115,7 @@ public class AjoutGrille extends javax.swing.JFrame {
                                 .addComponent(coursTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(70, 70, 70)
                                 .addComponent(coursTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ajouterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(enregistrerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(addGrilleContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(quitterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +174,7 @@ public class AjoutGrille extends javax.swing.JFrame {
                         .addComponent(coursTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addGrilleContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ajouterButton)
+                    .addComponent(enregistrerButton)
                     .addComponent(quitterButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -202,29 +203,40 @@ public class AjoutGrille extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_quitterButtonActionPerformed
 
-    private void ajouterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterButtonActionPerformed
-        grille.add(programmeComboBox.getSelectedItem().toString() + ","
-                   + versionSessionComboBox.getSelectedItem().toString()
-                   + versionAnneeComboBox.getSelectedItem().toString() + ","
-                   + sessionComboBox.getSelectedItem().toString() + ","
-                   + coursTextField1.getText() + ","
-                   + coursTextField2.getText() + ","
-                   + coursTextField3.getText() + ","
-                   + coursTextField4.getText() + ","
-                   + coursTextField5.getText() + ","
-                   + coursTextField6.getText() + ","
-                   + coursTextField7.getText() + ","
-                   + coursTextField8.getText() + ","
-                   + coursTextField9.getText() + ","
-                   + coursTextField10.getText() + "\n");
-    }//GEN-LAST:event_ajouterButtonActionPerformed
+    private void enregistrerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enregistrerButtonActionPerformed
+        if (!coursTextField1.equals(null)){
+            grille.addElement(programmeComboBox.getSelectedItem().toString() + ","
+                       + versionSessionComboBox.getSelectedItem().toString()
+                       + versionAnneeComboBox.getSelectedItem().toString() + ","
+                       + sessionComboBox.getSelectedItem().toString() + ","
+                       + coursTextField1.getText() + ","
+                       + coursTextField2.getText() + ","
+                       + coursTextField3.getText() + ","
+                       + coursTextField4.getText() + ","
+                       + coursTextField5.getText() + ","
+                       + coursTextField6.getText() + ","
+                       + coursTextField7.getText() + ","
+                       + coursTextField8.getText() + ","
+                       + coursTextField9.getText() + ","
+                       + coursTextField10.getText() + "\n");
+        }
+        coursTextField1.setText(null);
+        coursTextField2.setText(null);
+        coursTextField3.setText(null);
+        coursTextField4.setText(null);
+        coursTextField5.setText(null);
+        coursTextField6.setText(null);
+        coursTextField7.setText(null);
+        coursTextField8.setText(null);
+        coursTextField9.setText(null);
+        coursTextField10.setText(null);
+    }//GEN-LAST:event_enregistrerButtonActionPerformed
     
     public List<String> getGrille(){
         return this.grille;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addGrilleContainer;
-    private javax.swing.JButton ajouterButton;
     private javax.swing.JLabel coursLabel;
     private javax.swing.JTextField coursTextField1;
     private javax.swing.JTextField coursTextField10;
@@ -236,6 +248,7 @@ public class AjoutGrille extends javax.swing.JFrame {
     private javax.swing.JTextField coursTextField7;
     private javax.swing.JTextField coursTextField8;
     private javax.swing.JTextField coursTextField9;
+    private javax.swing.JButton enregistrerButton;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JComboBox programmeComboBox;
     private javax.swing.JLabel programmeLabel;
