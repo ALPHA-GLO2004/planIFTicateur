@@ -886,6 +886,9 @@ public class MainWindow extends javax.swing.JFrame{
                 //ajustement de la couleur de la bordure.
                 }
             }
+            drawingPanel.setHeight(horaireController.setDessinHeight());
+            drawingPanelContainer.getVerticalScrollBar().validate();
+            drawingPanelContainer.getVerticalScrollBar().setValue(drawingPanelContainer.getVerticalScrollBar().getValue() - 1);
                 if(horaireEstCharge)
                     {
                     messagesDerreurs.removeAllElements();
@@ -981,6 +984,7 @@ public class MainWindow extends javax.swing.JFrame{
                 //Larman impose un type primitif vers le controler
                 horaireController.chargerHoraire(filePath, sessionChooser.getSession());
                 drawingPanel.setHeight(horaireController.setDessinHeight());
+                drawingPanelContainer.getVerticalScrollBar().validate();
                 validationAutoButton.setSelected(false);
                 horaireController.setModeValidationAutoOff();
                 titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");
@@ -1133,6 +1137,7 @@ public class MainWindow extends javax.swing.JFrame{
                 //Larman impose un type primitif vers le controler
                 horaireController.chargerHoraire(filePath, sessionChooser.getSession());
                 drawingPanel.setHeight(horaireController.setDessinHeight());
+                drawingPanelContainer.getVerticalScrollBar().validate();
                 validationAutoButton.setSelected(false);
                 horaireController.setModeValidationAutoOff();
                 titreFichierLabel.setText(horaireController.getHoraireNom() + ".cou " + "(" + horaireController.getSession() + ")");
