@@ -106,6 +106,15 @@
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="menuEditionAddActivite.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK));"/>
               </AuxValues>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuEditionAddGrille">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ajouter grille de cheminement"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuEditionAddGrilleActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuEditionPlanificationAuto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Planification automatique"/>

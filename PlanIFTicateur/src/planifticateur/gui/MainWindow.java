@@ -32,6 +32,7 @@ public class MainWindow extends javax.swing.JFrame{
     private SessionChooser sessionChooser;
     public Note fenetreNote;
     public Rechercher fenetreRecherche;
+    public AjoutGrille fenetreAjouterGrille;
     public AjoutActivite fenetreAjouterActivite;
     private Modifications fenetreModification;
     public Dimension initialDimension;
@@ -150,6 +151,7 @@ public class MainWindow extends javax.swing.JFrame{
         menuEditionRedo = new javax.swing.JMenuItem();
         menuEditionNotes = new javax.swing.JMenuItem();
         menuEditionAddActivite = new javax.swing.JMenuItem();
+        menuEditionAddGrille = new javax.swing.JMenuItem();
         menuEditionPlanificationAuto = new javax.swing.JMenuItem();
         menuEditionEffacerHoraire = new javax.swing.JMenuItem();
         menuExport = new javax.swing.JMenu();
@@ -638,6 +640,15 @@ public class MainWindow extends javax.swing.JFrame{
         });
         menuEdition.add(menuEditionAddActivite);
 
+        menuEditionAddGrille.setText("Ajouter grille de cheminement");
+        menuEditionAddGrille.setEnabled(false);
+        menuEditionAddGrille.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditionAddGrilleActionPerformed(evt);
+            }
+        });
+        menuEdition.add(menuEditionAddGrille);
+
         menuEditionPlanificationAuto.setText("Planification automatique");
         menuEditionPlanificationAuto.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK));
         menuEditionPlanificationAuto.addActionListener(new java.awt.event.ActionListener() {
@@ -776,6 +787,7 @@ public class MainWindow extends javax.swing.JFrame{
         horaireController.creerNouveauFichier(filePath);
         horaireController.chargerHoraire(filePath, sessionChooser.getSession());
         horaireEstCharge = true;
+        menuEditionAddGrille.setEnabled(true);
         drawingPanel.repaint();
     }//GEN-LAST:event_menuFileNewActionPerformed
     //Lors d'un mouseMove dans le drawingPanel (section centrale):
@@ -1026,7 +1038,7 @@ public class MainWindow extends javax.swing.JFrame{
                 else{
                     drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
                 }
-
+                menuEditionAddGrille.setEnabled(false);
                 drawingPanel.repaint();
 
                 //initialisation des notes s'il yen a
@@ -1045,6 +1057,7 @@ public class MainWindow extends javax.swing.JFrame{
                 for (int i = 0; i < 5; i++){
                     File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
                     File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
+                    new File("temp").delete();
                     fileCOU.delete();
                     fileCHE.delete();
                 }
@@ -1054,6 +1067,7 @@ public class MainWindow extends javax.swing.JFrame{
                 for (int i = 0; i < 5; i++){
                     File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
                     File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
+                    new File("temp").delete();
                     fileCOU.delete();
                     fileCHE.delete();
                 }
@@ -1061,6 +1075,7 @@ public class MainWindow extends javax.swing.JFrame{
             }
         }
         else{
+            new File("temp").delete();
             System.exit(0);
         }
     }//GEN-LAST:event_menuFileQuitActionPerformed
@@ -1184,7 +1199,7 @@ public class MainWindow extends javax.swing.JFrame{
                 else{
                     drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
                 }
-
+                menuEditionAddGrille.setEnabled(false);
                 drawingPanel.repaint();
 
                 //initialisation des notes s'il yen a
@@ -1304,6 +1319,7 @@ public class MainWindow extends javax.swing.JFrame{
         horaireController.creerNouveauFichier(filePath);
         horaireController.chargerHoraire(filePath, sessionChooser.getSession());
         horaireEstCharge = true;
+        menuEditionAddGrille.setEnabled(true);
         drawingPanel.repaint();
     }//GEN-LAST:event_nouveauFichierButtonActionPerformed
 
@@ -1464,6 +1480,7 @@ public class MainWindow extends javax.swing.JFrame{
                     fileCOU.delete();
                     fileCHE.delete();
                 }
+                new File("temp").delete();
                 new File("backup").delete();
                 System.exit(0);
             }
@@ -1474,6 +1491,7 @@ public class MainWindow extends javax.swing.JFrame{
                     fileCOU.delete();
                     fileCHE.delete();
                 }
+                new File("temp").delete();
                 new File("backup").delete();
                 System.exit(0);
             }
@@ -1624,6 +1642,11 @@ public class MainWindow extends javax.swing.JFrame{
             drawingPanel.repaint();
         }
     }//GEN-LAST:event_menuOutilsFiltreActiviteActionPerformed
+
+    private void menuEditionAddGrilleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionAddGrilleActionPerformed
+        fenetreAjouterGrille = new AjoutGrille(this);
+        fenetreAjouterGrille.setVisible(true);
+    }//GEN-LAST:event_menuEditionAddGrilleActionPerformed
     
     public DrawingPanel getDrawingPanel(){
         return this.drawingPanel;
@@ -1642,6 +1665,7 @@ public class MainWindow extends javax.swing.JFrame{
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu menuEdition;
     private javax.swing.JMenuItem menuEditionAddActivite;
+    private javax.swing.JMenuItem menuEditionAddGrille;
     private javax.swing.JMenuItem menuEditionEffacerHoraire;
     private javax.swing.JMenuItem menuEditionNotes;
     private javax.swing.JMenuItem menuEditionPlanificationAuto;

@@ -421,6 +421,11 @@ public class HoraireController {
         }
         return existe;
     }
+    
+    public void ajouterGrille(String grille, String path){
+        this.horaire.ajouterGrille(grille, path);
+    }
+    
     //Gestion du undo/redo
     public void enregistrerCHE(String path1, String path2){
         this.horaire.enregistrerCHE(path1, path2);

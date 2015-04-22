@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="+"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Ajouter une grille de cheminement"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="addGrilleContainer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="addGrilleContainer" min="-2" max="-2" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="addGrilleContainer">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="coursLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="sessionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="programmeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="versionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="programmeComboBox" max="32767" attributes="0"/>
+                              <Component id="sessionComboBox" max="32767" attributes="0"/>
+                              <Component id="versionSessionComboBox" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="versionAnneeComboBox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="coursTextField6" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                  <Component id="coursTextField8" min="-2" pref="54" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="ajouterButton" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="quitterButton" min="-2" pref="114" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="coursTextField9" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="coursTextField10" min="-2" pref="54" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="coursTextField7" min="-2" pref="54" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="coursTextField1" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="coursTextField2" min="-2" pref="54" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="coursTextField3" min="-2" pref="54" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="coursTextField4" min="-2" pref="54" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="coursTextField5" min="-2" pref="54" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="sessionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="sessionComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="programmeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="programmeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="versionLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="versionSessionComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="versionAnneeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="coursLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="coursTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="coursTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="coursTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="coursTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="coursTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="coursTextField7" min="-2" max="-2" attributes="0"/>
+                      <Component id="coursTextField6" min="-2" max="-2" attributes="0"/>
+                      <Component id="coursTextField8" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="coursTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="coursTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ajouterButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="quitterButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="sessionLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Session"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="sessionComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="6">
+                <StringItem index="0" value="H1"/>
+                <StringItem index="1" value="E1"/>
+                <StringItem index="2" value="A1"/>
+                <StringItem index="3" value="H2"/>
+                <StringItem index="4" value="E2"/>
+                <StringItem index="5" value="A2"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="programmeLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Programme"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="programmeComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="IFT"/>
+                <StringItem index="1" value="GLO"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="versionLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Version"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="versionSessionComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="H"/>
+                <StringItem index="1" value="E"/>
+                <StringItem index="2" value="A"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="versionAnneeComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="8">
+                <StringItem index="0" value="2013"/>
+                <StringItem index="1" value="2014"/>
+                <StringItem index="2" value="2015"/>
+                <StringItem index="3" value="2016"/>
+                <StringItem index="4" value="2017"/>
+                <StringItem index="5" value="2018"/>
+                <StringItem index="6" value="2019"/>
+                <StringItem index="7" value="2020"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="coursLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cours"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="ajouterButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ajouter grille/Continuer"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ajouterButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="quitterButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quitter"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitterButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField1">
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField2">
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField3">
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField4">
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField5">
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField6">
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField7">
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField8">
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField9">
+        </Component>
+        <Component class="javax.swing.JTextField" name="coursTextField10">
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

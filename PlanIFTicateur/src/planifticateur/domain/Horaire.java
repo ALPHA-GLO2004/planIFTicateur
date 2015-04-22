@@ -579,6 +579,42 @@ public class Horaire{
         this.saved = false;
     }
     
+    public void ajouterGrille(String grille, String path){
+        try{            
+            String toutesGrilles = "Programme,Version,Session,Cours\n";
+            
+            for (GrilleCheminement g: this.listeGrilleCh.getListeGrilleCh()){
+                toutesGrilles += g.toString() + "\n";
+            }
+            
+            FileOutputStream file = new FileOutputStream(path);
+
+                /*if (!file.exists()) {
+                        file.createNewFile();
+                }
+                
+                //FileWriter fw = new FileWriter(file.getAbsoluteFile());*/
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(file, "858"));
+                bw.write(toutesGrilles);
+                bw.close();
+            
+            //ajustement grilles avec fichier CHE
+            BufferedReader fluxCHE = new BufferedReader(new FileReader(path.substring(0, path.length() - 3) + "CHE"));
+            for (String line = fluxCHE.readLine(); line != null; line = fluxCHE.readLine()){
+                listeGrille.add(line);
+            }
+            listeGrille.remove(0);
+            for (String elementGrille: listeGrille){
+                GrilleCheminement g = new GrilleCheminement(elementGrille,separateur);
+                listeGrilleCh.add(g);
+            }
+            fluxCHE.close();
+            
+        }catch (Throwable ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     public void enregistrerCHE(String pathACopier, String pathAColler){
         InputStream is = null;
         OutputStream os = null;
