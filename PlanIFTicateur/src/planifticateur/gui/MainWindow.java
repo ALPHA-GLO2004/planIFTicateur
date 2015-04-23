@@ -73,7 +73,7 @@ public class MainWindow extends javax.swing.JFrame{
         //Ouverture du fichier txt portant même nom que fichier ouvert
         path =filePath.substring(0, (filePath.length() - 3));
         path+= "txt";   
-
+        //On lit le fichier txt du meme nom que le cou et on écrit la lecture dans la string txt
         try{
             File f = new File(path);    
             if(f.exists() && !f.isDirectory()) { 
@@ -84,6 +84,7 @@ public class MainWindow extends javax.swing.JFrame{
                     txt+=line+"\n";
                 }
                 flux.close();
+                //On inscrit txt dans la fenetre Note
                 fenetreNote.setText(txt);
             }
         }catch (Exception ex){
@@ -92,6 +93,7 @@ public class MainWindow extends javax.swing.JFrame{
     }   
     //Sauvegarde des notes prises dans fenetre Notes
     private void sauvegarderNotes(String path){
+        //On change l'extension du fichier en txt
         path =filePath.substring(0, (filePath.length() - 3));
         path+= "txt";   
         //Enregistrement des notes dans un fichier txt
@@ -103,6 +105,7 @@ public class MainWindow extends javax.swing.JFrame{
            }
            FileWriter fw = new FileWriter(file.getAbsoluteFile());
            BufferedWriter bw = new BufferedWriter(fw);
+           //On écrit dans le fichier ce que contient la fenetre Notes
            bw.write(fenetreNote.getText());
            bw.close();
         }catch (IOException e){
@@ -751,15 +754,19 @@ public class MainWindow extends javax.swing.JFrame{
     //Méthode de mise à jour du panneau "log" en bas d'écran
     private void updateLogMessage(java.awt.event.MouseEvent evt)
     {
+        //Sil y a existance d'un horaire - donc, erreurs + jour et heure
         if(horaireEstCharge)
         {
+            //Sil y a deja qqchose dans messageDerreurs
             if(messagesDerreurs.size()>0)
             {
                 String txt = new String();
+                //On inscrit dans txt tout ce que contient messagesDerreurs
                 for(String mess : messagesDerreurs)
                 {
                     txt+= mess;
                 }
+                //On ajoute txt au textArea du log
                logMsgTextArea.setText(this.drawingPanel.getMainHoraire().afficherJourHeure(evt.getPoint()) + "\n"+txt); 
             }
             //affichage uniquement du jour et heure dans barre d'état
@@ -770,10 +777,12 @@ public class MainWindow extends javax.swing.JFrame{
     }
     //Action nouvel horaire du menu Fichier - Crée un nouvel horaire nu afin d'y créer des activités et des grilles de chem.
     private void menuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileNewActionPerformed
-        //Initialise un horaire vide
+        //Demande d'un "faux" password - le fichier che ne doit pas etre changé
+        //Fonction "new" pour direction afin de faciliter la création des fichier cou et che
         JOptionPane.showInputDialog(this, "Entrez votre mot de passe:");
-        
+        //On demande le nom du fichier souhaité
         String nomFichier = JOptionPane.showInputDialog(this, "Nom du fichier créé:");
+        //On crée le fichier dans un répertoire temporaire
         new File("temp").mkdir();
         filePath = System.getProperty("user.dir") + "//temp//" + nomFichier + ".cou";
         
@@ -784,9 +793,12 @@ public class MainWindow extends javax.swing.JFrame{
         while (sessionChooser.getSession() == null){
             fenetreJOption.showMessageDialog(this, sessionChooser, "Choix de session", JOptionPane.QUESTION_MESSAGE);
         }
+        //On crée l'horaire et on le charge
         horaireController.creerNouveauFichier(filePath);
         horaireController.chargerHoraire(filePath, sessionChooser.getSession());
+        //On a maintenant un horaire chargé
         horaireEstCharge = true;
+        //On active fonctionnalité d'ajout de grilles
         menuEditionAddGrille.setEnabled(true);
         drawingPanel.repaint();
     }//GEN-LAST:event_menuFileNewActionPerformed
@@ -794,8 +806,11 @@ public class MainWindow extends javax.swing.JFrame{
                     //-affichage des info pertinentes sur activités en mouseOver;
                     //-mise à jour du log.
     private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
+        //mise à jour du contenu du log
         updateLogMessage(evt);
+        //Sil y a horaire chargé
         if(horaireEstCharge){
+            //On affiche les informations des activités lorsque l'on bouge la souris au-dessus d'elles
             infoActiviteTextArea.setText(horaireController.mouseOverToolTipText(evt.getPoint().x, evt.getPoint().y));
             drawingPanel.repaint();
         }
@@ -806,26 +821,37 @@ public class MainWindow extends javax.swing.JFrame{
                     //-enregistrement du dernier point valide d'une activité (en temps réel);
                     //-mise à jour du log.
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
+        //On vérifie la présence d'une activité sous le curseur
         if (horaireController.existeSelection()){
             Point p = new Point(0, 0);
-            //Auto-scroll
+            //Auto-scroll - rectangle invisible au curseur permettant au scrollbar de suivre le curseur
             Rectangle invisibleRect = new Rectangle(evt.getPoint());
             drawingPanel.scrollRectToVisible(invisibleRect);
             //Gestion du move d'une activité
+            //***Si pendant le déplacement, la position n'est pas valide pour un drop = point = 0,0
+            //Si la position est valide
             if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
+                //On enregistre la position valide
                 p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
+                //On fait le changement de point dans l'activité
                 horaireController.moveActivite(p.x, p.y);
+                //On enregistre l'ancienne position valide --- Lors d'une position invalide, c'est le dernier point valide qui s'affichera
                 this.validActivitePoint = new Point(p);
             }
+            //Si la position n'est pas valide ou pas dans horaire
             else{
+                //Position dans la liste
                 if (evt.getPoint().x >= this.initialDimension.width*3/4){
+                    //Simple free move
                     horaireController.moveActivite(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
                 }
+                //plus bas que la grille horaire
                 if (evt.getPoint().y - delta.y > initialDimension.height){
+                    //Simple free move
                     horaireController.moveActivite(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
                 }
             }
-            //}
+            //Mise à jour du log
             updateLogMessage(evt);
             drawingPanel.repaint();
         }
@@ -843,95 +869,99 @@ public class MainWindow extends javax.swing.JFrame{
             //Si la position est dans la grille horaire
             Point p = new Point(0, 0);
             Point point = new Point();
+            //S'il existe une activité sous le curseur
             if (horaireController.existeSelection()){
                 point = new Point(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y);
-
-            //Si la position n'est pas la même qu'au pressed
-            if (point != this.initialActivitePoint){
-                //Si une activité est sélectionnée - Gestion erreur d'un mouseReleased sans activité sélectionnée
-                if (horaireController.existeSelection()){
-                    //Si la position (après vérification du drop) n'est pas 0,0 (position valide)
-                    if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
-                        p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
-                        horaireController.moveActivite(p.x, p.y);
-                        horaireController.setRangee(p.x, p.y);
-                        horaireController.switchSelection();
-                        horaireController.jourHeureToActivite();
-                        horaireController.switchFromMoveToListDp();
-                        horaireController.switchAPlacerToDejaPlacee();
-                        horaireController.switchDejaPlaceeToAPlacer();
-                        horaireController.classerListeAPlacer();
-                        horaireController.initPointActivite(this.initialDimension);
-                        horaireController.enregistrerUndo();
-                        horaireController.setUnsaved();
-                    }
-                    //Si la position n'est pas dans la grille ou à un endroit non valide
-                    else{
-                        //Si la position est dans la liste
-                        if (evt.getPoint().x - delta.x >= this.initialDimension.width*3/4){
+                //Si la position n'est pas la même qu'au pressed
+                if (point != this.initialActivitePoint){
+                    //Si une activité est sélectionnée - Gestion erreur d'un mouseReleased sans activité sélectionnée
+                    if (horaireController.existeSelection()){
+                        //Si la position (après vérification du drop) n'est pas 0,0 (position valide)
+                        if (!horaireController.verificationDrop(evt.getPoint().x - delta.x,evt.getPoint().y - delta.y).equals(new Point(0,0))){
                             p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
+                            //On change le point de l'activité
                             horaireController.moveActivite(p.x, p.y);
+                            //On vérifie et attribut la rangée appropriée à l'activité
                             horaireController.setRangee(p.x, p.y);
+                            //activité n'est plus sélectionnée
                             horaireController.switchSelection();
+                            //On fait les changements du jourChoisi et heureDebutChoisi de l'activité
                             horaireController.jourHeureToActivite();
-                            horaireController.switchFromMoveToListAp();
+                            //On fait les changements nécessaires dans les listes
+                            horaireController.switchFromMoveToListDp();
                             horaireController.switchAPlacerToDejaPlacee();
                             horaireController.switchDejaPlaceeToAPlacer();
+                            //On classe la listeAPLacer
                             horaireController.classerListeAPlacer();
+                            //On réinitialise les points des activités de la liste
                             horaireController.initPointActivite(this.initialDimension);
+                            //On sauvegarde pour le undo
                             horaireController.enregistrerUndo();
+                            //Horaire doit etre sauvegardé pour conserver le changement
                             horaireController.setUnsaved();
                         }
-                        //Si la position n'est pas valide
+                        //Si la position n'est pas dans la grille ou à un endroit non valide
                         else{
-                            if (evt.getPoint().y - delta.y >= this.initialDimension.height && !(evt.getPoint().x - delta.x >= this.initialDimension.width*3/4)){
-                                horaireController.switchFromMoveToListAp();
-                                p = new Point(horaireController.verificationDrop(0, 0));
+                            //Si la position est dans la liste
+                            if (evt.getPoint().x - delta.x >= this.initialDimension.width*3/4){
+                                p = new Point(horaireController.verificationDrop(evt.getPoint().x - delta.x, evt.getPoint().y - delta.y));
                                 horaireController.moveActivite(p.x, p.y);
+                                horaireController.setRangee(p.x, p.y);
                                 horaireController.switchSelection();
+                                horaireController.jourHeureToActivite();
+                                horaireController.switchFromMoveToListAp();
+                                horaireController.switchAPlacerToDejaPlacee();
+                                horaireController.switchDejaPlaceeToAPlacer();
                                 horaireController.classerListeAPlacer();
                                 horaireController.initPointActivite(this.initialDimension);
                                 horaireController.enregistrerUndo();
                                 horaireController.setUnsaved();
                             }
+                            //Si la position n'est pas valide
                             else{
-                                if (this.activiteList == 0){
-                                horaireController.switchFromMoveToListAp();
+                                if (evt.getPoint().y - delta.y >= this.initialDimension.height && !(evt.getPoint().x - delta.x >= this.initialDimension.width*3/4)){
+                                    horaireController.switchFromMoveToListAp();
+                                    p = new Point(horaireController.verificationDrop(0, 0));
+                                    horaireController.moveActivite(p.x, p.y);
+                                    horaireController.switchSelection();
+                                    horaireController.classerListeAPlacer();
+                                    horaireController.initPointActivite(this.initialDimension);
+                                    horaireController.enregistrerUndo();
+                                    horaireController.setUnsaved();
                                 }
                                 else{
-                                    horaireController.switchFromMoveToListDp();
+                                    if (this.activiteList == 0){
+                                        horaireController.switchFromMoveToListAp();
+                                    }
+                                    else{
+                                        horaireController.switchFromMoveToListDp();
+                                    }
+                                    horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
+                                    horaireController.setRangee(this.validActivitePoint.x, this.validActivitePoint.y);
+                                    horaireController.jourHeureToActivite();
+                                    horaireController.switchSelection();
+                                    horaireController.classerListeAPlacer();
+                                    horaireController.initPointActivite(this.initialDimension);
                                 }
-                                horaireController.moveActivite(this.validActivitePoint.x, this.validActivitePoint.y);
-                                horaireController.setRangee(this.validActivitePoint.x, this.validActivitePoint.y);
-                                horaireController.jourHeureToActivite();
-                                horaireController.switchSelection();
-                                horaireController.classerListeAPlacer();
-                                horaireController.initPointActivite(this.initialDimension);
                             }
                         }
+                        statFenetre.setStats();
                     }
-                statFenetre.setStats();
-                
-                //ajustement de la couleur de la bordure.
+                }
+                drawingPanel.setHeight(horaireController.setDessinHeight());
+                drawingPanelContainer.getVerticalScrollBar().validate();
+                drawingPanelContainer.getVerticalScrollBar().setValue(drawingPanelContainer.getVerticalScrollBar().getValue() - 1);
+                if(horaireEstCharge){
+                    messagesDerreurs.removeAllElements();
+                    if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+                        drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+                    }
+                    else{
+                        drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+                    }
+                    updateLogMessage(evt);
                 }
             }
-            drawingPanel.setHeight(horaireController.setDessinHeight());
-            drawingPanelContainer.getVerticalScrollBar().validate();
-            drawingPanelContainer.getVerticalScrollBar().setValue(drawingPanelContainer.getVerticalScrollBar().getValue() - 1);
-                if(horaireEstCharge)
-                    {
-                    messagesDerreurs.removeAllElements();
-                        if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
-                            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
-                        }
-                        else{
-                            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-                        }
-
-                    updateLogMessage(evt);
-                    }
-            }
-            
             drawingPanel.repaint();
         }
     }//GEN-LAST:event_drawingPanelMouseReleased
