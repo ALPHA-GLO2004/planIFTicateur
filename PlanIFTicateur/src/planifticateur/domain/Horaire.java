@@ -142,6 +142,7 @@ public class Horaire{
                 if (a.getJourChoisi() == act.getJourChoisi()
                     && a.getHeureDebutChoisi() < (act.getHeureDebutChoisi() + act.getDuree())
                     && a.getHeureDebutChoisi() > act.getHeureDebutChoisi()
+                    && act.getRangee() == 0
                     && a.getRangee() == 0){
                         y += caseHeureHeight;
                 }

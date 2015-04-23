@@ -366,7 +366,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_planificationauto.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Planification automatique"/>
+                <Property name="toolTipText" type="java.lang.String" value="Planification automatique (ctrl+p)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
                 </Property>
@@ -391,7 +391,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_stats.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Statistiques"/>
+                <Property name="toolTipText" type="java.lang.String" value="Statistiques (ctrl+t)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
                 </Property>
@@ -416,7 +416,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_note.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Notes"/>
+                <Property name="toolTipText" type="java.lang.String" value="Notes (ctrl+n)"/>
                 <Property name="alignmentY" type="float" value="0.0"/>
                 <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                   <Insets value="[0, 0, 0, 0]"/>
@@ -499,7 +499,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_save.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Enregistrer horaire"/>
+                <Property name="toolTipText" type="java.lang.String" value="Enregistrer horaire (ctrl+s)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
                 </Property>
@@ -549,7 +549,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_export.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Exporter horaire en image"/>
+                <Property name="toolTipText" type="java.lang.String" value="Exporter horaire en image (ctrl+j)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
                 </Property>
@@ -592,7 +592,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_addActivite.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Ajouter activit&#xe9;"/>
+                <Property name="toolTipText" type="java.lang.String" value="Ajouter activit&#xe9; (ctrl+a)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
                 </Property>
@@ -617,7 +617,7 @@
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="this.nomEtiquette[0]" type="code"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Filtre &#xe9;tiquettes activit&#xe9;"/>
+                <Property name="toolTipText" type="java.lang.String" value="Filtre &#xe9;tiquettes activit&#xe9; (ctrl+f)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 50]"/>
                 </Property>
@@ -642,7 +642,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_reset.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Recommencer l&apos;horaire (retire les activit&#xe9;s de la grille horaire)"/>
+                <Property name="toolTipText" type="java.lang.String" value="Recommencer l&apos;horaire (retire les activit&#xe9;s de la grille horaire) (ctrl+del)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
                 </Property>
@@ -667,7 +667,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_search.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Recherche par titre"/>
+                <Property name="toolTipText" type="java.lang.String" value="Recherche par titre (ctrl+r)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
                 </Property>
@@ -713,7 +713,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_undo.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="undo"/>
+                <Property name="toolTipText" type="java.lang.String" value="undo (ctrl+z)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
                 </Property>
@@ -738,7 +738,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/planifticateur/resources/icon/icon_redo.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="redo"/>
+                <Property name="toolTipText" type="java.lang.String" value="redo (ctrl+y)"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[50, 50]"/>
                 </Property>

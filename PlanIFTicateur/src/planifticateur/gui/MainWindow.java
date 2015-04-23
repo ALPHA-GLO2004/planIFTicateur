@@ -242,7 +242,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.setLayout(new java.awt.GridBagLayout());
 
         planificationAutomatiqueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_planificationauto.png"))); // NOI18N
-        planificationAutomatiqueButton.setToolTipText("Planification automatique");
+        planificationAutomatiqueButton.setToolTipText("Planification automatique (ctrl+p)");
         planificationAutomatiqueButton.setMaximumSize(new java.awt.Dimension(50, 50));
         planificationAutomatiqueButton.setMinimumSize(new java.awt.Dimension(50, 50));
         planificationAutomatiqueButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -259,7 +259,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.add(planificationAutomatiqueButton, gridBagConstraints);
 
         statistiquesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_stats.png"))); // NOI18N
-        statistiquesButton.setToolTipText("Statistiques");
+        statistiquesButton.setToolTipText("Statistiques (ctrl+t)");
         statistiquesButton.setMaximumSize(new java.awt.Dimension(50, 50));
         statistiquesButton.setMinimumSize(new java.awt.Dimension(50, 50));
         statistiquesButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -276,7 +276,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.add(statistiquesButton, gridBagConstraints);
 
         noteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_note.png"))); // NOI18N
-        noteButton.setToolTipText("Notes");
+        noteButton.setToolTipText("Notes (ctrl+n)");
         noteButton.setAlignmentY(0.0F);
         noteButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         noteButton.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -329,7 +329,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.add(nouveauFichierButton, gridBagConstraints);
 
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_save.png"))); // NOI18N
-        saveButton.setToolTipText("Enregistrer horaire");
+        saveButton.setToolTipText("Enregistrer horaire (ctrl+s)");
         saveButton.setMaximumSize(new java.awt.Dimension(50, 50));
         saveButton.setMinimumSize(new java.awt.Dimension(50, 50));
         saveButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -363,7 +363,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.add(saveAsButton, gridBagConstraints);
 
         exportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_export.png"))); // NOI18N
-        exportButton.setToolTipText("Exporter horaire en image");
+        exportButton.setToolTipText("Exporter horaire en image (ctrl+j)");
         exportButton.setMaximumSize(new java.awt.Dimension(50, 50));
         exportButton.setMinimumSize(new java.awt.Dimension(50, 50));
         exportButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -391,7 +391,7 @@ public class MainWindow extends javax.swing.JFrame{
         titreFichierLabel.getAccessibleContext().setAccessibleName("nomFichier");
 
         ajouterActiviteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_addActivite.png"))); // NOI18N
-        ajouterActiviteButton.setToolTipText("Ajouter activité");
+        ajouterActiviteButton.setToolTipText("Ajouter activité (ctrl+a)");
         ajouterActiviteButton.setMaximumSize(new java.awt.Dimension(50, 50));
         ajouterActiviteButton.setMinimumSize(new java.awt.Dimension(50, 50));
         ajouterActiviteButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -408,7 +408,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.add(ajouterActiviteButton, gridBagConstraints);
 
         filtreActiviteButton.setText(this.nomEtiquette[0]);
-        filtreActiviteButton.setToolTipText("Filtre étiquettes activité");
+        filtreActiviteButton.setToolTipText("Filtre étiquettes activité (ctrl+f)");
         filtreActiviteButton.setMaximumSize(new java.awt.Dimension(70, 50));
         filtreActiviteButton.setMinimumSize(new java.awt.Dimension(70, 50));
         filtreActiviteButton.setPreferredSize(new java.awt.Dimension(70, 50));
@@ -425,7 +425,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.add(filtreActiviteButton, gridBagConstraints);
 
         resetHoraireButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_reset.png"))); // NOI18N
-        resetHoraireButton.setToolTipText("Recommencer l'horaire (retire les activités de la grille horaire)");
+        resetHoraireButton.setToolTipText("Recommencer l'horaire (retire les activités de la grille horaire) (ctrl+del)");
         resetHoraireButton.setMaximumSize(new java.awt.Dimension(50, 50));
         resetHoraireButton.setMinimumSize(new java.awt.Dimension(50, 50));
         resetHoraireButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -442,7 +442,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.add(resetHoraireButton, gridBagConstraints);
 
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_search.png"))); // NOI18N
-        searchButton.setToolTipText("Recherche par titre");
+        searchButton.setToolTipText("Recherche par titre (ctrl+r)");
         searchButton.setMaximumSize(new java.awt.Dimension(50, 50));
         searchButton.setMinimumSize(new java.awt.Dimension(50, 50));
         searchButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -474,7 +474,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.add(validationAutoButton, gridBagConstraints);
 
         undoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_undo.png"))); // NOI18N
-        undoButton.setToolTipText("undo");
+        undoButton.setToolTipText("undo (ctrl+z)");
         undoButton.setMaximumSize(new java.awt.Dimension(50, 50));
         undoButton.setMinimumSize(new java.awt.Dimension(50, 50));
         undoButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -491,7 +491,7 @@ public class MainWindow extends javax.swing.JFrame{
         buttonPanel.add(undoButton, gridBagConstraints);
 
         redoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_redo.png"))); // NOI18N
-        redoButton.setToolTipText("redo");
+        redoButton.setToolTipText("redo (ctrl+y)");
         redoButton.setMaximumSize(new java.awt.Dimension(50, 50));
         redoButton.setMinimumSize(new java.awt.Dimension(50, 50));
         redoButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -1387,7 +1387,7 @@ public class MainWindow extends javax.swing.JFrame{
         if (validationAutoButton.isSelected()){
             if (horaireEstCharge){
                 horaireController.switchValidationAuto();
-                validationAutoButton.setToolTipText("mode validation automatique (en marche)");
+                validationAutoButton.setToolTipText("mode validation automatique (en marche) (ctrl+v)");
                 drawingPanel.repaint();
             }
             else{
@@ -1399,7 +1399,7 @@ public class MainWindow extends javax.swing.JFrame{
                 validationAutoButton.setSelected(false);
             }
             else{
-                validationAutoButton.setToolTipText("mode validation automatique (arrêt)");
+                validationAutoButton.setToolTipText("mode validation automatique (arrêt) (ctrl+v)");
                 horaireController.switchValidationAuto();
                 drawingPanel.repaint();
             }
