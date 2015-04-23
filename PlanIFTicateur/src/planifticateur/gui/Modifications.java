@@ -247,6 +247,7 @@ public class Modifications extends javax.swing.JFrame {
             horaireController.modificationHeureFinMax(heureFinMaxTextField.getText());
             horaireController.switchSelection();
             horaireController.setEtiquette(horaireController.getEtiquette());
+            horaireController.enregistrerUndo();
             mainWindow.getDrawingPanel().repaint();
             this.dispose();
     }//GEN-LAST:event_accepterButtonActionPerformed

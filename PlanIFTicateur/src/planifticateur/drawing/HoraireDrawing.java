@@ -52,8 +52,8 @@ public class HoraireDrawing {
                     g2.fillRect(a.getPoint().x, a.getPoint().y, (int)(a.getDuree() * ((width - (caseJourWidth))/15)), caseHeureHeight);
                     if (!horaireController.getRechercherNom().equals("")){
                         if (a.getNomActivite().contains(horaireController.getRechercherNom())){
-                            g2.setColor(Color.YELLOW);
-                            g2.setStroke(new BasicStroke(3));
+                            g2.setColor(Color.GREEN);
+                            g2.setStroke(new BasicStroke(5));
                         }
                         else{
                             g2.setColor(Color.BLACK);

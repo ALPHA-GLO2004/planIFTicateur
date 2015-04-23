@@ -217,6 +217,7 @@ public class AjoutActivite extends javax.swing.JFrame {
         horaireController.addActivite(attributs);
         horaireController.classerListeAPlacer();
         horaireController.initPointActivite(mainWindow.getDrawingPanel().getInitialDimension());
+        horaireController.enregistrerUndo();
         mainWindow.getDrawingPanel().repaint();
         this.dispose();
     }//GEN-LAST:event_ajouterButtonActionPerformed

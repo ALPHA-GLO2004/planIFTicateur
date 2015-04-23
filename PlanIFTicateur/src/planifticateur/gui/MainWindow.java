@@ -1327,7 +1327,10 @@ public class MainWindow extends javax.swing.JFrame{
                 horaireController.deplacerToutDansListe();
                 horaireController.classerListeAPlacer();
                 horaireController.initPointActivite(this.initialDimension);
+                horaireController.enregistrerUndo();
                 messagesDerreurs.removeAllElements();
+                drawingPanel.setHeight(horaireController.setDessinHeight());
+                drawingPanelContainer.getVerticalScrollBar().validate();
                 if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
                     drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
                 }
@@ -1387,6 +1390,8 @@ public class MainWindow extends javax.swing.JFrame{
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
+            drawingPanel.setHeight(horaireController.setDessinHeight());
+            drawingPanelContainer.getVerticalScrollBar().validate();
             statFenetre.setStats();
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
@@ -1418,6 +1423,8 @@ public class MainWindow extends javax.swing.JFrame{
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
+            drawingPanel.setHeight(horaireController.setDessinHeight());
+            drawingPanelContainer.getVerticalScrollBar().validate();
             statFenetre.setStats();
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
@@ -1514,6 +1521,8 @@ public class MainWindow extends javax.swing.JFrame{
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
+            drawingPanel.setHeight(horaireController.setDessinHeight());
+            drawingPanelContainer.getVerticalScrollBar().validate();
             statFenetre.setStats();
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
@@ -1540,11 +1549,13 @@ public class MainWindow extends javax.swing.JFrame{
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
-
+            
             horaireController.jourHeureToActivite();
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
+            drawingPanel.setHeight(horaireController.setDessinHeight());
+            drawingPanelContainer.getVerticalScrollBar().validate();
             statFenetre.setStats();
             messagesDerreurs.removeAllElements();
             if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
@@ -1584,6 +1595,9 @@ public class MainWindow extends javax.swing.JFrame{
                 horaireController.deplacerToutDansListe();
                 horaireController.classerListeAPlacer();
                 horaireController.initPointActivite(this.initialDimension);
+                horaireController.enregistrerUndo();
+                drawingPanel.setHeight(horaireController.setDessinHeight());
+                drawingPanelContainer.getVerticalScrollBar().validate();
                 messagesDerreurs.removeAllElements();
                 if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
                     drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
