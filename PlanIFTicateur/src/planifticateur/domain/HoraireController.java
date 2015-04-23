@@ -443,6 +443,7 @@ public class HoraireController {
             
             if (backupFichierNb > 0){
                 this.horaire.enregistrerCHE(System.getProperty("user.dir") + "//backup//"+ "0.che", System.getProperty("user.dir") + "//backup//"+ Integer.toString(backupFichierNb)+".che");
+                
             }
             backupFichierNb += 1;
             indexUndo += 1;
@@ -466,14 +467,27 @@ public class HoraireController {
             catch (Throwable ex){
                 System.out.println(ex.getMessage());
             }
-        this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//backup//"+ Integer.toString(4)+".cou");
-        backupFichierNb = 5;
+            this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//backup//"+ Integer.toString(4)+".cou");
+            backupFichierNb = 5;
+        }
+        for (int i = indexUndo; i < 5; i++){
+            File noMoreGoodCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
+            File noMoreGoodCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
+            noMoreGoodCHE.delete();
+            
+            if (noMoreGoodCOU.delete()){
+                backupFichierNb = backupFichierNb - 1;
+            }
         }
     }
     
     public void resetUndoIndex(){
         backupFichierNb = 0;
         indexUndo = 0;
+    }
+    
+    public int getUndoIndex(){
+        return indexUndo;
     }
     
     public void undo(){

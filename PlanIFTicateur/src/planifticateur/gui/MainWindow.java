@@ -1512,29 +1512,16 @@ public class MainWindow extends javax.swing.JFrame{
                     }
                     horaireController.enregistrerHoraire(filePath);
                 }
-                for (int i = 0; i < 5; i++){
-                    File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
-                    File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
-                    fileCOU.delete();
-                    fileCHE.delete();
-                }
-                new File("backup").delete();
-                System.exit(0);
-            }
-            else{
-                for (int i = 0; i < 5; i++){
-                    File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
-                    File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
-                    fileCOU.delete();
-                    fileCHE.delete();
-                }
-                new File("backup").delete();
-                System.exit(0);
             }
         }
-        else{
-            System.exit(0);
+        for (int i = 0; i < 5; i++){
+            File fileCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
+            File fileCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
+            fileCOU.delete();
+            fileCHE.delete();
         }
+        new File("backup").delete();
+        System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
     private void menuEditionUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionUndoActionPerformed
