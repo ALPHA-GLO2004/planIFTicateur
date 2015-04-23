@@ -287,7 +287,7 @@ public class HoraireDrawing {
             caseJourWidth += 2*saut;
         }
         if (jour != ""){
-            return "Plage horaire: " + jour + "\n";
+            return "\nPlage horaire: " + jour + "\n-------------------------------------------\n";
         }
         else{
             return "";

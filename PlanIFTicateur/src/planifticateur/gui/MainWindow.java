@@ -221,7 +221,7 @@ public class MainWindow extends javax.swing.JFrame{
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGap(0, 1027, Short.MAX_VALUE)
         );
 
         drawingPanelContainer.setViewportView(drawingPanel);
@@ -515,6 +515,8 @@ public class MainWindow extends javax.swing.JFrame{
         gridBagConstraints.ipady = 15;
         mainPanel.add(buttonPanel, gridBagConstraints);
 
+        logPanel.setLayout(new java.awt.GridBagLayout());
+
         logMsgTextArea.setEditable(false);
         logMsgTextArea.setColumns(20);
         logMsgTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -522,7 +524,16 @@ public class MainWindow extends javax.swing.JFrame{
         logMsgTextArea.setText("Bienvenue sur PlanIFTicateur, le gestionnaire d'horaire de session!");
         logMsgTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         logMsgTextArea.setMinimumSize(new java.awt.Dimension(20, 19));
-        logMsgTextArea.setPreferredSize(new Dimension(this.initialDimension.width*3/4, this.initialDimension.height/5));
+        logMsgTextArea.setPreferredSize(new Dimension(this.initialDimension.width*2/3, this.initialDimension.height/5));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 6.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 6, 0, 0);
+        logPanel.add(logMsgTextArea, gridBagConstraints);
 
         infoActiviteTextArea.setEditable(false);
         infoActiviteTextArea.setColumns(1);
@@ -531,22 +542,15 @@ public class MainWindow extends javax.swing.JFrame{
         infoActiviteTextArea.setText("\n\n          Informations sur activité survolée");
         infoActiviteTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         infoActiviteTextArea.setMinimumSize(new java.awt.Dimension(300, 180));
-        infoActiviteTextArea.setPreferredSize(new Dimension(this.initialDimension.width/4, this.initialDimension.height/5));
-
-        javax.swing.GroupLayout logPanelLayout = new javax.swing.GroupLayout(logPanel);
-        logPanel.setLayout(logPanelLayout);
-        logPanelLayout.setHorizontalGroup(
-            logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logPanelLayout.createSequentialGroup()
-                .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(logMsgTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, 1642, Short.MAX_VALUE))
-        );
-        logPanelLayout.setVerticalGroup(
-            logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(infoActiviteTextArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
-            .addComponent(logMsgTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        infoActiviteTextArea.setPreferredSize(new Dimension(this.initialDimension.width/3, this.initialDimension.height/5));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        logPanel.add(infoActiviteTextArea, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
