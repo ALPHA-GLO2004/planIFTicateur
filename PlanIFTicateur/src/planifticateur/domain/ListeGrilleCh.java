@@ -38,10 +38,31 @@ public class ListeGrilleCh {
     
     public List<GrilleCheminement> getListeGrilleChSession(String session){
         List<GrilleCheminement> lstChem = new Vector<GrilleCheminement>();
-        for(GrilleCheminement g:lstChem){
-            if(g.session.substring(0, 2).compareToIgnoreCase(session.substring(0, 2))==0){
-                lstChem.add(g);
-        
+ //       
+        for(GrilleCheminement g:grilleChListe){
+            if(g.session.substring(0, 1).compareToIgnoreCase(session)==0){
+                lstChem.add(g);        
+            }
+        }
+        return lstChem;
+    }
+    
+    public List<String> getListeGrilleChAllVersion(){
+        List<String> lstChem = new Vector<String>();
+        for(GrilleCheminement g:grilleChListe){
+            if(!lstChem.contains(g.version)){
+                lstChem.add(g.version);        
+            }
+        }
+        return lstChem;
+    }
+    
+    public List<GrilleCheminement> getListeGrilleChVersion(String version){
+        List<GrilleCheminement> lstChem = new Vector<GrilleCheminement>();
+ //       
+        for(GrilleCheminement g:grilleChListe){
+            if(g.version.compareToIgnoreCase(version)==0){
+                lstChem.add(g);        
             }
         }
         return lstChem;
