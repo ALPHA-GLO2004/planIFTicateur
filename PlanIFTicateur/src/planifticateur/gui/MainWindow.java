@@ -1009,6 +1009,7 @@ public class MainWindow extends javax.swing.JFrame{
         if (horaireEstCharge){
             statFenetre.setLocation(this.initialDimension.width/4, this.initialDimension.height/4);
             statFenetre.setVisible(true);
+            statFenetre.setStats();
         }
     }//GEN-LAST:event_statistiquesButtonActionPerformed
     //Méthode pour bouton/menuItem planification automatique
