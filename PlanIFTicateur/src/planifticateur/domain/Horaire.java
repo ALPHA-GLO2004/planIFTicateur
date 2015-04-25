@@ -782,7 +782,7 @@ public class Horaire{
         //avoir la liste des cours d'une session de la grille
         //si pour un meme jour, 2 activite d'une meme session commencent et fnissent le meme jour 
         //alors l'indice de covoiturage est de   
-        Vector<Activite> listeActivitePourUnJourSemaine = DonnerListeActiviteUnJour(jour);//activite pour un jour exemple du Lundi
+        Vector<Activite> listeActivitePourUnJourSemaine = getListeDesActivitesDUnJour(jour);//activite pour un jour exemple du Lundi
         //on prend la liste de cheminement de la session choisi
         
         float indiceCovoiturage=0;//
@@ -874,19 +874,7 @@ public class Horaire{
       return indiceCovoiturage;
     } 
     
-    public Vector<Activite> DonnerListeActiviteUnJour(int jour){
-        Vector<Activite> listeActiviteUnJour = new Vector<Activite>();
-       
-         for( Activite activite : listeActiviteDejaPlacee.getListeActiviteDejaPlacee())
-         {
-             if(activite.getJourChoisi() == jour){
-                 listeActiviteUnJour.add(activite);
-             }
-             
-         }
-         return listeActiviteUnJour;
-    }
-         
+
      public float calculerIndiceCongestion(){
 
          float nb;
