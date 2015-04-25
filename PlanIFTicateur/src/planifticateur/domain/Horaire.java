@@ -752,17 +752,29 @@ public class Horaire{
     }
     
     public float calculerNombreMoyenDeCours(Vector<Activite> listeDesActivites){
-
-        return 0.0f;
+        float nombreMoyenDeCours=0.0f;
+       
+        for (GrilleCheminement grilleCheminement : listeGrilleCh.getListeGrilleCh()){
+             float nbCoursParJours =0.0f;
+            for (Activite activite : listeDesActivites) {
+                
+                if (grilleCheminement.activiteEstDansGrille(activite.getCode())){
+                    
+                    nbCoursParJours += 1.0f;
+                }
+            }  
+            nombreMoyenDeCours += nbCoursParJours;
+          }
+        return nombreMoyenDeCours/listeGrilleCh.getListeGrilleCh().size();
     }
     
     
     public float calculerIndiceCovoiturage(){
         float indiceCovoiturage = 0.0f;
-        for(int i=0;i<5;i++){
+        for(int i=1;i<=5;i++){
            indiceCovoiturage +=   calculerIndiceCovoiturageUnJour(i);
         }
-        return indiceCovoiturage;
+        return indiceCovoiturage/5;//on divise pour avoir la moyenne et ce ne doit jamais depasser 100
     }
     
     public float calculerIndiceCovoiturageUnJour(int jour){
@@ -770,104 +782,97 @@ public class Horaire{
         //avoir la liste des cours d'une session de la grille
         //si pour un meme jour, 2 activite d'une meme session commencent et fnissent le meme jour 
         //alors l'indice de covoiturage est de   
-        Vector<Activite> listeActivitePourUnJourSemaine = DonnerListeActiviteUnJour(jour);//du lundi
+        Vector<Activite> listeActivitePourUnJourSemaine = DonnerListeActiviteUnJour(jour);//activite pour un jour exemple du Lundi
         //on prend la liste de cheminement de la session choisi
         
-        List<GrilleCheminement> listeGrilleCheminementPourSession = listeGrilleCh.getListeGrilleChSession(session);
-        //
-        List<Activite> listAllActiviteDebutEtActiviteFin = new Vector<Activite>();
-        //je parcours la grille pour savoir le 1er et le dernier cours de chaque etudiant ie de la version 
-        //
-        //
-        int indiceCovoiturage=1;//
-        for(GrilleCheminement g:listeGrilleCheminementPourSession){
-           //connaitre le premier cours et le dernier cours de la drille
-           //
-            List<Activite> lstDeuxActivite = new Vector<Activite>();
-            
-            Activite activiteDebut=null;
-            Activite activiteFin=null;
-            
-            
-            
-            for(String s:g.getListeDesCodesDactivites()){//on parcourt chaque activite de la grille 
+        float indiceCovoiturage=0;//
+        
+        for( String version : listeGrilleCh.getListeGrilleChAllVersion()) //Pour chaque les version de la grille : H2015, A2015, E2015,H2014, A2014, E2014,  
+        {
+            List<Activite> listAllActiviteDebutEtActiviteFin = new Vector<Activite>();
+            for(GrilleCheminement g:listeGrilleCh.getListeGrilleChVersion(version)){//toutes les grilles d une meme version 
+                if(g.session.substring(0,1).compareToIgnoreCase(session)==0){//pour la meme session
+                    Activite activiteDebut=null; //on cherche a connaitre ses deux activites de debut et de fin pour ce jour 
+                    Activite activiteFin=null;  //
+                    for(String s:g.getListeDesCodesDactivites()){//on parcourt la liste des cours de cet etudiant pour la session et connaitre le cours de debut et de fin pour cette journee 
                                                         //et on la cherche dans les activites du Lundi
-                for(Activite a : listeActivitePourUnJourSemaine){//on cherche 
-                   if(a.getCode().compareToIgnoreCase(s)==0){//activite est deja place alors 
-                       if(activiteDebut==null){//la premiere activite 
-                           activiteDebut=a;
-                          // activiteFin=a;
-                       }else{//on a des activites deja 
-                           if(activiteDebut.getHeureDebutChoisi()> a.getHeureDebutChoisi()){
-                               //on echange 
-                               activiteDebut = a;
-                           }
-                       }
+                        for(Activite a : listeActivitePourUnJourSemaine){//on cherche 
+                             if(a.getCode().compareToIgnoreCase(s)==0){//activite est deja place alors 
+                                if(activiteDebut==null){//la premiere activite 
+                                 activiteDebut=a;
+                                // activiteFin=a;
+                                }else{//on a des activites deja 
+                                        if(activiteDebut.getHeureDebutChoisi()> a.getHeureDebutChoisi()){//une activite qui commence plus tot
+                                         //on echange 
+                                            activiteDebut = a;//c est la premiere activite de l etudiant
+                                        }
+                                }
                        
-                       
-                       if(activiteFin==null){//la premiere activite 
-                           activiteFin=a;
-                          // activiteFin=a;
-                       }else{//on a des activites deja 
-                           if(activiteFin.getHeureDebutChoisi() < a.getHeureDebutChoisi()){
-                               //on echange 
-                               activiteFin = a;
-                           }
-                       }
-                       
-                       
-                   } 
+                                if(activiteFin==null){//la premiere activite 
+                                    activiteFin=a;
+                                   }else{//on a des activites deja 
+                                            if(activiteFin.getHeureDebutChoisi() < a.getHeureDebutChoisi()){
+                                                 activiteFin = a;//on echange 
+                                             }
+                                   }   
+                              } 
+                        }
+                    }
+                  listAllActiviteDebutEtActiviteFin.add(activiteDebut);//en position paire 
+                  listAllActiviteDebutEtActiviteFin.add(activiteFin);//en position impaire     
                 }
                 
             }
-            listAllActiviteDebutEtActiviteFin.add(activiteDebut);//en position paire 
-            listAllActiviteDebutEtActiviteFin.add(activiteFin);//en position impaire           
+            indiceCovoiturage = indiceCovoiturage + getIndiceCovParVersion(listAllActiviteDebutEtActiviteFin);
         }
+ //       return (indiceCovoiturage);
+        return ((indiceCovoiturage*100.0f)/listeGrilleCh.getListeGrilleCh().size());//la liste chemin = petites listes par version
+    }     
         
-        //on a toutes les activites de debut et de fin de la journée pour le lundi
-        
-        
-        for( int i=0;i<listAllActiviteDebutEtActiviteFin.size();i+=2 )
+     public float getIndiceCovParVersion(List<Activite> listAllActiviteDebutEtActiviteFin){
+        float indiceCovoiturage = 0.0f;
+        for( int i=0;i<listAllActiviteDebutEtActiviteFin.size();i+=2 )//on prends 2 activites a la fois 
         {
+            if(listAllActiviteDebutEtActiviteFin.get(i)==null
+                    && listAllActiviteDebutEtActiviteFin.get(i+1)==null){
+                    continue;
+            }
             //si les activite debut et fin ne sont pas null
-            if(listAllActiviteDebutEtActiviteFin.get(i)!=null 
-                    && listAllActiviteDebutEtActiviteFin.get(i+1)!=null){
-                 for(int j=0;j<listAllActiviteDebutEtActiviteFin.size();j+=2)
+            if(listAllActiviteDebutEtActiviteFin.get(i)!=null //l etudiant a au moins deux cours dans la meme journee
+                    && listAllActiviteDebutEtActiviteFin.get(i+1)!=null){//si c est une seule sctivite alors elle sera activite debut et fin 
+                
+                 for(int j=i+2;j<listAllActiviteDebutEtActiviteFin.size();j+=2)
                  { 
-                     if(i != j)  //
-                     {
+                        if(listAllActiviteDebutEtActiviteFin.get(j)==null 
+                            && listAllActiviteDebutEtActiviteFin.get(j+1)==null){
+                                continue;
+                        }
+                        
                          if(listAllActiviteDebutEtActiviteFin.get(j)!=null 
                             && listAllActiviteDebutEtActiviteFin.get(j+1)!=null){
-                             //2 activites de  deux grilles differentes commencent en meme temps
-                             if((listAllActiviteDebutEtActiviteFin.get(i).getHeureDebutChoisi()
+                             
+                             if((listAllActiviteDebutEtActiviteFin.get(i).getHeureDebutChoisi()//2 activites debut  deux grilles commencent en meme temps
                                      == listAllActiviteDebutEtActiviteFin.get(j).getHeureDebutChoisi())
-                                     && ((listAllActiviteDebutEtActiviteFin.get(i+1).getHeureDebutChoisi()+ 
-                                     listAllActiviteDebutEtActiviteFin.get(i+1).getDuree())
+                                     && ((listAllActiviteDebutEtActiviteFin.get(i+1).getHeureDebutChoisi()+ //2 activites fin  deux grilles  finissent en meme temps
+                                     listAllActiviteDebutEtActiviteFin.get(i+1).getDuree())//2 cours peuvent finir en meme temps sans commencer en temps : 15h-17h et 14h-17h
                                      == (listAllActiviteDebutEtActiviteFin.get(j+1).getHeureDebutChoisi()+
                                      listAllActiviteDebutEtActiviteFin.get(j+1).getDuree()))
                                      ){
                                  indiceCovoiturage += 1;//deux etudiants peuvent voyager ensemble
                              }
-                         }
+  //                       }
                      }
                  }
-                 }
-            
-             //ici on le debut de l'activite 
-             //on calcule les acivites qui commencent le Lundi
-             //
+            } 
         }
         
-        indiceCovoiturage =(indiceCovoiturage==1)?0:indiceCovoiturage;
-       
-      if(listeGrilleCheminementPourSession == null || listeGrilleCheminementPourSession.size() == 0){
-          indiceCovoiturage = 0;
-      }else{
-          indiceCovoiturage = (indiceCovoiturage/listeGrilleCheminementPourSession.size())*100;
-      }
+ //     if(listeGrilleCheminementPourSession == null || listeGrilleCheminementPourSession.size() == 0){
+ //         indiceCovoiturage = 0;
+ //     }else{
+ //         indiceCovoiturage = ((indiceCovoiturage*100)/listeGrilleCheminementPourSession.size());
+ //     }
       return indiceCovoiturage;
-    }
-    
+    } 
     
     public Vector<Activite> DonnerListeActiviteUnJour(int jour){
         Vector<Activite> listeActiviteUnJour = new Vector<Activite>();
