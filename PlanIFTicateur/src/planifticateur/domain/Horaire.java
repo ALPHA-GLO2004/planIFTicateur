@@ -359,7 +359,7 @@ public class Horaire{
         ListePairesDActivites listePaires = new ListePairesDActivites() ;
         ListePairesDActivites listeCoursLab = new ListePairesDActivites() ;
         ListePairesDActivites listeCoursMemeProf = new ListePairesDActivites() ;
-        messagesDerreurs.add("Erreur:\n");
+        messagesDerreurs.add("Erreur(s):\n");
         float heure;
         boolean reponse ;
         long iPart;
