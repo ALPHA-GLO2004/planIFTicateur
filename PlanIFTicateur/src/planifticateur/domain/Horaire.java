@@ -738,15 +738,18 @@ public class Horaire{
         List<GrilleCheminement> listeGrilleCheminementCharger = listeGrilleCh.getListeGrilleCh();
         for (GrilleCheminement grilleCheminement : listeGrilleCheminementCharger){
             float nbCoursParJours =0.0f;
-            for (Activite activite : listeDesActivites) {
+            if (grilleCheminement.getSessionFirstLetter() == this.session.charAt(0)){
                 
-                if (grilleCheminement.activiteEstDansGrille(activite.getCode())){
-                    
-                    nbCoursParJours= nbCoursParJours + 1.0f;
-                }
-                maxCoursParJours = Math.max(maxCoursParJours, nbCoursParJours);
-            }
             
+                for (Activite activite : listeDesActivites) {
+                
+                     if (grilleCheminement.activiteEstDansGrille(activite.getCode())){
+                    
+                          nbCoursParJours= nbCoursParJours + 1.0f;
+                     }
+                     maxCoursParJours = Math.max(maxCoursParJours, nbCoursParJours);
+                 }
+            }
           }
         return maxCoursParJours;
     }
