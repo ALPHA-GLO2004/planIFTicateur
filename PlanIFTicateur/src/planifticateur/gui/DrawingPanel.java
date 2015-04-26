@@ -32,10 +32,6 @@ public class DrawingPanel extends JPanel implements Serializable
         setVisible(true);
     }
     
-    public void operation(){
-        //aucune idée de quoi on parle ici
-    }
-    
     @Override
     protected void paintComponent( Graphics g )
     {   
