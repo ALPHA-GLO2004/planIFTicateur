@@ -1014,7 +1014,22 @@ public class MainWindow extends javax.swing.JFrame{
     }//GEN-LAST:event_statistiquesButtonActionPerformed
     //Méthode pour bouton/menuItem planification automatique
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
-        horaireController.planificationAuto();
+         horaireController.deplacerToutDansListe();
+        horaireController.classerListeAPlacer();
+        horaireController.initPointActivite(this.initialDimension);
+        horaireController.enregistrerUndo();
+        messagesDerreurs.removeAllElements();
+        drawingPanel.setHeight(horaireController.setDessinHeight());
+        drawingPanelContainer.getVerticalScrollBar().validate();
+        if(horaireController.getValiditeDeLHoraire(messagesDerreurs)==true){
+            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 5));
+        }
+        else{
+            drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
+        }     
+        horaireController.planificationAuto(this.initialDimension);
+        drawingPanel.repaint();
+
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
     //Méthode d'ouverture de fichier horaire du menuItem/bouton
     private void menuFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileOpenActionPerformed

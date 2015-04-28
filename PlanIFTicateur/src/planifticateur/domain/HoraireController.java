@@ -94,8 +94,8 @@ public class HoraireController {
         this.horaire.addActivite(attributsActivite);
     }
     //Planification auto...
-    public void planificationAuto(){
-        this.horaire.genererAutomatiquement();
+    public void planificationAuto(Dimension initialDimension){
+        this.horaire.genererAutomatiquement(initialDimension);
     }
     //Méthode pour le changement d'un point d'une activité
     public void moveActivite(int x, int y){
