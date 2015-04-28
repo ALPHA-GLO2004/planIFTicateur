@@ -439,8 +439,11 @@ public class HoraireController {
     public void enregistrerUndo(){
         new File("backup").mkdir(); 
         if (backupFichierNb <= 4){
-            this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//backup//"+ Integer.toString(backupFichierNb)+".cou");
+            File couDel = new File(System.getProperty("user.dir") + "//backup//"+ Integer.toString(backupFichierNb)+".cou");
+            couDel.delete();
             
+            this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//backup//"+ Integer.toString(backupFichierNb)+".cou");
+
             if (backupFichierNb > 0){
                 this.horaire.enregistrerCHE(System.getProperty("user.dir") + "//backup//"+ "0.che", System.getProperty("user.dir") + "//backup//"+ Integer.toString(backupFichierNb)+".che");
             }
@@ -452,6 +455,9 @@ public class HoraireController {
             OutputStream os = null;
             try{
                 for (int i = 0; i < 4; i++){
+                    File osDel = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
+                    osDel.delete();
+                    
                     is = new FileInputStream(System.getProperty("user.dir") + "//backup//" + Integer.toString(i+1) + ".cou");
                     os = new FileOutputStream(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
                     byte[] buffer = new byte[1024];
@@ -466,6 +472,9 @@ public class HoraireController {
             catch (Throwable ex){
                 System.out.println(ex.getMessage());
             }
+            File toDel = new File(System.getProperty("user.dir") + "//backup//"+ Integer.toString(4)+".cou");
+            toDel.delete();
+            
             this.horaire.enregistrerHoraire(System.getProperty("user.dir") + "//backup//"+ Integer.toString(4)+".cou");
             backupFichierNb = 5;
         }
@@ -483,6 +492,8 @@ public class HoraireController {
     public void undoNeuf(){
         backupFichierNb = 0;
         indexUndo = 0;
+        this.horaire = null;
+ 
         for (int i = 0; i < 5; i++){
             File noMoreGoodCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
             File noMoreGoodCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");

@@ -115,11 +115,15 @@ public class Horaire{
         //avec l'aide du séparateur ";"
         try{
             //Lecture du fichier avec conversion pour garder les accents
-            BufferedReader flux = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "858"));
+            FileInputStream fluxIS = new FileInputStream(filePath);
+            InputStreamReader fluxISR = new InputStreamReader(fluxIS, "858");
+            BufferedReader flux = new BufferedReader(fluxISR);
             for (String line = flux.readLine(); line != null; line = flux.readLine()){
                 listeActivite.add(line);
             }
             flux.close();
+            fluxIS.close();
+            fluxISR.close();
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }

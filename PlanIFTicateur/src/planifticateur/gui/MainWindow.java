@@ -902,15 +902,6 @@ public class MainWindow extends javax.swing.JFrame{
                             horaireController.classerListeAPlacer();
                             //On réinitialise les points des activités de la liste
                             horaireController.initPointActivite(this.initialDimension);
-                            //On sauvegarde pour le undo
-                            if (!justUndo){
-                                horaireController.enregistrerUndo();
-                            }
-                            else{
-                                horaireController.undoNeuf();
-                                horaireController.enregistrerUndo();
-                                justUndo = false;
-                            }
                             //Horaire doit etre sauvegardé pour conserver le changement
                             horaireController.setUnsaved();
                         }
@@ -928,7 +919,6 @@ public class MainWindow extends javax.swing.JFrame{
                                 horaireController.switchDejaPlaceeToAPlacer();
                                 horaireController.classerListeAPlacer();
                                 horaireController.initPointActivite(this.initialDimension);
-                                horaireController.enregistrerUndo();
                                 horaireController.setUnsaved();
                             }
                             //Si la position n'est pas valide
@@ -940,7 +930,6 @@ public class MainWindow extends javax.swing.JFrame{
                                     horaireController.switchSelection();
                                     horaireController.classerListeAPlacer();
                                     horaireController.initPointActivite(this.initialDimension);
-                                    horaireController.enregistrerUndo();
                                     horaireController.setUnsaved();
                                 }
                                 else{
@@ -975,6 +964,15 @@ public class MainWindow extends javax.swing.JFrame{
                     }
                     updateLogMessage(evt);
                 }
+            }
+            //On sauvegarde pour le undo
+            if (!justUndo){
+                horaireController.enregistrerUndo();
+            }
+            else{
+                horaireController.undoNeuf();
+                //horaireController.enregistrerUndo();
+                justUndo = false;
             }
             drawingPanel.repaint();
         }
