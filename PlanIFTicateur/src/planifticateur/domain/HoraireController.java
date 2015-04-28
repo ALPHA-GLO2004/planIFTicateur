@@ -54,8 +54,8 @@ public class HoraireController {
                 newFileCOU.append(",");
                 newFileCOU.append("Heure");
                 newFileCOU.append("\n");
+                newFileCOU.close();
             }
-            
             FileWriter newFileCHE = new FileWriter(path.substring(0, path.length() - 2) + "he");
             newFileCHE.append("Programme");
             newFileCHE.append(",");

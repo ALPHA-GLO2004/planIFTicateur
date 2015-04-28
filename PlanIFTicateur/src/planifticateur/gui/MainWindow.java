@@ -461,6 +461,8 @@ public class MainWindow extends javax.swing.JFrame{
 
         validationAutoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/planifticateur/resources/icon/icon_validationAuto.png"))); // NOI18N
         validationAutoButton.setToolTipText("mode validation automatique (Arrêt)");
+        validationAutoButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        validationAutoButton.setMinimumSize(new java.awt.Dimension(50, 50));
         validationAutoButton.setPreferredSize(new java.awt.Dimension(50, 50));
         validationAutoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1035,10 +1037,10 @@ public class MainWindow extends javax.swing.JFrame{
             drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
         }     
         horaireController.planificationAuto(this.initialDimension);
-                horaireController.initPointActivite(this.initialDimension);
+        horaireController.initPointActivite(this.initialDimension);
         horaireController.initPointActiviteDejaPlacee(this.initialDimension);
         drawingPanel.repaint();
-
+        System.out.println(horaireController.getListeActiviteDejaPlacee().size());
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
     //Méthode d'ouverture de fichier horaire du menuItem/bouton
     private void menuFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileOpenActionPerformed
@@ -1546,6 +1548,7 @@ public class MainWindow extends javax.swing.JFrame{
             fileCHE.delete();
         }
         new File("backup").delete();
+        new File("temp").delete();
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 

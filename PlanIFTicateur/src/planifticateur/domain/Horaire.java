@@ -831,7 +831,7 @@ public class Horaire{
                                 if(!ActiviteEnConflit(listeActiviteDejaPlacee.getListeActiviteDejaPlacee(), activite))
                                 {
                                     listeActiviteDejaPlacee.getListeActiviteDejaPlacee().add(activite);//on place activite
-                                    listeActiviteComplete.add(activite);
+                                    //listeActiviteComplete.add(activite);
                                     listeActiviteAPlacer.remove(activite);//on la supprime 
 
                                     //validation de l horaire 
@@ -856,7 +856,7 @@ public class Horaire{
                                     activite.setJourChoisi(0);
                                     activite.setHeureDebutChoisi(0);
                                     activite.setRangee(0);
-                                    listeActiviteComplete.remove(activite);
+                                    //listeActiviteComplete.remove(activite);
                                     listeActiviteDejaPlacee.getListeActiviteDejaPlacee().remove(activite);//on place activite
                                     listeActiviteAPlacer.add(activite);//on la supprime 
                                 }
@@ -916,7 +916,7 @@ public class Horaire{
  //                               {//la LDP ne contient pas cette activite deja 
                                     listeActiviteDejaPlacee.getListeActiviteDejaPlacee().add(a);//on place activite
                                     listeActiviteAPlacer.remove(a);//on la supprime 
-                                    listeActiviteComplete.add(a);
+                                    //listeActiviteComplete.add(a);
                                     //validation de l horaire 
                                     Vector<String> msg = new Vector<String>();
                                     if(horaireEstValide(msg)){//alors 
@@ -952,7 +952,7 @@ public class Horaire{
                                             a.setRangee(0);
                                             listeActiviteDejaPlacee.getListeActiviteDejaPlacee().remove(a);//on place activite
                                             listeActiviteAPlacer.add(a);//on la supprime 
-                                            listeActiviteComplete.remove(a);
+                                            //listeActiviteComplete.remove(a);
                                     //il faut sortir des boucles 
  //                                           break addActivite;										
                                     }
@@ -1136,7 +1136,7 @@ public float[] donnerJourHeure(Point point, Dimension initialDimension){
                                                a.setHeureDebutChoisi(heureDebutChoisi);
            //                                    a.setRangee(rangee);
                                                listeActiviteDejaPlacee.getListeActiviteDejaPlacee().add(a);//on place activite
-                                               listeActiviteComplete.add(a);
+                                               //listeActiviteComplete.add(a);
                                                listeActiviteAPlacer.remove(a);//on la supprime 
                                                
                                                //validation de l horaire 
@@ -1161,7 +1161,7 @@ public float[] donnerJourHeure(Point point, Dimension initialDimension){
                                                        a.setHeureDebutChoisi(0);
                                        //              a.setRangee(0);
                                                        listeActiviteDejaPlacee.getListeActiviteDejaPlacee().remove(a);//on place activite
-                                                       listeActiviteComplete.remove(a);
+                                                       //listeActiviteComplete.remove(a);
                                                        listeActiviteAPlacer.add(a);//on la supprime 
                                                        assignation=false;
                                                 }
@@ -1172,7 +1172,7 @@ public float[] donnerJourHeure(Point point, Dimension initialDimension){
                                             a.setHeureDebutChoisi(0);
                                             a.setRangee(0);
                                             listeActiviteDejaPlacee.getListeActiviteDejaPlacee().remove(a);//on place activite
-                                            listeActiviteComplete.remove(a);
+                                            //listeActiviteComplete.remove(a);
                                             listeActiviteAPlacer.add(a);//o
                                             assignation=false;
                                        } 

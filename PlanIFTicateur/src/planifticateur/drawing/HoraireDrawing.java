@@ -225,7 +225,7 @@ public class HoraireDrawing {
         }
         else{
             try{
-                BufferedImage logo = ImageIO.read(new File(System.getProperty("user.dir") + "\\src\\planifticateur\\resources\\logo2.jpg"));
+                BufferedImage logo = ImageIO.read(getClass().getResource("/planifticateur/resources/" + "logo2.jpg"));
                 g2.drawImage(logo, 0, 0, this.initialDimension.width, this.initialDimension.height, null);
             
             }catch (Throwable ex){
