@@ -104,6 +104,7 @@ public class Horaire{
                 GrilleCheminement g = new GrilleCheminement(elementGrille,separateur);
                 listeGrilleCh.add(g);
             }
+            fluxCHE.close();
         }catch (Exception ex){
             System.out.println(ex);
         }
@@ -140,10 +141,10 @@ public class Horaire{
             //Activité déjà placée avant attribution d'une rangée
             for (Activite act: this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee()){
                 if (a.getJourChoisi() == act.getJourChoisi()
-                    && a.getHeureDebutChoisi() < (act.getHeureDebutChoisi() + act.getDuree())
-                    && a.getHeureDebutChoisi() > act.getHeureDebutChoisi()
-                    && act.getRangee() == 0
-                    && a.getRangee() == 0){
+                    && a.getHeureDebutChoisi() <= (act.getHeureDebutChoisi() + act.getDuree())
+                    && a.getHeureDebutChoisi() >= act.getHeureDebutChoisi()
+                    && act.getRangee() == a.getRangee()
+                    && act.getCode() != a.getCode()){
                         y += caseHeureHeight;
                 }
             }

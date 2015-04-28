@@ -47,6 +47,7 @@ public class MainWindow extends javax.swing.JFrame{
     private int scrolly = 15;
     private int indexEtiquette = 0;
     private String[] nomEtiquette = {"code","nom","type","prof"};
+    private boolean justUndo = false;
     
     //Constructeur application 
     public MainWindow(){
@@ -900,7 +901,14 @@ public class MainWindow extends javax.swing.JFrame{
                             //On réinitialise les points des activités de la liste
                             horaireController.initPointActivite(this.initialDimension);
                             //On sauvegarde pour le undo
-                            horaireController.enregistrerUndo();
+                            if (!justUndo){
+                                horaireController.enregistrerUndo();
+                            }
+                            else{
+                                horaireController.undoNeuf();
+                                //horaireController.enregistrerUndo();
+                                justUndo = false;
+                            }
                             //Horaire doit etre sauvegardé pour conserver le changement
                             horaireController.setUnsaved();
                         }
@@ -1465,13 +1473,13 @@ public class MainWindow extends javax.swing.JFrame{
             if (modeV){
                 horaireController.switchValidationAuto();
             }
+            horaireController.switchAPlacerToDejaPlacee();
+            horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
             horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
 
             horaireController.jourHeureToActivite();
-            horaireController.switchAPlacerToDejaPlacee();
-            horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
             drawingPanel.setHeight(horaireController.setDessinHeight());
             drawingPanelContainer.getVerticalScrollBar().validate();
@@ -1542,6 +1550,7 @@ public class MainWindow extends javax.swing.JFrame{
 
     private void menuEditionUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditionUndoActionPerformed
         if (horaireEstCharge){
+            justUndo = true;
             boolean modeV = false;
             if (horaireController.getModeValidationAuto()){
                 modeV = true;
@@ -1550,14 +1559,13 @@ public class MainWindow extends javax.swing.JFrame{
             if (modeV){
                 horaireController.switchValidationAuto();
             }
-            horaireController.initPointActivite(this.initialDimension);
-            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             statFenetre.initialize(horaireController);
 
             horaireController.jourHeureToActivite();
             horaireController.switchAPlacerToDejaPlacee();
             horaireController.switchDejaPlaceeToAPlacer();
             horaireController.initPointActivite(this.initialDimension);
+            horaireController.initPointActiviteDejaPlacee(this.initialDimension);
             drawingPanel.setHeight(horaireController.setDessinHeight());
             drawingPanelContainer.getVerticalScrollBar().validate();
             statFenetre.setStats();

@@ -443,7 +443,6 @@ public class HoraireController {
             
             if (backupFichierNb > 0){
                 this.horaire.enregistrerCHE(System.getProperty("user.dir") + "//backup//"+ "0.che", System.getProperty("user.dir") + "//backup//"+ Integer.toString(backupFichierNb)+".che");
-                
             }
             backupFichierNb += 1;
             indexUndo += 1;
@@ -478,6 +477,17 @@ public class HoraireController {
             if (noMoreGoodCOU.delete()){
                 backupFichierNb = backupFichierNb - 1;
             }
+        }
+    }
+    
+    public void undoNeuf(){
+        backupFichierNb = 0;
+        indexUndo = 0;
+        for (int i = 0; i < 5; i++){
+            File noMoreGoodCOU = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".cou");
+            File noMoreGoodCHE = new File(System.getProperty("user.dir") + "//backup//" + Integer.toString(i) + ".che");
+            noMoreGoodCHE.delete();
+            noMoreGoodCOU.delete();
         }
     }
     
