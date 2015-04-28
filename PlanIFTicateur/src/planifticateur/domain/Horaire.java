@@ -691,8 +691,7 @@ public class Horaire{
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(file, "858"));
                 bw.write(content);
                 bw.close();
-
-
+                
         } catch (IOException e) {
                 e.printStackTrace();
         }
@@ -1225,7 +1224,7 @@ public float[] donnerJourHeure(Point point, Dimension initialDimension){
            }
         }
     }
-  return allPoint;
+    return allPoint;
 }   
         
         

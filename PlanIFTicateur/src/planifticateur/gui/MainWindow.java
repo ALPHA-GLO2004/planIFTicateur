@@ -906,7 +906,7 @@ public class MainWindow extends javax.swing.JFrame{
                             }
                             else{
                                 horaireController.undoNeuf();
-                                //horaireController.enregistrerUndo();
+                                horaireController.enregistrerUndo();
                                 justUndo = false;
                             }
                             //Horaire doit etre sauvegardé pour conserver le changement
@@ -1024,7 +1024,6 @@ public class MainWindow extends javax.swing.JFrame{
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
          horaireController.deplacerToutDansListe();
         horaireController.classerListeAPlacer();
-        horaireController.initPointActivite(this.initialDimension);
         horaireController.enregistrerUndo();
         messagesDerreurs.removeAllElements();
         drawingPanel.setHeight(horaireController.setDessinHeight());
@@ -1036,6 +1035,8 @@ public class MainWindow extends javax.swing.JFrame{
             drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
         }     
         horaireController.planificationAuto(this.initialDimension);
+                horaireController.initPointActivite(this.initialDimension);
+        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
         drawingPanel.repaint();
 
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed
