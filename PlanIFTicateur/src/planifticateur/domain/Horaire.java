@@ -56,7 +56,9 @@ public class Horaire{
     private ListeActiviteAPlacer listeActiviteAPlacer;
     private ListeActiviteDejaPlacee listeActiviteDejaPlacee;
     private ListeGrilleCh listeGrilleCh;
-    
+    private boolean activiteHorsGrille =false;
+    private int nbCoursHorsGrille=0;
+    private int compteur=0;
     public Horaire(String filePath, String sessionChoisi){
         //Constructeur -- Ne fais que prendre le fichier et attribuer chaque élément contenu
         //dans ce fichier au bon endroit. Ensuite fait appel au controller pour créer les activités
@@ -896,6 +898,11 @@ public class Horaire{
 //addActivite: { 
         for( int i=i1; i < listeGrilleCh.getListeGrilleChAllVersion().size();i++) //Pour chaque les version de la grille : H2015, A2015, E2015,H2014, A2014, E2014,  
         {
+            compteur = i;
+            if (compteur == listeGrilleCh.getListeGrilleChAllVersion().size()-1){
+                activiteHorsGrille=true;
+                nbCoursHorsGrille=listeActiviteAPlacer.getListeActiviteAPlacer().size();
+            }
             String version = listeGrilleCh.getListeGrilleChAllVersion().get(i);
             for(int j=j1;j<listeGrilleCh.getListeGrilleChVersion(version).size();j++){//toutes les grilles d une meme version 
                 GrilleCheminement g = listeGrilleCh.getListeGrilleChVersion(version).get(j);
@@ -905,10 +912,11 @@ public class Horaire{
                     for(int l=l1;l<g.getListeDesCodesDactivites().size();l++){//on parcourt la liste des cours de cet etudiant pour la session et connaitre le cours de debut et de fin pour cette journee 
                         String s=   g.getListeDesCodesDactivites().get(l);                            //et on la cherche dans les activites du Lundi
 					   //peut etre trier les activites a placer en fonction de l heure minimun 
-                                                
+                         if ()                     
   //                                          trierListeAPlacerCroissanteHeureMinimun(this.getListeActiviteAPlacer());	
                         for(int m=m1; m<this.getListeActiviteAPlacer().size();m++){//ou this.getListeComplete
                             Activite a = this.getListeActiviteAPlacer().get(m);
+                            
                              if(a.getCode().compareToIgnoreCase(s)==0){//activite est a placer alors il faut la placer ou reboucler 
                                  //on assigne 
                                  if((heureDebutChoisi >= a.getHeureDebutMin())//on a une chance
@@ -1279,8 +1287,10 @@ public float[] donnerJourHeure(Point point, Dimension initialDimension){
 //	if (listeActiviteAPlacer.getListeActiviteAPlacer().size() != 0 ){
 			
 				
-                       
+                        
                           for (int i = 0; i <= 4; i++){//pour chaque jour 
+                            
+                             
                             for (int j = 0; j <= 7; j++){//Pour chaque range d un jour  8   
                               for (int k = 0; k <= 29; k++){// pour toutes les heures de la meme rangee  
                                   
