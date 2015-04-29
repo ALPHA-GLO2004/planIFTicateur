@@ -145,8 +145,15 @@ public class Horaire{
             //Activité déjà placée avant attribution d'une rangée
             for (Activite act: this.getListeActiviteDejaPlacee().getListeActiviteDejaPlacee()){
                 if (a.getJourChoisi() == act.getJourChoisi()
-                    && a.getHeureDebutChoisi() <= (act.getHeureDebutChoisi() + act.getDuree())
+                    && a.getHeureDebutChoisi() < (act.getHeureDebutChoisi() + act.getDuree())
                     && a.getHeureDebutChoisi() >= act.getHeureDebutChoisi()
+                    && act.getRangee() == a.getRangee()
+                    && act.getCode() != a.getCode()){
+                        y += caseHeureHeight;
+                }
+                if (a.getJourChoisi() == act.getJourChoisi()
+                    && a.getHeureDebutChoisi() + a.getDuree() <= act.getHeureDebutChoisi() + act.getDuree()
+                    && a.getHeureDebutChoisi() + a.getDuree() > act.getHeureDebutChoisi()
                     && act.getRangee() == a.getRangee()
                     && act.getCode() != a.getCode()){
                         y += caseHeureHeight;

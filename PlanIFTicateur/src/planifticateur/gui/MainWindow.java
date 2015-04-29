@@ -1238,6 +1238,7 @@ public class MainWindow extends javax.swing.JFrame{
                 horaireEstCharge=true;
                 horaireController.initPointActivite(this.initialDimension);
                 horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+                horaireController.initPointActiviteDejaPlacee(this.initialDimension);
                 statFenetre.initialize(horaireController);
 
                 horaireController.switchSelection();
