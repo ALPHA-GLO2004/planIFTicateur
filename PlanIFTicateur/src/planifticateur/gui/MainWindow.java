@@ -1022,7 +1022,7 @@ public class MainWindow extends javax.swing.JFrame{
     }//GEN-LAST:event_statistiquesButtonActionPerformed
     //Méthode pour bouton/menuItem planification automatique
     private void planificationAutomatiqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planificationAutomatiqueButtonActionPerformed
-         horaireController.deplacerToutDansListe();
+ /*        horaireController.deplacerToutDansListe();
         horaireController.classerListeAPlacer();
         horaireController.enregistrerUndo();
         messagesDerreurs.removeAllElements();
@@ -1033,10 +1033,12 @@ public class MainWindow extends javax.swing.JFrame{
         }
         else{
             drawingPanelContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 5));
-        }     
+        }   
+   */
         horaireController.planificationAuto(this.initialDimension);
-        horaireController.initPointActivite(this.initialDimension);
-        horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+ //       horaireController.initPointActivite(this.initialDimension);
+ //       horaireController.initPointActiviteDejaPlacee(this.initialDimension);
+        horaireController.enregistrerUndo();
         drawingPanel.repaint();
         System.out.println(horaireController.getListeActiviteDejaPlacee().size());
     }//GEN-LAST:event_planificationAutomatiqueButtonActionPerformed

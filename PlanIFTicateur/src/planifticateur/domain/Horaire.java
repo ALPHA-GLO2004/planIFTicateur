@@ -725,10 +725,12 @@ public class Horaire{
     public void genererAutomatiquement(Dimension initialDimension){
         //Planification automatique 
         //on scan l horaire avec une strategie d'espacer les cours d'un jour et ou de quelques heures
-        deplacerToutDansListe();//toutes les activites passent a droites;      
+        //deplacerToutDansListe();//toutes les activites passent a droites;      
         
  //        while(this.getListeActiviteAPlacer().size() > 0) {
-            chargerAvecNormes(initialDimension); 
+           boolean ch= chargerAvecNormes(initialDimension); 
+            boolean ch2=chargerAvecNormesHorsGrille(initialDimension);
+            
  //        }
   }
     
@@ -882,6 +884,7 @@ public class Horaire{
     }
     
     
+        
     public float[] ajouterUneActivite(float[] tableauCoordonne,Point point, int jour,int rangee, float heureDebutChoisi ,Dimension dimension){
         List<String> listSession = new Vector<String>();
         float[] cordonneesAct={0f,0f,0f,0f,0f,0f,0f,0f};//
@@ -898,7 +901,6 @@ public class Horaire{
 //addActivite: { 
         for( int i=i1; i < listeGrilleCh.getListeGrilleChAllVersion().size();i++) //Pour chaque les version de la grille : H2015, A2015, E2015,H2014, A2014, E2014,  
         {
-            compteur = i;
             if (compteur == listeGrilleCh.getListeGrilleChAllVersion().size()-1){
                 activiteHorsGrille=true;
                 nbCoursHorsGrille=listeActiviteAPlacer.getListeActiviteAPlacer().size();
@@ -912,7 +914,7 @@ public class Horaire{
                     for(int l=l1;l<g.getListeDesCodesDactivites().size();l++){//on parcourt la liste des cours de cet etudiant pour la session et connaitre le cours de debut et de fin pour cette journee 
                         String s=   g.getListeDesCodesDactivites().get(l);                            //et on la cherche dans les activites du Lundi
 					   //peut etre trier les activites a placer en fonction de l heure minimun 
-                         if ()                     
+                                           
   //                                          trierListeAPlacerCroissanteHeureMinimun(this.getListeActiviteAPlacer());	
                         for(int m=m1; m<this.getListeActiviteAPlacer().size();m++){//ou this.getListeComplete
                             Activite a = this.getListeActiviteAPlacer().get(m);
@@ -1000,6 +1002,161 @@ public class Horaire{
 }//l heure de l activite n est pas dans la bonne zone de validite de l horaire 
                                     //alors on 
 								 
+                             } //supposons que toues les activites appartiennent a une grille 
+							 
+                        }
+                    }
+                     
+                }              
+            }
+          }
+        }
+//	}
+        return cordonneesAct;
+    }  
+    
+    
+    public boolean yaTilChevauchementDansHoraire(Vector<Activite> actDejaPlace, Activite a2){
+
+        if(actDejaPlace==null || actDejaPlace.isEmpty()) return true;
+        for(Activite a1 : actDejaPlace){
+            
+        
+        if(a1.getJourChoisi() != a2.getJourChoisi() ) {return false;}
+            
+        if( (a1.getHeureDebutChoisi() >=  a2.getHeureDebutChoisi() + a2.getDuree() )
+              ||(a1.getHeureDebutChoisi()+ a1.getDuree() <=  a2.getHeureDebutChoisi() ) 
+            ){
+                return false;
+            }
+        
+      
+     }  
+        return true;
+   }
+    
+    public float[] ajouterUneActiviteHorsGrillChem(float[] tableauCoordonne,Point point, int jour,int rangee, float heureDebutChoisi ,Dimension dimension){
+        List<String> listSession = new Vector<String>();
+        float[] cordonneesAct={0f,0f,0f,0f,0f,0f,0f,0f};//
+        listSession.add("H");
+        listSession.add("A");
+        listSession.add("E");
+ /*       
+        int i1=(int)tableauCoordonne[0];//on recupere les coordonnes des grilles chem et la liste
+        int j1=(int)tableauCoordonne[1];
+        int k1=(int)tableauCoordonne[2];
+        int l1=(int)tableauCoordonne[3];
+        int m1=(int)tableauCoordonne[4];
+*/
+        int i1=0;//on recupere les coordonnes des grilles chem et la liste
+        int j1=0;
+        int k1=0;
+        int l1=0;
+        int m1=0;   
+//addActivite: { 
+saut:for( int i=i1; i < listeGrilleCh.getListeGrilleChAllVersion().size();i++) //Pour chaque les version de la grille : H2015, A2015, E2015,H2014, A2014, E2014,  
+        {
+            if(this.getListeActiviteAPlacer().isEmpty()) {break saut;}//on sort du boucle
+            String version = listeGrilleCh.getListeGrilleChAllVersion().get(i);
+            for(int j=j1;j<listeGrilleCh.getListeGrilleChVersion(version).size();j++){//toutes les grilles d une meme version 
+                GrilleCheminement g = listeGrilleCh.getListeGrilleChVersion(version).get(j);
+                for(int k=k1;k<listSession.size();k++){//pour chaque session de la grille 
+                  String session =  listSession.get(k);
+                if(g.session.substring(0,1).compareToIgnoreCase(session)==0){//pour la meme session
+                    for(int l=l1;l<g.getListeDesCodesDactivites().size();l++){//on parcourt la liste des cours de cet etudiant pour la session et connaitre le cours de debut et de fin pour cette journee 
+                        String s=   g.getListeDesCodesDactivites().get(l);                            //et on la cherche dans les activites du Lundi
+					   //peut etre trier les activites a placer en fonction de l heure minimun 
+                                           
+  //                                          trierListeAPlacerCroissanteHeureMinimun(this.getListeActiviteAPlacer());	
+                        for(int m=m1; m<this.getListeActiviteAPlacer().size();m++){//ou this.getListeComplete
+                            Activite a = this.getListeActiviteAPlacer().get(m);
+                            s=a.getCode();
+                             if(a.getCode().compareToIgnoreCase(s)==0){//activite est a placer alors il faut la placer ou reboucler 
+                                 //on assigne 
+                                 if((heureDebutChoisi >= a.getHeureDebutMin())//on a une chance
+                                         &&(heureDebutChoisi >= a.getHeureDebutMax())
+                                         && (heureDebutChoisi <= a.getHeureDebutMax())
+                                    )
+                                 {//heure miniumun depasse
+									
+                                  
+                                    Vector<String> msg = new Vector<String>();
+//                           if(horaireEstValide(msg)){//alors 
+                             if(!(yaTilChevauchementDansHoraire(listeActiviteDejaPlacee.getListeActiviteDejaPlacee(),a))){
+                                    a.setPoint(point);
+                                    a.setJourChoisi(jour);
+                                    a.setHeureDebutChoisi(heureDebutChoisi);
+                                    a.setRangee(rangee);
+
+ //                                   //on verifie si l activite est deja place 
+  //                           if(!ActiviteEnConflit(listeActiviteDejaPlacee.getListeActiviteDejaPlacee(), a))//-------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ //                               {//la LDP ne contient pas cette activite deja 
+                                    listeActiviteDejaPlacee.getListeActiviteDejaPlacee().add(a);//on place activite
+                                    listeActiviteAPlacer.remove(a);//on la supprime 
+                                    
+                                    //listeActiviteComplete.add(a);
+                                    //validation de l horaire                                       //on sauve les positions pour la prochaine activite a placer 
+                                            tableauCoordonne[0]=i;//version suivante 
+                                            tableauCoordonne[1]=j;//grille suivant 
+                                            tableauCoordonne[2]=k;//session suivante 
+                                            tableauCoordonne[3]=l;//on passe au code d activite suivant de la grille
+                                            tableauCoordonne[4]=m+1;//on passe a l activite suivante
+ //                                           break addActivite;
+                                            
+                                             //il faut sauter la duree de l'activite sur cette ligne pour placer la prochaine apres cette ligne 
+                                            //ce saut est est a faire a la ligne jour*
+                                            tableauCoordonne[5]=jour-1;
+                                            tableauCoordonne[6]=rangee-1;
+                                            tableauCoordonne[7]=((heureDebutChoisi + a.getDuree())-8)*2;//6cases sont sautes, ce saut est a prevoir sur cette range
+
+                                    } else {//l activite n est pas valide
+                                            //on sauve les coodonnees de l activite a placer
+                                            //il faut aller trouver un nouveau point
+                                            tableauCoordonne[0]=i;
+                                            tableauCoordonne[1]=j;
+                                            tableauCoordonne[2]=k;
+                                            tableauCoordonne[3]=l;
+                                            tableauCoordonne[4]=m; //on reste sur la meme activite
+                                            tableauCoordonne[5]=jour-1;	//
+                                            tableauCoordonne[6]=rangee-1;
+                                            tableauCoordonne[7]=1.0f;//pas de saut a cette adresse 
+                                            //on desasigne
+ /*                                           a.setPoint(new Point(0,0));//ou bien null new Point(0,0)!!!!!!!!!!!!!
+                                            a.setJourChoisi(0);
+                                            a.setHeureDebutChoisi(0);
+                                            a.setRangee(0);
+                                            listeActiviteDejaPlacee.getListeActiviteDejaPlacee().remove(a);//on place activite
+                                            listeActiviteAPlacer.add(a);//on la supprime 
+                                            //listeActiviteComplete.remove(a);
+  */
+                                    //il faut sortir des boucles 
+ //                                           break addActivite;										
+                                    }
+//}
+   /*
+           else{  //activite est en conflit alors on cherche une nouveau point a lui assigner 
+                                            tableauCoordonne[0]=i;
+                                            tableauCoordonne[1]=j;
+                                            tableauCoordonne[2]=k;
+                                            tableauCoordonne[3]=l;
+                                            tableauCoordonne[4]=m; //on reste sur la meme activite
+                                            tableauCoordonne[5]=jour-1;	//
+                                            tableauCoordonne[6]=rangee-1;
+                                            tableauCoordonne[7]=1.0f;//pas de saut a cette adresse 
+                                            //on desasigne
+                                            a.setPoint(new Point(0,0));//ou bien null new Point(0,0)!!!!!!!!!!!!!
+                                            a.setJourChoisi(0);
+                                            a.setHeureDebutChoisi(0);
+                                            a.setRangee(0);
+                                            listeActiviteDejaPlacee.getListeActiviteDejaPlacee().remove(a);//on place activite
+                                            listeActiviteAPlacer.add(a);//o
+                                           
+                                    //il faut sortir des boucles 
+ //                                           break addActivite;										
+    } */
+}//l heure de l activite n est pas dans la bonne zone de validite de l horaire 
+                                    //alors on 
+break saut;//on cherche un nouveau point								 
                              } //supposons que toues les activites appartiennent a une grille 
 							 
                         }
@@ -1229,10 +1386,11 @@ public float[] donnerJourHeure(Point point, Dimension initialDimension){
         
         Point[] allPoint=new Point[40*30];
         int indice=0;
-       
+        
+       for (int k = 0; k <= 29; k++){// pour toutes les heures de la meme rangee 
           for (int j = 0; j <= 7; j++){//Pour chaque range d un jour  8   
             for (int i = 0; i <= 4; i++){//pour chaque jour
-             for (int k = 0; k <= 29; k++){// pour toutes les heures de la meme rangee  
+              
                 jumpX = caseJourWidth + k*saut;  //on a choisi un jumpX c'est le coin de l horaire 
 
                 jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight; // pas trop de controle sur le y
@@ -1247,7 +1405,83 @@ public float[] donnerJourHeure(Point point, Dimension initialDimension){
 }   
         
         
+  public boolean chargerAvecNormesHorsGrille(Dimension dimension){
+        int width = dimension.width *3/4;
+        int height = dimension.height;
+        int caseJourHeight = height / 5;
+        int caseJourWidth = width / 16;             //les 32 cases heure with 
+        int caseHeureHeight = caseJourHeight / 9;   //
+        int saut = (width - caseJourWidth)/ 30;    //saut est (with - caseJourWith)  / 30 la  
+        int jumpX;//voir le deplacement sur le l axe des x
+        int jumpY;//voir le deplacement sur l'axe des y
+        Point point =null;  //le point qui sera utilise 
+        int pointX = 0;
+        int pointY = 0;
+        String[][] jouRangee = {{"0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0"},
+                                {"0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0"},
+                                {"0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0"},
+                                {"0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0"},
+                                {"0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0","0;0;0"}};
         
+        float[] cordonneesAct={0f,0f,0f,0f,0f,0f,0f,0f};//rien dans  indice zero, les 40 premiers representent representent le saut sur chaque ligne 
+        
+        //tant que c est pas place qui 
+	//prevoir si horaire est plein ou ne peut plus recevoir un element 	sans conflit 
+	//si la liste d'activite a placer est vide alors on sort 
+	
+ //quitter:{
+//	if (listeActiviteAPlacer.getListeActiviteAPlacer().size() != 0 ){
+			
+				
+                        
+                          
+                            
+                         for (int k = 0; k <= 29; k++){// pour toutes les heures de la meme rangee      
+                            for (int j = 0; j <= 7; j++){//Pour chaque range d un jour  8   
+                                for (int i = 0; i <= 4; i++){//pour chaque jour 
+                             jumpX = caseJourWidth + k*saut;  //on a choisi un jumpX c'est le coin de l horaire 
+                             
+                             jumpY = i*caseJourHeight + caseHeureHeight + j*caseHeureHeight; // pas trop de controle sur le y
+                             //traitement du point qui est pris 
+                             point = new Point(jumpX,jumpY);
+                             
+                             //placer le point et valider 
+                             //si pas ok alors il faut la remettre a droite  
+                             //le heure debut = 8+ (k)*0.5f   
+                             
+                             // si 
+                             // 
+                             
+                             String[] split = jouRangee[i][j].split(";");
+                             int i1 = Integer.valueOf(split[0]);
+                             int j1 = Integer.valueOf(split[1]);
+                             float k1 = Float.valueOf(split[2]);
+							 
+//			   if(i1 == listeGrilleCh.getListeGrilleChAllVersion().size() -1 ) { return true;}  //ici on a fait le tour de toutes les cases et c est //impossible de placer une activite
+							 
+ //                          if((i==i1 )&&(j==j1) &&(k>=k1)){//sur cette duree on ne calcule pas
+                             cordonneesAct =  ajouterUneActiviteHorsGrillChem(cordonneesAct,point,i+1,j+1,8+(k)*0.5f, dimension); 
+                             initPointActiviteDejaPlacee(dimension);
+                             int i2= (int)cordonneesAct[5];
+                             int j2= (int)cordonneesAct[6];
+                             float k2= cordonneesAct[7];
+                             //on range les valeurs 
+                             jouRangee[i2][j2]=String.valueOf(i2)+";"+String.valueOf(j2)+";" + String.valueOf(k1+k2);   //                       
+ //                           } //dans le else il ne passe rien on avance sur les autres cases
+							
+                          }
+ //                 int activiteHeight = dimension.height /45;     //9*5=45 tranche de height
+               }
+           }
+//	  } 
+ //       else{
+//			break quitter;
+		//	return true;
+//	  }
+//    }  
+     return true;
+    }
+       
     //placer activite qui ne doivent pas se chevaucher:
     
     //placer une activite par jour pour un meme grille de cheminement, meme version et meme session 
@@ -1286,13 +1520,11 @@ public float[] donnerJourHeure(Point point, Dimension initialDimension){
  //quitter:{
 //	if (listeActiviteAPlacer.getListeActiviteAPlacer().size() != 0 ){
 			
-				
-                        
+		for (int j = 0; j <= 7; j++){//Pour chaque range d un jour  8 		
+                     for (int k = 0; k <= 29; k++){// pour toutes les heures de la meme rangee    
                           for (int i = 0; i <= 4; i++){//pour chaque jour 
-                            
-                             
-                            for (int j = 0; j <= 7; j++){//Pour chaque range d un jour  8   
-                              for (int k = 0; k <= 29; k++){// pour toutes les heures de la meme rangee  
+                                 
+                               
                                   
                              jumpX = caseJourWidth + k*saut;  //on a choisi un jumpX c'est le coin de l horaire 
                              
